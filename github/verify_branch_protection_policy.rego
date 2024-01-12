@@ -2,7 +2,7 @@ package opsmx
 
 default allow = false
 
-request_components = [input.metadata.rest_url,"repos", input.metadata.github_org, input.metadata.github_repo,"branches",input.metadata.default_branch]
+request_components = [input.metadata.rest_url, "repos", input.metadata.github_org, input.metadata.github_repo,"branches",input.metadata.branch,"protection"]
 request_url = concat("/",request_components)
 
 token = input.metadata.github_access_token
@@ -16,13 +16,15 @@ request = {
 }
 
 response = http.send(request)
-
 raw_body = response.raw_body
-
 parsed_body = json.unmarshal(raw_body)
-
-branch_protected = response.body.protected
-
+obj := response.body
+has_key(x, k) {
+   dont_care(x[k])
+}
+dont_care(_) = true
+default branch_protection = false
+branch_protection = has_key(obj, "required_pull_request_reviews")
 allow {
   response.status_code = 200
 }
@@ -31,6 +33,13 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
   response.status_code = 404
   msg := ""
   sugg := "Kindly provide the accurate repository name, organization, and branch details"
+  error := sprintf("%v %v",[response.status_code,response.body.message])
+}
+
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
+  response.status_code = 403
+  msg := ""
+  sugg := sprintf("The repository %v is private,Make this repository public to enable this feature", [input.metadata.github_repo])
   error := sprintf("%v %v",[response.status_code,response.body.message])
 }
 
@@ -49,8 +58,8 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  branch_protected = false
+  branch_protection != true
   msg := sprintf("Github repo %v of branch %v is not protected", [input.metadata.github_repo, input.metadata.default_branch])
-  sugg := "Please enable the branch protection rules"
+  sugg := sprintf("Adhere to the company policy by enforcing Code Owner Reviews for %s Github repo",[input.metadata.github_repo])
   error := ""
 }
