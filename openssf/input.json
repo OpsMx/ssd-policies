@@ -1,160 +1,87 @@
 {
-  "conditions": [
+    "conditions":[
+	    {
+		    "condition_name": "Open SSF Binary Artifacts Policy",
+		    "condition_value": "5"
+	    }
+    ],
+    "metadata":{
+    "package_name": "",
+    "image_name": "",
+    "stages": null,
+    "account_name": "",
+    "scan_type": "",
+    "compliance_score": 0,
+    "results": null,
+    "suggestion": "Adhere to the OpenSSF standards by integrating the specified scripts with a CI/CD platform that executes them with every pull request.",
+    "branch": "",
+    "repository": "student-record-management",
+    "owner": "BasavaRajSomesetty",
+    "toolchain_addr": "http://localhost:8100",
+    "build_id": "2c46de4e-306d-47c2-ae95-9c93af399345",
+    "sonarqube_projectKey": "",
+    "parent_repo": "",
+    "ssd_secret":
     {
-      "condition_name": "Branch-Protection",
-      "condition_value": "9-10"
-    }
-  ],
-  "metadata": {
-    "name": "github.com/opsmx/ToolChain",
-    "account_name": "prod",
-    "scan_type": "OpenSSf Scorecard",
-    "aggregate_score": 4.8,
-    "results": [
-      {
-        "score": 10,
-        "name": "Binary-Artifacts",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#binary-artifacts",
-            "short":"Adhere to the OpenSSF standards by removing the generated executable artifacts from the repository."
-         }
-      },
-      {
-        "score": 6,
-        "name": "Branch-Protection",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#branch-protection",
-            "short":"Adhere to the OpenSSF standards by implementing branch protection settings in your source hosting provider to avoid force pushes or deletions of your important branches."
-         }
-      },
-      {
-        "score": 10,
-        "name": "CI-Tests",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#ci-tests",
-            "short":"Adhere to the OpenSSF standards by integrating the specified scripts with a CI/CD platform that executes them with every pull request."
-         }
-      },
-      {
-        "score": 0,
-        "name": "CII-Best-Practices",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#cii-best-practices",
-            "short":"Adhere to the OpenSSF standards by following industry best practices, helping users identify secure and high-quality software."
-         }
-      },
-      {
-        "score": 0,
-        "name": "Code-Review",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#code-review",
-            "short":"Adhere to OpenSSF standards by reviewing code diligently for each merge or pull request."
-         }
-      },
-      {
-        "score": 3,
-        "name": "Contributors",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#contributors",
-            "short":"Adhere to the OpenSSF standards by encouraging contributors to join their respective organisations if not already done."
-         }
-      },
-      {
-        "score": 10,
-        "name": "Dangerous-Workflow",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#dangerous-workflow",
-            "short":"Determines if the project's GitHub Action workflows avoid dangerous patterns."
-         }
-      },
-      {
-        "score": 10,
-        "name": "Dependency-Update-Tool",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#dependency-update-tool",
-            "short":"Adhere to OpenSSF standards by using recommended tools for automated dependency updates and following their suggested configuration file placement."
-         }
-      },
-      {
-        "score": 0,
-        "name": "Fuzzing",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#fuzzing",
-            "short":"Adhere to the OpenSSF standards by considering to integrate the project with OSS-Fuzz to enhance its security and overall reliability."
-         }
-      },
-      {
-        "score": 10,
-        "name": "License",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#license",
-            "short":"Adhere to OpenSSF guidelines by implementing a 'LICENSE' directory and integrating license file(s) named to match your SPDX license identifier."
-         }
-      },
-      {
-        "score": 10,
-        "name": "Maintained",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#maintained",
-            "short":"Adhere to the OpenSSF standards by understanding that projects with a low score do not require remediation work; this check serves to offer insights into project activity and maintenance commitment."
-         }
-      },
-      {
-        "score": -1,
-        "name": "Packaging",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#packaging",
-            "short":"Determines if the project is published as a package that others can easily download, install, easily update, and uninstall."
-         }
-      },
-      {
-        "score": 0,
-        "name": "Pinned-Dependencies",
-         "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#pinned-dependencies",
-            "short":"Adhere to the OpenSSF standards by publishing your project as a downloadable package."
-         }
-      },
-      {
-        "score": 0,
-        "name": "SAST",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#sast",
-            "short":"Adhere to the OpenSSF standards by incorporating CodeQL checks into your CI/CD pipeline."
-         }
-      },
-      {
-        "score": 0,
-        "name": "Security-Policy",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#security-policy",
-            "short":"Adhere to the OpenSSF standards by including a security policy file (SECURITY.md) in the root directory of your repository."
-         }
-      },
-      {
-        "score": -1,
-        "name": "Signed-Releases",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#signed-releases",
-            "short":"Determines if the project cryptographically signs release artifacts."
-         }
-      },
-      {
-        "score": 0,
-        "name": "Token-Permissions",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#token-permissions",
-            "short":"Adhere to OpenSSF standards by defining your token permissions."
-         }
-      },
-      {
-        "score": 2,
-        "name": "Vulnerabilities",
-        "documentation":{
-            "url":"https://github.com/ossf/scorecard/blob/49c0eed3a423f00c872b5c3c9f1bbca9e8aae799/docs/checks.md#vulnerabilities",
-            "short":"Adhere to OpenSSF guidelines by upgrading dependency packages to fix its vulnerabilities."
-         }
-      }
-    ]
-  }
+        "github":
+        {
+            "url": "",
+            "token": ""
+        },
+        "spinnaker_creds":
+        {
+            "userName": "",
+            "password": "",
+            "url": ""
+        },
+        "authorized_artifact_repo": "",
+        "docker":
+        {
+            "url": "",
+            "username": "",
+            "password": ""
+        },
+        "semgrep_webApi_token": "",
+        "sonarQube_creds":
+        {
+            "url": "",
+            "token": ""
+        },
+        "kubernetesData":
+        {
+            "AESEncryptionKey": "",
+            "kubeConfigData": "",
+            "account": ""
+        },
+        "argo_credentials":
+        {
+            "url": "",
+            "token": ""
+        },
+        "build_access_config":
+        {
+            "credentials":[
+            {
+                "username": "",
+                "token": "",
+                "url": "",
+                "approved_user": ""
+            }
+        ]
+        },
+        "snyk":
+        {
+            "url": "",
+            "token": ""
+        }
+    },
+    "image": "",
+    "image_tag": "",
+    "image_sha": "",
+    "build_image": "",
+    "build_image_tag": "",
+    "build_image_sha": "",
+    "build_url": "",
+    "build_user": ""
+}
 }
