@@ -1,108 +1,56 @@
 package opsmx
+import future.keywords.in
 
 default allow = false
 
-request_components = [input.metadata.rest_url,"orgs", input.metadata.github_org, "outside_collaborators"]
-collaboraters_url = concat("/",request_components)
-
-repo_components = [input.metadata.rest_url,"repos", input.metadata.github_org, input.metadata.github_repo, "collaborators?affiliation=direct"]
-repo_url = concat("/",repo_components)
-
-#orgtoken = input.metadata.orggithub_access_token
-
-token = input.metadata.github_access_token
-
-collaboraters = {
-    "method": "GET",
-    "url": collaboraters_url,
-    "headers": {
-        "Authorization": sprintf("Bearer %v", [token]),
-    },
-}
+outside_collaborators_url = concat("/", [input.metadata.ssd_secret.github.rest_api_url, "repos", input.metadata.owner, input.metadata.repository, "collaborators?affiliation=outside&per_page=100"])
 
 request = {
     "method": "GET",
-    "url": repo_url,
+    "url": outside_collaborators_url,
     "headers": {
-        "Authorization": sprintf("Bearer %v", [token]),
+        "Authorization": sprintf("Bearer %v", [input.metadata.ssd_secret.github.token]),
     },
 }
 
-collaboraters_response = http.send(collaboraters)
-
-outside_collaboraters_result = collaboraters_response.body
-
+default response = ""
 response = http.send(request)
 
-raw_body = response.raw_body
-
-parsed_body = json.unmarshal(raw_body)
-
-response_result = response.body
-
-outside_users = {outsideuser |
-    some i
-    outsideuser = outside_collaboraters_result[i];
-    outsideuser.type == "User"
-}
-
-repo_users = {repouser |
-    some i
-    repouser = response_result[i];
-    repouser.type == "User"
-}
-
-allow {
-  response.status_code = 200
-}
-
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  collaboraters_response.status_code = 403
+deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
+  response.status_code == 401
   msg := ""
-  sugg := "Please provide the Organisation Admin user token"
-  error := sprintf("%s", [collaboraters_response.body.message])
+  error := "401 Unauthorized: Unauthorized to check repository collaborators."
+  sugg := "Kindly check the access token. It must have enough permissions to get repository collaborators."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  collaboraters_response.status_code = 401
+  response.status_code == 404
   msg := ""
-  sugg := "Please provide the Appropriate Git Token for the User"
-  error := sprintf("%s %v", [collaboraters_response.body.message,collaboraters_response.status])
+  sugg := "Kindly check if the repository provided is correct and the access token has rights to read repository collaborators."
+  error := "Mentioned branch for Repository not found while trying to fetch repository collaborators. Repo name or Organisation is incorrect."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code = 404
-  msg := ""
-  sugg := "Please provide the appropriate repo name"
-  error := "Repo name or Organisation is incorrect"
-}
-
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code = 401
-  msg := ""
-  sugg := "Please provide the Appropriate Git Token for the User"
-  error := sprintf("%s %v", [response.body.message,response.status])
-}
-
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code = 403
-  msg := ""
-  sugg := "Please provide the Organisation Admin user token"
-  error := sprintf("%s", [response.body.message])
-}
-
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code = 500
-  msg := "Internal Server Error"
+  response.status_code == 500
+  msg := "Internal Server Error."
   sugg := ""
-  error := "GitHub is not reachable"
+  error := "GitHub is not reachable."
+}
+
+deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
+  codes = [401, 404, 500, 200, 301, 302]
+  not response.status_code in codes
+  msg := ""
+  error := sprintf("Unable to fetch repository collaborators. Error %v:%v receieved from Github.", [response.status_code, response.body.message])
+  sugg := "Kindly check Github API is reachable and the provided access token has required permissions."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  outsideuser = outside_users[_]
-  repouser = repo_users[_]
-  outsideuser.login == repouser.login
-  msg = sprintf("Git repo %s is accessed by outside collaborator user %v", [input.metadata.github_repo,outsideuser.login])
-  sugg := sprintf("Adhere to the company policy and revoke access of non-organization members for %s repository",[outsideuser.login])
+  response.status_code in [200, 301, 302]
+  count(response.body) > 0
+
+  collaborators_list = concat(",\n", [response.body[i].login | response.body[i].type == "User"]) 
+  msg := sprintf("%v outside collaborators have access to repository. \n The list of outside collaborators is: %v.", [count(response.body, collaborators_list)])
+  sugg := sprintf("Adhere to the company policy by revoking the access of non-organization members for Github repo.")
   error := ""
 }
