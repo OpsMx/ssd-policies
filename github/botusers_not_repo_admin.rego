@@ -1,11 +1,9 @@
 package opsmx
+import future.keywords.in
 
-default allow = false
+request_url = concat("/", [input.metadata.ssd_secret.github.rest_api_url,"repos", input.metadata.owner, input.metadata.repository, "collaborators?affiliation=admin"])
 
-request_components = [input.metadata.rest_url,"repos", input.metadata.github_org, input.metadata.github_repo, "collaborators?affiliation=direct"]
-request_url = concat("/",request_components)
-
-token = input.metadata.github_access_token
+token = input.metadata.ssd_secret.github.token
 
 request = {
     "method": "GET",
@@ -15,49 +13,55 @@ request = {
     },
 }
 
+
 response = http.send(request)
 
-raw_body = response.raw_body
-
-parsed_body = json.unmarshal(raw_body)
-
-admins = {user |
-    some i
-    user = result[i];
-    user.role_name == "admin"
-}
-
-bot_users = {"bot", "auto", "test", "jenkins", "drone", "github", "gitlab", "aws", "azure"}
-
-allow {
-  response.status_code = 200
-}
-
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code = 404
+deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
+  response.status_code == 401
   msg := ""
-  sugg := "Please provide the appropriate repo name"
-  error := "Repo name or Organisation is incorrect"
+  error := "401 Unauthorized: Unauthorized to check organisation members."
+  sugg := "Kindly check the access token. It must have enough permissions to get organisation members."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code = 401
+  response.status_code == 404
   msg := ""
-  sugg := "Please provide the Appropriate Git Token for the User"
-  error := sprintf("%s %v", [parsed_body.message,response.status])
+  sugg := "Kindly check if the repository provided is correct and the access token has rights to read organisation members."
+  error := "Mentioned branch for Repository not found while trying to fetch organisation members. Repo name or Organisation is incorrect."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code = 500
-  msg := "Internal Server Error"
+  response.status_code == 500
+  msg := "Internal Server Error."
   sugg := ""
-  error := "GitHub is not reachable"
+  error := "GitHub is not reachable."
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  user = admins[_]
-  user.login == bot_users[user.login]
-  msg = sprintf("Git repo is owned by bot user %s", [user.login])
-  sugg := sprintf("Adhere to the company policy and revoke access of bot user for %s Organization", [user.login])
+deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
+  codes = [401, 404, 500, 200, 301, 302]
+  not response.status_code in codes
+  msg := ""
+  error := sprintf("Unable to fetch organisation members. Error %v:%v receieved from Github.", [response.status_code, response.body.message])
+  sugg := "Kindly check Github API is reachable and the provided access token has required permissions."
+}
+
+default denial_list = false
+
+denial_list = matched_users
+
+matched_users[user] {
+    users := [response.body[i].login | response.body[i].type == "User"]
+    user := users[_]
+    patterns := ["bot", "auto", "test", "jenkins", "drone", "github", "gitlab", "aws", "azure"]
+    some pattern in patterns
+        regex.match(pattern, user)
+}
+
+deny[{"alertMsg":msg, "suggestions": sugg, "error": error}] {
+  counter := count(denial_list)
+  counter > 0
+  denial_list_str := concat(", ", denial_list)
+  msg := sprintf("Owner access of Github Organization is granted to bot users. Number of bot users having owner access: %v. Name of bots having owner access: %v", [counter, denial_list_str])
+  sugg := sprintf("Adhere to the company policy and revoke access of bot user for %v Organization.", [input.metadata.owner])
   error := ""
 }
