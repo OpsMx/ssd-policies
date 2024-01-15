@@ -52,7 +52,7 @@ denial_list = matched_users
 matched_users[user] {
     users := [response.body[i].login | response.body[i].type == "User"]
     user := users[_]
-    patterns := ["Anjali", "bot", "auto", "test", "jenkins", "drone", "github", "gitlab", "aws", "azure"]
+    patterns := ["bot", "auto", "test", "jenkins", "drone", "github", "gitlab", "aws", "azure"]
     some pattern in patterns
         regex.match(pattern, user)
 }
