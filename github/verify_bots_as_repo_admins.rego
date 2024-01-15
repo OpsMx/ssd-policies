@@ -19,15 +19,15 @@ response = http.send(request)
 deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   response.status_code == 401
   msg := ""
-  error := "401 Unauthorized: Unauthorized to check organisation members."
-  sugg := "Kindly check the access token. It must have enough permissions to get organisation members."
+  error := "401 Unauthorized: Unauthorized to check repository collaborators."
+  sugg := "Kindly check the access token. It must have enough permissions to get repository collaborators."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
   response.status_code == 404
   msg := ""
-  sugg := "Kindly check if the repository provided is correct and the access token has rights to read organisation members."
-  error := "Mentioned branch for Repository not found while trying to fetch organisation members. Repo name or Organisation is incorrect."
+  sugg := "Kindly check if the repository provided is correct and the access token has rights to read repository collaborators."
+  error := "Mentioned branch for Repository not found while trying to fetch repository collaborators. Repo name or Organisation is incorrect."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
@@ -41,7 +41,7 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   codes = [401, 404, 500, 200, 301, 302]
   not response.status_code in codes
   msg := ""
-  error := sprintf("Unable to fetch organisation members. Error %v:%v receieved from Github.", [response.status_code, response.body.message])
+  error := sprintf("Unable to fetch repository collaborators. Error %v:%v receieved from Github.", [response.status_code, response.body.message])
   sugg := "Kindly check Github API is reachable and the provided access token has required permissions."
 }
 
@@ -61,7 +61,7 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}] {
   counter := count(denial_list)
   counter > 0
   denial_list_str := concat(", ", denial_list)
-  msg := sprintf("Owner access of Github Organization is granted to bot users. Number of bot users having owner access: %v. Name of bots having owner access: %v", [counter, denial_list_str])
-  sugg := sprintf("Adhere to the company policy and revoke access of bot user for %v Organization.", [input.metadata.owner])
+  msg := sprintf("Owner access of Github Repository is granted to bot users. Number of bot users having owner access: %v. Name of bots having owner access: %v", [counter, denial_list_str])
+  sugg := sprintf("Adhere to the company policy and revoke access of bot user for %v/%v Repository.", [input.metadata.repository,input.metadata.owner])
   error := ""
 }
