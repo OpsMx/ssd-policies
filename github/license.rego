@@ -1,11 +1,12 @@
 package opsmx
+import future.keywords.in
 
 default allow = false
 
-request_components = [input.metadata.rest_url,"repos", input.metadata.github_org, input.metadata.github_repo]
+request_components = [input.metadata.ssd_secret.github.rest_api_url,"repos", input.metadata.owner, input.metadata.repository]
 request_url = concat("/",request_components)
 
-token = input.metadata.github_access_token
+token = input.metadata.ssd_secret.github.token
 
 request = {
     "method": "GET",
@@ -16,41 +17,44 @@ request = {
 }
 
 response = http.send(request)
-
-raw_body = response.raw_body
-
-parsed_body = json.unmarshal(raw_body)
-
-license_check = response.body.license
+license_url = response.body.license.url
 
 allow {
   response.status_code = 200
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code = 404
-  msg := ""
-  sugg := "Please provide the appropriate repo name"
-  error := "Repo name or Organisation is incorrect"
+deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
+  response.status_code == 401
+  msg := "Unauthorized to check repository configuration due to Bad Credentials."
+  error := "401 Unauthorized."
+  sugg := "Kindly check the access token. It must have enough permissions to get repository configurations."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code = 401
-  msg := ""
-  sugg := "Please provide the Appropriate Git Token for the User"
-  error := sprintf("%s %v", [parsed_body.message,response.status])
+  response.status_code == 404
+  msg := "Repository not found while trying to fetch Repository Configuration."
+  sugg := "Kindly check if the repository provided is correct and the access token has rights to read repository configuration."
+  error := "Repo name or Organisation is incorrect."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code = 500
-  msg := "Internal Server Error"
+  response.status_code == 500
+  msg := "Internal Server Error."
   sugg := ""
-  error := "GitHub is not reachable"
+  error := "GitHub is not reachable."
+}
+
+deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
+  codes = [401, 404, 500, 200, 301, 302]
+  not response.status_code in codes
+  msg := "Unable to fetch repository configuration."
+  error := sprintf("Error %v:%v receieved from Github upon trying to fetch Repository Configuration.", [response.status_code, response.body.message])
+  sugg := "Kindly check Github API is reachable and the provided access token has required permissions."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  license_check = null
-  msg := sprintf("GitHub License not found for the %v repository, [input.metadata.github_repo])
-  sugg := sprintf("Adhere to the company policy by adding a License file for %s repository", [input.metadata.github_repo])
+  license_url == null
+  msg := sprintf("GitHub License not found for the %v/%v repository.", [input.metadata.owner, input.metadata.repository])
+  sugg := sprintf("Adhere to the company policy by adding a License file for %v/%v repository.", [input.metadata.owner, input.metadata.repository])
   error := ""
 }
