@@ -1,31 +1,36 @@
 package opsmx
-default allow = false
-file_components = [input.metadata.repo, input.metadata.id, "imageScanResult.json"]
-filename = concat("_",file_components)
-request_components = [input.metadata.toolchain_url, filename ]
-request_url = concat("=",request_components)
+
+default secrets_count = 0
+
+default image_name = ""
+
+image_name = input.metadata.image {
+    not contains(input.metadata.image,"/")
+}
+image_name = split(input.metadata.image,"/")[1] {
+    contains(input.metadata.image,"/")
+}
+
+request_url = concat("/",[input.metadata.toolchain_addr,"api", "v1", "scanResult?fileName="])
+filename_components = [image_name, input.metadata.image_tag, "imageScanResult.json"]
+filename = concat("_", filename_components)
+
+complete_url = concat("", [request_url, filename])
+
 request = {
     "method": "GET",
-    "url": request_url
+    "url": complete_url
 }
 
 response = http.send(request)
 
-}
+medium_severity_secrets = [response.body.Results[0].Secrets[i].Title | response.body.Results[0].Secrets[i].Severity == "MEDIUM"]
+secrets_count = count(medium_severity_secrets)
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code = 500
-  msg := "imageScanResult.json file is not available in tool-chain service or file name is wrong"
-  sugg := ""
-  error := "Internal Server Error"
-}
+  secrets_count > 0
 
-
-results := [response.Results[i].Secrets[j].Title | response.Results[i].Secrets[j].Severity == "MEDIUM"]
-counter = count(results)
-deny[msg]{
-
-  counter != 0
-  msg := sprintf("%v is detected in container %v",[results, input.metadata.repo])
-
+  msg := sprintf("Secret found for Artifact %v:%v.\nBelow are the secrets identified:\n %v", [image_name, input.metadata.image_tag, concat(",\n", medium_severity_secrets)])
+  sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
+  error := ""
 }
