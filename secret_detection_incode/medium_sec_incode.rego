@@ -1,28 +1,27 @@
 package opsmx
-default allow = false
-file_components = [input.metadata.repo, input.metadata.id, "codeScanResult.json"]
-filename = concat("_",file_components)
-request_components = [input.metadata.toolchain_url, filename ]
-request_url = concat("=",request_components)
+
+default secrets_count = 0
+
+request_url = concat("/",[input.metadata.toolchain_addr,"api", "v1", "scanResult?fileName="])
+filename_components = [input.metadata.owner, input.metadata.repository, input.metadata.build_id, "codeScanResult.json"]
+filename = concat("_", filename_components)
+
+complete_url = concat("", [request_url, filename])
+
 request = {
     "method": "GET",
-    "url": request_url
+    "url": complete_url
 }
 
 response = http.send(request)
 
+critical_severity_secrets = [response.body.Results[0].Secrets[i].Title | response.body.Results[0].Secrets[i].Severity == "MEDIUM"]
+secrets_count = count(critical_severity_secrets)
+
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code = 500
-  msg := "codeScanResult.json file is not available in tool-chain service or file name is wrong"
-  sugg := ""
-  error := "Internal Server Error"
-}
+  secrets_count > 0
 
-results := [response.Results[i].Secrets[j].Title | response.Results[i].Secrets[j].Severity == "MEDIUM"]
-counter = count(results)
-deny[msg]{
-
-  counter != 0
-  msg := sprintf("%v is detected in code %v",[results, input.metadata.repo])
-
+  msg := sprintf("Secret found for %v/%v Github repository for branch %v.\nBelow are the secrets identified:\n %s", [input.metadata.owner, input.metadata.repository, input.metadata.branch, concat(",\n", critical_severity_secrets)])
+  sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
+  error := ""
 }
