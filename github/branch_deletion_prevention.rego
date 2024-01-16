@@ -46,6 +46,6 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
   response.body.allow_deletions.enabled = true
   msg := sprintf("Github repo %v is having policy and branch cannot be deleted", [input.metadata.github_repo])
-  sugg := sprintf("Disable branch deletion in %s Github repo to align with the company's policy", [input.metadata.github_repo])
+  sugg := sprintf("Disable branch deletion in %s Github repo to align with the company policy", [input.metadata.github_repo])
   error := ""
 }
