@@ -21,6 +21,6 @@ findings_count = response.body.totalFindings
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
   findings_count > 0
   msg := sprintf("The github repository %v/%v contains %v findings of %v severity.", [input.metadata.owner, input.metadata.repository, findings_count, severity])
-  sugg := "Please examine the high-severity findings in the SEMGREP analysis data, available through the 'View Findings' button & promptly address and fix the identified issues following best practices and prioritize security."
+  sugg := "Please examine the high-severity findings in the SEMGREP analysis data, available through the View Findings button & promptly address and fix the identified issues following best practices and prioritize security."
   error := ""
 }
