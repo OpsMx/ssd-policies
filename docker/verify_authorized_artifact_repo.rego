@@ -8,8 +8,8 @@ deployed_artifact_source = concat(":",[input.metadata.image, input.metadata.imag
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
   count(approved_artifact_repos) == 0
-  error := "The essential list of Authorized Artifact Repo's remains unspecified."
-  sugg := "Set the 'AuthorizedArtifactRepos' parameter with trusted Artifact Repo to strengthen artifact validation during the deployment process."
+  error := "The essential list of Authorized Artifact Repositories remains unspecified."
+  sugg := "Set the AuthorizedArtifactRepos parameter with trusted Artifact Repo to strengthen artifact validation during the deployment process."
   msg := ""
 }
 
@@ -18,7 +18,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
 
   not concat("", ["docker.io/",deployed_artifact_source]) in approved_artifact_repos
 
-  msg := sprintf("The artifact %v:%v has not been sourced from an authorized artifact repo.\nPlease verify the artifact's origin against the following Authorized Artifact Repositories: %v", [input.metadata.image, input.metadata.image_tag, input.metadata.ssd_secret.authorized_artifact_repo])
+  msg := sprintf("The artifact %v:%v has not been sourced from an authorized artifact repo.\nPlease verify the artifacts origin against the following Authorized Artifact Repositories: %v", [input.metadata.image, input.metadata.image_tag, input.metadata.ssd_secret.authorized_artifact_repo])
   sugg := "Ensure the artifact is sourced from an authorized artifact repo."
   error := ""
 }
