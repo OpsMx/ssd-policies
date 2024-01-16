@@ -67,7 +67,7 @@ pkg_without_version = [pkg2.name | pkg2 := response.body.sbom.packages[_]
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
     count(pkg_without_version) != 0
-    msg := sprintf("The GitHub repository '%v/%v' exhibits packages with inadequate versioning.", [input.metadata.owner, input.metadata.repository])
-    sugg := sprintf("Adhere to the company policy and mandate proper tagging and versioning for packages of '%v/%v' repository.", [input.metadata.owner, input.metadata.repository])
+    msg := sprintf("The GitHub repository %v/%v exhibits packages with inadequate versioning.", [input.metadata.owner, input.metadata.repository])
+    sugg := sprintf("Adhere to the company policy and mandate proper tagging and versioning for packages of %v/%v repository.", [input.metadata.owner, input.metadata.repository])
     error := ""
 }
