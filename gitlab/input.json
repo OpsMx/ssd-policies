@@ -9,7 +9,7 @@
             "token": "xxxxxxxxxxxxxxxxxxx",
             "repository": "testpublic",
             "owner": "genos1998",
-            "project_id": "53998202",
+            "gitlab_project_id": "53998202",
 	    "branch": "main",
             "repository_url":"https://github.com/genos1998/testpublic",
             "ssd_secret": {
