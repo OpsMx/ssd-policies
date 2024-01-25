@@ -30,13 +30,13 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   codes = [401, 404, 500, 200, 301, 302]
   response.status_code in codes
   msg := "Unable to fetch repository configuration."
-  error := sprintf("Error %v receieved from Github upon trying to fetch Repository Configuration.", [response.body.message])
-  sugg := "Kindly check Github API is reachable and the provided access token has required permissions."
+  error := sprintf("Error %v receieved from Gitlab upon trying to fetch Repository Configuration.", [response.body.message])
+  sugg := "Kindly check Gitlab API is reachable and the provided access token has required permissions."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
   response.body.protected = false
-  msg := sprintf("Gitlab project doesnt have branch protection enabled for the  branch %v ", [input.metadata.branch])
-  sugg := "Please change the repository visibility to private."
+  msg := sprintf("Gitlab repo %v of branch %v is not protected", [input.metadata.repository, input.metadata.branch])
+  sugg := sprintf("Adhere to the company policy by enforcing Code Owner Reviews for %s Gitlab repo",[input.metadata.repository])
   error := ""
 }

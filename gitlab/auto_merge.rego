@@ -2,8 +2,9 @@ package opsmx
 import future.keywords.in
 
 default allow = false
+default private_repo = ""
 
-request_components = [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/user"]
+request_components = [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/projects", input.metadata.project_id, "merge_requests"]
 
 request_url = concat("/",request_components)
 
@@ -32,8 +33,8 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.body.two_factor_enabled = false
-  msg := sprintf("Gitlab Organisation %v doesn't have the mfa enabled.", [input.metadata.owner])
-  sugg := sprintf("Adhere to the company policy by enabling 2FA for %s.",[input.metadata.owner])
+  response.body.merge_when_pipeline_succeeds = false
+  msg := sprintf("Auto Merge is disabled for the repo %v", [input.metadata.repository])
+  sugg := "Please change the repository visibility to private."
   error := ""
 }

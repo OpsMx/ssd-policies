@@ -3,7 +3,7 @@ import future.keywords.in
 
 default allow = false
 
-request_components = [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/user"]
+request_components = [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/projects", input.metadata.project_id, "merge_requests"]
 
 request_url = concat("/",request_components)
 
@@ -31,9 +31,11 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   sugg := "Kindly check Gitlab API is reachable and the provided access token has required permissions."
 }
 
+
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.body.two_factor_enabled = false
-  msg := sprintf("Gitlab Organisation %v doesn't have the mfa enabled.", [input.metadata.owner])
-  sugg := sprintf("Adhere to the company policy by enabling 2FA for %s.",[input.metadata.owner])
+  #count(response.body[_].reviewers) == 0
+  response.body[_].reviewers == []
+  msg := sprintf("The branch protection policy that mandates a pull request before merging has mandatory reviewers count less than required for the %s branch of the %v on Gitlab", [input.metadata.branch,input.metadata.repository])
+  sugg := sprintf("Adhere to the company policy by establishing the correct minimum reviewers for %s Gitlab repo", [input.metadata.repository])
   error := ""
 }

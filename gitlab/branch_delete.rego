@@ -2,8 +2,9 @@ package opsmx
 import future.keywords.in
 
 default allow = false
+default private_repo = ""
 
-request_components = [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/user"]
+request_components = [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/projects", input.metadata.project_id, "repository/branches", input.metadata.branch]
 
 request_url = concat("/",request_components)
 
@@ -18,6 +19,8 @@ request = {
 }
 
 response = http.send(request)
+#raw_body = response.raw_body
+#parsed_body = json.unmarshal(raw_body)
 
 allow {
   response.status_code = 200
@@ -32,8 +35,8 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.body.two_factor_enabled = false
-  msg := sprintf("Gitlab Organisation %v doesn't have the mfa enabled.", [input.metadata.owner])
-  sugg := sprintf("Adhere to the company policy by enabling 2FA for %s.",[input.metadata.owner])
+  response.body.protected = false
+  msg := sprintf("Gitlab repo %v is having policy and branch cannot be deleted", [input.metadata.repo])
+  sugg := "Please change the repository visibility to private."
   error := ""
 }
