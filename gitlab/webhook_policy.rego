@@ -3,7 +3,7 @@ import future.keywords.in
 
 default allow = false
 
-request_components = [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/projects", input.metadata.project_id, "hooks"]
+request_components = [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/projects", input.metadata.gitlab_project_id, "hooks"]
 
 request_url = concat("/",request_components)
 
