@@ -19,8 +19,6 @@ request = {
 }
 
 response = http.send(request)
-#raw_body = response.raw_body
-#parsed_body = json.unmarshal(raw_body)
 
 allow {
   response.status_code = 200
@@ -28,16 +26,16 @@ allow {
 
 deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   response.status_code == 401
-  msg := "Unauthorized to check repository configuration due to Bad Credentials."
-  error := "401 Unauthorized."
+  msg := ""
+  error := "Unauthorized to check repository configuration due to Bad Credentials."
   sugg := "Kindly check the access token. It must have enough permissions to get repository configurations."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
   response.status_code == 404
-  msg := "Repository not found while trying to fetch Repository Configuration."
+  msg := ""
   sugg := "Kindly check if the repository provided is correct and the access token has rights to read repository configuration."
-  error := "Repo name or Organisation is incorrect."
+  error := "Repository not found while trying to fetch Repository Configuration."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
@@ -50,7 +48,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
 deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   codes = [401, 404, 500, 200, 302]
   not response.status_code in codes
-  msg := "Unable to fetch repository configuration."
+  msg := ""
   error := sprintf("Error %v receieved from Github upon trying to fetch Repository Configuration.", [response.body.message])
   sugg := "Kindly check Github API is reachable and the provided access token has required permissions."
 }
