@@ -5,9 +5,9 @@ default allow = false
 
 request_components = [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/user"]
 
-request_url = concat("/",request_components)
+request_url = concat("",request_components)
 
-token = input.metadata.token
+token = input.metadata.ssd_secret.gitlab.token
 
 request = {
     "method": "GET",
@@ -53,8 +53,8 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.body.two_factor_enabled = false
-  msg := sprintf("Gitlab Organisation %v doesn't have the mfa enabled.", [input.metadata.owner])
-  sugg := sprintf("Adhere to the company policy by enabling 2FA for %s.",[input.metadata.owner])
+  response.body.two_factor_enabled == false
+  msg := sprintf("Gitlab Organisation %v doesnt have the mfa enabled.", [input.metadata.owner])
+  sugg := sprintf("Adhere to the company policy by enabling 2FA for users of %s organisation.",[input.metadata.owner])
   error := ""
 }
