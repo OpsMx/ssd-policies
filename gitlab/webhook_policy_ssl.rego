@@ -2,13 +2,10 @@ package opsmx
 import future.keywords.in
 
 default allow = false
-default private_repo = ""
 
-request_components = [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/projects", input.metadata.gitlab_project_id, "hooks"]
+request_url = concat("", [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/projects/", input.metadata.gitlab_project_id, "/hooks"])
 
-request_url = concat("/",request_components)
-
-token = input.metadata.token
+token = input.metadata.ssd_secret.gitlab.token
 
 request = {
     "method": "GET",
@@ -20,24 +17,18 @@ request = {
 
 response = http.send(request)
 
-check = response.body[_].enable_ssl_verification
-
-allow {
-  response.status_code = 200
-}
-
 deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   response.status_code == 401
   msg := ""
-  error := "Unauthorized to check repository branch protection policy configuration due to Bad Credentials."
-  sugg := "Kindly check the access token. It must have enough permissions to get repository branch protection policy configurations."
+  error := "Unauthorized to check repository webhook configuration due to Bad Credentials."
+  sugg := "Kindly check the access token. It must have enough permissions to get webhook configurations."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
   response.status_code == 404
   msg := ""
-  sugg := "Kindly check if the repository provided is correct and the access token has rights to read repository branch protection policy configuration."
-  error := "Mentioned branch for Repository not found while trying to fetch repository branch protection policy configuration."
+  sugg := "Kindly check if the repository provided is correct and the access token has rights to read webhook configuration."
+  error := "Mentioned branch for Repository not found while trying to fetch webhook configuration."
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
@@ -55,17 +46,13 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   sugg := "Kindly check Gitlab API is reachable and the provided access token has required permissions."
 }
 
+default ssl_disabled_hooks = []
+ssl_disabled_hooks = [response.body[i].id | response.body[i].enable_ssl_verification == false]
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  count(response.body) == 0
-  msg := sprintf("Gitlab project doesnt have webhooks enabled for the  branch %v ", [input.metadata.branch])
-  sugg := "Please change the repository visibility to private."
+deny[{"alertMsg": msg, "error": error, "suggestion": sugg}]{
+  count(ssl_disabled_hooks) > 0
+  msg := sprintf("Webhook SSL Check failed: SSL/TLS not enabled for %v/%v repository.", [input.metadata.owner,input.metadata.repository])
   error := ""
+  sugg := sprintf("Adhere to the company policy by enabling the webhook ssl/tls for %v/%v repository.", [input.metadata.owner,input.metadata.repository])
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.body[_].enable_ssl_verification = false
-  msg := sprintf("Webhook SSL Check failed: SSL/TLS not enabled for %v/%v repository.", [input.metadata.owner, input.metadata.repository])
-  sugg := sprintf("Adhere to the company policy by enabling the webhook ssl/tls for %v/%v repository.", [input.metadata.owner, input.metadata.repository])
-  error := ""
-}
