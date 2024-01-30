@@ -50,7 +50,7 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   sugg := "Kindly check Gitlab API is reachable and the provided access token has required permissions."
 }
 
-number_of_merges = count(response.bodu)
+number_of_merges = count(response.body)
 merges_unreviewed = [response.body[i].iid | count(response.body[i].reviewers) == 0]
 merges_reviewed_by_bots = [response.body[i].iid | contains(response.body[i].reviewers[j].username, "bot")]
 merges_reviewed_by_author = [response.body[i].iid | response.body[i].reviewers[j].username == response.body[i].author.username]
