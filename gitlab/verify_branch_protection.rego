@@ -53,7 +53,7 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
   response.status_code in [200]
   response.body.protected == false
-  msg := sprintf("Brancn %v of Gitlab repository %v is not protected by a branch protection policy.", [input.metadata.branch, input.metadata.repository])
+  msg := sprintf("Branch %v of Gitlab repository %v is not protected by a branch protection policy.", [input.metadata.branch, input.metadata.repository])
   sugg := sprintf("Adhere to the company policy by enforcing Branch Protection Policy for branches of %v Gitlab repository.",[input.metadata.repository])
   error := ""
 }
