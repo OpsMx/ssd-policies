@@ -4,11 +4,9 @@ import future.keywords.in
 default allow = false
 default private_repo = ""
 
-request_components = [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/projects", input.metadata.gitlab_project_id]
+request_url = concat("", [input.metadata.ssd_secret.gitlab.rest_api_url, "api/v4/projects/", input.metadata.gitlab_project_id])
 
-request_url = concat("/",request_components)
-
-token = input.metadata.token
+token = input.metadata.ssd_secret.gitlab.token
 
 request = {
     "method": "GET",
@@ -54,8 +52,8 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.body.visibility = public
-  msg := sprintf("Gitlab project is a public repo %v.", [input.metadata.repository])
-  sugg := "Please change the repository visibility to private."
+  response.body.visibility != "private"
+  msg := sprintf("Gitlab Project %v is publically visible.", [input.metadata.repository])
+  sugg := "Kindly adhere to security standards and change the visibility of the repository to private."
   error := ""
 }
