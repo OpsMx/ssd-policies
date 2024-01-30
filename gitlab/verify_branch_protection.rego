@@ -3,11 +3,9 @@ import future.keywords.in
 
 default allow = false
 
-request_components = [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/projects", input.metadata.gitlab_project_id, "repository/branches", input.metadata.branch]
+request_url = concat("", [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/projects/", input.metadata.gitlab_project_id, "/repository/branches/", input.metadata.branch])
 
-request_url = concat("/",request_components)
-
-token = input.metadata.token
+token = input.metadata.ssd_secret.gitlab.token
 
 request = {
     "method": "GET",
@@ -53,8 +51,9 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.body.protected = false
-  msg := sprintf("Gitlab repo %v of branch %v is not protected", [input.metadata.repository, input.metadata.branch])
-  sugg := sprintf("Adhere to the company policy by enforcing Code Owner Reviews for %s Gitlab repo",[input.metadata.repository])
+  response.status_code in [200]
+  response.body.protected == false
+  msg := sprintf("Brancn %v of Gitlab repository %v is not protected by a branch protection policy.", [input.metadata.branch, input.metadata.repository])
+  sugg := sprintf("Adhere to the company policy by enforcing Branch Protection Policy for branches of %v Gitlab repository.",[input.metadata.repository])
   error := ""
 }
