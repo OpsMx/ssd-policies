@@ -2,10 +2,6 @@ package opsmx
 import future.keywords.in
 
 default allow = false
-default number_of_merges = 0
-default merges_unreviewed = []
-default merges_reviewed_by_bots = []
-default merges_reviewed_by_author = []
 
 request_url = concat("", [input.metadata.ssd_secret.gitlab.rest_api_url,"api/v4/projects/", input.metadata.gitlab_project_id, "/repository/files/SECURITY.md?ref=", input.metadata.branch])
 
