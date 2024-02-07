@@ -53,6 +53,13 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
+  response.body.protected == false
+  msg := sprintf("Branch %v of Gitlab repository %v is not protected by a branch protection policy.", [input.metadata.branch, input.metadata.repository])
+  sugg := sprintf("Adhere to the company policy by enforcing Branch Protection Policy for branches of %v Gitlab repository.",[input.metadata.repository])
+  error := ""
+}
+
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
   response.body.developers_can_push = false
   msg := sprintf("Branch Protection is enabled and only Developers are allowed to push for the repository %v and branch %v", [input.metadata.repository,input.metadata.branch])
   sugg := "Only Developers are allowed to push to the repository"
