@@ -23,16 +23,11 @@ allow {
   response.status_code = 200
 }
 
-check = response.body
-
-ab = check.values
-
-abc = {user |
-    some i
-    user = ab[i];
+abc = [user |
+    user = response.body.values[i];
     user.kind == "require_approvals_to_merge"
     user.pattern = input.metadata.branch 
-}
+]
 
 reviewers = abc[_].value
 
