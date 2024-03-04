@@ -23,14 +23,11 @@ allow {
   response.status_code = 200
 }
 
-check_protect = response.body.values
-
-branch_protect = {user |
-    some i
-    user = check_protect[i];
+branch_protect = [user |
+    user = response.body.values[i];
     user.type == "branchrestriction"
     user.pattern = input.metadata.branch 
-}
+]
 
 deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   response.status_code == 401
