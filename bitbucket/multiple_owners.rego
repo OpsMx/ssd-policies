@@ -23,14 +23,10 @@ allow {
   response.status_code = 200
 }
 
-response_split = response.body.values
-
-admin = {user |
-    some i
-    user = response_split[i];
-    user.type == "repository_permission"
-    user.permission == "admin"
-}
+admin = [entry | 
+    entry = response.body.values[i]; 
+    entry.type == "repository_permission"
+    entry.permission == "admin"]
 
 admin_users = count(admin)
 
