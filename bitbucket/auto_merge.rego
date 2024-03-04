@@ -23,16 +23,11 @@ allow {
   response.status_code = 200
 }
 
-check = response.body
-
-ab = check.values
-
-abc = {user |
-    some i
-    user = ab[i];
-    user.kind == "allow_auto_merge_when_builds_pass"
-    user.pattern = input.metadata.branch
-}
+auto_merge = [user | 
+       user = response.body.values[i];
+       user.kind == "allow_auto_merge_when_builds_pass"
+       user.pattern == input.metadata.branch
+]
 
 deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   response.status_code == 401
@@ -64,7 +59,7 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
 }
 
 deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
-  count(abc) == 0
+  count(auto_merge) != 0
   msg = sprintf("Auto Merge is allowes in repo %v", [input.metadata.repository])
   error = ""
   sugg = "Kindly restrict auto merge in Branch Protection Policy applied to repository."  
