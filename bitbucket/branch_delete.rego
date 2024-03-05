@@ -23,13 +23,7 @@ allow {
   response.status_code = 200
 }
 
-abc = [user |
-    user = response.body.values[i];
-    user.kind == "delete"
-    user.pattern = input.metadata.branch 
-]
-
-cc = count(abc)
+details = [ response.body.values[i].pattern | response.body.values[i].kind == "delete"]
 
 deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   response.status_code == 401
@@ -61,7 +55,8 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  count(abc) != 0
+  list = details[_]
+  input.metadata.branch == list 
   msg := sprintf("The branch protection policy that mandates branch %v cannot be deleted", [input.metadata.branch])
   sugg := "Adhere to the company policy branch cannot be deleted in Bitbucket"
   error := ""
