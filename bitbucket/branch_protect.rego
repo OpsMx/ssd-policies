@@ -23,11 +23,7 @@ allow {
   response.status_code = 200
 }
 
-branch_protect = [user |
-    user = response.body.values[i];
-    user.type == "branchrestriction"
-    user.pattern = input.metadata.branch 
-]
+branch_protect = [response.body.values[i].pattern | response.body.values[i].type == "branchrestriction"]
 
 deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   response.status_code == 401
@@ -59,9 +55,9 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
 }
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  response.status_code in [200]
-  count(branch_protect) == 0
-  msg := sprintf("Branch %v of Bitbucket repository %v is not protected by a branch protection policy.", [input.metadata.branch, input.metadata.repository])
+  protect = branch_protect[_]
+  input.metadata.branch == protect
+  msg := sprintf("Branch %v of Bitbucket repository %v is protected by a branch protection policy.", [input.metadata.branch, input.metadata.repository])
   sugg := sprintf("Adhere to the company policy by enforcing Branch Protection Policy for branches of %v Bitbucket repository.",[input.metadata.repository])
   error := ""
 }
