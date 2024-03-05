@@ -23,17 +23,7 @@ allow {
   response.status_code = 200
 }
 
-check = response.body
-
-ab = check.values
-
-abc = {user |
-    some i
-    user = ab[i];
-    user.kind == "restrict_merges"
-}
-
-bot_users = {"bot", "auto", "test", "jenkins", "drone", "github", "gitlab", "aws", "azure"}
+admins= [response.body.values[i].users[_].display_name | response.body.values[i].kind == "restrict_merges"]
 
 deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   response.status_code == 401
@@ -64,10 +54,23 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   sugg := "Kindly check Bitbucket API is reachable and the provided access token has required permissions."
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
-  checkbot = abc[_].users
-  checkbot[_].display_name == bot_users[checkbot[_].display_name]
-  msg = sprintf("Bitbucket users cannot merge the code %v", [checkbot[_].display_name])
-  sugg := "Adhere to the company policy and revoke admin access of bot user"
+default denial_list = false
+
+denial_list = matched_users
+
+matched_users[user] {
+    users := admins
+    user := users[_]
+    patterns := ["bot", "auto", "test", "jenkins", "drone", "github", "gitlab", "aws", "azure"]
+    some pattern in patterns
+        regex.match(pattern, user)
+}
+
+deny[{"alertMsg":msg, "suggestions": sugg, "error": error}] {
+  counter := count(denial_list)
+  counter > 0
+  denial_list_str := concat(", ", denial_list)
+  msg := sprintf("Maintainer and Admin access of Bitbucket Repository providing ability to merge code is granted to bot users. Number of bot users having permissions to merge: %v. Name of bots having permissions to merge: %v", [counter, denial_list_str])
+  sugg := sprintf("Adhere to the company policy and revoke access of bot user for %v/%v Repository.", [input.metadata.repository,input.metadata.owner])
   error := ""
 }
