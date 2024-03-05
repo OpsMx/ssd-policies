@@ -46,13 +46,15 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}]{
 
 deny[{"alertMsg":msg, "suggestions": sugg, "error": error}]{
   codes = [401, 404, 500, 200, 301, 302]
-#  not response.status_code in codes
+  not response.status_code in codes
   msg := ""
   error := sprintf("Unable to fetch organisation members. Error %v:%v receieved from Github.", [response.status_code, response.body.message])
   sugg := "Kindly check Github API is reachable and the provided access token has required permissions."
 }
 
 admins = [response.body.values[i].user.display_name | response.body.values[i].permission == "owner"]
+
+default denial_list = false
 
 denial_list = matched_users
 
