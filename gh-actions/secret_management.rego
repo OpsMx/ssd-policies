@@ -1,6 +1,6 @@
 package opsmx.secret_management
 
-default deny = false
+import future.keywords.in
 
 # Define sensitive keywords to look for in the workflow
 sensitive_keywords = ["API_KEY", "SECRET_KEY", "PASSWORD", "TOKEN"]
@@ -14,7 +14,14 @@ contains_sensitive_keyword(value) = true {
 contains_sensitive_keyword(_) = false
 
 # Construct the request URL to fetch the workflow content
-request_components = [input.metadata.ssd_secret.github.rest_api_url, "repos", input.metadata.owner, input.metadata.repository, "actions", "workflows", input.metadata.ssd_secret.github.workflowName, "runs"]
+request_components = [
+    input.metadata.ssd_secret.github.rest_api_url,
+    "repos",
+    input.metadata.owner,
+    input.metadata.repository,
+    "contents",
+    concat("/", ["", ".github", "workflows", input.metadata.ssd_secret.github.workflowName])
+]
 request_url = concat("/", request_components)
 
 token = input.metadata.ssd_secret.github.token
@@ -28,10 +35,21 @@ request = {
 
 response = http.send(request)
 
+# Check if the response status code is not 200
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
+    response.status_code != 200
+    msg := "Failed to fetch the workflow."
+    error := sprintf("Error %v: %v received from GitHub when trying to fetch the workflow.", [response.status_code, response.body.message])
+    sugg := "Ensure the provided GitHub token has the required permissions and the workflow name is correct."
+}
+
 # Check if any step contains hardcoded sensitive data
 deny[{"alertMsg": msg, "suggestion": sugg, "step": step}] {
     response.status_code == 200
-    workflow := response.body.jobs[_]
+
+    # Decode the workflow content from base64 and parse as YAML
+    workflow_content := base64.decode(response.body.content)
+    workflow := yaml.unmarshal(workflow_content)
     job := workflow.jobs[_]
     step := job.steps[_]
 
@@ -46,21 +64,18 @@ deny[{"alertMsg": msg, "suggestion": sugg, "step": step}] {
 # Check if any 'with' field contains hardcoded sensitive data
 deny[{"alertMsg": msg, "suggestion": sugg, "step": step}] {
     response.status_code == 200
-    workflow := response.body.jobs[_]
+
+    # Decode the workflow content from base64 and parse as YAML
+    workflow_content := base64.decode(response.body.content)
+    workflow := yaml.unmarshal(workflow_content)
     job := workflow.jobs[_]
     step := job.steps[_]
 
-    some key, value in step.with
-    contains_sensitive_keyword(value)
+    # Check each 'with' field for hardcoded sensitive data
+    with_fields := {key: value | some key; value := step.with[key]}
+    some key in keys(with_fields)
+    contains_sensitive_keyword(with_fields[key])
 
     msg := sprintf("Hardcoded sensitive data found in 'with' field of step '%s' of job '%s' in workflow '%s'.", [step.name, job.name, input.metadata.ssd_secret.github.workflowName])
     sugg := "Reference sensitive data using GitHub Secrets instead of hardcoding them in the workflow."
-}
-
-# Check if response status code is not 200
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
-    response.status_code != 200
-    msg := "Failed to fetch the workflow."
-    error := sprintf("Error %v: %v received from GitHub when trying to fetch the workflow.", [response.status_code, response.body.message])
-    sugg := "Ensure the provided GitHub token has the required permissions and the workflow name is correct."
 }

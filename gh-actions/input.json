@@ -6,15 +6,15 @@
           }
       ],
       "metadata": {
-          "branch": "master",
-          "repository": "ssd-opa",
-          "owner": "Opsmx",
-          "repository_url": "https://github.com/OpsMx/ssd-opa",
+          "branch": "main",
+          "repository": "policies_test",
+          "owner": "Samra10",
+          "repository_url": "https://github.com/Samra10/policies_test.git",
           "ssd_secret": {
               "github": {
                   "rest_api_url": "https://api.github.com",
-                  "token": "xxx",
-                  "workflowName": "xxxx"
+                  "token": "xxxxx",
+                  "workflowName": "workflow_trigger_security_test.yaml"
               }
           }
       }

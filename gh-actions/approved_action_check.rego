@@ -1,6 +1,5 @@
 package opsmx.approved_actions
-
-default deny = false
+import future.keywords.in
 
 # Define a list of approved actions and their versions
 approved_actions = {
@@ -12,7 +11,14 @@ approved_actions = {
 }
 
 # Construct the request URL to fetch the workflow content
-request_components = [input.metadata.ssd_secret.github.rest_api_url, "repos", input.metadata.owner, input.metadata.repository, "actions", "workflows", input.metadata.ssd_secret.github.workflowName]
+request_components = [
+    input.metadata.ssd_secret.github.rest_api_url, 
+    "repos", 
+    input.metadata.owner, 
+    input.metadata.repository, 
+    "contents", 
+    concat("/", ["", ".github", "workflows", input.metadata.ssd_secret.github.workflowName])
+]
 request_url = concat("/", request_components)
 
 token = input.metadata.ssd_secret.github.token
@@ -26,10 +32,21 @@ request = {
 
 response = http.send(request)
 
+# Check if the response status code is not 200
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
+    response.status_code != 200
+    msg := "Failed to fetch the workflow."
+    error := sprintf("Error %v: %v received from GitHub when trying to fetch the workflow.", [response.status_code, response.body.message])
+    sugg := "Ensure the provided GitHub token has the required permissions and the workflow name is correct."
+}
+
 # Check if the actions used in the workflow are approved
 deny[{"alertMsg": msg, "action": action}] {
     response.status_code == 200
-    workflow := response.body.jobs[_]
+
+    # Decode the workflow content from base64 and parse as YAML
+    workflow_content := base64.decode(response.body.content)
+    workflow := yaml.unmarshal(workflow_content)
     job := workflow.jobs[_]
     step := job.steps[_]
     
@@ -44,12 +61,4 @@ deny[{"alertMsg": msg, "action": action}] {
     
     msg := sprintf("Action %v@%v is not from an approved source or version.", [action_name, action_version])
     action := step.uses
-}
-
-# Check if response status code is not 200
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
-    response.status_code != 200
-    msg := "Failed to fetch the workflow."
-    error := sprintf("Error %v: %v received from GitHub when trying to fetch the workflow.", [response.status_code, response.body.message])
-    sugg := "Ensure the provided GitHub token has the required permissions and the workflow name is correct."
 }
