@@ -33,7 +33,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
 }
 
 # Check if each job has a timeout configured
-deny[{"alertMsg": msg, "job": job_name}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -46,10 +46,12 @@ deny[{"alertMsg": msg, "job": job_name}] {
     not job["timeout-minutes"]
 
     msg := sprintf("Job '%s' in workflow '%s' does not have a timeout configured.", [job_name, input.metadata.ssd_secret.github.workflowName])
+    sugg := "Configure a timeout for the job in the workflow file."
+    error := ""
 }
 
 # Check if each step has a timeout configured (if applicable)
-deny[{"alertMsg": msg, "step": step_name, "job": job_name}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -66,4 +68,6 @@ deny[{"alertMsg": msg, "step": step_name, "job": job_name}] {
     not step["timeout-minutes"]
 
     msg := sprintf("Step '%s' in job '%s' of workflow '%s' does not have a timeout configured.", [step_name, job_name, input.metadata.ssd_secret.github.workflowName])
+    sugg := "Configure a timeout for the step in the workflow file."
+    error := ""
 }

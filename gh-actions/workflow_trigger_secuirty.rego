@@ -37,7 +37,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
 }
 
 # Check if workflows are triggered on allowed branches and events
-deny[{"alertMsg": msg, "trigger": trigger}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -49,10 +49,12 @@ deny[{"alertMsg": msg, "trigger": trigger}] {
     some branch in on.push.branches
     not branch in allowed_branches
     msg := sprintf("Workflow triggered on disallowed branch '%v' in 'push' trigger in workflow '%s'.", [branch, input.metadata.ssd_secret.github.workflowName])
+    sugg := "Ensure that the workflow is only triggered on allowed branches: main, master, or develop."
+    error := ""
     trigger := "branch"
 }
 
-deny[{"alertMsg": msg, "trigger": trigger}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -64,10 +66,12 @@ deny[{"alertMsg": msg, "trigger": trigger}] {
     some branch in on.pull_request.branches
     not branch in allowed_branches
     msg := sprintf("Workflow triggered on disallowed branch '%v' in 'pull_request' trigger in workflow '%s'.", [branch, input.metadata.ssd_secret.github.workflowName])
+    sugg := "Ensure that the workflow is only triggered on allowed branches: main, master, or develop."
+    error := ""
     trigger := "branch"
 }
 
-deny[{"alertMsg": msg, "trigger": trigger}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -79,5 +83,7 @@ deny[{"alertMsg": msg, "trigger": trigger}] {
     some event in object.keys(on)
     not event in allowed_events
     msg := sprintf("Workflow triggered on disallowed event '%v' in workflow '%s'.", [event, input.metadata.ssd_secret.github.workflowName])
+    sugg := "Ensure that the workflow is only triggered on allowed events: push or pull_request."
+    error := ""
     trigger := "event"
 }

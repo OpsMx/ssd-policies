@@ -31,15 +31,8 @@ request = {
 
 response = http.send(request)
 
-# Debug statement to check the response
-debug := {
-    "request_url": request_url,
-    "response_status_code": response.status_code,
-    "response_body": response.body
-}
-
 # Check if the response status code is not 200
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "debug": debug}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code != 200
     msg := "Failed to fetch the workflow."
     error := sprintf("Error %v: %v received from GitHub when trying to fetch the workflow.", [response.status_code, response.body.message])
@@ -47,7 +40,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "debug": debug}] {
 }
 
 # Check if the dependencies are fetched from trusted sources
-deny[{"alertMsg": msg, "step": step, "dependency": dependency, "debug": debug}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -55,23 +48,18 @@ deny[{"alertMsg": msg, "step": step, "dependency": dependency, "debug": debug}] 
     workflow := yaml.unmarshal(workflow_content)
     job := workflow.jobs[_]
     step := job.steps[_]
-    
-    # Debug statement to check the steps
-    step_debug := {
-        "job": job,
-        "step": step
-    }
 
     # Check if the step installs dependencies
     step.run
     some dependency in split(step.run, "\n")
     contains(dependency, "install")
-    
+
     # Verify the source of the dependency
     not is_trusted_source(dependency)
-    
+
     msg := sprintf("Dependency fetched from untrusted source in step '%s' of job '%s' in workflow '%s'.", [step.name, job.name, input.metadata.ssd_secret.github.workflowName])
-    debug := step_debug
+    sugg := "Ensure all dependencies are fetched from trusted sources such as npm, PyPI, or RubyGems."
+    error := ""
 }
 
 # Helper function to check if a dependency is from a trusted source

@@ -44,7 +44,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
 }
 
 # Check if all network communications use secure protocols
-deny[{"alertMsg": msg, "step": step, "url": url}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -60,6 +60,8 @@ deny[{"alertMsg": msg, "step": step, "url": url}] {
     not uses_secure_protocol(url)
 
     msg := sprintf("Insecure protocol used in step '%s' of job '%s' in workflow '%s'. URL: %v", [step.name, job.name, input.metadata.ssd_secret.github.workflowName, url])
+    sugg := "Use secure protocols (https or ssh) for all network communications."
+    error := ""
 }
 
 # Helper function to extract http URLs from a line of text

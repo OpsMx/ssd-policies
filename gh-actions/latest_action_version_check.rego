@@ -42,7 +42,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
 }
 
 # Check if the actions used in the workflow specify a version number
-deny[{"alertMsg": msg, "action": action}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -60,10 +60,12 @@ deny[{"alertMsg": msg, "action": action}] {
     not contains(step.uses, "@")
     msg := sprintf("Action %v does not specify a version number.", [action_name])
     action := step.uses
+    sugg := "Specify the version number for the action in the format action_name@version."
+    error := ""
 }
 
 # Check if the actions used in the workflow are up-to-date
-deny[{"alertMsg": msg, "action": action, "used_version": used_version, "latest_version": latest_version}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -83,4 +85,6 @@ deny[{"alertMsg": msg, "action": action, "used_version": used_version, "latest_v
     used_version != latest_version
     msg := sprintf("Action %v is not using the latest version. Used version: %v, Latest version: %v.", [action_name, used_version, latest_version])
     action := step.uses
+    sugg := "Update the action to the latest version listed in the policy."
+    error := ""
 }

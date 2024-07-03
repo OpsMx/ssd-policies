@@ -44,7 +44,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
 }
 
 # Check if any step contains hardcoded sensitive data
-deny[{"alertMsg": msg, "suggestion": sugg, "step": step}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -59,10 +59,11 @@ deny[{"alertMsg": msg, "suggestion": sugg, "step": step}] {
 
     msg := sprintf("Hardcoded sensitive data found in step '%s' of job '%s' in workflow '%s'.", [step.name, job.name, input.metadata.ssd_secret.github.workflowName])
     sugg := "Reference sensitive data using GitHub Secrets instead of hardcoding them in the workflow."
+    error := ""
 }
 
 # Check if any 'with' field contains hardcoded sensitive data
-deny[{"alertMsg": msg, "suggestion": sugg, "step": step}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -78,4 +79,5 @@ deny[{"alertMsg": msg, "suggestion": sugg, "step": step}] {
 
     msg := sprintf("Hardcoded sensitive data found in 'with' field of step '%s' of job '%s' in workflow '%s'.", [step.name, job.name, input.metadata.ssd_secret.github.workflowName])
     sugg := "Reference sensitive data using GitHub Secrets instead of hardcoding them in the workflow."
+    error := ""
 }

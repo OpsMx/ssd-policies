@@ -41,7 +41,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
 }
 
 # Check if the actions used in the workflow are approved
-deny[{"alertMsg": msg, "action": action}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -60,5 +60,6 @@ deny[{"alertMsg": msg, "action": action}] {
     not approved_actions[action_name] == action_version
     
     msg := sprintf("Action %v@%v is not from an approved source or version.", [action_name, action_version])
-    action := step.uses
+    sugg := "Update the action to an approved version listed in the policy, or contact the repository owner to approve the current version."
+    error := ""
 }
