@@ -13,18 +13,39 @@ contains_sensitive_keyword(value) = true {
 
 contains_sensitive_keyword(_) = false
 
-# Construct the request URL to fetch the workflow content
-request_components = [
+# Construct the request URL to list all workflows
+list_workflows_url = sprintf("%s/repos/%s/%s/actions/workflows", [
     input.metadata.ssd_secret.github.rest_api_url,
-    "repos",
     input.metadata.owner,
-    input.metadata.repository,
-    "contents",
-    concat("/", ["", ".github", "workflows", input.metadata.ssd_secret.github.workflowName])
-]
-request_url = concat("/", request_components)
+    input.metadata.repository
+])
 
 token = input.metadata.ssd_secret.github.token
+list_workflows_request = {
+    "method": "GET",
+    "url": list_workflows_url,
+    "headers": {
+        "Authorization": sprintf("Bearer %v", [token]),
+    },
+}
+
+list_workflows_response = http.send(list_workflows_request)
+
+# Find the workflow by name
+workflow_file_path = workflow_path {
+    some workflow in list_workflows_response.body.workflows
+    workflow.name == input.metadata.ssd_secret.github.workflowName
+    workflow_path := workflow.path
+}
+
+# Construct the request URL to fetch the workflow content
+request_url = sprintf("%s/repos/%s/%s/contents/%s", [
+    input.metadata.ssd_secret.github.rest_api_url,
+    input.metadata.owner,
+    input.metadata.repository,
+    workflow_file_path
+])
+
 request = {
     "method": "GET",
     "url": request_url,
@@ -44,7 +65,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
 }
 
 # Check if any step contains hardcoded sensitive data
-deny[{"alertMsg": msg, "suggestion": sugg, "step": step}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -59,10 +80,11 @@ deny[{"alertMsg": msg, "suggestion": sugg, "step": step}] {
 
     msg := sprintf("Hardcoded sensitive data found in step '%s' of job '%s' in workflow '%s'.", [step.name, job.name, input.metadata.ssd_secret.github.workflowName])
     sugg := "Reference sensitive data using GitHub Secrets instead of hardcoding them in the workflow."
+    error := ""
 }
 
 # Check if any 'with' field contains hardcoded sensitive data
-deny[{"alertMsg": msg, "suggestion": sugg, "step": step}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -78,4 +100,5 @@ deny[{"alertMsg": msg, "suggestion": sugg, "step": step}] {
 
     msg := sprintf("Hardcoded sensitive data found in 'with' field of step '%s' of job '%s' in workflow '%s'.", [step.name, job.name, input.metadata.ssd_secret.github.workflowName])
     sugg := "Reference sensitive data using GitHub Secrets instead of hardcoding them in the workflow."
+    error := ""
 }

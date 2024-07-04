@@ -6,18 +6,39 @@ import future.keywords.in
 allowed_branches = ["main", "master", "develop"]
 allowed_events = {"push", "pull_request"}
 
-# Construct the request URL to fetch the workflow content
-request_components = [
+# Construct the request URL to list all workflows
+list_workflows_url = sprintf("%s/repos/%s/%s/actions/workflows", [
     input.metadata.ssd_secret.github.rest_api_url,
-    "repos",
     input.metadata.owner,
-    input.metadata.repository,
-    "contents",
-    concat("/", ["", ".github", "workflows", input.metadata.ssd_secret.github.workflowName])
-]
-request_url = concat("/", request_components)
+    input.metadata.repository
+])
 
 token = input.metadata.ssd_secret.github.token
+list_workflows_request = {
+    "method": "GET",
+    "url": list_workflows_url,
+    "headers": {
+        "Authorization": sprintf("Bearer %v", [token]),
+    },
+}
+
+list_workflows_response = http.send(list_workflows_request)
+
+# Find the workflow by name
+workflow_file_path = workflow_path {
+    some workflow in list_workflows_response.body.workflows
+    workflow.name == input.metadata.ssd_secret.github.workflowName
+    workflow_path := workflow.path
+}
+
+# Construct the request URL to fetch the workflow content
+request_url = sprintf("%s/repos/%s/%s/contents/%s", [
+    input.metadata.ssd_secret.github.rest_api_url,
+    input.metadata.owner,
+    input.metadata.repository,
+    workflow_file_path
+])
+
 request = {
     "method": "GET",
     "url": request_url,
@@ -37,7 +58,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
 }
 
 # Check if workflows are triggered on allowed branches and events
-deny[{"alertMsg": msg, "trigger": trigger}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -49,10 +70,12 @@ deny[{"alertMsg": msg, "trigger": trigger}] {
     some branch in on.push.branches
     not branch in allowed_branches
     msg := sprintf("Workflow triggered on disallowed branch '%v' in 'push' trigger in workflow '%s'.", [branch, input.metadata.ssd_secret.github.workflowName])
+    sugg := "Ensure that the workflow is only triggered on allowed branches: main, master, or develop."
+    error := ""
     trigger := "branch"
 }
 
-deny[{"alertMsg": msg, "trigger": trigger}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -64,10 +87,12 @@ deny[{"alertMsg": msg, "trigger": trigger}] {
     some branch in on.pull_request.branches
     not branch in allowed_branches
     msg := sprintf("Workflow triggered on disallowed branch '%v' in 'pull_request' trigger in workflow '%s'.", [branch, input.metadata.ssd_secret.github.workflowName])
+    sugg := "Ensure that the workflow is only triggered on allowed branches: main, master, or develop."
+    error := ""
     trigger := "branch"
 }
 
-deny[{"alertMsg": msg, "trigger": trigger}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -79,5 +104,7 @@ deny[{"alertMsg": msg, "trigger": trigger}] {
     some event in object.keys(on)
     not event in allowed_events
     msg := sprintf("Workflow triggered on disallowed event '%v' in workflow '%s'.", [event, input.metadata.ssd_secret.github.workflowName])
+    sugg := "Ensure that the workflow is only triggered on allowed events: push or pull_request."
+    error := ""
     trigger := "event"
 }

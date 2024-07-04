@@ -10,18 +10,39 @@ approved_actions = {
     # Add more approved actions and their versions here
 }
 
-# Construct the request URL to fetch the workflow content
-request_components = [
-    input.metadata.ssd_secret.github.rest_api_url, 
-    "repos", 
-    input.metadata.owner, 
-    input.metadata.repository, 
-    "contents", 
-    concat("/", ["", ".github", "workflows", input.metadata.ssd_secret.github.workflowName])
-]
-request_url = concat("/", request_components)
+# Construct the request URL to list all workflows
+list_workflows_url = sprintf("%s/repos/%s/%s/actions/workflows", [
+    input.metadata.ssd_secret.github.rest_api_url,
+    input.metadata.owner,
+    input.metadata.repository
+])
 
 token = input.metadata.ssd_secret.github.token
+list_workflows_request = {
+    "method": "GET",
+    "url": list_workflows_url,
+    "headers": {
+        "Authorization": sprintf("Bearer %v", [token]),
+    },
+}
+
+list_workflows_response = http.send(list_workflows_request)
+
+# Find the workflow by name
+workflow_file_path = workflow_path {
+    some workflow in list_workflows_response.body.workflows
+    workflow.name == input.metadata.ssd_secret.github.workflowName
+    workflow_path := workflow.path
+}
+
+# Construct the request URL to fetch the workflow content
+request_url = sprintf("%s/repos/%s/%s/contents/%s", [
+    input.metadata.ssd_secret.github.rest_api_url,
+    input.metadata.owner,
+    input.metadata.repository,
+    workflow_file_path
+])
+
 request = {
     "method": "GET",
     "url": request_url,
@@ -41,7 +62,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
 }
 
 # Check if the actions used in the workflow are approved
-deny[{"alertMsg": msg, "action": action}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error}] {
     response.status_code == 200
 
     # Decode the workflow content from base64 and parse as YAML
@@ -60,5 +81,6 @@ deny[{"alertMsg": msg, "action": action}] {
     not approved_actions[action_name] == action_version
     
     msg := sprintf("Action %v@%v is not from an approved source or version.", [action_name, action_version])
-    action := step.uses
+    sugg := "Update the action to an approved version listed in the policy, or contact the repository owner to approve the current version."
+    error := ""
 }
