@@ -14,7 +14,7 @@
               "github": {
                   "rest_api_url": "https://api.github.com",
                   "token": "xxxxx",
-                  "workflowName": "workflow_trigger_security_test.yaml"
+                  "workflowName": "Insecure Approved Action Workflow"
               }
           }
       }
