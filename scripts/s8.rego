@@ -1,0 +1,11 @@
+	package opsmx
+	severities = ["CRITICAL"]
+	vuln_id = input.conditions[0].condition_value
+	vuln_severity = {input.conditions[i].condition_value | input.conditions[i].condition_name = "severity"}
+	deny[msg]{
+		some i
+		inputSeverity = severities[i]
+		some j
+		vuln_severity[j] == inputSeverity
+		msg:= sprintf("%v Criticality Vulnerability : %v found in component: %v", [inputSeverity, vuln_id, input.metadata.package_name])
+	}
