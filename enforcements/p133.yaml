@@ -1,0 +1,11 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 133
+  severity: "High"
+  action: "Alert"
+  conditionValue: ""
+  status: true
+  datasourceTool:
+  - "cis-kubescape"
+  tags:
+  - 14

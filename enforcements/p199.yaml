@@ -1,0 +1,13 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 199
+  severity: "Medium"
+  action: "Alert"
+  conditionValue: ""
+  status: true
+  datasourceTool:
+  - "mitre-kubescape"
+  tags:
+  - 15
+  - 17
+  - 27
