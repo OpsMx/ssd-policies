@@ -6,7 +6,7 @@ metadata:
   stage: "source"
   description: "Code Repository should not be publicly visible or modifiable1."
   scheduled_policy: false
-  scriptId: "4"
+  scriptId: 4
   variables: ""
   conditionName: "Repository Access Control Policy"
   suggestion: ""
