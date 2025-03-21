@@ -1,0 +1,12 @@
+id: 226
+type: PolicyDefinition
+metadata:
+  policyName: "C-0005 - NSA - API server insecure port is enabled"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "The control plane is the core of Kubernetes and gives users the ability to view containers, schedule new Pods, read Secrets, and execute commands in the cluster. Therefore, it should be protected. It is recommended to avoid control plane exposure to the Internet or to an untrusted network. The API server runs on ports 6443 and 8080. We recommend to block them in the firewall. Note also that port 8080, when accessed through the local machine, does not require TLS encryption, and the requests bypass authentication and authorization modules."
+  scheduled_policy: false
+  scriptId: 198
+  variables: ""
+  conditionName: "C-0005 - NSA - API server insecure port is enabled"
+  suggestion: ""

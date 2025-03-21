@@ -1,0 +1,12 @@
+id: 278
+type: PolicyDefinition
+metadata:
+  policyName: "High severity secret detection in containers"
+  category: "Secret Scan"
+  stage: "artifact"
+  description: "High Severity secrets must not be exposed in containers."
+  scheduled_policy: false
+  scriptId: 278
+  variables: ""
+  conditionName: ""
+  suggestion: ""

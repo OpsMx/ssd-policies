@@ -1,0 +1,12 @@
+id: 275
+type: PolicyDefinition
+metadata:
+  policyName: "Critical severity secret detection in code repository"
+  category: "Secret Scan"
+  stage: "source"
+  description: "Critical Severity secrets must not be exposed in code repository."
+  scheduled_policy: false
+  scriptId: 275
+  variables: ""
+  conditionName: ""
+  suggestion: ""

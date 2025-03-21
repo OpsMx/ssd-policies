@@ -1,0 +1,12 @@
+id: 202
+type: PolicyDefinition
+metadata:
+  policyName: "C-0015 - MITRE - List Kubernetes secrets"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "Secrets can be consumed by reference in the pod configuration. Attackers who have permissions to retrieve the secrets from the API server can access sensitive information that might include credentials to various services."
+  scheduled_policy: false
+  scriptId: 198
+  variables: ""
+  conditionName: "C-0015 - MITRE - List Kubernetes secrets"
+  suggestion: ""

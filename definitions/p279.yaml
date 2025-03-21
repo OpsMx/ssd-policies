@@ -1,0 +1,12 @@
+id: 279
+type: PolicyDefinition
+metadata:
+  policyName: "Critical severity secret detection in containers"
+  category: "Secret Scan"
+  stage: "artifact"
+  description: "Critical Severity secrets must not be exposed in containers."
+  scheduled_policy: false
+  scriptId: 279
+  variables: ""
+  conditionName: ""
+  suggestion: ""

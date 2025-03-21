@@ -1,0 +1,12 @@
+id: 267
+type: PolicyDefinition
+metadata:
+  policyName: "Admin access privilege should be with less than 5 percent users"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Only 5% of overall set of users must have admin access over code repository."
+  scheduled_policy: false
+  scriptId: 267
+  variables: ""
+  conditionName: ""
+  suggestion: ""

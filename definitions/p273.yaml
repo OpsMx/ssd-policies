@@ -1,0 +1,12 @@
+id: 273
+type: PolicyDefinition
+metadata:
+  policyName: "Continuously check for known vulnerabilities"
+  category: "Vulnerability Analysis"
+  stage: "artifact"
+  description: "Continuous check for known vulnerabilities must be enabled in SSD."
+  scheduled_policy: false
+  scriptId: 273
+  variables: ""
+  conditionName: ""
+  suggestion: ""

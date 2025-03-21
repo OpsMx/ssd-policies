@@ -1,0 +1,12 @@
+id: 231
+type: PolicyDefinition
+metadata:
+  policyName: "C-0017 - NSA - Immutable container filesystem"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "By default, containers are permitted mostly unrestricted execution within their own context. An attacker who has access to a container, can create files and download scripts as he wishes, and modify the underlying application running on the container."
+  scheduled_policy: false
+  scriptId: 198
+  variables: ""
+  conditionName: "C-0017 - NSA - Immutable container filesystem"
+  suggestion: ""

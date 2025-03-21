@@ -1,0 +1,12 @@
+id: 285
+type: PolicyDefinition
+metadata:
+  policyName: "Low severity rule violation in helm"
+  category: "Helm Scan"
+  stage: "deploy"
+  description: "Low Severity rule violations in helm."
+  scheduled_policy: false
+  scriptId: 285
+  variables: ""
+  conditionName: ""
+  suggestion: ""

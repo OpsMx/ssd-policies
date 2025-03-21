@@ -1,0 +1,12 @@
+id: 269
+type: PolicyDefinition
+metadata:
+  policyName: "Prohibited use of unspecified package versions"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Unspecified Package versions can results in fetching uncertified latest package versions. It should be mandatory to pull only specific version except for latest as artifacts and dependencies."
+  scheduled_policy: false
+  scriptId: 269
+  variables: ""
+  conditionName: ""
+  suggestion: ""

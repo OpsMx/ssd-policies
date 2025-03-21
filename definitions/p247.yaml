@@ -1,0 +1,12 @@
+id: 247
+type: PolicyDefinition
+metadata:
+  policyName: "C-0069 - NSA - Disable anonymous access to Kubelet service"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "By default, requests to the kubelets HTTPS endpoint that are not rejected by other configured authentication methods are treated as anonymous requests, and given a username of system:anonymous and a group of system:unauthenticated."
+  scheduled_policy: false
+  scriptId: 198
+  variables: ""
+  conditionName: "C-0069 - NSA - Disable anonymous access to Kubelet service "
+  suggestion: ""

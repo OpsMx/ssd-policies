@@ -1,0 +1,12 @@
+id: 291
+type: PolicyDefinition
+metadata:
+  policyName: "Gitlab Repository 2FA Policy"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Repositories should be protected based on 2FA authentication"
+  scheduled_policy: false
+  scriptId: 291
+  variables: ""
+  conditionName: "Repository 2FA Policy"
+  suggestion: ""

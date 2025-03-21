@@ -1,0 +1,12 @@
+id: 271
+type: PolicyDefinition
+metadata:
+  policyName: "Artifacts should be signed"
+  category: "Artifact Integrity"
+  stage: "artifact"
+  description: "Only signed artifact must be allowed for deployment."
+  scheduled_policy: false
+  scriptId: 271
+  variables: ""
+  conditionName: ""
+  suggestion: ""

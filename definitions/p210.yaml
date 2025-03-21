@@ -1,0 +1,12 @@
+id: 210
+type: PolicyDefinition
+metadata:
+  policyName: "C-0039 - MITRE - Validate Mutating admission controller"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "Attackers may use mutating webhooks to intercept and modify all the resources in the cluster. This control lists all mutating webhook configurations that must be verified."
+  scheduled_policy: false
+  scriptId: 198
+  variables: ""
+  conditionName: "C-0039 - MITRE - Validate Mutating admission controller "
+  suggestion: ""

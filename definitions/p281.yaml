@@ -1,0 +1,12 @@
+id: 281
+type: PolicyDefinition
+metadata:
+  policyName: "Low severity secret detection in containers"
+  category: "Secret Scan"
+  stage: "artifact"
+  description: "Low Severity secrets must not be exposed in containers."
+  scheduled_policy: false
+  scriptId: 281
+  variables: ""
+  conditionName: ""
+  suggestion: ""

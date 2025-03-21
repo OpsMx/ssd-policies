@@ -1,0 +1,12 @@
+id: 298
+type: PolicyDefinition
+metadata:
+  policyName: "BitBucket Branch Deletion Prevention Policy"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "While the default branch can’t be deleted directly even if the setting is on, in general, it is best practice to prevent branches from being deleted by anyone with write access."
+  scheduled_policy: false
+  scriptId: 298
+  variables: ""
+  conditionName: ""
+  suggestion: ""

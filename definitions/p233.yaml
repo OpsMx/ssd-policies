@@ -1,0 +1,12 @@
+id: 233
+type: PolicyDefinition
+metadata:
+  policyName: "C-0034 - NSA - Automatic mapping of service account"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "Check all service accounts on which automount is not disabled. Check all workloads on which they and their service account dont disable automount."
+  scheduled_policy: false
+  scriptId: 198
+  variables: ""
+  conditionName: "C-0034 - NSA - Automatic mapping of service account"
+  suggestion: ""

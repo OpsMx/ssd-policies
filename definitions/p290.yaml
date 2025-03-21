@@ -1,0 +1,12 @@
+id: 290
+type: PolicyDefinition
+metadata:
+  policyName: "Gitlab SECURITY.md file should be present"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "SECURITY.md file should be present in code repository."
+  scheduled_policy: false
+  scriptId: 290
+  variables: ""
+  conditionName: ""
+  suggestion: ""

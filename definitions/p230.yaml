@@ -1,0 +1,12 @@
+id: 230
+type: PolicyDefinition
+metadata:
+  policyName: "C-0016 - NSA - Allow privilege escalation"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "Attackers may gain access to a container and uplift its privilege to enable excessive capabilities."
+  scheduled_policy: false
+  scriptId: 198
+  variables: ""
+  conditionName: "C-0016 - NSA - Allow privilege escalation"
+  suggestion: ""

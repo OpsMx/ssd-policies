@@ -1,0 +1,12 @@
+id: 286
+type: PolicyDefinition
+metadata:
+  policyName: "Gitlab Repository Access Control Policy"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Code Repository should not be publicly visible or modifiable."
+  scheduled_policy: false
+  scriptId: 286
+  variables: ""
+  conditionName: "Repository Access Control Policy"
+  suggestion: ""

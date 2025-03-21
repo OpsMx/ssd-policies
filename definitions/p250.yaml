@@ -1,0 +1,12 @@
+id: 250
+type: PolicyDefinition
+metadata:
+  policyName: "CIS - Compliance Score - Range: 50-70"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Overall CIS Complaince Score found between 50-70."
+  scheduled_policy: false
+  scriptId: 249
+  variables: ""
+  conditionName: "CIS - Compliance Score - Range: 50-70"
+  suggestion: ""

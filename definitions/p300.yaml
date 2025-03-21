@@ -1,0 +1,12 @@
+id: 300
+type: PolicyDefinition
+metadata:
+  policyName: "BitBucket Bot User should not be a Repo Admin"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Bot User should not be a Repo Admin."
+  scheduled_policy: false
+  scriptId: 300
+  variables: ""
+  conditionName: ""
+  suggestion: ""

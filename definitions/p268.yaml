@@ -1,0 +1,12 @@
+id: 268
+type: PolicyDefinition
+metadata:
+  policyName: "Inactive users Access restriction policy"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Users who have been inactive for more than 3 months must not have access to code repository."
+  scheduled_policy: false
+  scriptId: 268
+  variables: ""
+  conditionName: ""
+  suggestion: ""

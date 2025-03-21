@@ -1,0 +1,12 @@
+id: 280
+type: PolicyDefinition
+metadata:
+  policyName: "Medium severity secret detection in containers"
+  category: "Secret Scan"
+  stage: "artifact"
+  description: "Medium Severity secrets must not be exposed in containers."
+  scheduled_policy: false
+  scriptId: 280
+  variables: ""
+  conditionName: ""
+  suggestion: ""

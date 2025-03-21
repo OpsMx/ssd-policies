@@ -1,0 +1,12 @@
+id: 283
+type: PolicyDefinition
+metadata:
+  policyName: "Critical severity rule violation in helm"
+  category: "Helm Scan"
+  stage: "deploy"
+  description: "Critical Severity rule violations in helm."
+  scheduled_policy: false
+  scriptId: 283
+  variables: ""
+  conditionName: ""
+  suggestion: ""

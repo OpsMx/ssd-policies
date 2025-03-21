@@ -1,0 +1,12 @@
+id: 270
+type: PolicyDefinition
+metadata:
+  policyName: "Centralized package manager settings"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Centralized package manager imposes additional checks on having only secure packages. Thus, having central package managers for code dependencies is important."
+  scheduled_policy: false
+  scriptId: 270
+  variables: ""
+  conditionName: ""
+  suggestion: ""

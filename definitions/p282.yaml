@@ -1,0 +1,12 @@
+id: 282
+type: PolicyDefinition
+metadata:
+  policyName: "High severity rule violation in helm"
+  category: "Helm Scan"
+  stage: "deploy"
+  description: "High Severity rule violations in helm."
+  scheduled_policy: false
+  scriptId: 282
+  variables: ""
+  conditionName: ""
+  suggestion: ""

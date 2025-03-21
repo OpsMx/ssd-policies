@@ -1,0 +1,12 @@
+id: 264
+type: PolicyDefinition
+metadata:
+  policyName: "Approved user for build trigger"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Only approved users should be allowed to trigger builds."
+  scheduled_policy: false
+  scriptId: 264
+  variables: ""
+  conditionName: ""
+  suggestion: ""

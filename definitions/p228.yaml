@@ -1,0 +1,12 @@
+id: 228
+type: PolicyDefinition
+metadata:
+  policyName: "C-0012 - NSA - Applications credentials in configuration files"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "Developers store secrets in the Kubernetes configuration files, such as environment variables in the pod configuration. Such behavior is commonly seen in clusters that are monitored by Azure Security Center. Attackers who have access to those configurations, by querying the API server or by accessing those files on the developers endpoint, can steal the stored secrets and use them."
+  scheduled_policy: false
+  scriptId: 198
+  variables: ""
+  conditionName: "C-0012 - NSA - Applications credentials in configuration files"
+  suggestion: ""

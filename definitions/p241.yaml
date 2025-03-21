@@ -1,0 +1,12 @@
+id: 241
+type: PolicyDefinition
+metadata:
+  policyName: "C-0057 - NSA - Privileged container"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "A privileged container is a container that has all the capabilities of the host machine, which lifts all the limitations regular containers have. Practically, this means that privileged containers can do almost every action that can be performed directly on the host. Attackers who gain access to a privileged container or have permissions to create a new privileged container "
+  scheduled_policy: false
+  scriptId: 198
+  variables: ""
+  conditionName: "C-0057 - NSA - Privileged container"
+  suggestion: ""

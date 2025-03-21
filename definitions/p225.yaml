@@ -1,0 +1,12 @@
+id: 225
+type: PolicyDefinition
+metadata:
+  policyName: "C-0002 - NSA - Exec into container"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "Attackers who have permissions, can run malicious commands in containers in the cluster using exec command. In this method, attackers can use legitimate images, such as an OS image as a backdoor container, and run their malicious code remotely by using kubectl exec."
+  scheduled_policy: false
+  scriptId: 198
+  variables: ""
+  conditionName: "C-0002 - NSA - Exec into container"
+  suggestion: ""

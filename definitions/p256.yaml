@@ -1,0 +1,12 @@
+id: 256
+type: PolicyDefinition
+metadata:
+  policyName: "MITRE - Compliance Score - Range: 0-30"
+  category: "Compliance"
+  stage: "deploy"
+  description: "Overall MITRE Complaince Score found below 30."
+  scheduled_policy: false
+  scriptId: 253
+  variables: ""
+  conditionName: "MITRE - Compliance Score - Range: 0-30"
+  suggestion: ""

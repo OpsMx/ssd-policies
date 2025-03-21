@@ -1,0 +1,12 @@
+id: 261
+type: PolicyDefinition
+metadata:
+  policyName: "Auto-merge should be disabled"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Auto-merge should not be allowed in code repository."
+  scheduled_policy: false
+  scriptId: 261
+  variables: ""
+  conditionName: ""
+  suggestion: ""

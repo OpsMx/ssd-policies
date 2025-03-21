@@ -1,0 +1,12 @@
+id: 297
+type: PolicyDefinition
+metadata:
+  policyName: "BitBucket Branch Protection Policy"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Repositories should have branch protection enabled requiring all code changes to be reviewed. This means disabling Push events and requiring Pull/Merge Requests to have code reviews."
+  scheduled_policy: false
+  scriptId: 297
+  variables: ""
+  conditionName: ""
+  suggestion: ""

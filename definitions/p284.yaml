@@ -1,0 +1,12 @@
+id: 284
+type: PolicyDefinition
+metadata:
+  policyName: "Medium severity rule violation in helm"
+  category: "Helm Scan"
+  stage: "deploy"
+  description: "Medium Severity rule violations in helm."
+  scheduled_policy: false
+  scriptId: 284
+  variables: ""
+  conditionName: ""
+  suggestion: ""

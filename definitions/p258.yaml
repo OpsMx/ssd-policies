@@ -1,0 +1,12 @@
+id: 258
+type: PolicyDefinition
+metadata:
+  policyName: "NSA - Compliance Score - Range: 50-70"
+  category: "Compliance"
+  stage: "deploy"
+  description: "Overall NSA Complaince Score found between 50-70."
+  scheduled_policy: false
+  scriptId: 257
+  variables: ""
+  conditionName: "NSA - Compliance Score - Range: 50-70"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 262
+type: PolicyDefinition
+metadata:
+  policyName: "Deploy to Production should be preceeded by Judgements"
+  category: "Deployment Config"
+  stage: "deploy"
+  description: "Deployments to sensitive environments should have a manual review and judgement stage in pipeline requiring someone to approve deployment."
+  scheduled_policy: false
+  scriptId: 262
+  variables: ""
+  conditionName: ""
+  suggestion: ""

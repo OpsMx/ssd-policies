@@ -1,0 +1,12 @@
+id: 232
+type: PolicyDefinition
+metadata:
+  policyName: "C-0030 - NSA - Ingress and Egress blocked"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "Network policies control traffic flow between Pods, namespaces, and external IP addresses. By default, no network policies are applied to Pods or namespaces, resulting in unrestricted ingress and egress traffic within the Pod network. Pods become isolated through a network policy that applies to the Pod or the Pods namespace. Once a Pod is selected in a network policy, it rejects any connections that are not specifically allowed by any applicable policy object.Administrators should use a default policy selecting all Pods to deny all ingress and egress traffic and ensure any unselected Pods are isolated. Additional policies could then relax these restrictions for permissible connections."
+  scheduled_policy: false
+  scriptId: 198
+  variables: ""
+  conditionName: "C-0030 - NSA - Ingress and Egress blocked"
+  suggestion: ""

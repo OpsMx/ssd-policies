@@ -1,0 +1,12 @@
+id: 274
+type: PolicyDefinition
+metadata:
+  policyName: "High severity secret detection in code repository"
+  category: "Secret Scan"
+  stage: "source"
+  description: "High Severity secrets must not be exposed in code repository."
+  scheduled_policy: false
+  scriptId: 274
+  variables: ""
+  conditionName: ""
+  suggestion: ""

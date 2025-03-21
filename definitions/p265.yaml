@@ -1,0 +1,12 @@
+id: 265
+type: PolicyDefinition
+metadata:
+  policyName: "Refrain from running pipelines originating from forked repos"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Forks of original repositories should not be able to trigger pipelines."
+  scheduled_policy: false
+  scriptId: 265
+  variables: ""
+  conditionName: ""
+  suggestion: ""

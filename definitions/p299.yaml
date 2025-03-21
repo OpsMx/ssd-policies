@@ -1,0 +1,12 @@
+id: 299
+type: PolicyDefinition
+metadata:
+  policyName: "BitBucket Bot user cannot merge the code"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Bot users must not be capable of merging any pull requests."
+  scheduled_policy: false
+  scriptId: 299
+  variables: ""
+  conditionName: ""
+  suggestion: ""

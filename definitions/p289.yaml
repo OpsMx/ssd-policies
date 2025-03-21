@@ -1,0 +1,12 @@
+id: 289
+type: PolicyDefinition
+metadata:
+  policyName: "Gitlab Bot User should not be a Repo Admin"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Bot User should not be a Repo Admin."
+  scheduled_policy: false
+  scriptId: 289
+  variables: ""
+  conditionName: ""
+  suggestion: ""

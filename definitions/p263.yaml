@@ -1,0 +1,12 @@
+id: 263
+type: PolicyDefinition
+metadata:
+  policyName: "Open to merge public repositories for code utilities"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Dependencies in code should be secure and protected from unauthorized code changes."
+  scheduled_policy: false
+  scriptId: 263
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 240
+type: PolicyDefinition
+metadata:
+  policyName: "C-0055 - NSA - Linux hardening"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "In order to reduce the attack surface, it is recommend, when it is possible, to harden your application using security services such as SELinux, AppArmor, and seccomp. Starting from Kubernetes version 22, SELinux is enabled by default."
+  scheduled_policy: false
+  scriptId: 198
+  variables: ""
+  conditionName: "C-0055 - NSA - Linux hardening"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 292
+type: PolicyDefinition
+metadata:
+  policyName: "Gitlab Build Webhook SSL/TLS Policy"
+  category: "Git Security Posture"
+  stage: "build"
+  description: "Webhooks should use SSL/TLS."
+  scheduled_policy: false
+  scriptId: 292
+  variables: ""
+  conditionName: ""
+  suggestion: ""

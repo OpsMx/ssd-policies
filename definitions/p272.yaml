@@ -1,0 +1,12 @@
+id: 272
+type: PolicyDefinition
+metadata:
+  policyName: "Untrusted Deployment via Configuration Drift"
+  category: "Deployment Config"
+  stage: "deploy"
+  description: "Pipeline configuration should be fetched only from trusted sources."
+  scheduled_policy: false
+  scriptId: 272
+  variables: ""
+  conditionName: ""
+  suggestion: ""
