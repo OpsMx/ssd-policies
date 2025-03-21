@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: "1"
+  tagName: "PolicyCategory"
+  tagValue: "Git Security Posture"
+  tagDescription: ""
+  createdBy: "system"
