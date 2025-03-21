@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 7
+  tagName: "policyCategory"
+  tagValue: "NIST-800-53-CM7"
+  tagDescription: ""
+  createdBy: "system"

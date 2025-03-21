@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 12
+  tagName: "policyCategory"
+  tagValue: "CodeSecurity"
+  tagDescription: ""
+  createdBy: "system"

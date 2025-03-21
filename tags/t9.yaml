@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 9
+  tagName: "policyCategory"
+  tagValue: "FedRAMP-RA5"
+  tagDescription: ""
+  createdBy: "system"

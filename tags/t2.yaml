@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 2
+  tagName: "policyCategory"
+  tagValue: "ArtifactIntegrity"
+  tagDescription: ""
+  createdBy: "system"

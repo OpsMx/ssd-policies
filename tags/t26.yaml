@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 26
+  tagName: "policyCategory"
+  tagValue: "VirusTotalScan"
+  tagDescription: ""
+  createdBy: "system"

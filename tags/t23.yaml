@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 23
+  tagName: "policyCategory"
+  tagValue: "Gitlab"
+  tagDescription: ""
+  createdBy: "system"

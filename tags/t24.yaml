@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 24
+  tagName: "policyCategory"
+  tagValue: "Bitbucket"
+  tagDescription: ""
+  createdBy: "system"

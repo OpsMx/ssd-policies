@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 13
+  tagName: "policyCategory"
+  tagValue: "FedRAMP-AC6"
+  tagDescription: ""
+  createdBy: "system"

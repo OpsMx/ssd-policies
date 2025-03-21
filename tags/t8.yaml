@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 8
+  tagName: "policyCategory"
+  tagValue: "FedRAMP-CM7"
+  tagDescription: ""
+  createdBy: "system"

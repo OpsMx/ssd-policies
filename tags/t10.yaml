@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 10
+  tagName: "policyCategory"
+  tagValue: "SAST"
+  tagDescription: ""
+  createdBy: "system"

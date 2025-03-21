@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 33
+  tagName: "policyCategory"
+  tagValue: "IaCSecurityPosture"
+  tagDescription: ""
+  createdBy: "system"

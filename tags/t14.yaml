@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 14
+  tagName: "policyCategory"
+  tagValue: "CIS-Benchmark"
+  tagDescription: ""
+  createdBy: "system"

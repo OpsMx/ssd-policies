@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 5
+  tagName: "policyCategory"
+  tagValue: "DeploymentConfig"
+  tagDescription: ""
+  createdBy: "system"

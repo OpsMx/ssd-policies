@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 22
+  tagName: "policyCategory"
+  tagValue: "VulnerabilityAnalysis"
+  tagDescription: ""
+  createdBy: "system"

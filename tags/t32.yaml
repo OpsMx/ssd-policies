@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 32
+  tagName: "policyCategory"
+  tagValue: "MobileApplicationSecurityPosture"
+  tagDescription: ""
+  createdBy: "system"

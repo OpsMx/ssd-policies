@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 21
+  tagName: "policyCategory"
+  tagValue: "HelmScan"
+  tagDescription: ""
+  createdBy: "system"

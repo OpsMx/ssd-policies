@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 20
+  tagName: "policyCategory"
+  tagValue: "ArtifactScan"
+  tagDescription: ""
+  createdBy: "system"

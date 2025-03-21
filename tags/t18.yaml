@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 18
+  tagName: "policyCategory"
+  tagValue: "OWASP-CICD-Top10"
+  tagDescription: ""
+  createdBy: "system"

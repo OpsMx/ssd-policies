@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 27
+  tagName: "policyCategory"
+  tagValue: "CloudSecurity"
+  tagDescription: ""
+  createdBy: "system"

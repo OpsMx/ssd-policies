@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 25
+  tagName: "policyCategory"
+  tagValue: "LicenseScan"
+  tagDescription: ""
+  createdBy: "system"

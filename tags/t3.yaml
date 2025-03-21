@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 3
+  tagName: "policyCategory"
+  tagValue: "BuildSecurityPosture"
+  tagDescription: ""
+  createdBy: "system"

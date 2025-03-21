@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 19
+  tagName: "policyCategory"
+  tagValue: "SecretScan"
+  tagDescription: ""
+  createdBy: "system"

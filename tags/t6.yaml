@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 6
+  tagName: "policyCategory"
+  tagValue: "PodSecurity"
+  tagDescription: ""
+  createdBy: "system"

@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 16
+  tagName: "policyCategory"
+  tagValue: "NSA-CISA"
+  tagDescription: ""
+  createdBy: "system"

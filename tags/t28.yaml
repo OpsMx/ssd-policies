@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 28
+  tagName: "policyCategory"
+  tagValue: "Compliance"
+  tagDescription: ""
+  createdBy: "system"
