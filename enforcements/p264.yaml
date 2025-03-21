@@ -1,0 +1,12 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 264
+  severity: "Low"
+  action: "Alert"
+  conditionValue: ""
+  status: true
+  datasourceTool:
+  - "jenkins"
+  tags:
+  - 18
+  - 3

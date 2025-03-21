@@ -1,0 +1,12 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 259
+  severity: "High"
+  action: "Alert"
+  conditionValue: "30-50"
+  status: true
+  datasourceTool:
+  - "nsa-kubescape"
+  tags:
+  - 16
+  - 28

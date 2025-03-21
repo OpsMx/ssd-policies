@@ -1,0 +1,12 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 291
+  severity: "Medium"
+  action: "Alert"
+  conditionValue: "true"
+  status: true
+  datasourceTool:
+  - "gitlab"
+  tags:
+  - 23
+  - 1

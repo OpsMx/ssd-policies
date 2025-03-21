@@ -1,0 +1,11 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 252
+  severity: "Critical"
+  action: "Alert"
+  conditionValue: "0-30"
+  status: true
+  datasourceTool:
+  - "cis-kubescape"
+  tags:
+  - 14

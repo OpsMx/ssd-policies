@@ -1,0 +1,12 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 260
+  severity: "Critical"
+  action: "Alert"
+  conditionValue: "0-30"
+  status: true
+  datasourceTool:
+  - "nsa-kubescape"
+  tags:
+  - 16
+  - 28
