@@ -1,6 +1,6 @@
 type: Tag
 metadata:
-  id: "1"
+  id: 1
   tagName: "PolicyCategory"
   tagValue: "Git Security Posture"
   tagDescription: ""
