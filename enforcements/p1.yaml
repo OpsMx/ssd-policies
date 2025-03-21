@@ -1,4 +1,4 @@
-type: policyEnforcement
+type: PolicyEnforcement
 metadata:
   policyDefinitionId: "1"
   severity: "Medium"
