@@ -1,0 +1,11 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 387
+  severity: "High"
+  action: "Alert"
+  conditionValue: ""
+  status: true
+  datasourceTool:
+  - ""
+  tags:
+  - 32

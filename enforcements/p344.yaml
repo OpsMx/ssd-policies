@@ -1,0 +1,11 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 344
+  severity: "High"
+  action: "Alert"
+  conditionValue: "HIGH"
+  status: true
+  datasourceTool:
+  - "graphql"
+  tags:
+  - 3

@@ -1,0 +1,13 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 336
+  severity: "Low"
+  action: "Alert"
+  conditionValue: "4.0"
+  status: false
+  datasourceTool:
+  - "codacy"
+  tags:
+  - 12
+  - 11
+  - 10

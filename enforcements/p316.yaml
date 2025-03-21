@@ -1,0 +1,11 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 316
+  severity: "Low"
+  action: "Alert"
+  conditionValue: ""
+  status: false
+  datasourceTool:
+  - "trivy"
+  tags:
+  - 25

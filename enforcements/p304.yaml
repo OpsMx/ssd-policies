@@ -1,0 +1,12 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 304
+  severity: "Low"
+  action: "Alert"
+  conditionValue: ""
+  status: true
+  datasourceTool:
+  - "bitbucket"
+  tags:
+  - 24
+  - 1

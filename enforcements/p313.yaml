@@ -1,0 +1,11 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 313
+  severity: "High"
+  action: "Alert"
+  conditionValue: ""
+  status: true
+  datasourceTool:
+  - "trivy"
+  tags:
+  - 25

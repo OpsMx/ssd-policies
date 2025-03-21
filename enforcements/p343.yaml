@@ -1,0 +1,11 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 343
+  severity: "Medium"
+  action: "Alert"
+  conditionValue: "MEDIUM"
+  status: true
+  datasourceTool:
+  - "graphql"
+  tags:
+  - 3

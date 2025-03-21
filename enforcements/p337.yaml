@@ -1,0 +1,11 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 337
+  severity: "High"
+  action: "Alert"
+  conditionValue: "4.0"
+  status: true
+  datasourceTool:
+  - "zap"
+  tags:
+  - 30
