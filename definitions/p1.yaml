@@ -1,1 +1,12 @@
-
+id: 1
+type: policyDefinition
+metadata:
+  policyName: "Repository Access Control Policy"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Code Repository should not be publicly visible or modifiable1."
+  scheduled_policy: false
+  scriptId: "4"
+  variables: ""
+  conditionName: "Repository Access Control Policy"
+  suggestion: ""
