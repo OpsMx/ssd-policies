@@ -1,0 +1,14 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 262
+  severity: "Medium"
+  action: "Alert"
+  conditionValue: ""
+  status: true
+  datasourceTool:
+  - "spinnaker"
+  - "jenkins"
+  - "argocd"
+  tags:
+  - 18
+  - 5

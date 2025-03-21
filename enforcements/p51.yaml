@@ -1,0 +1,15 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 51
+  severity: "Medium"
+  action: "Alert"
+  conditionValue: ""
+  status: false
+  datasourceTool:
+  - "sonarqube"
+  - "semgrep"
+  tags:
+  - 10
+  - 7
+  - 8
+  - 17

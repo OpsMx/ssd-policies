@@ -1,0 +1,13 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 471
+  severity: "Low"
+  action: "Alert"
+  conditionValue: ""
+  status: true
+  datasourceTool:
+  - "opengrep"
+  tags:
+  - 12
+  - 11
+  - 10

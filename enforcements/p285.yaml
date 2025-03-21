@@ -1,0 +1,13 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 285
+  severity: "Low"
+  action: "Alert"
+  conditionValue: ""
+  status: true
+  datasourceTool:
+  - "snyk"
+  - "kubescape"
+  - "trivy"
+  tags:
+  - 21

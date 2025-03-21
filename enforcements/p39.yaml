@@ -1,0 +1,16 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 39
+  severity: "High"
+  action: "Alert"
+  conditionValue: ""
+  status: true
+  datasourceTool:
+  - "docker"
+  - "quay"
+  - "jfrog"
+  - "ecr"
+  - "acr"
+  - "gcr"
+  tags:
+  - 2
