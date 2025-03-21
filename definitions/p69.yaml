@@ -1,0 +1,12 @@
+id: 69
+type: PolicyDefinition
+metadata:
+  policyName: "SonarQube Maintanability Rating C Policy"
+  category: "SAST"
+  stage: "source"
+  description: "This policy is dedicated to the timely resolution of maintainability issues identified with a Grade C rating in SonarQube. It aims to enhance and sustain code maintainability, streamlining future development efforts."
+  scheduled_policy: false
+  scriptId: 69
+  variables: ""
+  conditionName: "SonarQube Maintanability Rating C Policy"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 11
+type: PolicyDefinition
+metadata:
+  policyName: "Build Workflow Permissions over Repository Policy"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Build Workflow should have minimum permissions over repository configuration"
+  scheduled_policy: false
+  scriptId: 11
+  variables: ""
+  conditionName: ""
+  suggestion: ""

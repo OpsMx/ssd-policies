@@ -1,0 +1,12 @@
+id: 24
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Packaging Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This assesses if the project is released as a package."
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Packaging Policy"
+  suggestion: ""

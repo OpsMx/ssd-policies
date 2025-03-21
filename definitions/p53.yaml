@@ -1,0 +1,12 @@
+id: 53
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security Allow Privilege Escalation"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Controls restricting escalation to root privileges."
+  scheduled_policy: false
+  scriptId: 53
+  variables: ""
+  conditionName: ""
+  suggestion: ""

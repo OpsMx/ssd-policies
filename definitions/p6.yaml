@@ -1,0 +1,12 @@
+id: 6
+type: PolicyDefinition
+metadata:
+  policyName: "Repository 2FA Policy"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Repositories should be protected based on 2FA authentication"
+  scheduled_policy: false
+  scriptId: 6
+  variables: ""
+  conditionName: "Repository 2FA Policy"
+  suggestion: ""

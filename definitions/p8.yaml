@@ -1,0 +1,12 @@
+id: 8
+type: PolicyDefinition
+metadata:
+  policyName: "Critical Vulnerability Prevention Policy"
+  category: "Vulnerability Analysis"
+  stage: "artifact"
+  description: "Critical Severity Vulnerabilities should not be found in the artifact"
+  scheduled_policy: true
+  scriptId: 8
+  variables: ""
+  conditionName: "severity"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 59
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security Host Filesystem"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Controls usage of the host filesystem."
+  scheduled_policy: false
+  scriptId: 59
+  variables: ""
+  conditionName: ""
+  suggestion: ""

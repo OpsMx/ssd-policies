@@ -1,0 +1,12 @@
+id: 31
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Binary Artifacts Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This check determines whether the project has generated executable artifacts in the source repository."
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Binary Artifacts Policy"
+  suggestion: ""

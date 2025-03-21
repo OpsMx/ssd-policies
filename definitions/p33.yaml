@@ -1,0 +1,12 @@
+id: 33
+type: PolicyDefinition
+metadata:
+  policyName: "Bot User should not be a Repository Admin"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Bot Users should not be a Repository Administrator. Bot user is identified using some well-known patterns."
+  scheduled_policy: false
+  scriptId: 33
+  variables: ""
+  conditionName: ""
+  suggestion: ""

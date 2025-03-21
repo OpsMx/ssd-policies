@@ -1,0 +1,12 @@
+id: 32
+type: PolicyDefinition
+metadata:
+  policyName: "Restricted Repository Access: Internal Authorization Only"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "This policy limits repository access to internal personnel only, ensuring secure and controlled information management."
+  scheduled_policy: false
+  scriptId: 32
+  variables: ""
+  conditionName: ""
+  suggestion: ""

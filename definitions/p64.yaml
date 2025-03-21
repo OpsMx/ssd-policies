@@ -1,0 +1,12 @@
+id: 64
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security Read Only Root FS"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Requires the use of a read-only root file system by pod containers."
+  scheduled_policy: false
+  scriptId: 64
+  variables: ""
+  conditionName: ""
+  suggestion: ""

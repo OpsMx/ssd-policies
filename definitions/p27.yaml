@@ -1,0 +1,12 @@
+id: 27
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Signed Releases Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This determines if the project cryptographically signs release artefacts."
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Signed Releases Policy"
+  suggestion: ""

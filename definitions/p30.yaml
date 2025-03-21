@@ -1,0 +1,12 @@
+id: 30
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Webhooks Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This check determines whether the webhook defined in the repository has a token configured to authenticate the origins of requests."
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Webhooks Policy"
+  suggestion: ""

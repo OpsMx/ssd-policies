@@ -1,0 +1,12 @@
+id: 12
+type: PolicyDefinition
+metadata:
+  policyName: "Identical Build and Cloud Artifact Policy"
+  category: "Artifact Integrity"
+  stage: "build"
+  description: "Build signature in Build Environment and Cloud Environment during Deployment should be identical to confirm integrity of the artifact."
+  scheduled_policy: false
+  scriptId: 12
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 61
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security Host Network"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Controls usage of host network namespace by pod containers. Specific ports must be specified."
+  scheduled_policy: false
+  scriptId: 61
+  variables: ""
+  conditionName: ""
+  suggestion: ""

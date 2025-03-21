@@ -1,0 +1,12 @@
+id: 71
+type: PolicyDefinition
+metadata:
+  policyName: "SonarQube Security Rating E Policy"
+  category: "SAST"
+  stage: "source"
+  description: "This policy directs efforts towards improving code security when assigned a Grade E rating in SonarQube. It emphasizes the critical need to fortify the codebase against security threats, protecting sensitive data and preventing potential exploits."
+  scheduled_policy: false
+  scriptId: 71
+  variables: ""
+  conditionName: "SonarQube Security Rating E Policy"
+  suggestion: ""

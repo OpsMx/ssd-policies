@@ -1,0 +1,12 @@
+id: 100
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.2.3 Ensure that the API Server --DenyServiceExternalIPs is not set"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "This admission controller rejects all net-new usage of the Service field externalIPs. This feature is very powerful "
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.2.3 Ensure that the API Server --DenyServiceExternalIPs is not set"
+  suggestion: ""

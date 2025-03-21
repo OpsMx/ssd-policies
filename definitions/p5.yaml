@@ -1,0 +1,12 @@
+id: 5
+type: PolicyDefinition
+metadata:
+  policyName: "Commit Signing Policy"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Commit signing should be mandatory. Signing commits is needed because it is pretty easy to add anyone as the author of a commit. Git allows a committer to change the author of a commit easily. In the case of a signed commit, any change to the author will make the commit appear unsigned."
+  scheduled_policy: false
+  scriptId: 5
+  variables: ""
+  conditionName: "Commit Signing Policy"
+  suggestion: ""

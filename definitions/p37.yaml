@@ -1,0 +1,12 @@
+id: 37
+type: PolicyDefinition
+metadata:
+  policyName: "Build Server Origin Check"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Build Server Origin Check is a policy that ensures artifacts originate from approved build servers for secure deployments."
+  scheduled_policy: false
+  scriptId: 37
+  variables: ""
+  conditionName: ""
+  suggestion: ""

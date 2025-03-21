@@ -1,0 +1,12 @@
+id: 86
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.1.10 Ensure that the Container Network Interface file ownership is set to root:root"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Container Network Interface provides various networking options for overlay networking. You should consult their documentation and restrict their respective file permissions to maintain the integrity of those files. Those files should be owned by root:root."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.1.10 Ensure that the Container Network Interface file ownership is set to root:root"
+  suggestion: ""

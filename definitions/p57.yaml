@@ -1,0 +1,12 @@
+id: 57
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security Forbidden Sysctl"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Controls the sysctl profile used by containers."
+  scheduled_policy: false
+  scriptId: 57
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 10
+type: PolicyDefinition
+metadata:
+  policyName: "Build Workflow Permissions over Organization Policy"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Build Workflow should have minimum permissions over organization configuration."
+  scheduled_policy: false
+  scriptId: 10
+  variables: ""
+  conditionName: ""
+  suggestion: ""

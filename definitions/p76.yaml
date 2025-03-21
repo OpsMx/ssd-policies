@@ -1,0 +1,12 @@
+id: 76
+type: PolicyDefinition
+metadata:
+  policyName: "High Vulnerability Prevention Policy"
+  category: "Vulnerability Analysis"
+  stage: "artifact"
+  description: "High Severity Vulnerabilities should not be found in the artifact"
+  scheduled_policy: true
+  scriptId: 76
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 17
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Contributors Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This check assesses if the project has recent contributors from various organizations, applicable only to GitHub-hosted repositories, without support for other source hosting platforms"
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Contributors Policy"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 36
+type: PolicyDefinition
+metadata:
+  policyName: "Build Webhook SSL/TLS Policy"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Webhooks should use SSL/TLS."
+  scheduled_policy: false
+  scriptId: 36
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 25
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF SAST Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This check assesses if a GitHub-hosted project employs Static Application Security Testing."
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF SAST Policy"
+  suggestion: ""

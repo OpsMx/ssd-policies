@@ -1,0 +1,12 @@
+id: 39
+type: PolicyDefinition
+metadata:
+  policyName: "Cloud Artifact should match the build artifact by hash"
+  category: "Artifact Integrity"
+  stage: "deploy"
+  description: "An image hash not matched to a build artifact may indicate a compromise of the cloud account. An unauthorized application may be running in your organizations cloud."
+  scheduled_policy: false
+  scriptId: 39
+  variables: ""
+  conditionName: ""
+  suggestion: ""

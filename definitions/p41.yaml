@@ -1,0 +1,12 @@
+id: 41
+type: PolicyDefinition
+metadata:
+  policyName: "Approved Artifact Repo Origin"
+  category: "Artifact Integrity"
+  stage: "artifact"
+  description: "Approved Artifact Repo Origin policy validates artifacts from authorized repositories, ensuring secure deployments."
+  scheduled_policy: false
+  scriptId: 41
+  variables: ""
+  conditionName: ""
+  suggestion: ""

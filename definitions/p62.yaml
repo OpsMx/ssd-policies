@@ -1,0 +1,12 @@
+id: 62
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security Privileged Container"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Controls the ability of any container to enable privileged mode."
+  scheduled_policy: false
+  scriptId: 62
+  variables: ""
+  conditionName: ""
+  suggestion: ""

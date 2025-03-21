@@ -1,0 +1,12 @@
+id: 47
+type: PolicyDefinition
+metadata:
+  policyName: "Block Container Without Request Limit"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "Requires containers to have memory and CPU requests set and constrains requests to be within the specified maximum values."
+  scheduled_policy: false
+  scriptId: 47
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 58
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security FS Group"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Controls allocating an FSGroup that owns the Pods volumes."
+  scheduled_policy: false
+  scriptId: 58
+  variables: ""
+  conditionName: ""
+  suggestion: ""

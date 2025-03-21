@@ -1,0 +1,12 @@
+id: 20
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Fuzzing Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This assesses if the project employs fuzzing, considering various criteria including repository inclusion, fuzzing tool presence, language-specific functions, and integration files."
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Fuzzing Policy"
+  suggestion: ""

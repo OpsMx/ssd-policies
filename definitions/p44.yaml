@@ -1,0 +1,12 @@
+id: 44
+type: PolicyDefinition
+metadata:
+  policyName: "SonarQube Reliability Rating C Policy"
+  category: "SAST"
+  stage: "source"
+  description: "This policy aims to promptly resolve reliability issues identified with a Grade C rating in SonarQube. It focuses on enhancing and sustaining code reliability to ensure the codebase operates consistently and reliably."
+  scheduled_policy: false
+  scriptId: 44
+  variables: ""
+  conditionName: "SonarQube Reliability Rating C Policy"
+  suggestion: ""

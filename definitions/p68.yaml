@@ -1,0 +1,12 @@
+id: 68
+type: PolicyDefinition
+metadata:
+  policyName: "SonarQube Maintanability Rating D Policy"
+  category: "SAST"
+  stage: "source"
+  description: "This policy is dedicated to the timely resolution of maintainability issues identified with a Grade D rating in SonarQube. It aims to enhance and sustain code maintainability, streamlining future development efforts."
+  scheduled_policy: false
+  scriptId: 68
+  variables: ""
+  conditionName: "SonarQube Maintanability Rating D Policy"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 46
+type: PolicyDefinition
+metadata:
+  policyName: "Block Container Without Limits"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "Requires containers to have memory and CPU limits set and constrains limits to be within the specified maximum values."
+  scheduled_policy: false
+  scriptId: 46
+  variables: ""
+  conditionName: ""
+  suggestion: ""

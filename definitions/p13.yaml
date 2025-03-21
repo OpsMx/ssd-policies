@@ -1,0 +1,12 @@
+id: 13
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Branch Protection Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This evaluates if the project main and release branches are safeguarded with GitHub branch protection settings, enforcing review and status check requirements before merging and preventing history changes."
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Branch Protection Policy"
+  suggestion: ""

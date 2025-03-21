@@ -1,0 +1,12 @@
+id: 34
+type: PolicyDefinition
+metadata:
+  policyName: "Bot User should not be a Org Owner"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Bot User should not be a Org Owner. Bot user is identified using some well-known patterns."
+  scheduled_policy: false
+  scriptId: 34
+  variables: ""
+  conditionName: ""
+  suggestion: ""

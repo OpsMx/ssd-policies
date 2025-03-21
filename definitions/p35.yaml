@@ -1,0 +1,12 @@
+id: 35
+type: PolicyDefinition
+metadata:
+  policyName: "Build Webhook Authenticated Protection Policy"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Webhooks used in workflows should be protected/authenticated."
+  scheduled_policy: false
+  scriptId: 35
+  variables: ""
+  conditionName: ""
+  suggestion: ""

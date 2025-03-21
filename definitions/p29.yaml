@@ -1,0 +1,12 @@
+id: 29
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Vulnerabilities Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "The Project Has Open, Unfixed Vulnerabilities in its Own codebase."
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Vulnerabilities Policy"
+  suggestion: ""

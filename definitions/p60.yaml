@@ -1,0 +1,12 @@
+id: 60
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security Host Namespace"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Disallows sharing of host PID and IPC namespaces by pod containers."
+  scheduled_policy: false
+  scriptId: 60
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 26
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Security Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This check tries to determine if the project has published a security policy. It works by looking for a file named SECURITY.md in a few well-known directories."
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Security Policy"
+  suggestion: ""

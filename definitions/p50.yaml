@@ -1,0 +1,12 @@
+id: 50
+type: PolicyDefinition
+metadata:
+  policyName: "Block Undefined Container Ratios"
+  category: "Cloud Security"
+  stage: "deploy"
+  description: "Sets a maximum ratio for container resource limits to requests."
+  scheduled_policy: false
+  scriptId: 50
+  variables: ""
+  conditionName: ""
+  suggestion: ""

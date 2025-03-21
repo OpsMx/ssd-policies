@@ -1,0 +1,12 @@
+id: 77
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.1.1 Ensure that the API server pod specification file permissions are set to 600 or more restrictive"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "The API server pod specification file controls various parameters that set the behavior of the API server. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.1.1 Ensure that the API server pod specification file permissions are set to 600 or more restrictive"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 40
+type: PolicyDefinition
+metadata:
+  policyName: "Repository License Inclusion Policy"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Repositories should contain licence files"
+  scheduled_policy: false
+  scriptId: 40
+  variables: ""
+  conditionName: ""
+  suggestion: ""

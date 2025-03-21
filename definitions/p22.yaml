@@ -1,0 +1,12 @@
+id: 22
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Maintained Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This check evaluates project maintenance status based on commit frequency, issue activity, and archival status"
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Maintained Policy"
+  suggestion: ""

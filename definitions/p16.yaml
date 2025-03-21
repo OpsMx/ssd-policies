@@ -1,0 +1,12 @@
+id: 16
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Code Review Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This check determines whether the project requires human code review before pull requests are merged."
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Code Review Policy"
+  suggestion: ""

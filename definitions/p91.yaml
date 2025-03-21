@@ -1,0 +1,12 @@
+id: 91
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.1.15 Ensure that the scheduler.conf file permissions are set to 600 or more restrictive"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "The scheduler.conf file is the kubeconfig file for the Scheduler. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.1.15 Ensure that the scheduler.conf file permissions are set to 600 or more restrictive"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 55
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security Capabilities"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Controls Linux capabilities on containers."
+  scheduled_policy: false
+  scriptId: 55
+  variables: ""
+  conditionName: ""
+  suggestion: ""

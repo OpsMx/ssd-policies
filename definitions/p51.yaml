@@ -1,0 +1,12 @@
+id: 51
+type: PolicyDefinition
+metadata:
+  policyName: "SAST Integration Validation Policy"
+  category: "SAST"
+  stage: "source"
+  description: "Ensures atleast one SAST tool is configured for Source Repo."
+  scheduled_policy: false
+  scriptId: 51
+  variables: ""
+  conditionName: ""
+  suggestion: ""

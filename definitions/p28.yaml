@@ -1,0 +1,12 @@
+id: 28
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Token Permissions Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This Determines Whether the project automated workflow tokens follow the principle of least privilege."
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Token Permissions Policy"
+  suggestion: ""

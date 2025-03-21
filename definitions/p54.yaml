@@ -1,0 +1,12 @@
+id: 54
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security App Armor"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Configures an allow-list of AppArmor profiles for use by containers."
+  scheduled_policy: false
+  scriptId: 54
+  variables: ""
+  conditionName: ""
+  suggestion: ""

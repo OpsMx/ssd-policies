@@ -1,0 +1,12 @@
+id: 97
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.1.21 Ensure that the Kubernetes PKI key file permissions are set to 600"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Kubernetes makes use of a number of key files as part of the operation of its components. The permissions on these files should be set to 600 to protect their integrity and confidentiality."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.1.21 Ensure that the Kubernetes PKI key file permissions are set to 600"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 38
+type: PolicyDefinition
+metadata:
+  policyName: "Pre-Deployment Checksum Verify"
+  category: "Artifact Integrity"
+  stage: "artifact"
+  description: "Pre-Deployment Checksum Verify is a security policy that validates artifact integrity by comparing build-time checksums with Docker checksums, ensuring trusted and unaltered artifacts are used for deployment."
+  scheduled_policy: false
+  scriptId: 38
+  variables: ""
+  conditionName: ""
+  suggestion: ""

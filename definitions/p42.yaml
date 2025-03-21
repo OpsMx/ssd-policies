@@ -1,0 +1,12 @@
+id: 42
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Aggregate Score Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "The project might have known security vulnerabilities that have not been adequately  addressed"
+  scheduled_policy: false
+  scriptId: 42
+  variables: ""
+  conditionName: "Open SSF Aggregate Score Policy"
+  suggestion: ""

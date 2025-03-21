@@ -1,0 +1,12 @@
+id: 21
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF License Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This examines if the project has a published license by using hosting APIs or searching for a license file using standard naming conventions"
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF License Policy"
+  suggestion: ""

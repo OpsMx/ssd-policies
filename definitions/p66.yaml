@@ -1,0 +1,12 @@
+id: 66
+type: PolicyDefinition
+metadata:
+  policyName: "SonarQube Quality Gate Policy"
+  category: "SAST"
+  stage: "source"
+  description: "The purpose of this policy is to comply with SonarQube quality gates, ensuring that code meets predefined quality and performance standards. It emphasizes the importance of continuous code improvement and adherence to best practices."
+  scheduled_policy: false
+  scriptId: 66
+  variables: ""
+  conditionName: ""
+  suggestion: ""

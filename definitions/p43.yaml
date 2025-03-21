@@ -1,0 +1,12 @@
+id: 43
+type: PolicyDefinition
+metadata:
+  policyName: "SonarQube Reliability Rating D Policy"
+  category: "SAST"
+  stage: "source"
+  description: "This policy aims to promptly resolve reliability issues identified with a Grade D rating in SonarQube. It focuses on enhancing and sustaining code reliability to ensure the codebase operates consistently and reliably."
+  scheduled_policy: false
+  scriptId: 43
+  variables: ""
+  conditionName: "SonarQube Reliability Rating D Policy"
+  suggestion: ""

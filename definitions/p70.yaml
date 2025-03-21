@@ -1,0 +1,12 @@
+id: 70
+type: PolicyDefinition
+metadata:
+  policyName: "SonarQube Maintanability Rating B Policy"
+  category: "SAST"
+  stage: "source"
+  description: "This policy is dedicated to the timely resolution of maintainability issues identified with a Grade B rating in SonarQube. It aims to enhance and sustain code maintainability, streamlining future development efforts."
+  scheduled_policy: false
+  scriptId: 70
+  variables: ""
+  conditionName: "SonarQube Maintanability Rating B Policy"
+  suggestion: ""

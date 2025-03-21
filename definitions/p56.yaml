@@ -1,0 +1,12 @@
+id: 56
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security Flex Volumes"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Controls the allowlist of FlexVolume drivers."
+  scheduled_policy: false
+  scriptId: 56
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 63
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security Proc Mount"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Controls the allowed procMount types for the container."
+  scheduled_policy: false
+  scriptId: 63
+  variables: ""
+  conditionName: ""
+  suggestion: ""

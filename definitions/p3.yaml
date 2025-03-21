@@ -1,0 +1,12 @@
+id: 3
+type: PolicyDefinition
+metadata:
+  policyName: "Branch Protection Policy"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Repositories should have branch protection enabled requiring all code changes to be reviewed. This means disabling Push events and requiring Pull/Merge Requests to have code reviews."
+  scheduled_policy: false
+  scriptId: 3
+  variables: ""
+  conditionName: "Branch Protection Policy"
+  suggestion: ""

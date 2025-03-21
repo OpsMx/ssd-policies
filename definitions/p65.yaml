@@ -1,0 +1,12 @@
+id: 65
+type: PolicyDefinition
+metadata:
+  policyName: "Pod Security Volume Types"
+  category: "Pod Security"
+  stage: "deploy"
+  description: "Restricts mountable volume types to those specified by the user."
+  scheduled_policy: false
+  scriptId: 65
+  variables: ""
+  conditionName: ""
+  suggestion: ""

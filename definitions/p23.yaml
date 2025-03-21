@@ -1,0 +1,12 @@
+id: 23
+type: PolicyDefinition
+metadata:
+  policyName: "Open SSF Pinned Dependencies Policy"
+  category: "OpenSSF Scorecard"
+  stage: "source"
+  description: "This verifies if a project locks its dependencies to specific versions by their hashes, applicable only to GitHub repositories."
+  scheduled_policy: false
+  scriptId: 13
+  variables: ""
+  conditionName: "Open SSF Pinned Dependencies Policy"
+  suggestion: ""
