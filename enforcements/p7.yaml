@@ -1,0 +1,12 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 7
+  severity: "Low"
+  action: "Alert"
+  conditionValue: "LOW"
+  status: true
+  datasourceTool:
+  - "graphql"
+  tags:
+  - 17
+  - 22

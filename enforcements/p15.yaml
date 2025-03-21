@@ -1,11 +1,11 @@
 type: PolicyEnforcement
 metadata:
-  policyDefinitionId: 1
-  severity: "Medium"
+  policyDefinitionId: 15
+  severity: "Low"
   action: "Alert"
-  conditionValue: "true"
+  conditionValue: "5"
   status: true
   datasourceTool:
-  - "github"
+  - "openssf"
   tags:
-  - 1
+  - 4

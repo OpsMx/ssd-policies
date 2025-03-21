@@ -1,0 +1,11 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 61
+  severity: "Critical"
+  action: "Prevent"
+  conditionValue: ""
+  status: false
+  datasourceTool:
+  - "kubernetes"
+  tags:
+  - 6

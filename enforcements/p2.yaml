@@ -1,9 +1,9 @@
 type: PolicyEnforcement
 metadata:
-  policyDefinitionId: 1
-  severity: "Medium"
+  policyDefinitionId: 2
+  severity: "High"
   action: "Alert"
-  conditionValue: "true"
+  conditionValue: "2"
   status: true
   datasourceTool:
   - "github"

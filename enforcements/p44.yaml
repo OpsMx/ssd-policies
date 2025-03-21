@@ -1,11 +1,13 @@
 type: PolicyEnforcement
 metadata:
-  policyDefinitionId: 1
+  policyDefinitionId: 44
   severity: "Medium"
   action: "Alert"
-  conditionValue: "true"
+  conditionValue: "3.0"
   status: true
   datasourceTool:
-  - "github"
+  - "sonarqube"
   tags:
-  - 1
+  - 12
+  - 11
+  - 10

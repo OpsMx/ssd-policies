@@ -1,7 +1,7 @@
 type: PolicyEnforcement
 metadata:
-  policyDefinitionId: 1
-  severity: "Medium"
+  policyDefinitionId: 3
+  severity: "High"
   action: "Alert"
   conditionValue: "true"
   status: true
@@ -9,3 +9,6 @@ metadata:
   - "github"
   tags:
   - 1
+  - 11
+  - 13
+  - 17

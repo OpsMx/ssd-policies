@@ -1,0 +1,12 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 8
+  severity: "Critical"
+  action: "Alert"
+  conditionValue: "CRITICAL"
+  status: true
+  datasourceTool:
+  - "graphql"
+  tags:
+  - 17
+  - 22

@@ -1,0 +1,13 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 67
+  severity: "Critical"
+  action: "Alert"
+  conditionValue: "5.0"
+  status: true
+  datasourceTool:
+  - "sonarqube"
+  tags:
+  - 12
+  - 11
+  - 10

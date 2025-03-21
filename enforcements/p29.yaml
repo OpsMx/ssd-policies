@@ -1,0 +1,12 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 29
+  severity: "Critical"
+  action: "Alert"
+  conditionValue: "5"
+  status: true
+  datasourceTool:
+  - "openssf"
+  tags:
+  - 4
+  - 17

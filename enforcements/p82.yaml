@@ -1,11 +1,11 @@
 type: PolicyEnforcement
 metadata:
-  policyDefinitionId: 1
+  policyDefinitionId: 82
   severity: "Medium"
   action: "Alert"
-  conditionValue: "true"
+  conditionValue: ""
   status: true
   datasourceTool:
-  - "github"
+  - "cis-kubescape"
   tags:
-  - 1
+  - 14

@@ -1,7 +1,7 @@
 type: PolicyEnforcement
 metadata:
-  policyDefinitionId: 1
-  severity: "Medium"
+  policyDefinitionId: 5
+  severity: "Low"
   action: "Alert"
   conditionValue: "true"
   status: true

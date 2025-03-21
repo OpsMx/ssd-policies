@@ -1,0 +1,14 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 46
+  severity: "Medium"
+  action: "Prevent"
+  conditionValue: ""
+  status: false
+  datasourceTool:
+  - "kubernetes"
+  tags:
+  - 5
+  - 7
+  - 8
+  - 17

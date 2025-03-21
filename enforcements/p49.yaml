@@ -1,11 +1,13 @@
 type: PolicyEnforcement
 metadata:
-  policyDefinitionId: 1
+  policyDefinitionId: 49
   severity: "Medium"
   action: "Alert"
-  conditionValue: "true"
+  conditionValue: ""
   status: true
   datasourceTool:
-  - "github"
+  - "semgrep"
   tags:
-  - 1
+  - 12
+  - 11
+  - 10
