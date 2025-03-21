@@ -1,0 +1,12 @@
+id: 147
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-4.1.1 Ensure that the kubelet service file permissions are set to 600 or more restrictive"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "The kubelet service file controls various parameters that set the behavior of the kubelet service in the worker node. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-4.1.1 Ensure that the kubelet service file permissions are set to 600 or more restrictive"
+  suggestion: ""

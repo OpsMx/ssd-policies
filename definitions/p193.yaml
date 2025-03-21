@@ -1,0 +1,12 @@
+id: 193
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-5.4.2 Consider external secret storage"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Kubernetes supports secrets as first-class objects, but care needs to be taken to ensure that access to secrets is carefully limited. Using an external secrets provider can ease the management of access to secrets, especially where secrets are used across both Kubernetes and non-Kubernetes environments."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-5.4.2 Consider external secret storage"
+  suggestion: ""

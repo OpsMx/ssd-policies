@@ -1,0 +1,12 @@
+id: 187
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-5.2.11 Minimize the admission of Windows HostProcess Containers"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "A Windows container making use of the hostProcess flag can interact with the underlying Windows cluster node. As per the Kubernetes documentation, this provides \"
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-5.2.11 Minimize the admission of Windows HostProcess Containers"
+  suggestion: ""

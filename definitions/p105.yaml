@@ -1,0 +1,12 @@
+id: 105
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.2.8 Ensure that the API Server --authorization-mode argument includes RBAC"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Role Based Access Control "
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.2.8 Ensure that the API Server --authorization-mode argument includes RBAC"
+  suggestion: ""

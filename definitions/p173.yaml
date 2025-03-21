@@ -1,0 +1,12 @@
+id: 173
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-5.1.4 Minimize access to create pods"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "The ability to create pods in a cluster opens up possibilities for privilege escalation and should be restricted, where possible."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-5.1.4 Minimize access to create pods"
+  suggestion: ""

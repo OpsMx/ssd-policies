@@ -1,0 +1,12 @@
+id: 101
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.2.4 Ensure that the API Server --kubelet-client-certificate and --kubelet-client-key arguments are set as appropriate"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "The apiserver, by default, does not authenticate itself to the kubelets HTTPS endpoints. The requests from the apiserver are treated anonymously. You should set up certificate-based kubelet authentication to ensure that the apiserver authenticates itself to kubelets when submitting requests."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.2.4 Ensure that the API Server --kubelet-client-certificate and --kubelet-client-key arguments are set as appropriate"
+  suggestion: ""

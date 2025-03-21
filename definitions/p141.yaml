@@ -1,0 +1,12 @@
+id: 141
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-2.4 Ensure that the --peer-cert-file and --peer-key-file arguments are set as appropriate"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted in transit and also amongst peers in the etcd clusters."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-2.4 Ensure that the --peer-cert-file and --peer-key-file arguments are set as appropriate"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 156
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-4.1.10 If the kubelet config.yaml configuration file is being used validate file ownership is set to root:root"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "The kubelet reads various parameters, including security settings, from a config file specified by the --config argument. If this file is specified you should restrict its file permissions to maintain the integrity of the file. The file should be owned by root:root."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-4.1.10 If the kubelet config.yaml configuration file is being used validate file ownership is set to root:root"
+  suggestion: ""

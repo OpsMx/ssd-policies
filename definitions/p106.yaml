@@ -1,0 +1,12 @@
+id: 106
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.2.9 Ensure that the admission control plugin EventRateLimit is set"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Using EventRateLimit admission control enforces a limit on the number of events that the API Server will accept in a given time slice. A misbehaving workload could overwhelm and DoS the API Server, making it unavailable. This particularly applies to a multi-tenant cluster, where there might be a small percentage of misbehaving tenants which could have a significant impact on the performance of the cluster overall. Hence, it is recommended to limit the rate of events that the API server will accept. Note: This is an Alpha feature in the Kubernetes 1.15 release."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: ""
+  suggestion: ""

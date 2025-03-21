@@ -1,0 +1,12 @@
+id: 189
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-5.2.13 Minimize the admission of containers which use HostPorts"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Host ports connect containers directly to the hosts network. This can bypass controls such as network policy. There should be at least one admission control policy defined which does not permit containers which require the use of HostPorts. If you need to run containers which require HostPorts, this should be defined in a separate policy and you should carefully check to ensure that only limited service accounts and users are given permission to use that policy."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-5.2.13 Minimize the admission of containers which use HostPorts"
+  suggestion: ""

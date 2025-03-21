@@ -1,0 +1,12 @@
+id: 197
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-5.7.4 The default namespace should not be used"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Resources in a Kubernetes cluster should be segregated by namespace, to allow for security controls to be applied at that level and to make it easier to manage resources."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-5.7.4 The default namespace should not be used"
+  suggestion: ""

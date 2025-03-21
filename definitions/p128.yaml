@@ -1,0 +1,12 @@
+id: 128
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.2.31 Ensure that the API Server only makes use of Strong Cryptographic Ciphers"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "TLS ciphers have had a number of known vulnerabilities and weaknesses, which can reduce the protection provided by them. By default Kubernetes supports a number of TLS ciphersuites including some that have security concerns, weakening the protection provided."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.2.31 Ensure that the API Server only makes use of Strong Cryptographic Ciphers"
+  suggestion: ""

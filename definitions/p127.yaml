@@ -1,0 +1,12 @@
+id: 127
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.2.30 Ensure that encryption providers are appropriately configured"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Where etcd encryption is used, it is important to ensure that the appropriate set of encryption providers is used. Currently, the aescbc, kms and secretbox are likely to be appropriate options."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.2.30 Ensure that encryption providers are appropriately configured"
+  suggestion: ""

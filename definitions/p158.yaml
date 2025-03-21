@@ -1,0 +1,12 @@
+id: 158
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-4.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Kubelets, by default, allow all authenticated requests (even anonymous ones) without needing explicit authorization checks from the apiserver. You should restrict this behavior and only allow explicitly authorized requests."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-4.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow"
+  suggestion: ""

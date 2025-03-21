@@ -1,0 +1,12 @@
+id: 192
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-5.4.1 Prefer using secrets as files over secrets as environment variables"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "It is reasonably common for application code to log out its environment (particularly in the event of an error). This will include any secret values passed in as environment variables, so secrets can easily be exposed to any user or entity who has access to the logs."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-5.4.1 Prefer using secrets as files over secrets as environment variables"
+  suggestion: ""

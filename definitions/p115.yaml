@@ -1,0 +1,12 @@
+id: 115
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.2.18 Ensure that the API Server --audit-log-path argument is set"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Auditing the Kubernetes API Server provides a security-relevant chronological set of records documenting the sequence of activities that have affected system by individual users, administrators or other components of the system. Even though currently, Kubernetes provides only basic audit capabilities, it should be enabled. You can enable it by setting an appropriate audit log path."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.2.18 Ensure that the API Server --audit-log-path argument is set"
+  suggestion: ""

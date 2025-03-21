@@ -1,0 +1,12 @@
+id: 190
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-5.3.1 Ensure that the CNI in use supports Network Policies"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Kubernetes network policies are enforced by the CNI plugin in use. As such it is important to ensure that the CNI plugin supports both Ingress and Egress network policies."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-5.3.1 Ensure that the CNI in use supports Network Policies"
+  suggestion: ""

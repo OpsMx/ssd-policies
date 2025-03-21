@@ -1,0 +1,12 @@
+id: 102
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.2.5 Ensure that the API Server --kubelet-certificate-authority argument is set as appropriate"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "The connections from the apiserver to the kubelet are used for fetching logs for pods, attaching "
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.2.5 Ensure that the API Server --kubelet-certificate-authority argument is set as appropriate"
+  suggestion: ""

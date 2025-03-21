@@ -1,0 +1,12 @@
+id: 175
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-5.1.6 Ensure that Service Account Tokens are only mounted where necessary"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Mounting service account tokens inside pods can provide an avenue for privilege escalation attacks where an attacker is able to compromise a single pod in the cluster. Avoiding mounting these tokens removes this attack avenue."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-5.1.6 Ensure that Service Account Tokens are only mounted where necessary"
+  suggestion: ""

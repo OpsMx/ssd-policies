@@ -1,0 +1,12 @@
+id: 135
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.3.7 Ensure that the Controller Manager --bind-address argument is set to 127.0.0.1"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "The Controller Manager API service which runs on port 10252/TCP by default is used for health and metrics information and is available without authentication or encryption. As such it should only be bound to a localhost interface, to minimize the clusters attack surface."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.3.7 Ensure that the Controller Manager --bind-address argument is set to 127.0.0.1"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 124
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.2.27 Ensure that the API Server --client-ca-file argument is set as appropriate"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "API server communication contains sensitive parameters that should remain encrypted in transit. Configure the API server to serve only HTTPS traffic. If --client-ca-file argument is set, any request presenting a client certificate signed by one of the authorities in the client-ca-file is authenticated with an identity corresponding to the CommonName of the client certificate."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.2.27 Ensure that the API Server --client-ca-file argument is set as appropriate"
+  suggestion: ""

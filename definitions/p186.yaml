@@ -1,0 +1,12 @@
+id: 186
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-5.2.10 Minimize the admission of containers with capabilities assigned"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Containers run with a default set of capabilities as assigned by the Container Runtime. Capabilities are parts of the rights generally granted on a Linux system to the root user. In many cases applications running in containers do not require any capabilities to operate, so from the perspective of the principal of least privilege use of capabilities should be minimized."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-5.2.10 Minimize the admission of containers with capabilities assigned"
+  suggestion: ""

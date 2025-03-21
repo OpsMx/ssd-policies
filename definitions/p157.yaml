@@ -1,0 +1,12 @@
+id: 157
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-4.2.1 Ensure that the --anonymous-auth argument is set to false"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. These requests are then served by the Kubelet server. You should rely on authentication to authorize access and disallow anonymous requests."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-4.2.1 Ensure that the --anonymous-auth argument is set to false"
+  suggestion: ""

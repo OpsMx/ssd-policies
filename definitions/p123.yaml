@@ -1,0 +1,12 @@
+id: 123
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.2.26 Ensure that the API Server --tls-cert-file and --tls-private-key-file arguments are set as appropriate"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "API server communication contains sensitive parameters that should remain encrypted in transit. Configure the API server to serve only HTTPS traffic."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.2.26 Ensure that the API Server --tls-cert-file and --tls-private-key-file arguments are set as appropriate"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 132
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.3.4 Ensure that the Controller Manager --service-account-private-key-file argument is set as appropriate"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "To ensure that keys for service account tokens can be rotated as needed, a separate public/private key pair should be used for signing service account tokens. The private key should be specified to the controller manager with --service-account-private-key-file as appropriate."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.3.4 Ensure that the Controller Manager --service-account-private-key-file argument is set as appropriate"
+  suggestion: ""

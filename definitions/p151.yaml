@@ -1,0 +1,12 @@
+id: 151
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-4.1.5 Ensure that the --kubeconfig kubelet.conf file permissions are set to 600 or more restrictive"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "The kubelet.conf file is the kubeconfig file for the node, and controls various parameters that set the behavior and identity of the worker node. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-4.1.5 Ensure that the --kubeconfig kubelet.conf file permissions are set to 600 or more restrictive"
+  suggestion: ""

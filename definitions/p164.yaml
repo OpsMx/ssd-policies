@@ -1,0 +1,12 @@
+id: 164
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-4.2.8 Ensure that the --hostname-override argument is not set"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Overriding hostnames could potentially break TLS setup between the kubelet and the apiserver. Additionally, with overridden hostnames, it becomes increasingly difficult to associate logs with a particular node and process them for security analytics. Hence, you should setup your kubelet nodes with resolvable FQDNs and avoid overriding the hostnames with IPs."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-4.2.8 Ensure that the --hostname-override argument is not set"
+  suggestion: ""

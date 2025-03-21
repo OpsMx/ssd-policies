@@ -1,0 +1,12 @@
+id: 137
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.4.2 Ensure that the Scheduler --bind-address argument is set to 127.0.0.1"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "The Scheduler API service which runs on port 10251/TCP by default is used for health and metrics information and is available without authentication or encryption. As such it should only be bound to a localhost interface, to minimize the clusters attack surface."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.4.2 Ensure that the Scheduler --bind-address argument is set to 127.0.0.1"
+  suggestion: ""

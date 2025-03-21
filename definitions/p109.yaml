@@ -1,0 +1,12 @@
+id: 109
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.2.12 Ensure that the admission control plugin SecurityContextDeny is set if PodSecurityPolicy is not used"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "SecurityContextDeny can be used to provide a layer of security for clusters which do not have PodSecurityPolicies enabled."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.2.12 Ensure that the admission control plugin SecurityContextDeny is set if PodSecurityPolicy is not used"
+  suggestion: ""

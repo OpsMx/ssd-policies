@@ -1,0 +1,12 @@
+id: 194
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-5.7.1 Create administrative boundaries between resources using namespaces"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Limiting the scope of user permissions can reduce the impact of mistakes or malicious activities. A Kubernetes namespace allows you to partition created resources into logically named groups. Resources created in one namespace can be hidden from other namespaces. By default, each resource created by a user in Kubernetes cluster runs in a default namespace, called default. You can create additional namespaces and attach resources and users to them. You can use Kubernetes Authorization plugins to create policies that segregate access to namespace resources between different users."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-5.7.1 Create administrative boundaries between resources using namespaces"
+  suggestion: ""

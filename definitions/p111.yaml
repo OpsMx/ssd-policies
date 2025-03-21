@@ -1,0 +1,12 @@
+id: 111
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-1.2.14 Ensure that the admission control plugin NamespaceLifecycle is set"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "Setting admission control policy to NamespaceLifecycle ensures that objects cannot be created in non-existent namespaces, and that namespaces undergoing termination are not used for creating the new objects. This is recommended to enforce the integrity of the namespace termination process and also for the availability of the newer objects."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-1.2.14 Ensure that the admission control plugin NamespaceLifecycle is set"
+  suggestion: ""

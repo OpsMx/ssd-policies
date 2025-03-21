@@ -1,0 +1,12 @@
+id: 168
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-4.2.12 Verify that the RotateKubeletServerCertificate argument is set to true"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "RotateKubeletServerCertificate causes the kubelet to both request a serving certificate after bootstrapping its client credentials and rotate the certificate as its existing credentials expire. This automated periodic rotation ensures that the there are no downtimes due to expired certificates and thus addressing availability in the CIA security triad. Note: This recommendation only applies if you let kubelets get their certificates from the API server. In case your kubelet certificates come from an outside authority/tool "
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-4.2.12 Verify that the RotateKubeletServerCertificate argument is set to true"
+  suggestion: ""

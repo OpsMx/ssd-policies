@@ -1,0 +1,12 @@
+id: 182
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-5.2.6 Minimize the admission of containers with allowPrivilegeEscalation"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "A container running with the allowPrivilegeEscalation flag set to true may have processes that can gain more privileges than their parent. There should be at least one admission control policy defined which does not permit containers to allow privilege escalation. The option exists "
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-5.2.6 Minimize the admission of containers with allowPrivilegeEscalation"
+  suggestion: ""

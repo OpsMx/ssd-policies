@@ -1,0 +1,12 @@
+id: 181
+type: PolicyDefinition
+metadata:
+  policyName: "CIS-5.2.5 Minimize the admission of containers wishing to share the host network namespace"
+  category: "CIS-Benchmark"
+  stage: "deploy"
+  description: "A container running in the hosts network namespace could access the local loopback device, and could access network traffic to and from other pods. There should be at least one admission control policy defined which does not permit containers to share the host network namespace. If you need to run containers which require access to the hosts network namesapces, this should be defined in a separate policy and you should carefully check to ensure that only limited service accounts and users are given permission to use that policy."
+  scheduled_policy: false
+  scriptId: 77
+  variables: ""
+  conditionName: "CIS-5.2.5 Minimize the admission of containers wishing to share the host network namespace"
+  suggestion: ""
