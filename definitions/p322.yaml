@@ -1,0 +1,12 @@
+id: 322
+type: PolicyDefinition
+metadata:
+  policyName: "Github Actions Secret Management Policy"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Ensure all sensitive data is stored as secrets and not hardcoded in workflows."
+  scheduled_policy: false
+  scriptId: 322
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 385
+type: PolicyDefinition
+metadata:
+  policyName: "MobSF: Low Severity Certificate Issues Policy"
+  category: "Mobile Application Security Posture"
+  stage: "artifact"
+  description: "MobSF Static Scan checks the authenticity of attached certificates and raises issues in case of rule violations."
+  scheduled_policy: false
+  scriptId: 385
+  variables: ""
+  conditionName: ""
+  suggestion: ""

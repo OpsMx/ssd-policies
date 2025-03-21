@@ -1,0 +1,12 @@
+id: 315
+type: PolicyDefinition
+metadata:
+  policyName: "Artifact License Scan - License Association Policy"
+  category: "License Scan"
+  stage: "artifact"
+  description: "This policy is designed to ensure association of appropriate licenses with artifact and its components."
+  scheduled_policy: false
+  scriptId: 315
+  variables: ""
+  conditionName: ""
+  suggestion: ""

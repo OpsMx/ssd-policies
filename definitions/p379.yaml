@@ -1,0 +1,12 @@
+id: 379
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:VPC:routing-tables-with-peering"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Routing Table with VPC Peering"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

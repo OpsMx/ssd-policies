@@ -1,0 +1,12 @@
+id: 363
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:security-group-opens-all-ports-to-self"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Unrestricted Network Traffic within Security Group"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

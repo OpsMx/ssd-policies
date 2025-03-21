@@ -1,0 +1,12 @@
+id: 378
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:VPC:network-acl-not-used"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Unused Network ACLs"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

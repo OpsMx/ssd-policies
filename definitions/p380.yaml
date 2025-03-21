@@ -1,0 +1,12 @@
+id: 380
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:VPC:subnet-with-allow-all-egress-acls"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Subnet with Allow All egress NACLs"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

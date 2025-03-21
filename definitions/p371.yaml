@@ -1,0 +1,12 @@
+id: 371
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:default-security-group-with-rules"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Non-empty Rulesets for Default Security Groups"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

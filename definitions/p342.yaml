@@ -1,0 +1,12 @@
+id: 342
+type: PolicyDefinition
+metadata:
+  policyName: "Critical Vulnerability Prevention Policy for Jenkins Plugins"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Critical Severity Vulnerabilities should not be found in the plugins installed on the Jenkins Servers."
+  scheduled_policy: false
+  scriptId: 342
+  variables: ""
+  conditionName: "severity"
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 327
+type: PolicyDefinition
+metadata:
+  policyName: "Github Actions Timeout Policy"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Ensure workflows have appropriate timeout settings to prevent runaway processes."
+  scheduled_policy: false
+  scriptId: 327
+  variables: ""
+  conditionName: ""
+  suggestion: ""

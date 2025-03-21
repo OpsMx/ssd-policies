@@ -1,0 +1,12 @@
+id: 320
+type: PolicyDefinition
+metadata:
+  policyName: "Virus Total Scan - Malicious URL in Code or Configuration Policy"
+  category: "Code Security"
+  stage: "source"
+  description: "This policy is designed to restrict usage of any malicious URL in source code repository or configuration files."
+  scheduled_policy: false
+  scriptId: 320
+  variables: ""
+  conditionName: ""
+  suggestion: ""

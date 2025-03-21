@@ -1,0 +1,12 @@
+id: 343
+type: PolicyDefinition
+metadata:
+  policyName: "Medium Vulnerability Prevention Policy for Jenkins Plugins"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Medium Severity Vulnerabilities should not be found in the plugins installed on the Jenkins Servers."
+  scheduled_policy: false
+  scriptId: 343
+  variables: ""
+  conditionName: "severity"
+  suggestion: ""

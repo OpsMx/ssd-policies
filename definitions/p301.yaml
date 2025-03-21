@@ -1,0 +1,12 @@
+id: 301
+type: PolicyDefinition
+metadata:
+  policyName: "BitBucket Bot User should not be an Org Owner"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Bot User should not be an Org Owner."
+  scheduled_policy: false
+  scriptId: 301
+  variables: ""
+  conditionName: ""
+  suggestion: ""

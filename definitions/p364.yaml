@@ -1,0 +1,12 @@
+id: 364
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:security-group-opens-all-ports-to-all"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Security Group Opens All Ports to All"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

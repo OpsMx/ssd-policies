@@ -1,0 +1,12 @@
+id: 335
+type: PolicyDefinition
+metadata:
+  policyName: "Codacy Major/Warning Issues Policy"
+  category: "SAST"
+  stage: "source"
+  description: "Reports number of Major or Warning severity issues found during SAST Scans in Codacy."
+  scheduled_policy: false
+  scriptId: 335
+  variables: ""
+  conditionName: ""
+  suggestion: ""

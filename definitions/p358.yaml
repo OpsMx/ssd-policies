@@ -1,0 +1,12 @@
+id: 358
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:security-group-opens-MySQL-port-to-all"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Security Group Opens MySQL Port to All"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 366
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:instance-with-user-data-secrets"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Potential Secret in Instance User Data"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

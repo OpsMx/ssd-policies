@@ -1,0 +1,12 @@
+id: 374
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:VPC:custom-network-acls-allow-all-egress"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Network ACLs Allow All egress Traffic (custom)"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 311
+type: PolicyDefinition
+metadata:
+  policyName: "Code License Scan - Low Severity License Association Policy"
+  category: "License Scan"
+  stage: "source"
+  description: "This policy is designed to restrict association of low severity licenses with source code repository."
+  scheduled_policy: false
+  scriptId: 311
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 344
+type: PolicyDefinition
+metadata:
+  policyName: "High Vulnerability Prevention Policy for Jenkins Plugins"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "High Severity Vulnerabilities should not be found in the plugins installed on the Jenkins Servers."
+  scheduled_policy: false
+  scriptId: 344
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 341
+type: PolicyDefinition
+metadata:
+  policyName: "Low Vulnerability Prevention Policy for Jenkins Plugins"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Low Severity Vulnerability should not be found in the plugins installed on the Jenkins Servers."
+  scheduled_policy: false
+  scriptId: 341
+  variables: ""
+  conditionName: "severity"
+  suggestion: ""

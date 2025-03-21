@@ -1,0 +1,12 @@
+id: 373
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:ami-public"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Publicly Accessible AMI"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

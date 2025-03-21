@@ -1,0 +1,12 @@
+id: 332
+type: PolicyDefinition
+metadata:
+  policyName: "Sonarqube Major Issues Status Policy"
+  category: "SAST"
+  stage: "source"
+  description: "Reports number of Major severity issues found during SAST Scans in Sonarqube."
+  scheduled_policy: false
+  scriptId: 332
+  variables: ""
+  conditionName: ""
+  suggestion: ""

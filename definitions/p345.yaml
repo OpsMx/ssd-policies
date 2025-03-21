@@ -1,0 +1,12 @@
+id: 345
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:unused-security-group"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Unused Security Group"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

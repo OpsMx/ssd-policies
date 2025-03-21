@@ -1,0 +1,12 @@
+id: 336
+type: PolicyDefinition
+metadata:
+  policyName: "Codacy Info Issues Policy"
+  category: "SAST"
+  stage: "source"
+  description: "Reports number of Info or Minor severity issues found during SAST Scans in Codacy."
+  scheduled_policy: false
+  scriptId: 336
+  variables: ""
+  conditionName: ""
+  suggestion: ""

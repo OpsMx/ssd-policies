@@ -1,0 +1,12 @@
+id: 308
+type: PolicyDefinition
+metadata:
+  policyName: "Snyk Code Scan - Medium Severity Findings Policy"
+  category: "SAST"
+  stage: "source"
+  description: "This policy is designed to ensure timely identification, assessment, and resolution of medium-severity findings in Snyk Code Scan analysis. It outlines the procedures and responsibilities for addressing issues that could pose significant risks to code quality and security."
+  scheduled_policy: false
+  scriptId: 308
+  variables: ""
+  conditionName: ""
+  suggestion: ""

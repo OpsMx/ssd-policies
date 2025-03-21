@@ -1,0 +1,12 @@
+id: 360
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:security-group-opens-MongoDB-port-to-all"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Security Group Opens MongoDB Port to All"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

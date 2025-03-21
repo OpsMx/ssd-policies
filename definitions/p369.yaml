@@ -1,0 +1,12 @@
+id: 369
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:ebs-snapshot-not-encrypted"
+  category: "CSPM"
+  stage: "deploy"
+  description: "EBS Snapshot Not Encrypted"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

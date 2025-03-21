@@ -1,0 +1,12 @@
+id: 321
+type: PolicyDefinition
+metadata:
+  policyName: "Virus Total Scan - Suspicious URL in Code or Configuration Policy"
+  category: "Code Security"
+  stage: "source"
+  description: "This policy is designed to restrict usage of any suspicious URL in source code repository or configuration files."
+  scheduled_policy: false
+  scriptId: 321
+  variables: ""
+  conditionName: ""
+  suggestion: ""

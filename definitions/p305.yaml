@@ -1,0 +1,12 @@
+id: 305
+type: PolicyDefinition
+metadata:
+  policyName: "BitBucket Webhook Usage Policy"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Webhook provide secure way of consuming events from source repository. Thus, webhooks must be used for integration with other platforms."
+  scheduled_policy: false
+  scriptId: 305
+  variables: ""
+  conditionName: ""
+  suggestion: ""

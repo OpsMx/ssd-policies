@@ -1,0 +1,12 @@
+id: 325
+type: PolicyDefinition
+metadata:
+  policyName: "Github Actions Workflow Trigger Policy"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Ensure workflows are triggered securely to prevent abuse. This policy verifies that workflows are triggered on specific branches and events, and not on arbitrary pushes or pull requests."
+  scheduled_policy: false
+  scriptId: 325
+  variables: ""
+  conditionName: ""
+  suggestion: ""

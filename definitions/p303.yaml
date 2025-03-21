@@ -1,0 +1,12 @@
+id: 303
+type: PolicyDefinition
+metadata:
+  policyName: "BitBucket Single Owner of Organization"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "To reduce the attack surface it is recommended to have more than 1 admin of an organization or workspace."
+  scheduled_policy: false
+  scriptId: 303
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 338
+type: PolicyDefinition
+metadata:
+  policyName: "OWASP ZAP DAST Scan Medium Risk Policy"
+  category: "DAST"
+  stage: "postdeploy"
+  description: "Reports Medium risk issues found during DAST Scans in OWASP ZAP."
+  scheduled_policy: false
+  scriptId: 338
+  variables: ""
+  conditionName: ""
+  suggestion: ""

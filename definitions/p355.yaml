@@ -1,0 +1,12 @@
+id: 355
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:security-group-opens-plaintext-port-FTP"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Security Group Opens FTP Port"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

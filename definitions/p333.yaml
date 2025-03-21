@@ -1,0 +1,12 @@
+id: 333
+type: PolicyDefinition
+metadata:
+  policyName: "Sonarqube Info/Minor Issues Status Policy"
+  category: "SAST"
+  stage: "source"
+  description: "Reports number of Info or Minor severity issues found during SAST Scans in Sonarqube."
+  scheduled_policy: false
+  scriptId: 333
+  variables: ""
+  conditionName: ""
+  suggestion: ""

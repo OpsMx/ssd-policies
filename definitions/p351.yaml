@@ -1,0 +1,12 @@
+id: 351
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:security-group-opens-RDP-port-to-all"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Security Group Opens RDP Port to All"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

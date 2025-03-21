@@ -1,0 +1,12 @@
+id: 348
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:security-group-opens-TCP-port-to-all"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Security Group Opens TCP Port to All"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

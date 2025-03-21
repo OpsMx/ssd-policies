@@ -1,0 +1,12 @@
+id: 382
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:VPC:subnet-without-flow-log"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Subnet without a Flow Log"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

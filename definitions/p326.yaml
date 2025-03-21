@@ -1,0 +1,12 @@
+id: 326
+type: PolicyDefinition
+metadata:
+  policyName: "Github Actions Secure Communication Policy"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Ensure secure communication channels are used within workflows. This policy verifies that all network communications within workflows use secure protocols."
+  scheduled_policy: false
+  scriptId: 326
+  variables: ""
+  conditionName: ""
+  suggestion: ""

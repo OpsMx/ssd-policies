@@ -1,0 +1,12 @@
+id: 302
+type: PolicyDefinition
+metadata:
+  policyName: "BitBucket Auto-merge should be disabled"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Auto-merge should not be allowed in code repository."
+  scheduled_policy: false
+  scriptId: 302
+  variables: ""
+  conditionName: ""
+  suggestion: ""

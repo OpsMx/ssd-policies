@@ -1,0 +1,12 @@
+id: 377
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:VPC:default-network-acls-allow-all-ingress"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Network ACLs Allow All ingress Traffic (default)"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

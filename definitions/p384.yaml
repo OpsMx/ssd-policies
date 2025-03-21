@@ -1,0 +1,12 @@
+id: 384
+type: PolicyDefinition
+metadata:
+  policyName: "Virus Total Suspicious Malware Detection Policy"
+  category: "Mobile Application Security Posture"
+  stage: "artifact"
+  description: "Virus Total detects various Malwares that can be attached to an APK or IPA file which can harm hosting device or compromise user data upon installation."
+  scheduled_policy: false
+  scriptId: 384
+  variables: ""
+  conditionName: ""
+  suggestion: ""

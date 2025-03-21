@@ -1,0 +1,12 @@
+id: 328
+type: PolicyDefinition
+metadata:
+  policyName: "Github Actions Workflow Permissions Policy"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Ensure workflows has limited permissions over repository."
+  scheduled_policy: false
+  scriptId: 328
+  variables: ""
+  conditionName: ""
+  suggestion: ""

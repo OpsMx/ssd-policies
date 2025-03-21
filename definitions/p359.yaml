@@ -1,0 +1,12 @@
+id: 359
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:security-group-opens-MsSQL-port-to-all"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Security Group Opens MsSQL Port to All"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

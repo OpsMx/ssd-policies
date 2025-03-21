@@ -1,0 +1,12 @@
+id: 329
+type: PolicyDefinition
+metadata:
+  policyName: "Sonarqube Blocker Issues Policy"
+  category: "SAST"
+  stage: "source"
+  description: "Reports various Blocker severity issues found during SAST Scans in Sonarqube."
+  scheduled_policy: false
+  scriptId: 329
+  variables: ""
+  conditionName: ""
+  suggestion: ""

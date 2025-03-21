@@ -1,0 +1,12 @@
+id: 330
+type: PolicyDefinition
+metadata:
+  policyName: "Sonarqube Critical Issues Policy"
+  category: "SAST"
+  stage: "source"
+  description: "Reports various Critical severity issues found during SAST Scans in Sonarqube."
+  scheduled_policy: false
+  scriptId: 330
+  variables: ""
+  conditionName: ""
+  suggestion: ""

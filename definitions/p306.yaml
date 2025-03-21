@@ -1,0 +1,12 @@
+id: 306
+type: PolicyDefinition
+metadata:
+  policyName: "BitBucket Webhook SSL/TLS Protection Policy"
+  category: "Git Security Posture"
+  stage: "source"
+  description: "Webhooks should use SSL/TLS."
+  scheduled_policy: false
+  scriptId: 306
+  variables: ""
+  conditionName: ""
+  suggestion: ""

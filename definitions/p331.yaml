@@ -1,0 +1,12 @@
+id: 331
+type: PolicyDefinition
+metadata:
+  policyName: "Sonarqube Blocker/Critical Issues Status Policy"
+  category: "SAST"
+  stage: "source"
+  description: "Reports number of Blocker or Critical severity issues found during SAST Scans in Sonarqube."
+  scheduled_policy: false
+  scriptId: 331
+  variables: ""
+  conditionName: ""
+  suggestion: ""

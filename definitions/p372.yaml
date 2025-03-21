@@ -1,0 +1,12 @@
+id: 372
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:default-security-group-in-use"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Default Security Groups in Use"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

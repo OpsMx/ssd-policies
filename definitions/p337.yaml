@@ -1,0 +1,12 @@
+id: 337
+type: PolicyDefinition
+metadata:
+  policyName: "OWASP ZAP DAST Scan High Risk Policy"
+  category: "DAST"
+  stage: "postdeploy"
+  description: "Reports High risk issues found during DAST Scans in OWASP ZAP."
+  scheduled_policy: false
+  scriptId: 337
+  variables: ""
+  conditionName: ""
+  suggestion: ""

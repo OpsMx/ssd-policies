@@ -1,0 +1,12 @@
+id: 334
+type: PolicyDefinition
+metadata:
+  policyName: "Codacy Critical Issues Policy"
+  category: "SAST"
+  stage: "source"
+  description: "Reports number of Critical or Error severity issues found during SAST Scans in Codacy."
+  scheduled_policy: false
+  scriptId: 334
+  variables: ""
+  conditionName: ""
+  suggestion: ""

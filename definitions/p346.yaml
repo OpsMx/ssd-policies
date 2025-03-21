@@ -1,0 +1,12 @@
+id: 346
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:security-group-whitelists-aws"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Security Group Whitelists AWS CIDRs"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

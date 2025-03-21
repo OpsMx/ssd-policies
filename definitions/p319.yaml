@@ -1,0 +1,12 @@
+id: 319
+type: PolicyDefinition
+metadata:
+  policyName: "Artifact License Scan - Critical Severity License Association Policy"
+  category: "License Scan"
+  stage: "artifact"
+  description: "This policy is designed to restrict association of critical severity licenses with artifact and its components."
+  scheduled_policy: false
+  scriptId: 319
+  variables: ""
+  conditionName: ""
+  suggestion: ""

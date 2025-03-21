@@ -1,0 +1,12 @@
+id: 370
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:ebs-default-encryption-disabled"
+  category: "CSPM"
+  stage: "deploy"
+  description: "EBS Encryption By Default Is Disabled"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

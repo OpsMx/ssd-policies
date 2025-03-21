@@ -1,0 +1,12 @@
+id: 323
+type: PolicyDefinition
+metadata:
+  policyName: "Github Actions Approved Actions Policy"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Only use approved GitHub Actions from a whitelist of trusted sources."
+  scheduled_policy: false
+  scriptId: 323
+  variables: ""
+  conditionName: ""
+  suggestion: ""

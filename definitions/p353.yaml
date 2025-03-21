@@ -1,0 +1,12 @@
+id: 353
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:security-group-opens-port-range"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Security Group Uses Port Range"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

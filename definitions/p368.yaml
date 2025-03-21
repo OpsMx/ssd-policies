@@ -1,0 +1,12 @@
+id: 368
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:ebs-snapshot-public"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Public EBS Snapshot"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

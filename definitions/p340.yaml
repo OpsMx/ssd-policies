@@ -1,0 +1,12 @@
+id: 340
+type: PolicyDefinition
+metadata:
+  policyName: "OWASP ZAP DAST Scan Informational Risk Policy"
+  category: "DAST"
+  stage: "postdeploy"
+  description: "Reports Informational risk issues found during DAST Scans in OWASP ZAP."
+  scheduled_policy: false
+  scriptId: 340
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 367
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:EC2:ebs-volume-not-encrypted"
+  category: "CSPM"
+  stage: "deploy"
+  description: "EBS Volume Not Encrypted"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

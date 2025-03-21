@@ -1,0 +1,12 @@
+id: 310
+type: PolicyDefinition
+metadata:
+  policyName: "Code License Scan - License Association Policy"
+  category: "License Scan"
+  stage: "source"
+  description: "This policy is designed to ensure association of appropriate licenses with source code repository."
+  scheduled_policy: false
+  scriptId: 310
+  variables: ""
+  conditionName: ""
+  suggestion: ""

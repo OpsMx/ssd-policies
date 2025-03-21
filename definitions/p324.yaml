@@ -1,0 +1,12 @@
+id: 324
+type: PolicyDefinition
+metadata:
+  policyName: "Github Actions Dependency Management Policy"
+  category: "Build Security Posture"
+  stage: "build"
+  description: "Ensure dependencies are checked and managed securely. This policy verifies that dependencies are fetched from trusted sources and validate checksums where applicable."
+  scheduled_policy: false
+  scriptId: 324
+  variables: ""
+  conditionName: ""
+  suggestion: ""

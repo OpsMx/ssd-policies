@@ -1,0 +1,12 @@
+id: 381
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:VPC:subnet-with-allow-all-ingress-acls"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Subnet with Allow All ingress NACLs"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""
