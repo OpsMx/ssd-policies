@@ -1,5 +1,5 @@
 id: 1
-type: policyDefinition
+type: PolicyDefinition
 metadata:
   policyName: "Repository Access Control Policy"
   category: "Git Security Posture"
