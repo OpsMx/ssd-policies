@@ -1,0 +1,12 @@
+id: 431
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:password-policy-reuse-enabled"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Password Policy Allows the Reuse of Passwords"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

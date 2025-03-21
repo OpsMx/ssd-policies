@@ -1,0 +1,12 @@
+id: 430
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:role-with-inline-policies"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Role with Inline Policies"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

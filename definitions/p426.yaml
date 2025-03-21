@@ -1,0 +1,12 @@
+id: 426
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:root-account-with-active-certs"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Root Account Has Active X.509 Certs"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

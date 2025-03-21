@@ -1,0 +1,12 @@
+id: 457
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:assume-role-lacks-external-id-and-mfa"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Cross-Account AssumeRole Policy Lacks External ID and MFA"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 455
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:ec2-role-without-instances"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Unused Role for EC2 Service"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

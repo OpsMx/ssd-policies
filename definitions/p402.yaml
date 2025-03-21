@@ -1,0 +1,12 @@
+id: 402
+type: PolicyDefinition
+metadata:
+  policyName: "MobSF: High Severity Mach-O Issues Policy"
+  category: "Mobile Application Security Posture"
+  stage: "artifact"
+  description: "MobSF Static Scan checks the Mach-O configuration of an application and raises issues in case of rule violations."
+  scheduled_policy: false
+  scriptId: 402
+  variables: ""
+  conditionName: ""
+  suggestion: ""

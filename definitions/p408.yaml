@@ -1,0 +1,12 @@
+id: 408
+type: PolicyDefinition
+metadata:
+  policyName: "MobSF: High Severity AppSec Issues Policy"
+  category: "Mobile Application Security Posture"
+  stage: "artifact"
+  description: "MobSF Static Scan performs AppSec Analysis on an application and raises issues in case of rule violations."
+  scheduled_policy: false
+  scriptId: 408
+  variables: ""
+  conditionName: ""
+  suggestion: ""

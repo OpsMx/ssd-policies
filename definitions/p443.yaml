@@ -1,0 +1,12 @@
+id: 443
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:inline-user-policy-allows-iam-PassRole"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Inline user Policy Allows iam:PassRole For All Resources"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

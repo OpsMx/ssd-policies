@@ -1,0 +1,12 @@
+id: 421
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:user-with-inline-policies"
+  category: "CSPM"
+  stage: "deploy"
+  description: "User with inline Policies"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

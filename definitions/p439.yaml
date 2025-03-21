@@ -1,0 +1,12 @@
+id: 439
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:managed-policy-allows-full-privileges"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Managed Policy Allows All Actions"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

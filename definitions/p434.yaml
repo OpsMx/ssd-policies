@@ -1,0 +1,12 @@
+id: 434
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:password-policy-expiration-threshold"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Passwords Expire after 90 Days"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

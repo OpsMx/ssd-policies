@@ -1,0 +1,12 @@
+id: 449
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:inline-group-policy-allows-NotActions"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Inline group Policy Allows NotActions"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 440
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:lightspin-user-action-denied-for-group"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Policy with Denied User Actions for Group Objects"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

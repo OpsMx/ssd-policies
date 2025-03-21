@@ -1,0 +1,12 @@
+id: 420
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:user-with-multiple-access-keys"
+  category: "CSPM"
+  stage: "deploy"
+  description: "User with Multiple API Keys"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

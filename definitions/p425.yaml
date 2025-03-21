@@ -1,0 +1,12 @@
+id: 425
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:root-account-with-active-keys"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Root Account Has Active Keys"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 432
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:password-policy-no-expiration"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Password Expiration Disabled"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 435
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:managed-policy-no-attachments"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Managed Policy Not Attached to Any Entity"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

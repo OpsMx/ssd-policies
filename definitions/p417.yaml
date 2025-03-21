@@ -1,0 +1,12 @@
+id: 417
+type: PolicyDefinition
+metadata:
+  policyName: "TfSec: IaC Scan High Severity Issues Policy"
+  category: "IaC Security Posture"
+  stage: "deploy"
+  description: "TfSec Scan checks for security violations in terraform scripts."
+  scheduled_policy: false
+  scriptId: 417
+  variables: ""
+  conditionName: ""
+  suggestion: ""

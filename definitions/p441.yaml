@@ -1,0 +1,12 @@
+id: 441
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:inline-user-policy-allows-sts-AssumeRole"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Inline user Policy Allows sts:AssumeRole For All Resources"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 419
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:user-without-mfa"
+  category: "CSPM"
+  stage: "deploy"
+  description: "User without MFA"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

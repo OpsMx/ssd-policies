@@ -1,0 +1,12 @@
+id: 429
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:root-account-no-hardware-mfa"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Root Account without Hardware MFA"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

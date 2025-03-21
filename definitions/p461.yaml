@@ -1,0 +1,12 @@
+id: 461
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:managed-policy-allows-NotActions"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Managed Policy Allows NotActions"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

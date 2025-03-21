@@ -1,0 +1,12 @@
+id: 433
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:password-policy-minimum-length"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Minimum Password Length Too Short"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 428
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:root-account-no-mfa"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Root Account without MFA"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

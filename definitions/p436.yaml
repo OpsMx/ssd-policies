@@ -1,0 +1,12 @@
+id: 436
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:managed-policy-allows-sts-AssumeRole"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Managed Policy Allows sts:AssumeRole For All Resources"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

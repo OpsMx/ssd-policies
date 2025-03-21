@@ -1,0 +1,12 @@
+id: 454
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:group-with-inline-policies"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Group with Inline Policies"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

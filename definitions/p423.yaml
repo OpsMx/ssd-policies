@@ -1,0 +1,12 @@
+id: 423
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:user-no-Active-key-rotation"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Lack of Key Rotation for 90 Days (Key Status: Active)"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

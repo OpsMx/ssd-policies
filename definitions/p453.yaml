@@ -1,0 +1,12 @@
+id: 453
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:group-with-no-users"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Group with No Users"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

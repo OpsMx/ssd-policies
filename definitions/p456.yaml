@@ -1,0 +1,12 @@
+id: 456
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:assume-role-policy-allows-all"
+  category: "CSPM"
+  stage: "deploy"
+  description: "AssumeRole Policy Allows All Principals"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

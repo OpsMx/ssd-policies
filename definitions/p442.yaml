@@ -1,0 +1,12 @@
+id: 442
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:inline-user-policy-allows-NotActions"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Inline user Policy Allows NotActions"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

@@ -1,0 +1,12 @@
+id: 468
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:inline-role-policy-allows-iam-PassRole"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Inline role Policy Allows iam:PassRole For All Resources"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

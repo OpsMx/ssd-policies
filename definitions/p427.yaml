@@ -1,0 +1,12 @@
+id: 427
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:root-account-used-recently"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Root Account Used Recently"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

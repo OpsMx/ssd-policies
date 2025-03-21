@@ -1,0 +1,12 @@
+id: 424
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:unused-credentials-not-disabled"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Credentials Unused for 90 Days or Greater Are Not Disabled"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

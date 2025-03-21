@@ -1,0 +1,12 @@
+id: 403
+type: PolicyDefinition
+metadata:
+  policyName: "MobSF: Low Severity Code Issues Policy"
+  category: "Mobile Application Security Posture"
+  stage: "artifact"
+  description: "MobSF Static Scan performs Code Analysis on an application and raises issues in case of rule violations."
+  scheduled_policy: false
+  scriptId: 403
+  variables: ""
+  conditionName: ""
+  suggestion: ""

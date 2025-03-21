@@ -1,0 +1,12 @@
+id: 418
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:IAM:user-with-password-and-key"
+  category: "CSPM"
+  stage: "deploy"
+  description: "User with Password and Keys Enabled"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""
