@@ -4,7 +4,7 @@ metadata:
   policyName: "Medium Vulnerability Prevention Policy"
   category: "Vulnerability Analysis"
   stage: "artifact"
-  description: "Medium Severity Vulnerabilities should not be found in the artifact"
+  description: "Medium 121 Severity Vulnerabilities should not be found in the artifact"
   scheduled_policy: true
   scriptId: 9
   variables: ""
