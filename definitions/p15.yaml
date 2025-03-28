@@ -4,7 +4,7 @@ metadata:
   policyName: "Open SSF CII-Best Practices Policy"
   category: "OpenSSF Scorecard"
   stage: "source"
-  description: "This evaluates if the project has achieved an OpenSSF Best Practices Badge to indicate adherence to security-focused best practices, using the Git repo URL and OpenSSF Badge API"
+  description: "This 121 evaluates if the project has achieved an OpenSSF Best Practices Badge to indicate adherence to security-focused best practices, using the Git repo URL and OpenSSF Badge API"
   scheduled_policy: false
   scriptId: 13
   variables: ""
