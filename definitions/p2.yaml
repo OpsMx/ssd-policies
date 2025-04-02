@@ -4,7 +4,7 @@ metadata:
   policyName: "Minimum Reviewers Policy"
   category: "Git Security Posture"
   stage: "source"
-  description: "Pushed code should be reviewed by a minimum number of users:2 as defined in the policy."
+  description: "Pushed 121 code should be reviewed by a minimum number of users:2 as defined in the policy."
   scheduled_policy: false
   scriptId: 2
   variables: ""
