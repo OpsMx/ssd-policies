@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 39
+  tagName: "policyCategory"
+  tagValue: "SOC2 Compliance"
+  tagDescription: ""
+  createdBy: "system"
