@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 35
+  tagName: "policyCategory"
+  tagValue: "SOC2-CC6.3"
+  tagDescription: ""
+  createdBy: "system"
