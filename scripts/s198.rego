@@ -34,7 +34,7 @@ deny[{"alertMsg":msg, "suggestion":suggestion, "error":"", "exception": "", "ale
 	counter = count(failed_resources)
 	counter > 0
 	not policy_name in exception_list
-	msg := sprintf("%v scan failed for control %v:%v on cluster %v impacting %v resources given below: %v", [framework, control_id, control_struct.control_title, input.metadata.account_name, counter, concat(",\n ",failed_resources)])
+	msg := sprintf("%v scan failed for control %v:%v on cluster %v impacting %v resources given below:\n %v", [framework, control_id, control_struct.control_title, input.metadata.account_name, counter, concat(",\n ",failed_resources)])
 	suggestion := input.metadata.suggestion
 	alertStatus := "active"
 }
@@ -46,7 +46,7 @@ deny[{"alertMsg":msg, "suggestion":suggestion, "error":"", "exception": policy_n
 	counter = count(failed_resources)
 	counter > 0
 	policy_name in exception_list
-	msg := sprintf("%v scan failed for control %v:%v on cluster %v impacting %v resources given below: %v", [framework, control_id, control_struct.control_title, input.metadata.account_name, counter, concat(",\n ",failed_resources)])	
+	msg := sprintf("%v scan failed for control %v:%v on cluster %v impacting %v resources given below:\n %v", [framework, control_id, control_struct.control_title, input.metadata.account_name, counter, concat(",\n ",failed_resources)])	
 	suggestion := input.metadata.suggestion
 	alertStatus := "exception"
 }
