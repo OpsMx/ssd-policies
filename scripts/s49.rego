@@ -1,57 +1,59 @@
-	package opsmx
-	import future.keywords.in
+package opsmx
+import future.keywords.in
 
-	default exception_list = []
-	default exception_count = 0
+default exception_list = []
+default exception_count = 0
 
-	policy_name = input.metadata.policyName
-	policy_category = replace(input.metadata.policyCategory, " ", "_")
-	exception_list = input.metadata.exception[policy_category]
+policy_name = input.metadata.policyName
+policy_category = replace(input.metadata.policyCategory, " ", "_")
+exception_list = input.metadata.exception[policy_category]
 
-	severity = "medium"
-	default findings_count = 0
+scan_account = input.metadata.ssd_secret.semgrep.name
 
-	image_sha = replace(input.metadata.image_sha, ":", "-")
+severity = "medium"
+default findings_count = 0
 
-	file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", severity, "_", input.metadata.build_id, "_semgrep.json"]) {
-		input.metadata.source_code_path == ""
-	}
+image_sha = replace(input.metadata.image_sha, ":", "-")
 
-	file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", severity, "_", input.metadata.build_id, "_", image_sha, "_semgrep.json"]) {
-		input.metadata.source_code_path != ""
-	}
+file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", severity, "_", input.metadata.build_id, "_semgrep.json"]) {
+	input.metadata.source_code_path == ""
+}
 
-	complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=semgrepScan"])
-	download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=semgrepScan"])
+file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", severity, "_", input.metadata.build_id, "_", image_sha, "_semgrep.json"]) {
+	input.metadata.source_code_path != ""
+}
 
-	request = {	
-			"method": "GET",
-			"url": complete_url
-	}
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=semgrepScan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=semgrepScan"])
 
-	response = http.send(request)
-	findings_count = response.body.totalFindings
-	findings = response.body.findings
+request = {	
+		"method": "GET",
+		"url": complete_url
+}
 
-	deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus}]{
-		findings_count > 0
-		some i
-		not findings[i].rule_name in exception_list
-		title := sprintf("Semgrep Scan: %v ",[findings[i].rule_name])
-		msg := sprintf("%v: %v", [findings[i].rule_name, findings[i].rule_message])
-		sugg := "Please examine the medium-severity findings in the SEMGREP analysis data, available through the View Findings button and proactively review your code for common issues and apply best coding practices during development to prevent such alerts from arising."
-		error := ""
-		alertStatus := "active"
-	}
+response = http.send(request)
+findings_count = response.body.totalFindings
+findings = response.body.findings
 
-	deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus}]{
-		findings_count > 0
-		some i
-		findings[i].rule_name in exception_list
-		title := sprintf("Semgrep Scan: %v ",[findings[i].rule_name])
-		msg := sprintf("%v: %v", [findings[i].rule_name, findings[i].rule_message])
-		sugg := "Please examine the medium-severity findings in the SEMGREP analysis data, available through the View Findings button and proactively review your code for common issues and apply best coding practices during development to prevent such alerts from arising."
-		error := ""
-		exception_cause := findings[i].rule_name
-		alertStatus := "exception"
-	}
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+	findings_count > 0
+	some i
+	not findings[i].rule_name in exception_list
+	title := sprintf("Semgrep Scan: %v ",[findings[i].rule_name])
+	msg := sprintf("%v: %v", [findings[i].rule_name, findings[i].rule_message])
+	sugg := "Please examine the medium-severity findings in the SEMGREP analysis data, available through the View Findings button and proactively review your code for common issues and apply best coding practices during development to prevent such alerts from arising."
+	error := ""
+	alertStatus := "active"
+}
+
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+	findings_count > 0
+	some i
+	findings[i].rule_name in exception_list
+	title := sprintf("Semgrep Scan: %v ",[findings[i].rule_name])
+	msg := sprintf("%v: %v", [findings[i].rule_name, findings[i].rule_message])
+	sugg := "Please examine the medium-severity findings in the SEMGREP analysis data, available through the View Findings button and proactively review your code for common issues and apply best coding practices during development to prevent such alerts from arising."
+	error := ""
+	exception_cause := findings[i].rule_name
+	alertStatus := "exception"
+}

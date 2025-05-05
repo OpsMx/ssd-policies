@@ -1,56 +1,58 @@
-	package opsmx
-	import future.keywords.in
+package opsmx
+import future.keywords.in
 
-	default exception_list = []
-	default exception_count = 0
+default exception_list = []
+default exception_count = 0
 
-	policy_name = input.metadata.policyName
-	policy_category = replace(input.metadata.policyCategory, " ", "_")
-	exception_list = input.metadata.exception[policy_category]
+policy_name = input.metadata.policyName
+policy_category = replace(input.metadata.policyCategory, " ", "_")
+exception_list = input.metadata.exception[policy_category]
 
-	file_name = concat("", [input.metadata.mobileBuild, "_", input.metadata.image_sha, "_virustotal-mobapp-scan.json"])
+scan_account = input.metadata.ssd_secret.virustotal.name
 
-	complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=virusTotalMobAppScan"])
-	download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=virusTotalMobAppScan"])
+file_name = concat("", [input.metadata.mobileBuild, "_", input.metadata.image_sha, "_virustotal-mobapp-scan.json"])
 
-	request = {	
-		"method": "GET",
-		"url": complete_url
-	}
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=virusTotalMobAppScan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=virusTotalMobAppScan"])
 
-	response = http.send(request)
+request = {	
+	"method": "GET",
+	"url": complete_url
+}
 
-	deny [{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus}]{
-		some rule in response.body.data.attributes.results
-		rule.category == "suspicious"
-		engine = rule.engine_name
-		engine_version = rule.engine_version
-		result = rule.result
+response = http.send(request)
 
-		exception_str=concat(":", [engine, result])
-		not exception_str in exception_list
-	
-		title := sprintf("APK/IPA %v scan for rule engine: %v/%v failed with suspicious finding: %v.", [response.body.artifact, engine, engine_version, result])
-		msg := sprintf("APK/IPA %v scan for rule engine: %v/%v failed with suspicious finding: %v.", [response.body.artifact, engine, engine_version, result])
-		sugg := ""
-		error := ""
-		alertStatus := "active"
-	}
+deny [{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+	some rule in response.body.data.attributes.results
+	rule.category == "suspicious"
+	engine = rule.engine_name
+	engine_version = rule.engine_version
+	result = rule.result
 
-	deny [{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus}]{
-		some rule in response.body.data.attributes.results
-		rule.category == "suspicious"
-		engine = rule.engine_name
-		engine_version = rule.engine_version
-		result = rule.result
+	exception_str=concat(":", [engine, result])
+	not exception_str in exception_list
 
-		exception_str=concat(":", [engine, result])
-		exception_str in exception_list
+	title := sprintf("APK/IPA %v scan for rule engine: %v/%v failed with suspicious finding: %v.", [response.body.artifact, engine, engine_version, result])
+	msg := sprintf("APK/IPA %v scan for rule engine: %v/%v failed with suspicious finding: %v.", [response.body.artifact, engine, engine_version, result])
+	sugg := ""
+	error := ""
+	alertStatus := "active"
+}
 
-		title := sprintf("APK/IPA %v scan for rule engine: %v/%v failed with suspicious finding: %v.", [response.body.artifact, engine, engine_version, result])
-		msg := sprintf("APK/IPA %v scan for rule engine: %v/%v failed with suspicious finding: %v.", [response.body.artifact, engine, engine_version, result])
-		sugg := ""
-		error := ""
-		exception_cause := exception_str
-		alertStatus := "exception"
-	}
+deny [{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+	some rule in response.body.data.attributes.results
+	rule.category == "suspicious"
+	engine = rule.engine_name
+	engine_version = rule.engine_version
+	result = rule.result
+
+	exception_str=concat(":", [engine, result])
+	exception_str in exception_list
+
+	title := sprintf("APK/IPA %v scan for rule engine: %v/%v failed with suspicious finding: %v.", [response.body.artifact, engine, engine_version, result])
+	msg := sprintf("APK/IPA %v scan for rule engine: %v/%v failed with suspicious finding: %v.", [response.body.artifact, engine, engine_version, result])
+	sugg := ""
+	error := ""
+	exception_cause := exception_str
+	alertStatus := "exception"
+}

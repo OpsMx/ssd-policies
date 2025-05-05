@@ -8,6 +8,8 @@ policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
 
+account = input.metadata.account_name
+
 cluster_id = input.metadata.clusterID
 framework = "cis-v1.23-t1.0.1"
 
@@ -27,7 +29,7 @@ max_threshold_str := split(condition_value, "-")[1]
 min_threshold := to_number(min_threshold_str)
 max_threshold := to_number(max_threshold_str)
 
-deny[{"alertMsg":msg, "suggestions": sugg, "error": "", "exception": "", "alertStatus": alertStatus}] {
+deny[{"alertMsg":msg, "suggestions": sugg, "error": "", "exception": "", "alertStatus": alertStatus, "accountName": account}] {
 	score := response.body.compliance_score
 	score > min_threshold
 	score <= max_threshold
@@ -37,7 +39,7 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": "", "exception": "", "alertS
 	alertStatus := "active"
 }
 
-deny[{"alertMsg":msg, "suggestions": sugg, "error": "", "exception": policy_name, "alertStatus": alertStatus}] {
+deny[{"alertMsg":msg, "suggestions": sugg, "error": "", "exception": policy_name, "alertStatus": alertStatus, "accountName": account}] {
 	score := response.body.compliance_score
 	score > min_threshold
 	score <= max_threshold

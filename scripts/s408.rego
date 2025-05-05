@@ -1,51 +1,53 @@
-	package opsmx
-	import future.keywords.in
+package opsmx
+import future.keywords.in
 
-	default exception_list = []
-	default exception_count = 0
+default exception_list = []
+default exception_count = 0
 
-	policy_name = input.metadata.policyName
-	policy_category = replace(input.metadata.policyCategory, " ", "_")
-	exception_list = input.metadata.exception[policy_category]
+policy_name = input.metadata.policyName
+policy_category = replace(input.metadata.policyCategory, " ", "_")
+exception_list = input.metadata.exception[policy_category]
 
-	image_sha = replace(input.metadata.image_sha, ":", "-")
+scan_account = input.metadata.ssd_secret.virustotal.name
 
-	file_name = concat("", [input.metadata.mobileBuild, "_", image_sha, "_mobsfscan.json"])
+image_sha = replace(input.metadata.image_sha, ":", "-")
 
-	complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=mobsfScan"])
-	download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=mobsfScan"])
+file_name = concat("", [input.metadata.mobileBuild, "_", image_sha, "_mobsfscan.json"])
 
-	request = {
-			"method": "GET",
-			"url": complete_url
-	}
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=mobsfScan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=mobsfScan"])
 
-	response = http.send(request)
+request = {
+		"method": "GET",
+		"url": complete_url
+}
 
-	artifact_name := response.body.artifactName
+response = http.send(request)
 
-	high_severity_findings := response.body.appsec.High
+artifact_name := response.body.artifactName
 
-	deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus}] {	
-		some finding in high_severity_findings
+high_severity_findings := response.body.appsec.High
 
-		not finding.title in exception_list
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}] {	
+	some finding in high_severity_findings
 
-		title := finding.title
-		msg := sprintf("Section: %v \n Description: %v", [finding.section, finding.description])
-		sugg := ""
-		error := ""
-		alertStatus := "active"
-	}
+	not finding.title in exception_list
 
-	deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": title, "alertStatus": alertStatus}] {
-		some finding in high_severity_findings
+	title := finding.title
+	msg := sprintf("Section: %v \n Description: %v", [finding.section, finding.description])
+	sugg := ""
+	error := ""
+	alertStatus := "active"
+}
 
-		finding.title in exception_list
-		
-		title := finding.title
-		msg := sprintf("Section: %v \n Description: %v", [finding.section, finding.description])
-		sugg := ""
-		error := ""
-		alertStatus := "exception"
-	}
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": title, "alertStatus": alertStatus, "accountName": scan_account}] {
+	some finding in high_severity_findings
+
+	finding.title in exception_list
+	
+	title := finding.title
+	msg := sprintf("Section: %v \n Description: %v", [finding.section, finding.description])
+	sugg := ""
+	error := ""
+	alertStatus := "exception"
+}

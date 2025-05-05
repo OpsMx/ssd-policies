@@ -1,65 +1,67 @@
-	package opsmx
-	import future.keywords.in
+package opsmx
+import future.keywords.in
 
-	default exception_list = []
-	default exception_count = 0
+default exception_list = []
+default exception_count = 0
 
-	policy_name = input.metadata.policyName
-	policy_category = replace(input.metadata.policyCategory, " ", "_")
-	exception_list = input.metadata.exception[policy_category]
+policy_name = input.metadata.policyName
+policy_category = replace(input.metadata.policyCategory, " ", "_")
+exception_list = input.metadata.exception[policy_category]
 
-	image_sha = replace(input.metadata.image_sha, ":", "-")
+scan_account = input.metadata.ssd_secret.virustotal.name
 
-	file_name = concat("", [input.metadata.mobileBuild, "_", image_sha, "_mobsfscan.json"])
+image_sha = replace(input.metadata.image_sha, ":", "-")
 
-	complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=mobsfScan"])
-	download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=mobsfScan"])
+file_name = concat("", [input.metadata.mobileBuild, "_", image_sha, "_mobsfscan.json"])
 
-	request = {
-			"method": "GET",
-			"url": complete_url
-	}
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=mobsfScan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=mobsfScan"])
 
-	response = http.send(request)
+request = {
+		"method": "GET",
+		"url": complete_url
+}
 
-	artifact_name := response.body.artifactName
+response = http.send(request)
 
-
-	deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus}] {	
-		some key
-		finding := response.body.code_analysis.findings[key]
-		finding.metadata.severity == "High"
-
-		not key in exception_list
-
-		files := concat_keys(finding.files)
-		title := sprintf("Code Analysis Failure in artifact: %v for rule: %v", [artifact_name, key])
-		desc := finding.metadata.description    
-		msg := sprintf("Code Analysis Failure in artifact: %v \n Description: %v \n CVSS: %v \n CWE: %v \n MASVS: %v \n Impacted Files: %v", [artifact_name, desc, finding.metadata.cvss, finding.metadata.cwe, finding.metadata.masvs, files])
-		sugg := finding.metadata.ref
-		error := ""
-		alertStatus := "active"
-	}
-
-	deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus}] {	
-		some key
-		finding := response.body.code_analysis.findings[key]
-		finding.metadata.severity == "High"
-
-		key in exception_list
-
-		files := concat_keys(finding.files)
-		title := sprintf("Code Analysis Failure in artifact: %v for rule: %v", [artifact_name, key])
-		desc := finding.metadata.description    
-		msg := sprintf("Code Analysis Failure in artifact: %v \n Description: %v \n CVSS: %v \n CWE: %v \n MASVS: %v \n Impacted Files: %v", [artifact_name, desc, finding.metadata.cvss, finding.metadata.cwe, finding.metadata.masvs, files])
-		sugg := finding.metadata.ref
-		error := ""
-		exception_cause := key
-		alertStatus := "exception"
-	}
+artifact_name := response.body.artifactName
 
 
-	concat_keys(files) = result {
-		keys := {k | files[k]}   # Extract the keys from the input object
-		result := concat("\n", keys)  # Join the keys with newline characters
-	}
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}] {	
+	some key
+	finding := response.body.code_analysis.findings[key]
+	finding.metadata.severity == "High"
+
+	not key in exception_list
+
+	files := concat_keys(finding.files)
+	title := sprintf("Code Analysis Failure in artifact: %v for rule: %v", [artifact_name, key])
+	desc := finding.metadata.description    
+	msg := sprintf("Code Analysis Failure in artifact: %v \n Description: %v \n CVSS: %v \n CWE: %v \n MASVS: %v \n Impacted Files: %v", [artifact_name, desc, finding.metadata.cvss, finding.metadata.cwe, finding.metadata.masvs, files])
+	sugg := finding.metadata.ref
+	error := ""
+	alertStatus := "active"
+}
+
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}] {	
+	some key
+	finding := response.body.code_analysis.findings[key]
+	finding.metadata.severity == "High"
+
+	key in exception_list
+
+	files := concat_keys(finding.files)
+	title := sprintf("Code Analysis Failure in artifact: %v for rule: %v", [artifact_name, key])
+	desc := finding.metadata.description    
+	msg := sprintf("Code Analysis Failure in artifact: %v \n Description: %v \n CVSS: %v \n CWE: %v \n MASVS: %v \n Impacted Files: %v", [artifact_name, desc, finding.metadata.cvss, finding.metadata.cwe, finding.metadata.masvs, files])
+	sugg := finding.metadata.ref
+	error := ""
+	exception_cause := key
+	alertStatus := "exception"
+}
+
+
+concat_keys(files) = result {
+	keys := {k | files[k]}   # Extract the keys from the input object
+	result := concat("\n", keys)  # Join the keys with newline characters
+}

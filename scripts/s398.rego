@@ -1,57 +1,59 @@
-	package opsmx
-	import future.keywords.in
+package opsmx
+import future.keywords.in
 
-	default exception_list = []
-	default exception_count = 0
+default exception_list = []
+default exception_count = 0
 
-	policy_name = input.metadata.policyName
-	policy_category = replace(input.metadata.policyCategory, " ", "_")
-	exception_list = input.metadata.exception[policy_category]
+policy_name = input.metadata.policyName
+policy_category = replace(input.metadata.policyCategory, " ", "_")
+exception_list = input.metadata.exception[policy_category]
 
-	image_sha = replace(input.metadata.image_sha, ":", "-")
+scan_account = input.metadata.ssd_secret.virustotal.name
 
-	file_name = concat("", [input.metadata.mobileBuild, "_", image_sha, "_mobsfscan.json"])
+image_sha = replace(input.metadata.image_sha, ":", "-")
 
-	complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=mobsfScan"])
-	download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=mobsfScan"])
+file_name = concat("", [input.metadata.mobileBuild, "_", image_sha, "_mobsfscan.json"])
 
-	request = {
-			"method": "GET",
-			"url": complete_url
-	}
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=mobsfScan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=mobsfScan"])
 
-	response = http.send(request)
+request = {
+		"method": "GET",
+		"url": complete_url
+}
+
+response = http.send(request)
 
 
-	artifact_name = response.body.artifactName
+artifact_name = response.body.artifactName
 
-	deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus}]{
-		some key
-		finding := response.body.binary_analysis.findings[key]
-		finding.severity == "Medium"
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+	some key
+	finding := response.body.binary_analysis.findings[key]
+	finding.severity == "Medium"
 
-		not key in exception_list
+	not key in exception_list
 
-		desc := finding.detailed_desc
-		title := key
-		msg := sprintf("Binary Analysis Failure in artifact: %v \n Description: %v \n CVSS: %v \n CWE: %v \n MASVS: %v", [artifact_name, desc, finding.cvss, finding.cwe, finding.masvs])
-		sugg := ""
-		error := ""
-		alertStatus := "active"
-	}
+	desc := finding.detailed_desc
+	title := key
+	msg := sprintf("Binary Analysis Failure in artifact: %v \n Description: %v \n CVSS: %v \n CWE: %v \n MASVS: %v", [artifact_name, desc, finding.cvss, finding.cwe, finding.masvs])
+	sugg := ""
+	error := ""
+	alertStatus := "active"
+}
 
-	deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus}]{
-		some key
-		finding := response.body.binary_analysis.findings[key]
-		finding.severity == "Medium"
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+	some key
+	finding := response.body.binary_analysis.findings[key]
+	finding.severity == "Medium"
 
-		key in exception_list
+	key in exception_list
 
-		desc := finding.detailed_desc
-		title := key
-		msg := sprintf("Binary Analysis Failure in artifact: %v \n Description: %v \n CVSS: %v \n CWE: %v \n MASVS: %v", [artifact_name, desc, finding.cvss, finding.cwe, finding.masvs])
-		sugg := ""
-		error := ""
-		exception_cause := key
-		alertStatus := "exception"
-	}
+	desc := finding.detailed_desc
+	title := key
+	msg := sprintf("Binary Analysis Failure in artifact: %v \n Description: %v \n CVSS: %v \n CWE: %v \n MASVS: %v", [artifact_name, desc, finding.cvss, finding.cwe, finding.masvs])
+	sugg := ""
+	error := ""
+	exception_cause := key
+	alertStatus := "exception"
+}
