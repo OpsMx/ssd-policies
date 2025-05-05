@@ -8,6 +8,8 @@ policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
 
+scan_account = input.metadata.ssd_secret.helmScan.name
+
 severity = "high"
 default findings_count = 0
 
@@ -28,7 +30,7 @@ findings = response.body.helmAnalysis
 
 findings_count = count(findings)
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 	findings_count > 0
 	some i
 	rule_id := findings[i].RuleID
@@ -41,7 +43,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
 	findings_count > 0
 	some i
 	rule_id := findings[i].RuleID
