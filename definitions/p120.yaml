@@ -5,7 +5,7 @@ metadata:
   category: "CIS-Benchmark"
   stage: "deploy"
   description: "If --service-account-lookup is not enabled, the apiserver only verifies that the authentication token is valid, and does not validate that the service account token mentioned in the request is actually present in etcd. This allows using a service account token even after the corresponding service account is deleted. This is an example of time of check to time of use security issue."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 77
   variables: ""
   conditionName: "CIS-1.2.23 Ensure that the API Server --service-account-lookup argument is set to true"

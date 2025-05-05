@@ -5,7 +5,7 @@ metadata:
   category: "Cloud Security"
   stage: "deploy"
   description: "Mounting host directory to the container can be used by attackers to get access to the underlying host. This control identifies all the pods using hostPath mount."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 198
   variables: ""
   conditionName: "C-0048 - MITRE - HostPath mount "

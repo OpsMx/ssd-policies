@@ -5,7 +5,7 @@ metadata:
   category: "CIS-Benchmark"
   stage: "deploy"
   description: "The token-based authentication utilizes static tokens to authenticate requests to the apiserver. The tokens are stored in clear-text in a file on the apiserver, and cannot be revoked or rotated without restarting the apiserver. Hence, do not use static token-based authentication."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 77
   variables: ""
   conditionName: "CIS-1.2.2 Ensure that the API Server --token-auth-file parameter is not set"

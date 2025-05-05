@@ -5,7 +5,7 @@ metadata:
   category: "CIS-Benchmark"
   stage: "deploy"
   description: "When you create a pod, if you do not specify a service account, it is automatically assigned the default service account in the same namespace. You should create your own service account and let the API server manage its security tokens."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 77
   variables: ""
   conditionName: "CIS-1.2.13 Ensure that the admission control plugin ServiceAccount is set"

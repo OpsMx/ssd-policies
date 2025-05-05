@@ -5,7 +5,7 @@ metadata:
   category: "CIS-Benchmark"
   stage: "deploy"
   description: "A security context defines the operating system security settings (uid, gid, capabilities, SELinux role, etc..) applied to a container. When designing your containers and pods, make sure that you configure the security context for your pods, containers, and volumes. A security context is a property defined in the deployment yaml. It controls the security parameters that will be assigned to the pod/container/volume. There are two levels of security context: pod level security context, and container level security context."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 77
   variables: ""
   conditionName: "CIS-5.7.3 Apply Security Context to Your Pods and Containers"

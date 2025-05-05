@@ -5,7 +5,7 @@ metadata:
   category: "Cloud Security"
   stage: "deploy"
   description: "etcd is a consistent and highly-available key value store used as Kubernetes backing store for all cluster data. All object data in Kubernetes, like secrets, are stored there. This is the reason why it is important to protect the contents of etcd and use its data encryption feature."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 198
   variables: ""
   conditionName: "C-0066 - NSA - Secret/etcd encryption enabled"

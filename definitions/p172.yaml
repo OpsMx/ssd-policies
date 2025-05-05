@@ -5,7 +5,7 @@ metadata:
   category: "CIS-Benchmark"
   stage: "deploy"
   description: "The principle of least privilege recommends that users are provided only the access required for their role and nothing more. The use of wildcard rights grants is likely to provide excessive rights to the Kubernetes API."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 77
   variables: ""
   conditionName: "CIS-5.1.3 Minimize wildcard use in Roles and ClusterRoles"

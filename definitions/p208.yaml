@@ -5,7 +5,7 @@ metadata:
   category: "Cloud Security"
   stage: "deploy"
   description: "Attackers can use validating webhooks to intercept and discover all the resources in the cluster. This control lists all the validating webhook configurations that must be verified."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 198
   variables: ""
   conditionName: "C-0036 - MITRE - Validate Validating admission controller"

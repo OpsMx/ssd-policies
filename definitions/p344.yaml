@@ -5,7 +5,7 @@ metadata:
   category: "Build Security Posture"
   stage: "build"
   description: "High Severity Vulnerabilities should not be found in the plugins installed on the Jenkins Servers."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 344
   variables: ""
   conditionName: ""

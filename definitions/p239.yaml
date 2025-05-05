@@ -5,7 +5,7 @@ metadata:
   category: "Cloud Security"
   stage: "deploy"
   description: "Kubernetes networking behavior allows traffic between pods in the cluster as a default behavior. Attackers who gain access to a single container may use it for network reachability to another container in the cluster."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 198
   variables: ""
   conditionName: "C-0054 - NSA - Cluster internal networking"

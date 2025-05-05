@@ -5,7 +5,7 @@ metadata:
   category: "Cloud Security"
   stage: "deploy"
   description: "Potential attackers may gain access to a pod and inherit access to the entire host network. For example, in AWS case, they will have access to the entire VPC. This control identifies all the pods with host network access enabled."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 198
   variables: ""
   conditionName: "C-0041 - NSA - HostNetwork access"
