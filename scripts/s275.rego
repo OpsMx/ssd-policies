@@ -1,58 +1,60 @@
-	package opsmx
-	import future.keywords.in
+package opsmx
+import future.keywords.in
 
-	default exception_list = []
-	default exception_count = 0
+default exception_list = []
+default exception_count = 0
 
-	policy_name = input.metadata.policyName
-	policy_category = replace(input.metadata.policyCategory, " ", "_")
-	exception_list = input.metadata.exception[policy_category]
+policy_name = input.metadata.policyName
+policy_category = replace(input.metadata.policyCategory, " ", "_")
+exception_list = input.metadata.exception[policy_category]
 
-	default secrets_count = 0
+scan_account = input.metadata.ssd_secret.trivy.name
 
-	request_url = concat("",[input.metadata.toolchain_addr,"api/", "v1/", "scanResult?fileName="])
-	image_sha = replace(input.metadata.image_sha, ":", "-")
+default secrets_count = 0
 
-	file_name = concat("", [input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_codeScanResult.json"]) {
-		input.metadata.source_code_path == ""
-	}
+request_url = concat("",[input.metadata.toolchain_addr,"api/", "v1/", "scanResult?fileName="])
+image_sha = replace(input.metadata.image_sha, ":", "-")
 
-	file_name = concat("", [input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_", image_sha, "_codeScanResult.json"]) {
-		input.metadata.source_code_path != ""
-	}
-		
-	complete_url = concat("", [request_url, file_name, "&scanOperation=codeSecretScan"])
-		
-	request = {
-			"method": "GET",
-			"url": complete_url
-	}
+file_name = concat("", [input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_codeScanResult.json"]) {
+	input.metadata.source_code_path == ""
+}
 
-	response = http.send(request)
+file_name = concat("", [input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_", image_sha, "_codeScanResult.json"]) {
+	input.metadata.source_code_path != ""
+}
+	
+complete_url = concat("", [request_url, file_name, "&scanOperation=codeSecretScan"])
+	
+request = {
+		"method": "GET",
+		"url": complete_url
+}
 
-	critical_severity_secrets = [response.body.Results[0].Secrets[i].Title | response.body.Results[0].Secrets[i].Severity == "CRITICAL"]
-	secrets_count = count(critical_severity_secrets)
+response = http.send(request)
 
-	deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus}]{
-		secrets_count > 0
-		some i in critical_severity_secrets
-		not i in exception_list
-		title := sprintf("Critical Secret detected in code: %v", [i])
-		msg := sprintf("Secret found for %v/%v code repository in branch %v.\nSecret identified:\n %s", [input.metadata.owner, input.metadata.repository, input.metadata.branch, i])
-		sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
-		error := ""
-		alertStatus := "active"
-	}
+critical_severity_secrets = [response.body.Results[0].Secrets[i].Title | response.body.Results[0].Secrets[i].Severity == "CRITICAL"]
+secrets_count = count(critical_severity_secrets)
+
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+	secrets_count > 0
+	some i in critical_severity_secrets
+	not i in exception_list
+	title := sprintf("Critical Secret detected in code: %v", [i])
+	msg := sprintf("Secret found for %v/%v code repository in branch %v.\nSecret identified:\n %s", [input.metadata.owner, input.metadata.repository, input.metadata.branch, i])
+	sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
+	error := ""
+	alertStatus := "active"
+}
 
 
-	deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": exception_cause, "alertStatus": alertStatus}]{
-		secrets_count > 0
-		some i in critical_severity_secrets
-		i in exception_list
-		title := sprintf("Critical Secret detected in code: %v", [i])
-		msg := sprintf("Secret found for %v/%v code repository in branch %v.\nSecret identified:\n %s", [input.metadata.owner, input.metadata.repository, input.metadata.branch, i])
-		sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
-		error := ""
-		alertStatus := "exception"
-		exception_cause := i
-	}
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+	secrets_count > 0
+	some i in critical_severity_secrets
+	i in exception_list
+	title := sprintf("Critical Secret detected in code: %v", [i])
+	msg := sprintf("Secret found for %v/%v code repository in branch %v.\nSecret identified:\n %s", [input.metadata.owner, input.metadata.repository, input.metadata.branch, i])
+	sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
+	error := ""
+	alertStatus := "exception"
+	exception_cause := i
+}

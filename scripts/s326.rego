@@ -1,159 +1,161 @@
-	package opsmx
+package opsmx
 
-	import future.keywords.in
+import future.keywords.in
 
-	default exception_list = []
-	default exception_count = 0
+default exception_list = []
+default exception_count = 0
 
-	policy_name = input.metadata.policyName
-	policy_category = replace(input.metadata.policyCategory, " ", "_")
-	exception_list = input.metadata.exception[policy_category]
+policy_name = input.metadata.policyName
+policy_category = replace(input.metadata.policyCategory, " ", "_")
+exception_list = input.metadata.exception[policy_category]
 
-	# Define allowed protocols
-	allowed_protocols = ["https://", "ssh://"]
+scm_account = input.metadata.ssd_secret.github.name
 
-	# Helper function to check if a URL uses a secure protocol
-	uses_secure_protocol(url) = true {
-		some protocol in allowed_protocols
-		startswith(url, protocol)
-	}
+# Define allowed protocols
+allowed_protocols = ["https://", "ssh://"]
 
-	uses_secure_protocol(_) = false
+# Helper function to check if a URL uses a secure protocol
+uses_secure_protocol(url) = true {
+	some protocol in allowed_protocols
+	startswith(url, protocol)
+}
 
-	# Construct the request URL to list all workflows
-	list_workflows_url = sprintf("%s/repos/%s/%s/actions/workflows", [
-		input.metadata.ssd_secret.github.url,
-		input.metadata.owner,
-		input.metadata.repository
-	])
+uses_secure_protocol(_) = false
 
-	token = input.metadata.ssd_secret.github.token
-	list_workflows_request = {
-		"method": "GET",
-		"url": list_workflows_url,
-		"headers": {
-			"Authorization": sprintf("Bearer %v", [token]),
-		},
-	}
+# Construct the request URL to list all workflows
+list_workflows_url = sprintf("%s/repos/%s/%s/actions/workflows", [
+	input.metadata.ssd_secret.github.url,
+	input.metadata.owner,
+	input.metadata.repository
+])
 
-	list_workflows_response = http.send(list_workflows_request)
+token = input.metadata.ssd_secret.github.token
+list_workflows_request = {
+	"method": "GET",
+	"url": list_workflows_url,
+	"headers": {
+		"Authorization": sprintf("Bearer %v", [token]),
+	},
+}
 
-	# Find the workflow by name
-	workflow_file_path = workflow_path {
-		some workflow in list_workflows_response.body.workflows
-		workflow.name == input.metadata.ssd_secret.github.workflowName
-		workflow_path := workflow.path
-	}
+list_workflows_response = http.send(list_workflows_request)
 
-	# Construct the request URL to fetch the workflow content
-	request_url = sprintf("%s/repos/%s/%s/contents/%s", [
-		input.metadata.ssd_secret.github.url,
-		input.metadata.owner,
-		input.metadata.repository,
-		workflow_file_path
-	])
+# Find the workflow by name
+workflow_file_path = workflow_path {
+	some workflow in list_workflows_response.body.workflows
+	workflow.name == input.metadata.ssd_secret.github.workflowName
+	workflow_path := workflow.path
+}
 
-	request = {
-		"method": "GET",
-		"url": request_url,
-		"headers": {
-			"Authorization": sprintf("Bearer %v", [token]),
-		},
-	}
+# Construct the request URL to fetch the workflow content
+request_url = sprintf("%s/repos/%s/%s/contents/%s", [
+	input.metadata.ssd_secret.github.url,
+	input.metadata.owner,
+	input.metadata.repository,
+	workflow_file_path
+])
 
-	response = http.send(request)
+request = {
+	"method": "GET",
+	"url": request_url,
+	"headers": {
+		"Authorization": sprintf("Bearer %v", [token]),
+	},
+}
 
-	# Check if the response status code is not 200
-	deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus}] {
-		response.status_code != 200
-		msg := "Failed to fetch the workflow."
-		error := sprintf("Error %v: %v received from GitHub when trying to fetch the workflow.", [response.status_code, response.body.message])
-		sugg := "Ensure the provided GitHub token has the required permissions and the workflow name is correct."
-		alertStatus := "error"
-	}
+response = http.send(request)
 
-	# Check if all network communications use secure protocols
-	deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus}] {
-		response.status_code == 200
+# Check if the response status code is not 200
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scm_account}] {
+	response.status_code != 200
+	msg := "Failed to fetch the workflow."
+	error := sprintf("Error %v: %v received from GitHub when trying to fetch the workflow.", [response.status_code, response.body.message])
+	sugg := "Ensure the provided GitHub token has the required permissions and the workflow name is correct."
+	alertStatus := "error"
+}
 
-		# Decode the workflow content from base64 and parse as YAML
-		workflow_content := base64.decode(response.body.content)
-		workflow := yaml.unmarshal(workflow_content)
-		job := workflow.jobs[_]
-		step := job.steps[_]
+# Check if all network communications use secure protocols
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scm_account}] {
+	response.status_code == 200
 
-		# Check the run field for insecure protocols
-		step.run
-		some line in split(step.run, "\n")
-		url := find_network_calls(line)
-		not uses_secure_protocol(url)
-		not policy_name in exception_list
-		msg := sprintf("Insecure protocol used in step %s of job %s in workflow %s. URL: %v", [step.name, job.name, input.metadata.ssd_secret.github.workflowName, url])
-		sugg := "Use secure protocols (https or ssh) for all network communications."
-		error := ""
-		alertStatus := "active"
-	}
+	# Decode the workflow content from base64 and parse as YAML
+	workflow_content := base64.decode(response.body.content)
+	workflow := yaml.unmarshal(workflow_content)
+	job := workflow.jobs[_]
+	step := job.steps[_]
 
-	deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": policy_name, "alertStatus": alertStatus}] {
-		response.status_code == 200
+	# Check the run field for insecure protocols
+	step.run
+	some line in split(step.run, "\n")
+	url := find_network_calls(line)
+	not uses_secure_protocol(url)
+	not policy_name in exception_list
+	msg := sprintf("Insecure protocol used in step %s of job %s in workflow %s. URL: %v", [step.name, job.name, input.metadata.ssd_secret.github.workflowName, url])
+	sugg := "Use secure protocols (https or ssh) for all network communications."
+	error := ""
+	alertStatus := "active"
+}
 
-		# Decode the workflow content from base64 and parse as YAML
-		workflow_content := base64.decode(response.body.content)
-		workflow := yaml.unmarshal(workflow_content)
-		job := workflow.jobs[_]
-		step := job.steps[_]
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": policy_name, "alertStatus": alertStatus, "accountName": scm_account}] {
+	response.status_code == 200
 
-		# Check the run field for insecure protocols
-		step.run
-		some line in split(step.run, "\n")
-		url := find_network_calls(line)
-		not uses_secure_protocol(url)
-		policy_name in exception_list
-		msg := sprintf("Insecure protocol used in step %s of job %s in workflow %s. URL: %v", [step.name, job.name, input.metadata.ssd_secret.github.workflowName, url])
-		sugg := "Use secure protocols (https or ssh) for all network communications."
-		error := ""
-		alertStatus := "exception"
-	}
+	# Decode the workflow content from base64 and parse as YAML
+	workflow_content := base64.decode(response.body.content)
+	workflow := yaml.unmarshal(workflow_content)
+	job := workflow.jobs[_]
+	step := job.steps[_]
 
-	# Helper function to extract http URLs from a line of text
-	find_http_url(line) = url {
-		start := indexof(line, "http://")
-		start != -1
-		rest := substring(line, start, -1)
-		end := indexof(rest, " ")
-		end == -1
-		url := substring(rest, 0, count(rest))
-	} else {
-		start := indexof(line, "http://")
-		start != -1
-		rest := substring(line, start, -1)
-		end := indexof(rest, " ")
-		end != -1
-		url := substring(rest, 0, end)
-	}
+	# Check the run field for insecure protocols
+	step.run
+	some line in split(step.run, "\n")
+	url := find_network_calls(line)
+	not uses_secure_protocol(url)
+	policy_name in exception_list
+	msg := sprintf("Insecure protocol used in step %s of job %s in workflow %s. URL: %v", [step.name, job.name, input.metadata.ssd_secret.github.workflowName, url])
+	sugg := "Use secure protocols (https or ssh) for all network communications."
+	error := ""
+	alertStatus := "exception"
+}
 
-	# Helper function to extract ftp URLs from a line of text
-	find_ftp_url(line) = url {
-		start := indexof(line, "ftp://")
-		start != -1
-		rest := substring(line, start, -1)
-		end := indexof(rest, " ")
-		end == -1
-		url := substring(rest, 0, count(rest))
-	} else {
-		start := indexof(line, "ftp://")
-		start != -1
-		rest := substring(line, start, -1)
-		end := indexof(rest, " ")
-		end != -1
-		url := substring(rest, 0, end)
-	}
+# Helper function to extract http URLs from a line of text
+find_http_url(line) = url {
+	start := indexof(line, "http://")
+	start != -1
+	rest := substring(line, start, -1)
+	end := indexof(rest, " ")
+	end == -1
+	url := substring(rest, 0, count(rest))
+} else {
+	start := indexof(line, "http://")
+	start != -1
+	rest := substring(line, start, -1)
+	end := indexof(rest, " ")
+	end != -1
+	url := substring(rest, 0, end)
+}
 
-	# Combined helper function to extract insecure URLs from a line of text
-	find_network_calls(line) = url {
-		url := find_http_url(line)
-		url != ""
-	} else {
-		url := find_ftp_url(line)
-		url != ""
-	}
+# Helper function to extract ftp URLs from a line of text
+find_ftp_url(line) = url {
+	start := indexof(line, "ftp://")
+	start != -1
+	rest := substring(line, start, -1)
+	end := indexof(rest, " ")
+	end == -1
+	url := substring(rest, 0, count(rest))
+} else {
+	start := indexof(line, "ftp://")
+	start != -1
+	rest := substring(line, start, -1)
+	end := indexof(rest, " ")
+	end != -1
+	url := substring(rest, 0, end)
+}
+
+# Combined helper function to extract insecure URLs from a line of text
+find_network_calls(line) = url {
+	url := find_http_url(line)
+	url != ""
+} else {
+	url := find_ftp_url(line)
+	url != ""
+}

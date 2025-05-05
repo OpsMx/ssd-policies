@@ -22,7 +22,9 @@ policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
 
-deny[{"alertMsg":msg, "suggestion":suggestion, "error":error, "exception": "", "alertStatus": alertStatus}] {																																																																
+account = input.metadata.account_name
+
+deny[{"alertMsg":msg, "suggestion":suggestion, "error":error, "exception": "", "alertStatus": alertStatus, "accountName": account}] {																																																																
 	response.body.results[i].control_title == policy_name
 	control_struct = response.body.results[i]
 	failed_resources = control_struct.failed_resources
@@ -35,7 +37,7 @@ deny[{"alertMsg":msg, "suggestion":suggestion, "error":error, "exception": "", "
 	alertStatus := "active"
 }
 
-deny[{"alertMsg":msg, "suggestion":suggestion, "error":error, "exception": policy_name, "alertStatus": alertStatus}] {
+deny[{"alertMsg":msg, "suggestion":suggestion, "error":error, "exception": policy_name, "alertStatus": alertStatus, "accountName": account}] {
 	response.body.results[i].control_title == policy_name
 	control_struct = response.body.results[i]
 	failed_resources = control_struct.failed_resources
