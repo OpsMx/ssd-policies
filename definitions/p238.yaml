@@ -5,7 +5,7 @@ metadata:
   category: "Cloud Security"
   stage: "deploy"
   description: "Giving insecure and unnecessary capabilities for a container can increase the impact of a container compromise."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 198
   variables: ""
   conditionName: "C-0046 - NSA - Insecure capabilities"

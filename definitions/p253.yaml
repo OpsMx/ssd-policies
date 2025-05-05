@@ -5,7 +5,7 @@ metadata:
   category: "Compliance"
   stage: "deploy"
   description: "Overall MITRE Complaince Score found between 70-85."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 253
   variables: ""
   conditionName: "MITRE - Compliance Score - Range: 70-85"

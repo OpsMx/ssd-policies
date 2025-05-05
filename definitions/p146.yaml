@@ -5,7 +5,7 @@ metadata:
   category: "CIS-Benchmark"
   stage: "deploy"
   description: "Security audit logs should cover access and modification of key resources in the cluster, to enable them to form an effective part of a security environment."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 77
   variables: ""
   conditionName: "CIS-3.2.2 Ensure that the audit policy covers key security concerns"

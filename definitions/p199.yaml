@@ -5,7 +5,7 @@ metadata:
   category: "Cloud Security"
   stage: "deploy"
   description: "Attackers may attempt to destroy data and resources in the cluster. This includes deleting deployments, configurations, storage, and compute resources."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 198
   variables: ""
   conditionName: "C-0007 - MITRE - Data Destruction"

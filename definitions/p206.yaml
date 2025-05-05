@@ -5,7 +5,7 @@ metadata:
   category: "Cloud Security"
   stage: "deploy"
   description: "Kubernetes events can be very useful for identifying changes that occur in the cluster. Therefore, attackers may want to delete these events by using kubectl delete events–all in an attempt to avoid detection of their activity in the cluster."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 198
   variables: ""
   conditionName: "C-0031 - MITRE - Delete Kubernetes events "

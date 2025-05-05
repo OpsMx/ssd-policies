@@ -5,7 +5,7 @@ metadata:
   category: "CIS-Benchmark"
   stage: "deploy"
   description: "Kubernetes can audit the details of requests made to the API server. The --audit-policy-file flag must be set for this logging to be enabled."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 77
   variables: ""
   conditionName: "CIS-3.2.1 Ensure that a minimal audit policy is created"

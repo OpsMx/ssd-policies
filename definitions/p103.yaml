@@ -5,7 +5,7 @@ metadata:
   category: "CIS-Benchmark"
   stage: "deploy"
   description: "The API Server, can be configured to allow all requests. This mode should not be used on any production cluster."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 77
   variables: ""
   conditionName: "CIS-1.2.6 Ensure that the API Server --authorization-mode argument is not set to AlwaysAllow"

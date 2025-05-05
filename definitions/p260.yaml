@@ -5,7 +5,7 @@ metadata:
   category: "Compliance"
   stage: "deploy"
   description: "Overall NSA Complaince Score found below 30."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 257
   variables: ""
   conditionName: "NSA - Compliance Score - Range: 0-30"
