@@ -2,6 +2,6 @@ type: Tag
 metadata:
   id: 19
   tagName: "policyCategory"
-  tagValue: "SecretScan"
+  tagValue: "Secret Scan"
   tagDescription: ""
   createdBy: "system"

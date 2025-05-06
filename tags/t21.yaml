@@ -2,6 +2,6 @@ type: Tag
 metadata:
   id: 21
   tagName: "policyCategory"
-  tagValue: "HelmScan"
+  tagValue: "Helm Scan"
   tagDescription: ""
   createdBy: "system"
