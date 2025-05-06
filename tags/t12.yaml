@@ -2,6 +2,6 @@ type: Tag
 metadata:
   id: 12
   tagName: "policyCategory"
-  tagValue: "CodeSecurity"
+  tagValue: "Code Security"
   tagDescription: ""
   createdBy: "system"
