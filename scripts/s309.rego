@@ -39,7 +39,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	findings_count > 0
 	some i
 	not findings[i].ruleName in exception_list
-	title := sprintf("Snyk Code Scan: %v for entity: %v",[findings[i].ruleName], findings[i].ruleMessage)
+	title := sprintf("Snyk Code Scan: %v for entity: %v",[findings[i].ruleName, findings[i].ruleMessage])
 	msg := sprintf("Snyk Rule Violation found for following rule \n %v: %v", [findings[i].ruleName, findings[i].ruleMessage])
 	sugg := "Please examine the medium severity findings in the Snyk analysis data, available through the View Findings button and proactively review your code for common issues and apply best coding practices during development to prevent such alerts from arising."
 	error := ""
