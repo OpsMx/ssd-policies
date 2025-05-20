@@ -6,6 +6,6 @@ metadata:
   conditionValue: ""
   status: true
   datasourceTool:
-  - ""
+  - "scoutsuite"
   tags:
   - 31

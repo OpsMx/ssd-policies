@@ -1,22 +1,22 @@
 package opsmx
 import future.keywords.in
 
+# Defaults
 default exception_list = []
 default exception_count = 0
-
-policy_name = input.metadata.policyName
-policy_category = replace(input.metadata.policyCategory, " ", "_")
-exception_list = input.metadata.exception[policy_category]
-
-scan_account = input.metadata.ssd_secret.zap.name
-
 default issues = []
 default count_issues = -1
 
+#Inputs
+policy_name = input.metadata.policyName
+policy_category = replace(input.metadata.policyCategory, " ", "_")
+exception_list = input.metadata.exception[policy_category]
+scan_account = input.metadata.ssd_secret.zap.name
 image_sha = replace(input.metadata.image_sha, ":", "-")
+deployment_id = input.metadata.deploymentId
 
-complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", image_sha, "_", input.metadata.deploymentId, "_zapScan.json&scanOperation=zapDastScan"])
-download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", image_sha, "_", input.metadata.deploymentId, "_zapScan.json&scanOperation=zapDastScan"] )
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", image_sha, "_", deployment_id, "_zapScan.json&scanOperation=zapDastScan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", image_sha, "_", deployment_id, "_zapScan.json&scanOperation=zapDastScan"] )
 
 
 request = {

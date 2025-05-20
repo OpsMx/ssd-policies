@@ -6,6 +6,6 @@ metadata:
   conditionValue: ""
   status: true
   datasourceTool:
-  - ""
+  - "tfsec"
   tags:
   - 33

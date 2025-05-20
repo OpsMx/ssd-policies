@@ -6,6 +6,6 @@ metadata:
   conditionValue: ""
   status: true
   datasourceTool:
-  - ""
+  - "virustotal"
   tags:
   - 32
