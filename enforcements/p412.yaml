@@ -6,6 +6,6 @@ metadata:
   conditionValue: ""
   status: true
   datasourceTool:
-  - ""
+  - "mobsf"
   tags:
   - 32
