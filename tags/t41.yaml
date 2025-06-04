@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 40
+  tagName: "policyCategory"
+  tagValue: "ML/AI Scanning"
+  tagDescription: ""
+  createdBy: "system"
