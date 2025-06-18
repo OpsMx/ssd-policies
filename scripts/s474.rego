@@ -3,7 +3,6 @@ package opsmx
 import future.keywords.in
 
 policy_name := input.metadata.policyName
-policy_category := replace(input.metadata.policyCategory, " ", "_")
 
 # TODO:
 scan_account := "TBD"

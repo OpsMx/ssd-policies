@@ -3,9 +3,7 @@ package opsmx
 default exception_list = []
 default exception_count = 0
 
-policy_name = input.metadata.policyName
-policy_category = replace(input.metadata.policyCategory, " ", "_")
-exception_list = input.metadata.exception[policy_category]
+policy_name := input.metadata.policyName
 
 scan_account = input.metadata.ssd_secret.cbomkit.name
 

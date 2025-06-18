@@ -1,0 +1,12 @@
+id: 550
+type: PolicyDefinition
+metadata:
+    policyName: latentinjection.LatentJailbreak
+    category: ML/AI Scanning
+    stage: source
+    description: Implementation of Latent Jailbreak, using latent prompt injection- style distraction to get model to write hateful/harmful text - shrunk version. By using the flexible templating language in this module, we actually get broader coverage that subsumes the analyses in the paper. This leads to thousands of prompts by default, which is too many for some applications. This probe uses a randomly constrained subset.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

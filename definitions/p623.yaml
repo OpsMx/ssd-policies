@@ -1,0 +1,12 @@
+id: 623
+type: PolicyDefinition
+metadata:
+    policyName: xss.StringAssemblyDataExfil
+    category: ML/AI Scanning
+    stage: source
+    description: Prompt injection for manipulating state. Attempts to extract data by leveraging model string assembly instruction.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

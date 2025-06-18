@@ -1,0 +1,12 @@
+type: PolicyEnforcement
+metadata:
+    policyDefinitionId: 624
+    severity: Medium
+    action: Alert
+    conditionValue: ""
+    status: true
+    datasourceTool:
+        - garak
+    tags:
+        - 41
+  

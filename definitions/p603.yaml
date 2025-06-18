@@ -1,0 +1,12 @@
+id: 603
+type: PolicyDefinition
+metadata:
+    policyName: snowball.Primes
+    category: ML/AI Scanning
+    stage: source
+    description: Ask model to check a list of higher primes. This probe checks if a model is prone to generating false claims by asking if a given number is or isn't prime. - limited number of examples
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

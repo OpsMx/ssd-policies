@@ -1,0 +1,12 @@
+id: 602
+type: PolicyDefinition
+metadata:
+    policyName: snowball.GraphConnectivityFull
+    category: ML/AI Scanning
+    stage: source
+    description: Probe asking for impossible flight routings. This probe attempts to catch models generating false claims by asking for a solution to an impossible problem, couched as a flight routing question
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

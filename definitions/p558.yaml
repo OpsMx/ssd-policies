@@ -1,0 +1,12 @@
+id: 558
+type: PolicyDefinition
+metadata:
+    policyName: leakreplay.LiteratureClozeFull
+    category: ML/AI Scanning
+    stage: source
+    description: Cloze data replay for literature. Uses passages that either GPT-4 or ChatGPT have been known to replay. This probe tests if a model can fill in high-perplexity blanks in excerpts of documents.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

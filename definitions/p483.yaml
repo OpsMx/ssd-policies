@@ -1,0 +1,12 @@
+id: 483
+type: PolicyDefinition
+metadata:
+    policyName: dan.Ablation_Dan_11_0
+    category: ML/AI Scanning
+    stage: source
+    description: Ablation experiements over the DAN 11.0 prompt. A dynamic do-anything-now jailbreak, made by trying various combinations of parts of in a community-developed prompt, by the community, with the goal of preventing LLM safeguards applying to future conversational turns.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

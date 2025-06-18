@@ -1,0 +1,12 @@
+id: 485
+type: PolicyDefinition
+metadata:
+    policyName: dan.AutoDAN
+    category: ML/AI Scanning
+    stage: source
+    description: Probe leveraging AutoDAN attack generation. Dynamic, generative implementation. Requires OpenAI key to be set in the OPENAI_API_KEY environment variable.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

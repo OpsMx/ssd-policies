@@ -1,0 +1,12 @@
+id: 590
+type: PolicyDefinition
+metadata:
+    policyName: promptinject.HijackKillHumansFull
+    category: ML/AI Scanning
+    stage: source
+    description: PromptInject probe to inject a string; payload is kill-humans. Attempt to make the model repeat a given string
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

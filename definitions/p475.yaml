@@ -6,7 +6,7 @@ metadata:
   stage: "source"
   description: "Ensure that model files do not contain operators or globals that are unsupported by the parent ML library or are known to modelscan. Special caution should be given to Keras Lambda layers, which can be used for arbitrary code execution"
   scheduled_policy: false
-  scriptId: 475
+  scriptId: 476
   variables: ""
   conditionName: ""
   suggestion: ""

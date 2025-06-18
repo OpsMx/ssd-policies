@@ -1,0 +1,12 @@
+id: 484
+type: PolicyDefinition
+metadata:
+    policyName: dan.AntiDAN
+    category: ML/AI Scanning
+    stage: source
+    description: Anti-DAN. A do-anything-now jailbreak - a long prompt developed by the community, which should prevent LLM safeguards applying to future conversational turns.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

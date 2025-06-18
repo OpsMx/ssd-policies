@@ -1,0 +1,12 @@
+id: 528
+type: PolicyDefinition
+metadata:
+    policyName: glitch.Glitch
+    category: ML/AI Scanning
+    stage: source
+    description: Probe model for glitch tokens that provoke unusual behavior. Glitch tokens tend to be long entries in the tokenizer that only rarely occur in general text. Models using the same tokenizer are unlikely to be able to repeat them. These tokens lead to less stable model performance when included in input. This probe uses a subset of 100 potential glitch tokens, for speed.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""
