@@ -8,11 +8,12 @@ policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
 
-scan_account = input.metadata.ssd_secret.virustotal.name
+scan_account = input.metadata.ssd_secret.mobsf.name
 
 image_sha = replace(input.metadata.image_sha, ":", "-")
 
 file_name = concat("", [input.metadata.mobileBuild, "_", image_sha, "_mobsfscan.json"])
+
 
 complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=mobsfScan"])
 download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=mobsfScan"])
