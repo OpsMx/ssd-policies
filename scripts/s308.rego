@@ -39,9 +39,16 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	findings_count > 0
 	some i
 	not findings[i].ruleName in exception_list
+	rule_name := findings[i].ruleName
+	rule_message := findings[i].ruleMessage
+    rule_cwe := concat(",", findings[i].cwe)
+    locations := [sprintf("%s:%d", [loc.filePath, loc.line]) | loc := findings[i].locations[_]]
+    joined_locations := concat(",\n ", locations)
+    fixes := concat(",\n ", findings[i].exampleCommitFixes)
+	
 	title := sprintf("Snyk Code Scan: %v for entity: %v",[findings[i].ruleName, findings[i].ruleMessage])
-	msg := sprintf("Snyk Rule Violation found for following rule \n %v: %v", [findings[i].ruleName, findings[i].ruleMessage])
-	sugg := "Please examine the medium severity findings in the Snyk analysis data, available through the View Findings button and proactively review your code for common issues and apply best coding practices during development to prevent such alerts from arising."
+	msg := sprintf("Snyk Rule Violation found for following rule \n %v: %v \n CWE: %v \n Locations: %v ", [findings[i].ruleName, findings[i].ruleMessage, rule_cwe, joined_locations])
+	sugg := sprintf("Please correlate and try following suggested solutions. \n %v", [fixes])
 	error := ""
 	alertStatus := "active"
 }
@@ -50,9 +57,16 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	findings_count > 0
 	some i
 	findings[i].ruleName in exception_list
+	rule_name := findings[i].ruleName
+	rule_message := findings[i].ruleMessage
+    rule_cwe := concat(",", findings[i].cwe)
+    locations := [sprintf("%s:%d", [loc.filePath, loc.line]) | loc := findings[i].locations[_]]
+    joined_locations := concat(",\n ", locations)
+    fixes := concat(",\n ", findings[i].exampleCommitFixes)
+	
 	title := sprintf("Snyk Code Scan: %v for entity: %v",[findings[i].ruleName, findings[i].ruleMessage])
-	msg := sprintf("Snyk Rule Violation found for following rule \n %v: %v", [findings[i].ruleName, findings[i].ruleMessage])
-	sugg := "Please examine the medium severity findings in the Snyk analysis data, available through the View Findings button and proactively review your code for common issues and apply best coding practices during development to prevent such alerts from arising."
+	msg := sprintf("Snyk Rule Violation found for following rule \n %v: %v \n CWE: %v \n Locations: %v ", [findings[i].ruleName, findings[i].ruleMessage, rule_cwe, joined_locations])
+	sugg := sprintf("Please correlate and try following suggested solutions. \n %v", [fixes])
 	error := ""
 	exception_cause := findings[i].ruleName
 	alertStatus := "exception"
