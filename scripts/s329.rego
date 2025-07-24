@@ -31,7 +31,7 @@ request = {
 }
 
 response = http.send(request)
-blocker_issues = response.body.blockerIssues
+blocker_issues = response.blockerIssues
 count_blocker_issues = count(blocker_issues)
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
