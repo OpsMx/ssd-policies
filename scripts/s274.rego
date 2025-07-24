@@ -50,7 +50,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	secret_highlight = j.Match	
 
 	title := sprintf("High Severity Secret detected in code: %v", [secret_title])
-	msg := sprintf("Secret found for %v/%v code repository in branch %v.\nSecret identified:\nRule Violated: %v. \nFileName: %v. \nStartLine: %v. \nEnd Line: %v. Highlighted text: %v.", [input.metadata.owner, input.metadata.repository, input.metadata.branch, secret_title, secret_ruleid, secret_file, secret_start_line, secret_end_line, secret_highlight])
+	msg := sprintf("Secret found for %v/%v code repository in branch %v.\nSecret identified: %v, \nRule Violated: %v. \nFileName: %v. \nStartLine: %v. \nEnd Line: %v. Highlighted text: %v.", [input.metadata.owner, input.metadata.repository, input.metadata.branch, secret_title, secret_ruleid, secret_file, secret_start_line, secret_end_line, secret_highlight])
     sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
 	error := ""
 	alertStatus := "active"
@@ -72,7 +72,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	secret_highlight = j.Match	
 
 	title := sprintf("High Severity Secret detected in code: %v", [secret_title])
-	msg := sprintf("Secret found for %v/%v code repository in branch %v.\nSecret identified:\nRule Violated: %v. \nFileName: %v. \nStartLine: %v. \nEnd Line: %v. Highlighted text: %v.", [input.metadata.owner, input.metadata.repository, input.metadata.branch, secret_title, secret_ruleid, secret_file, secret_start_line, secret_end_line, secret_highlight])
+	msg := sprintf("Secret found for %v/%v code repository in branch %v.\nSecret identified: %v, \nRule Violated: %v. \nFileName: %v. \nStartLine: %v. \nEnd Line: %v. Highlighted text: %v.", [input.metadata.owner, input.metadata.repository, input.metadata.branch, secret_title, secret_ruleid, secret_file, secret_start_line, secret_end_line, secret_highlight])
     sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
 	error := ""
 	alertStatus := "exception"
