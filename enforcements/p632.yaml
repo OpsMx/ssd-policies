@@ -1,0 +1,11 @@
+type: PolicyEnforcement
+metadata:
+    policyDefinitionId: 632
+    severity: High
+    action: Alert
+    conditionValue: ""
+    status: true
+    datasourceTool:
+        - nbdefense
+    tags:
+        - 40

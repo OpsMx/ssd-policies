@@ -1,0 +1,12 @@
+id: 625
+type: PolicyDefinition
+metadata:
+  policyName: "Secrets"
+  category: "ML/AI Scanning"
+  stage: "source"
+  description: "Detects and flags secrets in Jupyter notebooks using nbdefense."
+  scheduled_policy: false
+  scriptId: 476
+  variables: ""
+  conditionName: ""
+  suggestion: ""

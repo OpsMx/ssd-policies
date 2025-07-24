@@ -1,11 +1,12 @@
+# UNAPPROVED_LICENSE_DEP_FILE
 type: PolicyEnforcement
 metadata:
-  policyDefinitionId: 624
-  severity: High
+  policyDefinitionId: 629
+  severity: Medium
   action: Alert
   conditionValue: ""
   status: true
   datasourceTool:
     - nbdefense
   tags:
-    - 41
+    - 40

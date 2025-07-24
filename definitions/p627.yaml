@@ -1,0 +1,12 @@
+id: 627
+type: PolicyDefinition
+metadata:
+  policyName: "License Not Found Notebook"
+  category: "ML/AI Scanning"
+  stage: "source"
+  description: "Detects and flags license not found in Jupyter notebooks using nbdefense."
+  scheduled_policy: false
+  scriptId: 476
+  variables: ""
+  conditionName: ""
+  suggestion: ""

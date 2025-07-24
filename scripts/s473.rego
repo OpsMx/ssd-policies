@@ -4,16 +4,14 @@ import future.keywords.in
 
 policy_name := input.metadata.policyName
 
-# TODO:
-scan_account := "TBD"
+scan_account := input.metadata.ssd_secret.modelscan.name
 
-model_file := input.metadata.model_file
+model_sha256= input.metadata.image_sha
 
-# TODO:
-file_name := concat("", ["findings_", input.metadata.account, "_", model_file, "_", input.metadata.commit_hash, "_modelscan.json"])
+file_name := concat("", ["sha256-", model_sha256, "-modelscanScanResult.json"])
 
-complete_url := concat("", [input.metadata.toolchain_addr, "api/v1/scanResult?fileName=", file_name, "&scanOperation=modelscanScan"])
-download_url := concat("", ["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=modelscanScan"])
+complete_url := concat("", [input.metadata.toolchain_addr, "api/v1/scanResult?fileName=", file_name, "&scanOperation=modelscan"])
+download_url := concat("", ["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=modelscan"])
 
 request := {
 	"method": "GET",
@@ -61,18 +59,20 @@ scan_targets := {
 	"asyncio": "*",
 }
 
-check_for_star(op) if {
+check_for_star(op){
 	op == "*"
 }
 
-check_for_specific_op(op, module) if {
+check_for_specific_op(op, module) {
 	not scan_targets[module] == "*"
 	op in scan_targets[module]
 }
 
-has_key(obj, key) if _ = obj[key]
+has_key(obj, key) {
+ obj[key]
+}
 
-deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg}] if {
+deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg}] {
 	total_issues > 0
 	some i in response.body.issues
 	has_key(scan_targets, i.module)
@@ -84,7 +84,7 @@ deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, 
 	alertStatus := "active"
 }
 
-deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg}] if {
+deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg}] {
 	total_issues > 0
 	some i in response.body.issues
 	has_key(scan_targets, i.module)
