@@ -32,29 +32,49 @@ request = {
 
 response = http.send(request)
 
-critical_severity_secrets = [response.body.Results[0].Secrets[i].Title | response.body.Results[0].Secrets[i].Severity == "CRITICAL"]
-secrets_count = count(critical_severity_secrets)
+secret_results := [response.body.Results[i] | count(response.body.Results[i].Secrets) > 0]
 
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
-	secrets_count > 0
-	some i in critical_severity_secrets
-	not i in exception_list
-	title := sprintf("Critical Secret detected in code: %v", [i])
-	msg := sprintf("Secret found for %v/%v code repository in branch %v.\nSecret identified:\n %s", [input.metadata.owner, input.metadata.repository, input.metadata.branch, i])
-	sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
+	secret_results > 0
+	some i in secret_results
+	secret_file = i.Target
+
+	some j in i.Secrets
+	secret_title = j.Title
+	not secret_title in exception_list
+    secret_severity = j.Severity
+	secret_severity == "CRITICAL"
+	secret_ruleid = j.RuleID
+	secret_start_line = j.StartLine
+	secret_end_line = j.EndLine
+	secret_highlight = j.Match	
+
+	title := sprintf("Critical Severity Secret detected in code: %v", [secret_title])
+	msg := sprintf("Secret found for %v/%v code repository in branch %v.\nSecret identified:\nRule Violated: %v. \nFileName: %v. \nStartLine: %v. \nEnd Line: %v. Highlighted text: %v.", [input.metadata.owner, input.metadata.repository, input.metadata.branch, secret_title, secret_ruleid, secret_file, secret_start_line, secret_end_line, secret_highlight])
+    sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
 	error := ""
 	alertStatus := "active"
 }
 
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+	secret_results > 0
+	some i in secret_results
+	secret_file = i.Target
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
-	secrets_count > 0
-	some i in critical_severity_secrets
-	i in exception_list
-	title := sprintf("Critical Secret detected in code: %v", [i])
-	msg := sprintf("Secret found for %v/%v code repository in branch %v.\nSecret identified:\n %s", [input.metadata.owner, input.metadata.repository, input.metadata.branch, i])
-	sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
+	some j in i.Secrets
+	secret_title = j.Title
+	secret_title in exception_list
+    secret_severity = j.Severity
+	secret_severity == "CRITICAL"
+	secret_ruleid = j.RuleID
+	secret_start_line = j.StartLine
+	secret_end_line = j.EndLine
+	secret_highlight = j.Match	
+
+	title := sprintf("Critical Severity Secret detected in code: %v", [secret_title])
+	msg := sprintf("Secret found for %v/%v code repository in branch %v.\nSecret identified:\nRule Violated: %v. \nFileName: %v. \nStartLine: %v. \nEnd Line: %v. Highlighted text: %v.", [input.metadata.owner, input.metadata.repository, input.metadata.branch, secret_title, secret_ruleid, secret_file, secret_start_line, secret_end_line, secret_highlight])
+    sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
 	error := ""
 	alertStatus := "exception"
-	exception_cause := i
+	exception_cause := secret_title
 }
