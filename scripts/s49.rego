@@ -38,10 +38,15 @@ findings = response.body.findings
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 	findings_count > 0
 	some i
-	not findings[i].rule_name in exception_list
 	title := sprintf("Semgrep Scan: %v ",[findings[i].rule_name])
-	msg := sprintf("%v: %v", [findings[i].rule_name, findings[i].rule_message])
-	sugg := "Please examine the medium-severity findings in the SEMGREP analysis data, available through the View Findings button and proactively review your code for common issues and apply best coding practices during development to prevent such alerts from arising."
+	not findings[i].rule_name in exception_list	
+	fix = findings[i].fix
+	owasp = concat(", ", findings[i].owasp)
+	cwe = concat(", ", findings[i].cwe)
+	file = findings[i].location.file_path
+	line = findings[i].location.line
+	msg := sprintf("%v: %v \n\n OWASP Rule Violations: %v \n CWE: %v \n Location: %v \n Line Number: %v", [findings[i].rule_name, findings[i].rule_message, owasp, cwe, file, line])
+	sugg := sprintf("Please correlate and incorporate following suggested solution: \n %v", [fix])
 	error := ""
 	alertStatus := "active"
 }
@@ -49,10 +54,15 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
 	findings_count > 0
 	some i
-	findings[i].rule_name in exception_list
 	title := sprintf("Semgrep Scan: %v ",[findings[i].rule_name])
-	msg := sprintf("%v: %v", [findings[i].rule_name, findings[i].rule_message])
-	sugg := "Please examine the medium-severity findings in the SEMGREP analysis data, available through the View Findings button and proactively review your code for common issues and apply best coding practices during development to prevent such alerts from arising."
+	findings[i].rule_name in exception_list
+	fix = findings[i].fix
+	owasp = concat(", ", findings[i].owasp)
+	cwe = concat(", ", findings[i].cwe)
+	file = findings[i].location.file_path
+	line = findings[i].location.line
+	msg := sprintf("%v: %v \n\n OWASP Rule Violations: %v \n CWE: %v \n Location: %v \n Line Number: %v", [findings[i].rule_name, findings[i].rule_message, owasp, cwe, file, line])
+	sugg := sprintf("Please correlate and incorporate following suggested solution: \n %v", [fix])
 	error := ""
 	exception_cause := findings[i].rule_name
 	alertStatus := "exception"
