@@ -6,7 +6,7 @@ metadata:
   stage: "artifact"
   description: "Mock Policy."
   scheduled_policy: false
-  scriptId: 472
+  scriptId: 418
   variables: ""
   conditionName: ""
   suggestion: ""
