@@ -1,0 +1,12 @@
+id: 472
+type: PolicyDefinition
+metadata:
+  policyName: "QA Automation test"
+  category: "Automation"
+  stage: "artifact"
+  description: "Mock Policy."
+  scheduled_policy: false
+  scriptId: 472
+  variables: ""
+  conditionName: ""
+  suggestion: ""
