@@ -5,91 +5,60 @@ default allow = false
 
 request = {
     "method": "GET",
-    "url": "https://mpa54fc1c3be56479493.free.beeceptor.com/api/testexec/TEST-123/test?detailed=true"
+    "url": "https://jiraxray.free.beeceptor.com/api/testexec/TEST-123/test?detailed=true"
 }
 
 response = http.send(request)
 
 # Handle HTTP errors
-deny[{
-    "alertMsg": msg,
-    "suggestions": sugg,
-    "error": error,
-    "exception": "",
-    "alertStatus": "error",
-    "accountName": "",
-    "http_status": response.status_code,
-    "response_body": response.body
-}] {
+deny[msg] {
     response.status_code == 401
     msg = "Unauthorized to access test execution API"
     error = "401 Unauthorized: Invalid credentials or permissions"
     sugg = "Check API authentication credentials and permissions"
 }
 
-deny[{
-    "alertMsg": msg,
-    "suggestions": sugg,
-    "error": error,
-    "exception": "",
-    "alertStatus": "error",
-    "accountName": "",
-    "http_status": response.status_code,
-    "response_body": response.body
-}] {
+deny[msg] {
     response.status_code == 404
     msg = "Test execution API endpoint not found"
     error = "404 Not Found: The requested API endpoint does not exist"
     sugg = "Verify the API URL configuration"
 }
 
-deny[{
-    "alertMsg": msg,
-    "suggestions": sugg,
-    "error": error,
-    "exception": "",
-    "alertStatus": "error",
-    "accountName": "",
-    "http_status": response.status_code,
-    "response_body": response.body
-}] {
+deny[msg] {
     response.status_code == 500
     msg = "Test execution API returned server error"
     error = "500 Internal Server Error: API server encountered an error"
     sugg = "Retry the request later or contact API administrator"
 }
 
-deny[{
-    "alertMsg": msg,
-    "suggestions": sugg,
-    "error": error,
-    "exception": "",
-    "alertStatus": "error",
-    "accountName": "",
-    "http_status": response.status_code,
-    "response_body": response.body
-}] {
+deny[msg] {
     not response.status_code in [200, 401, 404, 500]
     msg = "Unexpected error occurred while accessing test execution API"
     error = sprintf("Received HTTP status %v", [response.status_code])
     sugg = "Check API connectivity and endpoint configuration"
 }
 
-# Process successful response for non-exception cases
-deny[{
-    "alertMsg": msg,
-    "suggestions": sugg,
-    "error": "",
-    "exception": "",
-    "alertStatus": "active",
-    "accountName": "",
-    "http_status": response.status_code,
-    "response_body": response.body
-}] {
+# Process successful response: collect all failing-test messages and join into one string separated by newlines
+deny[msg] {
     response.status_code == 200
-    test = response.body[_]
-    test.status == "FAIL"
-    defects_list = concat(", ", [d.key | d = test.defects[_]; d.key != null])
-    msg = sprintf("Test %v failed with defects: %v", [test.key, defects_list])
-    sugg = sprintf("Investigate failed test %v and associated defects: %v", [test.key, defects_list])
+
+    # build an array of per-test messages for tests that failed
+    failures := [
+        sprintf("Test %v failed with defects: %v", [
+            t.key,
+            concat(", ", [d.key | d := t.defects[_]; d.key != null])
+        ]) |
+        t := response.body[_];
+        t.status == "FAIL"
+    ]
+
+    # only deny if there is at least one failure
+    count(failures) > 0
+
+    # join into a single string separated by newline characters
+    msg = concat("\n", failures)
+
+    # optional short suggestion (single string); can be adjusted if you want per-test suggestions instead
+    sugg = "Investigate failed tests and associated defects; see details in the message."
 }
