@@ -11,7 +11,7 @@ exception_list = input.metadata.exception[policy_category]
 account = input.metadata.account_name
 
 cluster_id = input.metadata.clusterID
-framework = "cis-v1.23-t1.0.1"
+framework = "cis-v1.10.0"
 
 complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/kubescape?clusterID=", cluster_id, "&framework=", framework])
 download_url = concat("",["tool-chain/api/v1/kubescape?clusterID=", cluster_id, "&framework=", framework] )
