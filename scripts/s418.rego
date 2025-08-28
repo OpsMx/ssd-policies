@@ -5,7 +5,7 @@ default allow = false
 
 request = {
     "method": "GET",
-    "url": "https://jiraxray.free.beeceptor.com/api/testexec/TEST-123/test?detailed=true"
+    "url": "https://xrayjira.free.beeceptor.com/api/testexec/TEST-123/test?detailed=true"
 }
 
 response = http.send(request)
