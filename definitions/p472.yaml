@@ -1,0 +1,12 @@
+id: 472
+type: PolicyDefinition
+metadata:
+  policyName: "Not Quantum-Safe Components Policy"
+  category: "Crypto Compliance"
+  stage: "source"
+  description: "This policy ensures the identification of components that are not quantum-safe within the Bill of Materials."
+  scheduled_policy: false
+  scriptId: 472
+  variables: ""
+  conditionName: ""
+  suggestion: ""

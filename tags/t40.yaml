@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 40
+  tagName: "policyCategory"
+  tagValue: "Crypto Compliance"
+  tagDescription: ""
+  createdBy: "system"
