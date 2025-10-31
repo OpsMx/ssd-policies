@@ -6,6 +6,6 @@ metadata:
   conditionValue: ""
   status: true
   datasourceTool:
-  - "cbom"
+  - "cbomkit"
   tags:
   - 40
