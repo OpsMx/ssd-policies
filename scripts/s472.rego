@@ -35,6 +35,7 @@ response = http.send(request)
 get_bom(b) {
     response.body == b
 }
+
 # Array of component objects whose complianceLevel == "Not Quantum Safe"
 not_quantum_safe_components := [c |
     get_bom(b)
@@ -46,20 +47,36 @@ not_quantum_safe_components := [c |
 # Count of such components
 not_quantum_safe_count := count(not_quantum_safe_components)
 
+# helper: return the primitive string if present, otherwise "unknown"
+primitive_of(comp) = p {
+    comp.cryptoProperties
+    comp.cryptoProperties.algorithmProperties
+    p := comp.cryptoProperties.algorithmProperties.primitive
+}
+
+primitive_of(comp) = "unknown" {
+    not comp.cryptoProperties
+}
+
+primitive_of(comp) = "unknown" {
+    comp.cryptoProperties
+    not comp.cryptoProperties.algorithmProperties
+}
+
+primitive_of(comp) = "unknown" {
+    comp.cryptoProperties
+    comp.cryptoProperties.algorithmProperties
+    not comp.cryptoProperties.algorithmProperties.primitive
+}
+
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 	not_quantum_safe_count > 0
 	some i
 	comp := not_quantum_safe_components[i]
-	primitive := comp.cryptoProperties.algorithmProperties.primitive {
-		comp.cryptoProperties
-		comp.cryptoProperties.algorithmProperties
-		comp.cryptoProperties.algorithmProperties.primitive
-	}
-	primitive := "unknown" {
-		not (comp.cryptoProperties
-		     & comp.cryptoProperties.algorithmProperties
-		     & comp.cryptoProperties.algorithmProperties.primitive)
-	}
+
+	# use helper to get primitive or "unknown"
+	primitive := primitive_of(comp)
+
 	compliance := comp.complianceMessage
 	
 	title := sprintf("%v — Non-Quantum-Safe (primitive: %v)", [comp.name, primitive])
@@ -104,20 +121,14 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	not_quantum_safe_count > 0
 	some i
 	comp := not_quantum_safe_components[i]
-	# guarded primitive extraction (fallback to "unknown")
-	primitive := comp.cryptoProperties.algorithmProperties.primitive {
-		comp.cryptoProperties
-		comp.cryptoProperties.algorithmProperties
-		comp.cryptoProperties.algorithmProperties.primitive
-	}
-	primitive := "unknown" {
-		not (comp.cryptoProperties
-		     & comp.cryptoProperties.algorithmProperties
-		     & comp.cryptoProperties.algorithmProperties.primitive)
-	}
+
+	# use helper to get primitive or "unknown"
+	primitive := primitive_of(comp)
+
 	compliance := comp.complianceMessage
 	title := sprintf("%v — Non-Quantum-Safe (primitive: %v)", [comp.name, primitive])
 	title in exception_list
+
 	# guarded extraction of a single occurrence's file/line (fallbacks)
 	file := comp.evidence.occurrences[_].location {
 		comp.evidence
