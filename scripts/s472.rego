@@ -1,5 +1,4 @@
 package opsmx
-import future.keywords.in
 
 default exception_list = []
 default exception_count = 0
@@ -26,8 +25,8 @@ complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileN
 download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=cbomscan"])
 
 request = {	
-		"method": "GET",
-		"url": complete_url
+	"method": "GET",
+	"url": complete_url
 }
 
 response = http.send(request)
@@ -38,9 +37,7 @@ get_bom(b) {
 
 # Array of component objects whose complianceLevel == "Not Quantum Safe"
 not_quantum_safe_components := [c |
-    get_bom(b)
-    comps := b.components
-    c := comps[_]
+    c := response.body.components[_]
     c.complianceLevel == "Not Quantum Safe"
 ]
 
@@ -69,40 +66,36 @@ primitive_of(comp) = "unknown" {
     not comp.cryptoProperties.algorithmProperties.primitive
 }
 
+# Helper to check exception membership without using "in"
+is_exception(t) {
+    exception_list[_] == t
+}
+
+default_value(val, fallback) = out {
+    out := val
+    val != ""
+} else = out {
+    out := fallback
+}
+
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 	not_quantum_safe_count > 0
 	some i
 	comp := not_quantum_safe_components[i]
-
 	# use helper to get primitive or "unknown"
 	primitive := primitive_of(comp)
 
 	compliance := comp.complianceMessage
 	
 	title := sprintf("%v — Non-Quantum-Safe (primitive: %v)", [comp.name, primitive])
-	not title in exception_list	
-	
-	# guarded extraction of a single occurrence's file/line (fallbacks)
-	file := comp.evidence.occurrences[_].location {
-		comp.evidence
-		comp.evidence.occurrences
-		comp.evidence.occurrences[_].location
-	}
-	file := "unknown" {
-		not (comp.evidence
-		     & comp.evidence.occurrences
-		     & comp.evidence.occurrences[_].location)
-	}
-	line := comp.evidence.occurrences[_].line {
-		comp.evidence
-		comp.evidence.occurrences
-		comp.evidence.occurrences[_].line
-	}
-	line := "N/A" {
-		not (comp.evidence
-		     & comp.evidence.occurrences
-		     & comp.evidence.occurrences[_].line)
-	}
+	not is_exception(title)	
+
+	occs := comp.evidence.occurrences
+    count(occs) > 0
+    some j
+    occ := occs[j]
+    file := default_value(occ.location, "unknown")
+    line := default_value(occ.line, "N/A")
 
 	msg := sprintf(
 		"%v uses a non-quantum-safe primitive (%v). Details: %v. Location: %v:%v",
@@ -127,29 +120,14 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 
 	compliance := comp.complianceMessage
 	title := sprintf("%v — Non-Quantum-Safe (primitive: %v)", [comp.name, primitive])
-	title in exception_list
+	is_exception(title)
 
-	# guarded extraction of a single occurrence's file/line (fallbacks)
-	file := comp.evidence.occurrences[_].location {
-		comp.evidence
-		comp.evidence.occurrences
-		comp.evidence.occurrences[_].location
-	}
-	file := "unknown" {
-		not (comp.evidence
-		     & comp.evidence.occurrences
-		     & comp.evidence.occurrences[_].location)
-	}
-	line := comp.evidence.occurrences[_].line {
-		comp.evidence
-		comp.evidence.occurrences
-		comp.evidence.occurrences[_].line
-	}
-	line := "N/A" {
-		not (comp.evidence
-		     & comp.evidence.occurrences
-		     & comp.evidence.occurrences[_].line)
-	}
+	occs := comp.evidence.occurrences
+    count(occs) > 0
+    some j
+    occ := occs[j]
+    file := default_value(occ.location, "unknown")
+    line := default_value(occ.line, "N/A")
 
 	msg := sprintf(
 		"%v uses a non-quantum-safe primitive (%v). Details: %v. Location: %v:%v",
@@ -160,6 +138,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 		"Review usage of %v (%v) and migrate to a quantum-safe or hybrid alternative.",
 		[comp.name, primitive]
 	)
+	error := ""
 	exception_cause := title
 	alertStatus := "exception"
 }
