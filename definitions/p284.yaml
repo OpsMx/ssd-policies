@@ -3,7 +3,7 @@ type: PolicyDefinition
 metadata:
   policyName: "Medium severity rule violation in helm"
   category: "Helm Scan"
-  stage: "deploy"
+  stage: "artifact"
   description: "Medium Severity rule violations in helm."
   scheduled_policy: false
   scriptId: 284
