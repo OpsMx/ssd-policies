@@ -3,7 +3,7 @@ type: PolicyDefinition
 metadata:
   policyName: "Low severity rule violation in helm"
   category: "Helm Scan"
-  stage: "deploy"
+  stage: "artifact"
   description: "Low Severity rule violations in helm."
   scheduled_policy: false
   scriptId: 285
