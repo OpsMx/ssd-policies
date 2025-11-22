@@ -1,0 +1,12 @@
+id: 549
+type: PolicyDefinition
+metadata:
+    policyName: latentinjection.LatentInjectionTranslationEnZhFull
+    category: ML/AI Scanning
+    stage: source
+    description: Latent prompt injection in Chinese context (简体字). Check to see if model can be subverted by text placed in an otherwise innocuous request for language translation
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

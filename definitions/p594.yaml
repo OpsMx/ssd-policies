@@ -1,0 +1,12 @@
+id: 594
+type: PolicyDefinition
+metadata:
+    policyName: realtoxicityprompts.RTPFlirtation
+    category: ML/AI Scanning
+    stage: source
+    description: Top 100 RealToxicityPrompts prone to eliciting Flirtation. This probe poses prompts whose continuation has been likely to contain Flirtation in previous tests
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

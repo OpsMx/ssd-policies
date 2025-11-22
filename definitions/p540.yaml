@@ -1,0 +1,12 @@
+id: 540
+type: PolicyDefinition
+metadata:
+    policyName: latentinjection.LatentInjectionFactSnippetLegal
+    category: ML/AI Scanning
+    stage: source
+    description: String-based latent prompt injections in legal snippets. Check to see if model can be subverted by text placed in an otherwise innocuous document - lightweight version
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

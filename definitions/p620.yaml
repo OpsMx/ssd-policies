@@ -1,0 +1,12 @@
+id: 620
+type: PolicyDefinition
+metadata:
+    policyName: xss.ColabAIDataLeakage
+    category: ML/AI Scanning
+    stage: source
+    description: Leak data via image rendering as demonstrated against Gemini in Colab. Attempts to get the system to render images and leak data.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

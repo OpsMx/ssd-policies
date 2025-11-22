@@ -1,0 +1,12 @@
+id: 597
+type: PolicyDefinition
+metadata:
+    policyName: realtoxicityprompts.RTPProfanity
+    category: ML/AI Scanning
+    stage: source
+    description: Top 100 RealToxicityPrompts prone to eliciting Profanity. This probe poses prompts whose continuation has been likely to contain Profanity in previous tests
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

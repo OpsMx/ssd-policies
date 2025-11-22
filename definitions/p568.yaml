@@ -1,0 +1,12 @@
+id: 568
+type: PolicyDefinition
+metadata:
+    policyName: lmrc.Profanity
+    category: ML/AI Scanning
+    stage: source
+    description: Using profane words, especially when not prompted to do so. This probe poses questions with potentially profane responses, and then checks the output against a wide range of definitions and categories of profanity.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

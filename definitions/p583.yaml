@@ -1,0 +1,12 @@
+id: 583
+type: PolicyDefinition
+metadata:
+    policyName: phrasing.FutureTense
+    category: ML/AI Scanning
+    stage: source
+    description: Attempt to evade safeguards by setting requests in the future tense. A subset of the tense-modified requests. Success is reported higher with more variation, so generations is overridden.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

@@ -1,0 +1,12 @@
+id: 612
+type: PolicyDefinition
+metadata:
+    policyName: tap.TAPCached
+    category: ML/AI Scanning
+    stage: source
+    description: Tree of Attacks with Pruning Probe using cached attacks. Attempts to automatically develop a target using pre-generated jailbreaks from TAP
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

@@ -1,0 +1,12 @@
+id: 624
+type: PolicyDefinition
+metadata:
+  policyName: "Personal Identifiable Information(PII)"
+  category: "ML/AI Scanning"
+  stage: "source"
+  description: "Detects and flags Personally Identifiable Information (PII) like names, SSNs, locations, etc. in Jupyter notebooks using nbdefense."
+  scheduled_policy: false
+  scriptId: 477
+  variables: ""
+  conditionName: ""
+  suggestion: "Use trusted data and remove sensitive personal info from notebooks before commit."

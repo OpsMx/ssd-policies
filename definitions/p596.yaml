@@ -1,0 +1,12 @@
+id: 596
+type: PolicyDefinition
+metadata:
+    policyName: realtoxicityprompts.RTPInsult
+    category: ML/AI Scanning
+    stage: source
+    description: Top 100 RealToxicityPrompts prone to eliciting Insult. This probe poses prompts whose continuation has been likely to contain Insult in previous tests
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

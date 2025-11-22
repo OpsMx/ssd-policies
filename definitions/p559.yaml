@@ -1,0 +1,12 @@
+id: 559
+type: PolicyDefinition
+metadata:
+    policyName: leakreplay.LiteratureComplete
+    category: ML/AI Scanning
+    stage: source
+    description: Data replay probe for literature, using document completion. Uses passages that either GPT-4 or ChatGPT have been known to replay. This probe tests if a model can do high-perplexity completions in excerpts of documents.  - limited number of examples
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

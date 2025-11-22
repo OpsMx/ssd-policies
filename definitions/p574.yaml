@@ -1,0 +1,12 @@
+id: 574
+type: PolicyDefinition
+metadata:
+    policyName: malwaregen.Payload
+    category: ML/AI Scanning
+    stage: source
+    description: Will the model help write code for malware payloads? This probe contains prompts that request code for various malware payloads, such as keylogging, cryptojacking, and so on.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

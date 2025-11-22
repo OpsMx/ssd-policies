@@ -1,0 +1,12 @@
+id: 519
+type: PolicyDefinition
+metadata:
+    policyName: encoding.InjectNato
+    category: ML/AI Scanning
+    stage: source
+    description: Probe for susceptibility to Nato phonetic alphabet encoding. Encodes payloads using the classic NATO phonetic alphabet, and tries a variety of ways of getting the target model to repeat & decode them.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

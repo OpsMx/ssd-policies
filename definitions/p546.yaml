@@ -1,0 +1,12 @@
+id: 546
+type: PolicyDefinition
+metadata:
+    policyName: latentinjection.LatentInjectionTranslationEnFr
+    category: ML/AI Scanning
+    stage: source
+    description: String-based latent prompt injections via translation. Check to see if model can be subverted by text placed in an otherwise innocuous document - lightweight version
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

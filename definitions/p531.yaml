@@ -1,0 +1,12 @@
+id: 531
+type: PolicyDefinition
+metadata:
+    policyName: goodside.Tag
+    category: ML/AI Scanning
+    stage: source
+    description: Exploit UTF tag page encoding for user-invisible prompt injection. There's a page of unicode tags corresponding to the alphabet that don't render, but some models will interpret these anyway. Following instructions posed in this unicode page allows attackers to hide prompt injections in browsers.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

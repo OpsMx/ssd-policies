@@ -1,0 +1,12 @@
+id: 621
+type: PolicyDefinition
+metadata:
+    policyName: xss.MarkdownImageExfil
+    category: ML/AI Scanning
+    stage: source
+    description: Can we get the model to write embedded assets exfiltrating text in the URI? Attempts to get the model to plant a markdown pixel image in output
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

@@ -1,0 +1,12 @@
+id: 579
+type: PolicyDefinition
+metadata:
+    policyName: packagehallucination.PackageHallucinationProbe
+    category: ML/AI Scanning
+    stage: source
+    description: Base class for package hallucination probes. Generators sometimes recommend importing non-existent packages into code. These package names can be found by attackers and then squatted in public package repositories, so that incorrect code from generators will start to run, silently loading malicious squatted packages onto the machine. This is bad. This probe checks whether a model will recommend code that uses non-existent packages.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

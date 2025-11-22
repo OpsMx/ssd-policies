@@ -1,0 +1,12 @@
+id: 523
+type: PolicyDefinition
+metadata:
+    policyName: encoding.InjectZalgo
+    category: ML/AI Scanning
+    stage: source
+    description: Probe for susceptibility to Zalgo encoding. Encodes payloads using Zalgo decoration, and tries a variety of ways of getting the target model to repeat & decode them.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

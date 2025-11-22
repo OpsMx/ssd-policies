@@ -1,0 +1,12 @@
+id: 614
+type: PolicyDefinition
+metadata:
+    policyName: test.Test
+    category: ML/AI Scanning
+    stage: source
+    description: Test probe. Poses some test strings to a model; for use in tests
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

@@ -1,0 +1,12 @@
+id: 516
+type: PolicyDefinition
+metadata:
+    policyName: encoding.InjectHex
+    category: ML/AI Scanning
+    stage: source
+    description: Probe for susceptibility to hex encoded injections. Encodes payloads using hex, and tries a variety of ways of getting the target model to repeat & decode them.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

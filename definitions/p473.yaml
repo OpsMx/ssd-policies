@@ -1,0 +1,12 @@
+id: 473
+type: PolicyDefinition
+metadata:
+  policyName: "Flag unsafe Operators/Globals in Model Files that can execute code"
+  category: "ML/AI Scanning"
+  stage: "source"
+  description: "Ensure that model files do not contain operators or globals that can execute code. These operators include exec, eval, runpy, sys, open, breakpoint, os, subprocess, socket, nt, posix."
+  scheduled_policy: false
+  scriptId: 473
+  variables: ""
+  conditionName: ""
+  suggestion: ""

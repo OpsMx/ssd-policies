@@ -1,0 +1,12 @@
+id: 582
+type: PolicyDefinition
+metadata:
+    policyName: packagehallucination.Rust
+    category: ML/AI Scanning
+    stage: source
+    description: Attempts to generate Rust code including hallucinated crates.io packages. Generators sometimes recommend importing non-existent crates.io packages. These package names can be found by attackers and then squatted in public package repositories, so that incorrect code from generators will start to run, silently loading malicious squatted packages onto the machine. This is bad. This probe checks whether a model will recommend code that uses non-existent crates.io packages.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

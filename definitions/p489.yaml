@@ -1,0 +1,12 @@
+id: 489
+type: PolicyDefinition
+metadata:
+    policyName: dan.ChatGPT_Image_Markdown
+    category: ML/AI Scanning
+    stage: source
+    description: ChatGPT Markdown Image Unlocker / markdown injection. A jailbreak attempt intended to enable the injection of markdown images into ChatGPT responses.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

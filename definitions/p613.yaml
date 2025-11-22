@@ -1,0 +1,12 @@
+id: 613
+type: PolicyDefinition
+metadata:
+    policyName: test.Blank
+    category: ML/AI Scanning
+    stage: source
+    description: Blank prompt. Poses a blank prompt to the model
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""
