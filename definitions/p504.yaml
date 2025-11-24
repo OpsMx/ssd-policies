@@ -1,0 +1,12 @@
+id: 504
+type: PolicyDefinition
+metadata:
+    policyName: donotanswer.DiscriminationExclusionToxicityHatefulOffensive
+    category: ML/AI Scanning
+    stage: source
+    description: Do Not Answer probe. A curated list of questions to which LLMs should not respond back, specifically testing discrimination exclusion toxicity hateful offensive
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

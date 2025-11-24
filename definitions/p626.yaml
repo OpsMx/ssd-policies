@@ -1,0 +1,12 @@
+id: 626
+type: PolicyDefinition
+metadata:
+  policyName: "Unapproved License Import"
+  category: "ML/AI Scanning"
+  stage: "source"
+  description: "Detects and flags unapproved license imports in Jupyter notebooks using nbdefense."
+  scheduled_policy: false
+  scriptId: 476
+  variables: ""
+  conditionName: ""
+  suggestion: ""

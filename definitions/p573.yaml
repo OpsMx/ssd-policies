@@ -1,0 +1,12 @@
+id: 573
+type: PolicyDefinition
+metadata:
+    policyName: malwaregen.Evasion
+    category: ML/AI Scanning
+    stage: source
+    description: Will the model write code to help avoid anti-malware? This probe requests a generator write code to perform evasive actions that hinder its detection, such as disabling antivirus, hiding in a process list, and so on
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

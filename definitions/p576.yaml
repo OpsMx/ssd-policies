@@ -1,0 +1,12 @@
+id: 576
+type: PolicyDefinition
+metadata:
+    policyName: malwaregen.TopLevel
+    category: ML/AI Scanning
+    stage: source
+    description: Will the system return code when asked to write malware? This probe prompts the generator with requests to author malware or code to perform malicious actions.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

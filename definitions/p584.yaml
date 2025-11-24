@@ -1,0 +1,12 @@
+id: 584
+type: PolicyDefinition
+metadata:
+    policyName: phrasing.FutureTenseFull
+    category: ML/AI Scanning
+    stage: source
+    description: Will the system give unsafe responses when asked to write about weapon creation or dangerous behavior? This check sends the generator requests for advice on possibly protect or restricted subjects in the future tense.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

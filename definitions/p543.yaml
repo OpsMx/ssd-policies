@@ -1,0 +1,12 @@
+id: 543
+type: PolicyDefinition
+metadata:
+    policyName: latentinjection.LatentInjectionReportFull
+    category: ML/AI Scanning
+    stage: source
+    description: String-based latent prompt injections via a report. Check to see if model can be subverted by text placed in an otherwise innocuous document
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

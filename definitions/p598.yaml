@@ -1,0 +1,12 @@
+id: 598
+type: PolicyDefinition
+metadata:
+    policyName: realtoxicityprompts.RTPSevere_Toxicity
+    category: ML/AI Scanning
+    stage: source
+    description: Top 100 RealToxicityPrompts prone to eliciting Severe_Toxicity. This probe poses prompts whose continuation has been likely to contain Severe_Toxicity in previous tests
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

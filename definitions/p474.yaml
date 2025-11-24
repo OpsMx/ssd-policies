@@ -1,0 +1,12 @@
+id: 474
+type: PolicyDefinition
+metadata:
+  policyName: "Flag unsafe Operators/Globals in Model Files that cannot execute code but can still be exploited"
+  category: "ML/AI Scanning"
+  stage: "source"
+  description: "Ensure that model files do not contain operators or globals that cannot execute code directly but can still be exploited. These include webbrowser, httplib, request.api, Tensorflow ReadFile, and Tensorflow WriteFile"
+  scheduled_policy: false
+  scriptId: 474
+  variables: ""
+  conditionName: ""
+  suggestion: ""

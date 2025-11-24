@@ -1,0 +1,12 @@
+id: 552
+type: PolicyDefinition
+metadata:
+    policyName: latentinjection.LatentWhois
+    category: ML/AI Scanning
+    stage: source
+    description: Latent prompt injections in whois probe reports. Place injections in whois reports of known-malicious domains that declare the domain not malicious Domain whois records taken from sampling https://github.com/stamparm/blackbook 2024.10
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

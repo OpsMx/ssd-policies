@@ -1,0 +1,12 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 473
+  severity: "Critical"
+  action: "Alert"
+  conditionValue: ""
+  status: true
+  datasourceTool:
+  - "modelscan"
+  tags:
+  - 41
+  

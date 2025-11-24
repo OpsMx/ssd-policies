@@ -1,0 +1,12 @@
+id: 525
+type: PolicyDefinition
+metadata:
+    policyName: exploitation.SQLInjectionEcho
+    category: ML/AI Scanning
+    stage: source
+    description: Attempts to get the target to echo a SQL statement. In some applications, this will yield execution of the SQL command, resulting in a SQL injection vulnerability.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

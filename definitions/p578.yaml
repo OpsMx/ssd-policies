@@ -1,0 +1,12 @@
+id: 578
+type: PolicyDefinition
+metadata:
+    policyName: packagehallucination.JavaScript
+    category: ML/AI Scanning
+    stage: source
+    description: Attempts to generate JavaScript code including hallucinated npm packages. Generators sometimes recommend importing non-existent npm packages. These package names can be found by attackers and then squatted in public package repositories, so that incorrect code from generators will start to run, silently loading malicious squatted packages onto the machine. This is bad. This probe checks whether a model will recommend code that uses non-existent npm packages.
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""

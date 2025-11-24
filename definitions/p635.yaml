@@ -1,0 +1,13 @@
+# VULNERABLE_DEPENDENCY_IMPORT
+id: 635
+type: PolicyDefinition
+metadata:
+  policyName: "Critical Severity Vulnerable Dependency Import"
+  category: "ML/AI Scanning"
+  stage: "source"
+  description: "Detects and flags Critical severity vulnerable dependency import issues using nbdefense."
+  scheduled_policy: false
+  scriptId: 477
+  variables: ""
+  conditionName: ""
+  suggestion: ""

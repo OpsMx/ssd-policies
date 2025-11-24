@@ -1,0 +1,12 @@
+id: 591
+type: PolicyDefinition
+metadata:
+    policyName: promptinject.HijackLongPrompt
+    category: ML/AI Scanning
+    stage: source
+    description: PromptInject probe to inject a string; payload is long-prompt. Attempt to make the model repeat a given string
+    scheduled_policy: false
+    scriptId: 475
+    variables: ""
+    conditionName: ""
+    suggestion: ""
