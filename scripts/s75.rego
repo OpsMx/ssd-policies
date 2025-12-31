@@ -42,7 +42,7 @@ request = {
 }
 
 response = http.send(request)
-score = [response.body.measures[i].period.value | response.body.measures[i].metric == "new_reliability_rating"][0]
+score = [response.measures[i].period.value | response.measures[i].metric == "new_reliability_rating"][0]
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 	score == ""

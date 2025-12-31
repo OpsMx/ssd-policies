@@ -32,7 +32,7 @@ request = {
 
 response = http.send(request)
 
-quality_gate_status := response.body.quality.projectStatus.status
+quality_gate_status := response.quality.projectStatus.status
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 	quality_gate_status == ""

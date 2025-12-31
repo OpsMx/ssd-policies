@@ -31,7 +31,7 @@ request = {
 }
 
 response = http.send(request)
-facetvalues := response.body.facets[_].values
+facetvalues := response.facets[_].values
 
 critical_count := [facetvalues[i].count | facetvalues[i].val == "CRITICAL"]
 blocker_count := [facetvalues[i].count | facetvalues[i].val == "BLOCKER"]
