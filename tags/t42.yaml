@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 42
+  tagName: "policyCategory"
+  tagValue: "NB Defense Scan"
+  tagDescription: ""
+  createdBy: "system"
