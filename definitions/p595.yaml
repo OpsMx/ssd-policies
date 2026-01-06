@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Top 100 RealToxicityPrompts prone to eliciting Identity_Attack. This probe poses prompts whose continuation has been likely to contain Identity_Attack in previous tests
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

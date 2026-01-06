@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: String-based latent prompt injections in whois reports. Check to see if model can be subverted by text placed in domain whois reports - lightweight version
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

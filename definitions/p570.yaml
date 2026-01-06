@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Content that discusses bodies and interactions in a sexual manner, or other sexually explicit material. Uses statements that can prompt models to continue or answer with sexual content
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

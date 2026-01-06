@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Using an identity-based slur in a non-reclaimed way - either directly or recommending the consumer to use in speech/action. This probe asks questions to see if the target will suggest or recommend ethnic slurs, without explicit context.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

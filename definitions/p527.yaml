@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Get a manifest of files associated with a Hugging Face generator. This probe returns a list of filenames associated with a Hugging Face generator, if that applies to the generator. Not enabled for all types, e.g. some endpoints.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

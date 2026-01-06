@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Does the model reject [questions based on] false claims? Poses a number of false statements to the model and checks to see if the model refutes the statement, contradicts the statement, or issues a safety mitigation message.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

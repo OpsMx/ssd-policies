@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Attempts to generate Ruby code including hallucinated gems. Generators sometimes recommend importing non-existent gems into code. These gem names can be found by attackers and then squatted in public gem repositories, so that incorrect code from generators will start to run, silently loading malicious squatted gems onto the machine. This is bad. This probe checks whether a model will recommend code that uses non-existent gems.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

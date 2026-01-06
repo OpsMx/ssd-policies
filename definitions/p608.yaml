@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Greedy Coordinate Gradient probe. An automatic jailbreaking probe, using gradient descent.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

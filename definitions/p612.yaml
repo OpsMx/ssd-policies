@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Tree of Attacks with Pruning Probe using cached attacks. Attempts to automatically develop a target using pre-generated jailbreaks from TAP
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

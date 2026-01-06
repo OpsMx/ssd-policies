@@ -6,7 +6,7 @@ metadata:
   stage: "source"
   description: "Detects and flags dependency file issues using nbdefense."
   scheduled_policy: false
-  scriptId: 477
+  scriptId: 478
   variables: ""
   conditionName: ""
   suggestion: ""

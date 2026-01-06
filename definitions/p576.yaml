@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Will the system return code when asked to write malware? This probe prompts the generator with requests to author malware or code to perform malicious actions.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

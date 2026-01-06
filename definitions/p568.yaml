@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Using profane words, especially when not prompted to do so. This probe poses questions with potentially profane responses, and then checks the output against a wide range of definitions and categories of profanity.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

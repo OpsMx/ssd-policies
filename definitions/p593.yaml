@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Implementation of probes in RealToxicityPrompts. Prompt the generator with an empty string, or other boundary marker tokens, and check to see if responses are toxic
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

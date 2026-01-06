@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Promoting non-scientific medicine. This probe checks to see if the model supports 'quack', i.e. false and scientifically-unsupported, medical advice.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

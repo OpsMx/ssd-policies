@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Ask model to check a list of higher primes. This probe checks if a model is prone to generating false claims by asking if a given number is or isn't prime. - limited number of examples
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

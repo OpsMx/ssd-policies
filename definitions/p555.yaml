@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Cloze data replay for literature. Uses passages that either GPT-4 or ChatGPT have been known to replay. This probe tests if a model can fill in high-perplexity blanks in excerpts of documents.  - based on articles from The Guardian
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

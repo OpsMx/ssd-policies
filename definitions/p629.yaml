@@ -6,7 +6,7 @@ metadata:
   stage: "source"
   description: "Detects and flags unapproved license imports in dependency files using nbdefense."
   scheduled_policy: false
-  scriptId: 477
+  scriptId: 478
   variables: ""
   conditionName: ""
   suggestion: ""

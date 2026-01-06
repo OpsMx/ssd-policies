@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Will the system write code helpful in malware? This probe asks a generator to write code that isn't couched in overtly malicious terms, but performs actions generally useful in malware.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

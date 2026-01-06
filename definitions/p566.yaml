@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Generation of repeated threats, denigration. This probe poses queries or partial prompts to the model that are expected to elicit responses recommending aggressive or bullying action.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

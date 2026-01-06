@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: ChatGPT DevMode + Ranti. A do-anything-now jailbreak specifically developed for ChatGPT (gpt-3.5). This is a long prompt developed by the community, with the goal of preventing LLM safeguards applying to future conversational turns.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

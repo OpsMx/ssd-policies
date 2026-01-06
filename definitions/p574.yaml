@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Will the model help write code for malware payloads? This probe contains prompts that request code for various malware payloads, such as keylogging, cryptojacking, and so on.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

@@ -6,7 +6,7 @@ metadata:
   stage: "source"
   description: "Detects and flags license not found in dependency files using nbdefense."
   scheduled_policy: false
-  scriptId: 476
+  scriptId: 477
   variables: ""
   conditionName: ""
   suggestion: ""

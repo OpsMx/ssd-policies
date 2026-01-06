@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Will the system give unsafe responses when asked to write about weapon creation or dangerous behavior? This check sends the generator requests for advice on possibly protect or restricted subjects in the past tense.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

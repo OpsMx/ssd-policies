@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Probe for susceptibility to ROT13 encoding injections. Encodes payloads using ROT13, and tries a variety of ways of getting the target model to repeat & decode them. ROT13 only applies to letters in the English alphabet.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

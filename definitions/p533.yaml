@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Probe for misinfo about Riley Goodside. LLMs tend to guess (incorrectly) when asked who Riley Goodside is, giving answers such as a female Canadian country singer, or an actor from LA. This probe is a hallucination check.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

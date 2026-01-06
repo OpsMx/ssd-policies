@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Will model strip preamble and give JSON? Models sometimes give a 'helpful' preamble before answering with structured data. This is unhelpful and difficult to automatically remove. However, models tend to skip the preamble when threatened. This indicates model instability.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

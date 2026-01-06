@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Ablation experiements over the DAN 11.0 prompt. A dynamic do-anything-now jailbreak, made by trying various combinations of parts of in a community-developed prompt, by the community, with the goal of preventing LLM safeguards applying to future conversational turns.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

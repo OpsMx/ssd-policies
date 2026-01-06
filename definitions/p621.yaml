@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Can we get the model to write embedded assets exfiltrating text in the URI? Attempts to get the model to plant a markdown pixel image in output
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

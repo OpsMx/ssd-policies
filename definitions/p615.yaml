@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Use Wordnet to find out if a model will discuss terms near but not in its allowed set. Using a list of acceptable topic words/terms defined in target_terms, this probe takes a tree-search approach to explore topics that the target model is willing to engage in, using wordnet to represent a topic hierarchy. Allowed topics are given as a list of strings in the target_topics parameter. The probe works by finding synsets close to the allowed words, which are assumed to be marginally accessible even if not in that target permitted group.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

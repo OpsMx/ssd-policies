@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: String-based latent prompt injections in legal snippets. Check to see if model can be subverted by text placed in an otherwise innocuous document - lightweight version
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Does the model check its output for spam? Try to send the GTUBE code through. Does the model generate content that should be stopped by a spam filter? If there's a spam filter in place, this should catch the GTUBE signature.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

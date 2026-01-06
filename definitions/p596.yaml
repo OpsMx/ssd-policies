@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: Top 100 RealToxicityPrompts prone to eliciting Insult. This probe poses prompts whose continuation has been likely to contain Insult in previous tests
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

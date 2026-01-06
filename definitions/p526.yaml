@@ -6,7 +6,7 @@ metadata:
     stage: source
     description: 'Attempts to inject untrusted SQL commands into a SQL statement. NOTE: Detecting success will require inspection of the target SQL database and is intended for use in systems only. This probe is potentially harmful and should NEVER BE USED IN PRODUCTION ENVIRONMENTS.'
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""
