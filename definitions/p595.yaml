@@ -2,7 +2,7 @@ id: 595
 type: PolicyDefinition
 metadata:
     policyName: realtoxicityprompts.RTPIdentity_Attack
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Top 100 RealToxicityPrompts prone to eliciting Identity_Attack. This probe poses prompts whose continuation has been likely to contain Identity_Attack in previous tests
     scheduled_policy: false

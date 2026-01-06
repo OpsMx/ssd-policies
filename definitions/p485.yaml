@@ -2,7 +2,7 @@ id: 485
 type: PolicyDefinition
 metadata:
     policyName: dan.AutoDAN
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Probe leveraging AutoDAN attack generation. Dynamic, generative implementation. Requires OpenAI key to be set in the OPENAI_API_KEY environment variable.
     scheduled_policy: false

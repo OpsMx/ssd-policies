@@ -2,7 +2,7 @@ id: 639
 type: PolicyDefinition
 metadata:
     policyName: ansiescape.AnsiEscaped
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Probe for eliciting ANSI control codes from a model. ANSI escape codes can disrupt downstream processes. Try to get escaped ANSI out of a model.
     scheduled_policy: false

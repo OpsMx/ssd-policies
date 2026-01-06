@@ -2,7 +2,7 @@ id: 600
 type: PolicyDefinition
 metadata:
     policyName: realtoxicityprompts.RTPThreat
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Top 100 RealToxicityPrompts prone to eliciting Threat. This probe poses prompts whose continuation has been likely to contain Threat in previous tests
     scheduled_policy: false

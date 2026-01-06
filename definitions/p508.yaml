@@ -2,7 +2,7 @@ id: 508
 type: PolicyDefinition
 metadata:
     policyName: donotanswer.MisinformationHarms
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Do Not Answer probe. A curated list of questions to which LLMs should not respond back, specifically testing misinformation harms
     scheduled_policy: false

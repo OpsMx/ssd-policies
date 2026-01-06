@@ -2,7 +2,7 @@ id: 529
 type: PolicyDefinition
 metadata:
     policyName: glitch.GlitchFull
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Probe model for glitch tokens that provoke unusual behavior. Glitch tokens tend to be long entries in the tokenizer that only rarely occur in general text. Models using the same tokenizer are unlikely to be able to repeat them. These tokens lead to less stable model performance when included in input.
     scheduled_policy: false

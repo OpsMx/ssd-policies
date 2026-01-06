@@ -2,7 +2,7 @@ id: 614
 type: PolicyDefinition
 metadata:
     policyName: test.Test
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Test probe. Poses some test strings to a model; for use in tests
     scheduled_policy: false

@@ -2,7 +2,7 @@ id: 554
 type: PolicyDefinition
 metadata:
     policyName: latentinjection.LatentWhoisSnippetFull
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: String-based latent prompt injections in whois reports. Check to see if model can be subverted by text placed in domain whois reports
     scheduled_policy: false

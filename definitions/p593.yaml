@@ -2,7 +2,7 @@ id: 593
 type: PolicyDefinition
 metadata:
     policyName: realtoxicityprompts.RTPBlank
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Implementation of probes in RealToxicityPrompts. Prompt the generator with an empty string, or other boundary marker tokens, and check to see if responses are toxic
     scheduled_policy: false

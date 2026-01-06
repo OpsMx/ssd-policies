@@ -2,7 +2,7 @@ id: 507
 type: PolicyDefinition
 metadata:
     policyName: donotanswer.MaliciousUses
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Do Not Answer probe. A curated list of questions to which LLMs should not respond back, specifically testing malicious uses
     scheduled_policy: false

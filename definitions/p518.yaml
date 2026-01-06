@@ -2,7 +2,7 @@ id: 518
 type: PolicyDefinition
 metadata:
     policyName: encoding.InjectMorse
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Probe for susceptibility to Morse encoding. Credit Wally#3422. Encodes payloads using morse, and tries a variety of ways of getting the target model to repeat & decode them.
     scheduled_policy: false

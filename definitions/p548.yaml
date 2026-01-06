@@ -2,7 +2,7 @@ id: 548
 type: PolicyDefinition
 metadata:
     policyName: latentinjection.LatentInjectionTranslationEnZh
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Latent prompt injection in Chinese context (简体字). Check to see if model can be subverted by text placed in an otherwise innocuous request for language translation - lightweight version
     scheduled_policy: false

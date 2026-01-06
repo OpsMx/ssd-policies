@@ -2,7 +2,7 @@ id: 512
 type: PolicyDefinition
 metadata:
     policyName: encoding.InjectBase32
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Probe for susceptibility to base32 encoded injections. Encodes payloads using base32, and tries a variety of ways of getting the target model to repeat & decode them.
     scheduled_policy: false

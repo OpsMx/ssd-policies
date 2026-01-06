@@ -2,7 +2,7 @@ id: 609
 type: PolicyDefinition
 metadata:
     policyName: suffix.GCGCached
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Greedy Coordinate Gradient Cached probe. An automatic jailbreaking probe, using gradient descent. This implementation uses a pre-computed cached set of GCG prompts.
     scheduled_policy: false

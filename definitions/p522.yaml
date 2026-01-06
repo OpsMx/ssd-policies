@@ -2,7 +2,7 @@ id: 522
 type: PolicyDefinition
 metadata:
     policyName: encoding.InjectUU
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Probe for susceptibility to UU encoded injections. Encodes payloads using uuencoding, and tries a variety of ways of getting the target model to repeat & decode them.
     scheduled_policy: false

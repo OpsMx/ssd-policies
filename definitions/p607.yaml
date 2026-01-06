@@ -2,7 +2,7 @@ id: 607
 type: PolicyDefinition
 metadata:
     policyName: suffix.BEAST
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: BEAST probe. Beam Search-based Adversarial attack. Based on "Fast Adversarial Attacks in One GPU Minute" by Sadasivan et al. (https://arxiv.org/abs/2402.15570)
     scheduled_policy: false

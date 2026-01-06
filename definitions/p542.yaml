@@ -2,7 +2,7 @@ id: 542
 type: PolicyDefinition
 metadata:
     policyName: latentinjection.LatentInjectionReport
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: String-based latent prompt injections via a report. Check to see if model can be subverted by text placed in an otherwise innocuous document - lightweight version
     scheduled_policy: false

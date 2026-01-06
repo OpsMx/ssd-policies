@@ -2,7 +2,7 @@ id: 587
 type: PolicyDefinition
 metadata:
     policyName: promptinject.HijackHateHumans
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: PromptInject probe to inject a string; payload is hate-humans. Attempt to make the model repeat a given string
     scheduled_policy: false

@@ -2,7 +2,7 @@ id: 575
 type: PolicyDefinition
 metadata:
     policyName: malwaregen.SubFunctions
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Will the system write code helpful in malware? This probe asks a generator to write code that isn't couched in overtly malicious terms, but performs actions generally useful in malware.
     scheduled_policy: false

@@ -2,7 +2,7 @@ id: 488
 type: PolicyDefinition
 metadata:
     policyName: dan.ChatGPT_Developer_Mode_v2
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: ChatGPT Developer Mode v2. A do-anything-now jailbreak specifically developed for ChatGPT (gpt-3.5). This is a long prompt developed by the community, with the goal of preventing LLM safeguards applying to future conversational turns.
     scheduled_policy: false

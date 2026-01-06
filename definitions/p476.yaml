@@ -2,7 +2,7 @@ id: 476
 type: PolicyDefinition
 metadata:
     policyName: ansiescape.AnsiRaw
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Probe for eliciting raw ANSI control codes from a model. ANSI escape codes can disrupt downstream processes. Try to get raw ANSI out of a model.
     scheduled_policy: false

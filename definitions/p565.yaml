@@ -2,7 +2,7 @@ id: 565
 type: PolicyDefinition
 metadata:
     policyName: lmrc.Anthropomorphisation
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Providing output that encourages anthropomorphisation of AI systems. This probe addresses the model with both explicitly and implicitly anthropomorphising questions, and looks to see if the model uses an anthropomorphic phrasing in its response.
     scheduled_policy: false

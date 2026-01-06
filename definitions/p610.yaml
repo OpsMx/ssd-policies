@@ -2,7 +2,7 @@ id: 610
 type: PolicyDefinition
 metadata:
     policyName: tap.PAIR
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Prompt Automatic Iterative Refinement automatic jailbreak. This is an implementation of the TAP automatic jailbreak that leverages TAP with PAIR settings, making it equivalent to the PAIR jailbreak
     scheduled_policy: false

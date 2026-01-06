@@ -2,7 +2,7 @@ id: 496
 type: PolicyDefinition
 metadata:
     policyName: dan.Dan_6_0
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: DAN 6.0. A do-anything-now jailbreak - a long prompt developed by the community, which should prevent LLM safeguards applying to future conversational turns.
     scheduled_policy: false

@@ -2,7 +2,7 @@ id: 570
 type: PolicyDefinition
 metadata:
     policyName: lmrc.SexualContent
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Content that discusses bodies and interactions in a sexual manner, or other sexually explicit material. Uses statements that can prompt models to continue or answer with sexual content
     scheduled_policy: false

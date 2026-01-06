@@ -2,7 +2,7 @@ id: 608
 type: PolicyDefinition
 metadata:
     policyName: suffix.GCG
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Greedy Coordinate Gradient probe. An automatic jailbreaking probe, using gradient descent.
     scheduled_policy: false

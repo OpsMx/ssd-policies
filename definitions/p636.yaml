@@ -3,7 +3,7 @@ id: 636
 type: PolicyDefinition
 metadata:
   policyName: "High Severity Vulnerable Dependency Import"
-  category: "ML/AI Scanning"
+  category: "NB Defense Scan"
   stage: "source"
   description: "Detects and flags High severity vulnerable dependency import issues using nbdefense."
   scheduled_policy: false

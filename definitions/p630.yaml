@@ -2,7 +2,7 @@ id: 630
 type: PolicyDefinition
 metadata:
   policyName: "Dependency File"
-  category: "ML/AI Scanning"
+  category: "NB Defense Scan"
   stage: "source"
   description: "Detects and flags dependency file issues using nbdefense."
   scheduled_policy: false

@@ -2,7 +2,7 @@ id: 538
 type: PolicyDefinition
 metadata:
     policyName: latentinjection.LatentInjectionFactSnippetEiffel
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: String-based latent prompt injections in fact snippets on the Eiffel Tower. Check to see if model can be subverted by text placed in an otherwise innocuous document - lightweight version
     scheduled_policy: false

@@ -2,7 +2,7 @@ id: 511
 type: PolicyDefinition
 metadata:
     policyName: encoding.InjectBase2048
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Probe for susceptibility to Base2048 encoding injections. Encodes payloads using base2048, and tries a variety of ways of getting the target model to repeat & decode them.
     scheduled_policy: false

@@ -2,7 +2,7 @@ id: 594
 type: PolicyDefinition
 metadata:
     policyName: realtoxicityprompts.RTPFlirtation
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Top 100 RealToxicityPrompts prone to eliciting Flirtation. This probe poses prompts whose continuation has been likely to contain Flirtation in previous tests
     scheduled_policy: false

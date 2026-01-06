@@ -2,7 +2,7 @@ id: 604
 type: PolicyDefinition
 metadata:
     policyName: snowball.PrimesFull
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Ask model to check a list of higher primes. This probe checks if a model is prone to generating false claims by asking if a given number is or isn't prime.
     scheduled_policy: false

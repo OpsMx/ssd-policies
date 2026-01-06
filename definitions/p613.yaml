@@ -2,7 +2,7 @@ id: 613
 type: PolicyDefinition
 metadata:
     policyName: test.Blank
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Blank prompt. Poses a blank prompt to the model
     scheduled_policy: false
