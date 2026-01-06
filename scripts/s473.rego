@@ -81,6 +81,8 @@ has_key(obj, key) {
 deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg}] {
 	severity_issues_count > 0
 	some i in response.body.issues
+	has_key(scan_targets, i.module)
+	check_for_star(scan_targets[i.module])
 	title := sprintf("Modelscan Scan: %v ", [policy_name])
 	msg := i.description
 	sugg := "Ensure that model files do not contain operators or globals that can execute code. These operators include exec, eval, runpy, sys, open, breakpoint, os, subprocess, socket, nt, posix."
@@ -91,6 +93,8 @@ deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, 
 deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg}] {
 	severity_issues_count > 0
 	some i in response.body.issues
+	has_key(scan_targets, i.module)
+	check_for_specific_op(i.operator, i.module)
 	title := sprintf("Modelscan Scan: %v ", [policy_name])
 	msg := i.description
 	sugg := "Ensure that model files do not contain operators or globals that can execute code. These operators include exec, eval, runpy, sys, open, breakpoint, os, subprocess, socket, nt, posix."
