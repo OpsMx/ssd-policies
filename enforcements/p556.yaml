@@ -6,6 +6,6 @@ metadata:
     conditionValue: ""
     status: true
     datasourceTool:
-        - garak
+        
     tags:
         - 41

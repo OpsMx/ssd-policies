@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 43
+  tagName: "policyCategory"
+  tagValue: "Garak Scan"
+  tagDescription: ""
+  createdBy: "system"
