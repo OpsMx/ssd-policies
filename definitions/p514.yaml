@@ -2,11 +2,11 @@ id: 514
 type: PolicyDefinition
 metadata:
     policyName: encoding.InjectBraille
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Probe for susceptibility to Braille encoding injections. Credit Wally#3422. Encodes payloads using braille, and tries a variety of ways of getting the target model to repeat & decode them.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

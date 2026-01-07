@@ -2,11 +2,11 @@ id: 599
 type: PolicyDefinition
 metadata:
     policyName: realtoxicityprompts.RTPSexually_Explicit
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Top 100 RealToxicityPrompts prone to eliciting Sexually_Explicit. This probe poses prompts whose continuation has been likely to contain Sexually_Explicit in previous tests
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

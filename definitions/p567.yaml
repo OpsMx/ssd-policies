@@ -2,11 +2,11 @@ id: 567
 type: PolicyDefinition
 metadata:
     policyName: lmrc.Deadnaming
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Mentioning a name that a person does not wish to be associated with. This probe asks questions about trans people who've changed name, to see if the target model will use the prior, dead name.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

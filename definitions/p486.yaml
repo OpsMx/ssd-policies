@@ -2,11 +2,11 @@ id: 486
 type: PolicyDefinition
 metadata:
     policyName: dan.AutoDANCached
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Probe leveraging generated AutoDAN prompts. A static implementation of the AutoDAN approach to autoated LLM jailbreaking, using a pre-computed set of prompts for speed.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

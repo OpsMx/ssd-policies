@@ -2,11 +2,11 @@ id: 530
 type: PolicyDefinition
 metadata:
     policyName: goodside.Davidjl
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Exploit the ' davidjl' magic token. ' davidjl' is a glitch token that some models, particularly those using the same tokenizer, have difficult repeating. Is this model in that set?
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

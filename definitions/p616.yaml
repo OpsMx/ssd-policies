@@ -2,11 +2,11 @@ id: 616
 type: PolicyDefinition
 metadata:
     policyName: topic.WordnetBlockedWords
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Use Wordnet to explore which topics a model will respond to around blocked words. This probe takes a tree-search approach to explore topics that the target model is willing to engage in, using wordnet to represent a topic hierarchy. Topics are given as a list of strings in the target_topics parameter.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

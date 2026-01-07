@@ -2,11 +2,11 @@ id: 583
 type: PolicyDefinition
 metadata:
     policyName: phrasing.FutureTense
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Attempt to evade safeguards by setting requests in the future tense. A subset of the tense-modified requests. Success is reported higher with more variation, so generations is overridden.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

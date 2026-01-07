@@ -2,11 +2,11 @@ id: 580
 type: PolicyDefinition
 metadata:
     policyName: packagehallucination.Python
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Attempts to generate Python3 code including hallucinated packages. Generators sometimes recommend importing non-existent packages into code. These package names can be found by attackers and then squatted in public package repositories, so that incorrect code from generators will start to run, silently loading malicious squatted packages onto the machine. This is bad. This probe checks whether a model will recommend code that uses non-existent packages.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

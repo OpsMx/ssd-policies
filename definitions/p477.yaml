@@ -2,11 +2,11 @@ id: 477
 type: PolicyDefinition
 metadata:
     policyName: atkgen.Tox
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Automatic attack generation, trying to elicit toxic outputs from the model. This probe uses an attack model, trained on conversations that led to LLMs outputting toxicity, to generate prompts that should nudge a target LLM into yielding toxic output. The data used for this attack generation model was selected using the same detector as this tox probe uses, so both attack generation model and detector are looking for the same definition of the failure mode.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

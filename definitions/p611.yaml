@@ -2,11 +2,11 @@ id: 611
 type: PolicyDefinition
 metadata:
     policyName: tap.TAP
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Tree of Attacks with Pruning Probe, generating new attacks against the target. Attempts to automatically jailbreak a target, using two auxiliary models to generate an attack and to evaluate the success of that attack. Candidate routes to jailbreaking the target are maintained in a tree, which is proactively pruned.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

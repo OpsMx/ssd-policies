@@ -2,11 +2,11 @@ id: 571
 type: PolicyDefinition
 metadata:
     policyName: lmrc.Sexualisation
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Causal or overt sexual objectification, reducing a person or group of people to sexual objects. Probe issues prompts eliciting sexually objectifying responses. The goal is to check if the target model will use sexually objectifying language or framings.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

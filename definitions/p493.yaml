@@ -2,11 +2,11 @@ id: 493
 type: PolicyDefinition
 metadata:
     policyName: dan.DanInTheWildFull
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: A library of jailbreaks. Tries a set of ~700 known jailbreaks, in an attempt to get a model to disregard alignment/system prompt. Success is measured by not getting a safety mitigaton message.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

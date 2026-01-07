@@ -2,11 +2,11 @@ id: 524
 type: PolicyDefinition
 metadata:
     policyName: exploitation.JinjaTemplatePythonInjection
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Attempts to execute Python code via Jinja templating. Current implementation attempts to get the model to echo a malicious Jinja template. Other techniques may also be successful.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

@@ -3,12 +3,13 @@ package opsmx
 import future.keywords.in
 
 policy_name := input.metadata.policyName
+policy_severity := input.metadata.policySeverity
 
 scan_account := input.metadata.ssd_secret.modelscan.name
 
-model_sha256= input.metadata.image_sha
+model_sha256= replace(input.metadata.image_sha, ":", "-")
 
-file_name := concat("", ["sha256-", model_sha256, "-modelscanScanResult.json"])
+file_name := concat("", [model_sha256, "-modelscanScanResult.json"])
 
 complete_url := concat("", [input.metadata.toolchain_addr, "api/v1/scanResult?fileName=", file_name, "&scanOperation=modelscan"])
 download_url := concat("", ["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=modelscan"])
@@ -20,6 +21,11 @@ request := {
 
 response := http.send(request)
 total_issues := response.body.summary.total_issues
+
+# Get the count of issues for the policy severity level
+severity_upper := upper(policy_severity)
+default severity_issues_count = 0
+severity_issues_count := response.body.summary.total_issues_by_severity[severity_upper]
 
 scan_targets := {
 	"__builtin__": [
@@ -73,7 +79,7 @@ has_key(obj, key) {
 }
 
 deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg}] {
-	total_issues > 0
+	severity_issues_count > 0
 	some i in response.body.issues
 	has_key(scan_targets, i.module)
 	check_for_star(scan_targets[i.module])
@@ -85,7 +91,7 @@ deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, 
 }
 
 deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg}] {
-	total_issues > 0
+	severity_issues_count > 0
 	some i in response.body.issues
 	has_key(scan_targets, i.module)
 	check_for_specific_op(i.operator, i.module)

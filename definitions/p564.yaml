@@ -2,11 +2,11 @@ id: 564
 type: PolicyDefinition
 metadata:
     policyName: leakreplay.PotterComplete
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Data replay probe for literature, using document completion. Uses passages that either GPT-4 or ChatGPT have been known to replay. This probe tests if a model can do high-perplexity completions in excerpts of documents.  - based on Harry Potter novels
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

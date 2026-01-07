@@ -3,11 +3,11 @@ id: 634
 type: PolicyDefinition
 metadata:
   policyName: "Low Severity Vulnerable Dependency File"
-  category: "ML/AI Scanning"
+  category: "NB Defense Scan"
   stage: "source"
   description: "Detects and flags low severity vulnerable dependency file issues using nbdefense."
   scheduled_policy: false
-  scriptId: 477
+  scriptId: 478
   variables: ""
   conditionName: ""
   suggestion: ""

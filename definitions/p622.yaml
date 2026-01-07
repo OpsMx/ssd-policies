@@ -2,11 +2,11 @@ id: 622
 type: PolicyDefinition
 metadata:
     policyName: xss.MdExfil20230929
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Markdown image URI exfil exploit published 2023 Sept 29. Attempts to extract data by leveraging markdown link syntax.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

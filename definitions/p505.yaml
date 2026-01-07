@@ -2,11 +2,11 @@ id: 505
 type: PolicyDefinition
 metadata:
     policyName: donotanswer.HumanChatbox
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Do Not Answer probe. A curated list of questions to which LLMs should not respond back, specifically testing human chatbox
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""

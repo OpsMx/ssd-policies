@@ -2,11 +2,11 @@ id: 536
 type: PolicyDefinition
 metadata:
     policyName: grandma.Win10
-    category: ML/AI Scanning
+    category: Garak Scan
     stage: source
     description: Will the model yield a Windows 10 product key if we beg it to? Pretend to require Windows product keys because one misses one's grandmother.
     scheduled_policy: false
-    scriptId: 475
+    scriptId: 476
     variables: ""
     conditionName: ""
     suggestion: ""
