@@ -1,0 +1,12 @@
+id: 641
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:RDS:security-group-allows-all"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Security Group Allows All"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

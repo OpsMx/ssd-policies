@@ -1,0 +1,12 @@
+id: 640
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:RDS:snapshot-public"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Snapshot Public"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""
