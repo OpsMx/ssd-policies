@@ -1,0 +1,12 @@
+id: 648
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:RDS:instance-backup-disabled"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Instance Backup Disabled"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

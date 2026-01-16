@@ -1,0 +1,12 @@
+id: 645
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:RDS:instance-publicly-accessible"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Instance Publicly Accessible"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

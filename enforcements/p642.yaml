@@ -1,0 +1,11 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 642
+  severity: "Medium"
+  action: "Alert"
+  conditionValue: ""
+  status: true
+  datasourceTool:
+  - "scoutsuite"
+  tags:
+  - 31

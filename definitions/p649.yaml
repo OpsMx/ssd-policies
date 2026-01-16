@@ -1,0 +1,12 @@
+id: 649
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:RDS:postgres-instance-with-invalid-certificate"
+  category: "CSPM"
+  stage: "deploy"
+  description: "PostgreSQL Instance With Invalid Certificate"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

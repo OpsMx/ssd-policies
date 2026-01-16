@@ -1,0 +1,12 @@
+id: 643
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:RDS:instance-single-az"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Instance Single AZ"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

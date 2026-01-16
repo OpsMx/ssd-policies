@@ -1,0 +1,12 @@
+id: 642
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:RDS:instance-storage-not-encrypted"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Instance Storage Not Encrypted"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""
