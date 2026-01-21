@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Remove rules that allow all ports to all source IPs. This creates a wider attack surface for assigned resources."

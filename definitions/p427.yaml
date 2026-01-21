@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Avoid using the root account for daily tasks. Use IAM users with appropriate permissions. Ref: https://docs.aws.amazon.com/general/latest/gr/aws_tasks-that-require-root.html"

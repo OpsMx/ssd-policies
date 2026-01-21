@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Replace NotAction statements with explicit Allow statements for only the required permissions. Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"

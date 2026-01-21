@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Remove inbound rules that expose TCP ports to all source addresses. Apply source address restrictions to reduce attack surface."

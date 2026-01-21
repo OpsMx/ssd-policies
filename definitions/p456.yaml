@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Restrict the AssumeRole policy's principal attribute instead of using 'AWS:*'. Ref: https://research.nccgroup.com/2019/12/18/demystifying-aws-assumerole-and-stsexternalid/"

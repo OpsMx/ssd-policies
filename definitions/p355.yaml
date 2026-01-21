@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Replace plaintext protocols (FTP) with more secure alternatives like SFTP. Data in transit may be monitored and tampered."

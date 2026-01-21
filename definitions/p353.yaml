@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Review port ranges and reduce to only required ports. Port ranges may include unintended ports that should not be exposed."

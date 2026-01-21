@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Implement least privilege. Users should only be granted permissions to assume specific roles. Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"

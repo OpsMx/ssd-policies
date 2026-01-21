@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Rotate access keys regularly. Keys unused for 90+ days should be rotated. Ref: CIS Amazon Web Services Foundations 1.3"

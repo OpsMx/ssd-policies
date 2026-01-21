@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Review and remove unused security groups to reduce the risk of inappropriate assignment. Ref: https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html"

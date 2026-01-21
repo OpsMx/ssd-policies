@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Create a flow log for each subnet to enable investigation of unauthorized network traffic. Ref: https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html"

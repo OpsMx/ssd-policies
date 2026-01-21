@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Ensure no managed policies are configured with Effect: Allow, Action: * and Resource: *. Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"

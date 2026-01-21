@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Ensure IAM users have only one active access key. Rotate and remove unused keys to reduce compromise risk."

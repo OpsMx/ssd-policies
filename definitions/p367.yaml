@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Enable encryption for EBS volumes to ensure data is encrypted at-rest and in-transit. Ref: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html"

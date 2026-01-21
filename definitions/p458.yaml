@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Rotate and delete inactive access keys. Keys unused for 90+ days should be removed. Ref: CIS Amazon Web Services Foundations 1.3"

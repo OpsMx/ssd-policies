@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Ensure route tables contain the least number of subnets or hosts as required for peering. Ref: CIS Amazon Web Services Foundations 4.4"

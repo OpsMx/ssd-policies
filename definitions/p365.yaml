@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Reduce open ports to the minimum needed to correctly operate. All open ports create a wider attack surface."
