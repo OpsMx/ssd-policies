@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Review AWS CIDR ranges in security groups as they potentially expose your account to external interactions from any AWS account."

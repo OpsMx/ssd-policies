@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Implement least privilege. Restrict iam:PassRole to specific role ARNs. Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"

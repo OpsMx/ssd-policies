@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Remove the inbound rules that expose SMTP port to all. Ref: CIS Amazon Web Services Foundations 4.1, 4.2"

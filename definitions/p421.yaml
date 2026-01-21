@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Attach policies to groups instead of directly to users for easier management and auditing. Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"

@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Replace plaintext protocols (Telnet) with more secure alternatives. Data in transit may be monitored and tampered."

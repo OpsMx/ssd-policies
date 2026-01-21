@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Enable encryption for EBS snapshots to ensure data-at-rest is encrypted. Ref: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html"

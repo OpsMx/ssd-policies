@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Ensure all credentials have been used and changed recently. Disable or remove unused credentials. Ref: CIS Amazon Web Services Foundations 1.3"
