@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Enable password expiration and set the expiration period to 90 days or less. Ref: https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#securityhub-cis-controls-1.11"
+  suggestion: "Configure the IAM password policy to expire passwords after 90 days or less. Navigate to IAM Account Settings and enable password expiration with an appropriate threshold. Combine with MFA requirements for defense in depth."

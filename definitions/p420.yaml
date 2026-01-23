@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Ensure IAM users have only one active access key. Rotate and remove unused keys to reduce compromise risk."
+  suggestion: "Identify which access key is actively being used via IAM credential reports and CloudTrail logs, then deactivate and delete the unused key. Use IAM roles for applications instead of long-lived access keys where possible."

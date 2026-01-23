@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Reduce open ports to the minimum needed to correctly operate. All open ports create a wider attack surface."
+  suggestion: "Replace the all-ports rule with specific inbound rules for only the required ports and protocols. Audit the attached resources to identify required ports and create targeted rules for each legitimate traffic flow."

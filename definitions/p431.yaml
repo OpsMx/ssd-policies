@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Ensure the password policy is configured to prevent password reuse. Ref: https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#securityhub-cis-controls-1.10"
+  suggestion: "Update the IAM password policy to prevent password reuse by setting the password reuse prevention parameter to remember at least 24 previous passwords. Navigate to IAM Account Settings to configure this requirement."

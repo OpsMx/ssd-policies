@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Restrict ICMP traffic to specific source addresses to prevent attackers from performing attacks or gathering information."
+  suggestion: "Restrict ICMP traffic to specific trusted IP ranges or internal networks only. Unrestricted ICMP enables network mapping and DDoS amplification attacks. Allow ICMP only from monitoring systems and known administrative networks."

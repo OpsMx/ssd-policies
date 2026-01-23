@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Ensure the password policy requires a minimum length. Ref: https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#securityhub-cis-controls-1.9"
+  suggestion: "Update the IAM password policy to require a minimum password length of at least 14 characters. Navigate to IAM Account Settings and configure the minimum password length along with complexity requirements."

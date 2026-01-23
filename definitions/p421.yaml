@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Attach policies to groups instead of directly to users for easier management and auditing. Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
+  suggestion: "Convert inline policies to managed policies and attach them to IAM groups rather than individual users. Add users to appropriate groups to inherit permissions. Managed policies attached to groups simplify permission management at scale."
