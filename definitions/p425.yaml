@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Delete or disable active root account access keys. Ref: https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#securityhub-standards-cis-controls-1.1"
+  suggestion: "Delete the root account access keys immediately. The root account should never be used for daily operations. Create IAM users or roles with appropriate permissions instead."

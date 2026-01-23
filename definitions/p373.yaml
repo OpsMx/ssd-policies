@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Ensure AMIs are private. Share them selectively with designated AWS accounts when necessary. Ref: https://aws.amazon.com/security/security-bulletins/reminder-about-safely-sharing-and-using-public-amis/"
+  suggestion: "Modify the AMI launch permissions to remove public access. Share AMIs only with specific AWS account IDs. Verify no sensitive data or credentials are baked into the AMI."

@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Remove the inbound rules that expose SSH port to all. Ref: CIS Amazon Web Services Foundations 4.1, 4.2"
+  suggestion: "Restrict SSH (port 22) access to specific IP addresses or bastion hosts. Consider using AWS Systems Manager Session Manager for shell access without exposing SSH publicly."

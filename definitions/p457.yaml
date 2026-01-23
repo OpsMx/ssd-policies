@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Add External ID condition or MFA requirement to the assume role policy. Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"
+  suggestion: "For cross-account role assumption, require an ExternalId condition to prevent confused deputy attacks, or require MFA for interactive users. Example: 'Condition': {'StringEquals': {'sts:ExternalId': 'unique-id'}}"

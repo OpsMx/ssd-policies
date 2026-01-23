@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Ensure route tables contain the least number of subnets or hosts as required for peering. Ref: CIS Amazon Web Services Foundations 4.4"
+  suggestion: "Review VPC peering route tables and ensure routes only allow traffic to specific required subnets, not entire VPC CIDR blocks. Document the business justification for each peering connection."
