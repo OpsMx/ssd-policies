@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Remove the inbound rules that expose RDP port to all. Ref: CIS Amazon Web Services Foundations 4.1, 4.2"
+  suggestion: "Restrict RDP (port 3389) access to specific IP addresses or VPN ranges. Consider using AWS Fleet Manager for remote access without exposing RDP publicly."

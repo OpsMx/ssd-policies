@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Define all relevant users in the resource field of the affected policies to avoid ineffective IAM actions. Ref: https://blog.lightspin.io/aws-iam-groups-authorization-bypass"
+  suggestion: "IAM group policies that deny actions on users may be ineffective due to IAM evaluation logic. Explicitly list affected user ARNs in the Resource field or use NotResource carefully."

@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Enable encryption by default for EBS volumes in all regions. Ref: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default"
+  suggestion: "Enable EBS encryption by default in each region using the EC2 console or enable-ebs-encryption-by-default API. All new volumes will be automatically encrypted."

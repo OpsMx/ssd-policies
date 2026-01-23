@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Review and restrict custom Network ACL ingress rules to follow least privilege principle."
+  suggestion: "Review NACL rules and remove overly permissive allow-all rules. NACLs are stateless, so ensure both inbound and outbound rules follow least privilege. Consider using security groups as the primary control since they are stateful."

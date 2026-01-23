@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Replace inline policies with managed policies for better auditability. Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#best-practice-managed-vs-inline"
+  suggestion: "Convert inline policies to customer-managed policies for better reusability, version control, and centralized management. Use the IAM console or AWS CLI to extract and recreate the policy."

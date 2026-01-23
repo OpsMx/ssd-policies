@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Enable MFA for all users in the AWS account. Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#enable-mfa-for-privileged-users"
+  suggestion: "Enable MFA for all IAM users, especially those with console access. Use virtual MFA apps, hardware tokens, or integrate with IAM Identity Center for centralized MFA management."
