@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Remove the inbound rules that expose SMTP port to all. Ref: CIS Amazon Web Services Foundations 4.1, 4.2"
+  suggestion: "Restrict SMTP (port 25) access to specific mail relay IP addresses or internal networks only. Publicly accessible SMTP servers are frequently targeted for spam relay attacks. Consider using Amazon SES instead of self-hosted SMTP."

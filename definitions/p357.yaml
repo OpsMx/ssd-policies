@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Remove the inbound rules that expose NFS port to all. Ref: CIS Amazon Web Services Foundations 4.1, 4.2"
+  suggestion: "Restrict NFS (port 2049) access to specific client security groups within your VPC only. Consider using Amazon EFS with VPC security groups for managed file storage with proper access controls."

@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Replace NotAction statements with explicit Allow statements for only the required permissions. Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
+  suggestion: "Replace the NotAction statement with explicit Action statements listing only the required permissions. Audit the role's actual permission usage and define a specific allowlist that matches the role's intended function."

@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Remove inbound rules that expose TCP ports to all source addresses. Apply source address restrictions to reduce attack surface."
+  suggestion: "Modify the security group to restrict TCP port access to specific trusted IP addresses, CIDR blocks, or security groups. Open TCP ports to 0.0.0.0/0 expose services to the entire internet. Consider placing public services behind a load balancer or AWS WAF."

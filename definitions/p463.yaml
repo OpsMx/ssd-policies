@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Implement least privilege. Restrict sts:AssumeRole to specific role ARNs. Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
+  suggestion: "Modify the inline user policy to restrict sts:AssumeRole to specific role ARNs that the user legitimately needs to assume. Convert the inline policy to a managed policy attached via groups for better governance."

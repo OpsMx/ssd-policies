@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Remove the inbound rules that expose Oracle DB port to all. Ref: CIS Amazon Web Services Foundations 4.1, 4.2"
+  suggestion: "Restrict Oracle Database (port 1521) access to application server security groups or specific trusted IP ranges. Place Oracle databases in private subnets with no direct internet connectivity."

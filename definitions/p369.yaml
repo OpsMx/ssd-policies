@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Enable encryption for EBS snapshots to ensure data-at-rest is encrypted. Ref: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html"
+  suggestion: "Create encrypted copies of unencrypted EBS snapshots using AWS KMS keys, then delete the unencrypted originals. Enable default EBS encryption in account settings to ensure all future snapshots are automatically encrypted."

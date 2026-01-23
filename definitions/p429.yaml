@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Enable hardware MFA for the root account. Ref: https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#securityhub-cis-controls-1.13"
+  suggestion: "Enable a hardware MFA device for the root account through the IAM console Security Credentials page. Hardware MFA devices provide stronger protection than virtual MFA because they cannot be duplicated or remotely compromised."

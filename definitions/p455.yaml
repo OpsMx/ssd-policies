@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Review and delete unused EC2 roles. Ref: https://aws.amazon.com/about-aws/whats-new/2019/11/identify-unused-iam-roles-easily-and-remove-them-confidently-by-using-the-last-used-timestamp/"
+  suggestion: "Review EC2 instance roles that are not currently attached to any running instances. Check the role's last used timestamp and CloudTrail for recent AssumeRole activity. Delete roles that are no longer needed."

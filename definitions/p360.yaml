@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Remove the inbound rules that expose MongoDB port to all. Ref: CIS Amazon Web Services Foundations 4.1, 4.2"
+  suggestion: "Restrict MongoDB (port 27017) access to application server security groups or specific trusted IP ranges. Enable MongoDB authentication, place instances in private subnets, and limit access to authorized application servers."

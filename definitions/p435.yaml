@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Review and delete unused managed policies. Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies"
+  suggestion: "Review unattached managed policies to determine if they are needed for future use or should be deleted. Unused policies create audit complexity and may contain overly permissive statements that could be accidentally attached later."

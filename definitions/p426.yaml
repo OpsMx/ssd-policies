@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: "Delete root account X.509 certificates. Ref: https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#securityhub-standards-cis-controls-1.1"
+  suggestion: "Delete all X.509 signing certificates associated with the root account through the IAM console Security Credentials page. Modern AWS services use Signature Version 4, making these certificates unnecessary."
