@@ -7,21 +7,88 @@ default exception_count = 0
 default issues = []
 default count_issues = -1
 
-#Inputs
+# Inputs
 policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
 scan_account = input.metadata.ssd_secret.zap.name
 image_sha = replace(input.metadata.image_sha, ":", "-")
 deployment_id = input.metadata.deploymentId
+projectId = input.metadata.projectId
+projectName = input.metadata.projectName
+scanTargetId = input.metadata.scanTargetId
 
-complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", image_sha, "_", deployment_id, "_zapScan.json&scanOperation=zapDastScan"])
-download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", image_sha, "_", deployment_id, "_zapScan.json&scanOperation=zapDastScan"] )
+############################################
+# URL CONSTRUCTION
+############################################
 
+# Case 1: projectId and scanTargetId are present
+complete_url = url {
+	projectId != ""
+	scanTargetId != ""
+
+	file := concat("", [
+		projectId, "_", projectName, "_", scanTargetId, "_zapScan.json"
+	])
+
+	url := concat("", [
+		input.metadata.toolchain_addr,
+		"api/v1/scanResult?fileName=",
+		file,
+		"&scanOperation=zapDastScan"
+	])
+}
+
+download_url = url {
+	projectId != ""
+	scanTargetId != ""
+
+	file := concat("", [
+		projectId, "_", projectName, "_", scanTargetId, "_zapScan.json"
+	])
+
+	url := concat("", [
+		"tool-chain/api/v1/scanResult?fileName=",
+		file,
+		"&scanOperation=zapDastScan"
+	])
+}
+
+# Case 2: fallback (original behavior)
+complete_url = url {
+	projectId == "" or scanTargetId == ""
+
+	file := concat("", [
+		image_sha, "_", deployment_id, "_zapScan.json"
+	])
+
+	url := concat("", [
+		input.metadata.toolchain_addr,
+		"api/v1/scanResult?fileName=",
+		file,
+		"&scanOperation=zapDastScan"
+	])
+}
+
+download_url = url {
+	projectId == "" or scanTargetId == ""
+
+	file := concat("", [
+		image_sha, "_", deployment_id, "_zapScan.json"
+	])
+
+	url := concat("", [
+		"tool-chain/api/v1/scanResult?fileName=",
+		file,
+		"&scanOperation=zapDastScan"
+	])
+}
+
+############################################
 
 request = {
-		"method": "GET",
-		"url": complete_url
+	"method": "GET",
+	"url": complete_url
 }
 
 response = http.send(request)
