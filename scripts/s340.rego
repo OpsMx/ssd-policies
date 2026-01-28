@@ -86,7 +86,7 @@ download_url = url {
 
 ############################################
 _ := trace(sprintf("DEBUG complete_url: %v", [complete_url]))
-_ := trace(sprintf("DEBUG download_url: %v", [download_url]))
+printvar = sprintf("DEBUG download_url: %v", [download_url])
 
 request = {
 		"method": "GET",
