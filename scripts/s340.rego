@@ -15,9 +15,21 @@ default count_issues = -1
 
 image_sha = replace(input.metadata.image_sha, ":", "-")
 
+filename = concat("", [image_sha, "_", input.metadata.deploymentId, "_zapScan.json"]) {
+	input.metadata.scanTargetId == ""
+    input.metadata.projectName == ""
+    input.metadata.projectId == ""
+}
 
-complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", image_sha, "_", input.metadata.deploymentId, "_zapScan.json&scanOperation=zapDastScan"])
-download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", image_sha, "_", input.metadata.deploymentId, "_zapScan.json&scanOperation=zapDastScan"] )
+filename = concat("", [input.metadata.projectId, "_", input.metadata.projectName, "_", input.metadata.scanTargetId, "_zapScan.json"]) {
+	input.metadata.scanTargetId != ""
+    input.metadata.projectName != ""
+    input.metadata.projectId != ""
+}
+
+
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", filename, "&scanOperation=zapDastScan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", filename, "&scanOperation=zapDastScan"] )
 
 
 request = {
