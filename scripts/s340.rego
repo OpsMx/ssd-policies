@@ -21,7 +21,7 @@ filename = concat("", [image_sha, "_", input.metadata.deploymentId, "_zapScan.js
     input.metadata.projectId == ""
 }
 
-filename = concat("", [input.metadata.scanTargetId, "_", input.metadata.projectName, "_", input.metadata.projectId, "_zapScan.json"]) {
+filename = concat("", [input.metadata.projectId, "_", input.metadata.projectName, "_", input.metadata.scanTargetId, "_zapScan.json"]) {
 	input.metadata.scanTargetId != ""
     input.metadata.projectName != ""
     input.metadata.projectId != ""
