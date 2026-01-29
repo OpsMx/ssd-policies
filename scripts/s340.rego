@@ -15,13 +15,13 @@ default count_issues = -1
 
 image_sha = replace(input.metadata.image_sha, ":", "-")
 
-file_name = concat("", [image_sha, "_", input.metadata.deploymentId, "_zapScan.json"]) {
+filename = concat("", [image_sha, "_", input.metadata.deploymentId, "_zapScan.json"]) {
 	input.metadata.scanTargetId == ""
     input.metadata.projectName == ""
     input.metadata.projectId == ""
 }
 
-file_name = concat("", [input.metadata.scanTargetId, "_", input.metadata.projectName, "_", input.metadata.projectId, "_zapScan.json"]) {
+filename = concat("", [input.metadata.scanTargetId, "_", input.metadata.projectName, "_", input.metadata.projectId, "_zapScan.json"]) {
 	input.metadata.scanTargetId != ""
     input.metadata.projectName != ""
     input.metadata.projectId != ""
