@@ -4,13 +4,10 @@ import future.keywords.in
 default exception_list = []
 default exception_count = 0
 
-# Inputs
 policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
-projectId = input.metadata.projectId
-projectName = input.metadata.projectName
-scanTargetId = input.metadata.scanTargetId
+
 scan_account = input.metadata.ssd_secret.zap.name
 
 default issues = []
@@ -18,75 +15,21 @@ default count_issues = -1
 
 image_sha = replace(input.metadata.image_sha, ":", "-")
 
-############################################
-# URL CONSTRUCTION
-############################################
-
-# Case 1: projectId and scanTargetId are present
-complete_url = url {
-	projectId != ""
-	scanTargetId != ""
-
-	file := concat("", [
-		projectId, "_", projectName, "_", scanTargetId, "_zapScan.json"
-	])
-
-	url := concat("", [
-		input.metadata.toolchain_addr,
-		"api/v1/scanResult?fileName=",
-		file,
-		"&scanOperation=zapDastScan"
-	])
+filename = concat("", [image_sha, "_", input.metadata.deploymentId, "_zapScan.json"]) {
+	input.metadata.scanTargetId == ""
+    input.metadata.projectName == ""
+    input.metadata.projectId == ""
 }
 
-download_url = url {
-	projectId != ""
-	scanTargetId != ""
-
-	file := concat("", [
-		projectId, "_", projectName, "_", scanTargetId, "_zapScan.json"
-	])
-
-	url := concat("", [
-		"tool-chain/api/v1/scanResult?fileName=",
-		file,
-		"&scanOperation=zapDastScan"
-	])
+filename = concat("", [input.metadata.scanTargetId, "_", input.metadata.projectName, "_", input.metadata.projectId, "_zapScan.json"]) {
+	input.metadata.scanTargetId != ""
+    input.metadata.projectName != ""
+    input.metadata.projectId != ""
 }
 
-# Case 2: fallback (original behavior)
-complete_url = url {
-	projectId == "" or scanTargetId == ""
 
-	file := concat("", [
-		image_sha, "_", deployment_id, "_zapScan.json"
-	])
-
-	url := concat("", [
-		input.metadata.toolchain_addr,
-		"api/v1/scanResult?fileName=",
-		file,
-		"&scanOperation=zapDastScan"
-	])
-}
-
-download_url = url {
-	projectId == "" or scanTargetId == ""
-
-	file := concat("", [
-		image_sha, "_", deployment_id, "_zapScan.json"
-	])
-
-	url := concat("", [
-		"tool-chain/api/v1/scanResult?fileName=",
-		file,
-		"&scanOperation=zapDastScan"
-	])
-}
-
-############################################
-_ := trace(sprintf("DEBUG complete_url: %v", [complete_url]))
-_ := trace(sprintf("DEBUG download_url: %v", [download_url]))
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", filename, "&scanOperation=zapDastScan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", filename, "&scanOperation=zapDastScan"] )
 
 request = {
 		"method": "GET",
