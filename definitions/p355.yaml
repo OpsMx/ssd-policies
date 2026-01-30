@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Remove FTP (ports 20-21) inbound rules and migrate to SFTP or AWS Transfer Family. FTP transmits credentials and data in plaintext, allowing attackers to intercept sensitive information through network sniffing."

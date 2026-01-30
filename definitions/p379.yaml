@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Review VPC peering route tables and ensure routes only allow traffic to specific required subnets, not entire VPC CIDR blocks. Document the business justification for each peering connection."

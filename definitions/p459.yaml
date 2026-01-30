@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Rotate active access keys older than 90 days by creating a new key, updating applications, verifying functionality, then deleting the old key. Consider migrating to IAM roles for EC2 or OIDC federation to eliminate long-term credentials."

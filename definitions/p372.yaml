@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Migrate resources from the default security group to custom security groups designed for each workload type. Create purpose-specific security groups and reassign ENIs to maintain least-privilege network access."

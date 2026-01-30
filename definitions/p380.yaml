@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Review and restrict Network ACL egress rules to allow only required outbound traffic. Define explicit allow rules for required destination ports and IP ranges. This helps prevent data exfiltration from compromised instances."

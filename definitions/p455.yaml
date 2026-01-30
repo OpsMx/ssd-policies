@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Review EC2 instance roles that are not currently attached to any running instances. Check the role's last used timestamp and CloudTrail for recent AssumeRole activity. Delete roles that are no longer needed."

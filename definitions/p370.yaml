@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Enable EBS encryption by default in each region using the EC2 console or enable-ebs-encryption-by-default API. All new volumes will be automatically encrypted."

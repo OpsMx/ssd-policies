@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Restrict SMTP (port 25) access to specific mail relay IP addresses or internal networks only. Publicly accessible SMTP servers are frequently targeted for spam relay attacks. Consider using Amazon SES instead of self-hosted SMTP."

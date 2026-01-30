@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Modify the inline role policy to restrict sts:AssumeRole to specific role ARNs required for the role's function. Define explicit target role ARNs or use condition keys like aws:PrincipalOrgID to limit the scope."

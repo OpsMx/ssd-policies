@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Remove secrets from EC2 user data immediately and rotate any exposed credentials. Migrate to AWS Secrets Manager or Systems Manager Parameter Store, then update instance configurations to retrieve secrets at runtime using IAM roles."

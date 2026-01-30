@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Replace the allow-all-ports self-referencing rule with specific port rules that match actual communication requirements. Allowing all ports creates excessive lateral movement risk if any instance is compromised."

@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Modify the security group to restrict UDP port access to specific trusted IP ranges or security groups. If the port is not required, remove the inbound rule entirely."

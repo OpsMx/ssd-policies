@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Restrict SSH (port 22) access to specific IP addresses or bastion hosts. Consider using AWS Systems Manager Session Manager for shell access without exposing SSH publicly."

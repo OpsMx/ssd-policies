@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Delete the root account access keys immediately. The root account should never be used for daily operations. Create IAM users or roles with appropriate permissions instead."

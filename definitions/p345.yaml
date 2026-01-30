@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Identify and delete security groups not attached to any EC2 instances, RDS databases, or other resources. Before deletion, verify no ENIs are attached and check CloudTrail for recent usage."

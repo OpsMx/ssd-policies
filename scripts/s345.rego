@@ -5,6 +5,7 @@ default exception_list = []
 default exception_count = 0
 default remediation := ""
 default references := ""
+default policy_suggestion := ""
 
 policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
@@ -23,6 +24,7 @@ rule_name := results.name
 rule_rationale = results.rationale
 references = concat(" \n", results.references)
 remediation = results.remediation
+policy_suggestion = input.metadata.suggestion
 
 
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "cspmEnrichedFinding": cspmEnrichedFinding, "cspmIsService": cspmIsService, "accountName": scan_account}]{
@@ -37,7 +39,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 		title := sprintf("Rule: %v violated for %v resource %v", [rule_name, service_type, violated_resource])
 		msg := sprintf("Rule: %v violated for %v resource %v. \nRule Description: %v. \n Detailed Description: %v.", [rule_name, service_type, violated_resource, rule_description, rule_rationale])
 		error := ""
-		sugg := sprintf("%v \n %v", [remediation, references])
+		sugg := sprintf("%v \n %v \n %v", [policy_suggestion, remediation, references])
 		alertStatus := "active"
 }
 
@@ -63,7 +65,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 		title := sprintf("Rule: %v violated for %v resource %v", [rule_name, service_type, violated_resource])
 		msg := sprintf("Rule: %v violated for %v resource %v. \nRule Description: %v. \n Detailed Description: %v.", [rule_name, service_type, violated_resource, rule_description, rule_rationale])
 		error := ""
-		sugg := sprintf("%v \n %v", [remediation, references])
+		sugg := sprintf("%v \n %v \n %v", [policy_suggestion, remediation, references])
 		exception_cause := rule_name
 		alertStatus := "exception"
 }

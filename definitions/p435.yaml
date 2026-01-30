@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Review unattached managed policies to determine if they are needed for future use or should be deleted. Unused policies create audit complexity and may contain overly permissive statements that could be accidentally attached later."

@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Convert inline policies to customer-managed policies for better reusability, version control, and centralized management. Use the IAM console or AWS CLI to extract and recreate the policy."

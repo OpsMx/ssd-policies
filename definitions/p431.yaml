@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Update the IAM password policy to prevent password reuse by setting the password reuse prevention parameter to remember at least 24 previous passwords. Navigate to IAM Account Settings to configure this requirement."

@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Enable VPC Flow Logs at the VPC level to capture all network traffic. VPC-level flow logs automatically cover all subnets and are easier to manage than subnet-level logs. Send logs to CloudWatch or S3 for analysis."

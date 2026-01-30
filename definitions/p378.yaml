@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Delete Network ACLs not associated with any subnets. Unused NACLs create management overhead and risk of accidental misconfiguration if later attached."

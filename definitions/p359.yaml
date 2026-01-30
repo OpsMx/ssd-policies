@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Restrict Microsoft SQL Server (port 1433) access to application server security groups or specific trusted IP ranges. Place SQL Server instances in private subnets and use security groups to control access."

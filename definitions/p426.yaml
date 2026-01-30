@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Delete all X.509 signing certificates associated with the root account through the IAM console Security Credentials page. Modern AWS services use Signature Version 4, making these certificates unnecessary."

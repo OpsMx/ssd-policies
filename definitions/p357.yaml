@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Restrict NFS (port 2049) access to specific client security groups within your VPC only. Consider using Amazon EFS with VPC security groups for managed file storage with proper access controls."

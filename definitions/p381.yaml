@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Review and restrict Network ACL ingress rules to allow only required inbound traffic. Configure explicit allow rules for expected source IP ranges and destination ports, relying on the implicit deny rule to block all other traffic."

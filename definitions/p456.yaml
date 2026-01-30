@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Never use Principal: '*' or Principal: {'AWS': '*'} without restrictive conditions. Specify exact AWS account IDs or role ARNs that should be allowed to assume the role."

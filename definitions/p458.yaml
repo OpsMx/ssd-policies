@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Delete inactive access keys that have not been rotated in 90 or more days. Inactive keys serve no operational purpose and present a security risk if they are reactivated or if their credentials were previously exposed."

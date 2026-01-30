@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Note: NIST SP 800-63B recommends against mandatory password rotation unless compromise is suspected. If required for compliance (PCI-DSS), set expiration to 90 days. Focus on strong passwords and MFA instead."
