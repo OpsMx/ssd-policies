@@ -1,0 +1,12 @@
+id: 644
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:RDS:instance-short-backup-retention-period"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Instance Short Backup Retention Period"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

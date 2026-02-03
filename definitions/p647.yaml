@@ -1,0 +1,12 @@
+id: 647
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:RDS:instance-ca-certificate-deprecated"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Instance CA Certificate Deprecated"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""

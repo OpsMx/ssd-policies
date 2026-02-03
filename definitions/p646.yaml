@@ -1,0 +1,12 @@
+id: 646
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:RDS:instance-no-minor-upgrade"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Instance No Minor Upgrade"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: ""
