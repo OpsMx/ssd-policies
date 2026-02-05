@@ -15,7 +15,15 @@ default count_issues = -1
 
 image_sha = replace(input.metadata.image_sha, ":", "-")
 
+filename = concat("", [image_sha, "_", input.metadata.deploymentId, "_openApiSpec_zapScan.json"]) {
+	input.metadata.isOpenApiSpec == "true"
+	input.metadata.scanTargetId == ""
+    input.metadata.projectName == ""
+    input.metadata.projectId == ""
+}
+
 filename = concat("", [image_sha, "_", input.metadata.deploymentId, "_zapScan.json"]) {
+	input.metadata.isOpenApiSpec == ""
 	input.metadata.scanTargetId == ""
     input.metadata.projectName == ""
     input.metadata.projectId == ""
