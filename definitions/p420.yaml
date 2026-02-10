@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Identify which access key is actively being used via IAM credential reports and CloudTrail logs, then deactivate and delete the unused key. Use IAM roles for applications instead of long-lived access keys where possible."

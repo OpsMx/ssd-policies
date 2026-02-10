@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Modify the inline group policy to restrict sts:AssumeRole to specific role ARNs that group members legitimately need to assume. List the specific role ARNs in the Resource element of the policy statement."

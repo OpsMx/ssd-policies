@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Investigate the recent root account activity in CloudTrail to determine if the usage was authorized. Create IAM users or roles with only the permissions required for daily tasks, and reserve root account usage for account-level operations only."

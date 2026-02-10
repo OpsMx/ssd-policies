@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Service accounts should use only programmatic access (access keys) without console passwords. Use IAM Access Analyzer to identify users with both access methods and remove the unnecessary one."

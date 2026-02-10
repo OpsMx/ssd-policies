@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Review empty IAM groups to determine if they are awaiting user assignment or are no longer needed. Delete groups that serve no current or planned purpose to reduce IAM complexity and audit scope."

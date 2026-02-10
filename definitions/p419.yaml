@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Enable MFA for all IAM users, especially those with console access. Use virtual MFA apps, hardware tokens, or integrate with IAM Identity Center for centralized MFA management."

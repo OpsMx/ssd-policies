@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Disable Telnet access and use SSH instead. Telnet transmits credentials in plaintext and can be intercepted by network attackers."

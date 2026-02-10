@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "For cross-account role assumption, require an ExternalId condition to prevent confused deputy attacks, or require MFA for interactive users. Example: 'Condition': {'StringEquals': {'sts:ExternalId': 'unique-id'}}"

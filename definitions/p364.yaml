@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Restrict the security group to allow only the specific ports required for the application. Use the principle of least privilege by limiting source IPs to known trusted ranges."

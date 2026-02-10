@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Replace port ranges with specific individual ports. Port ranges may unintentionally expose services that should not be accessible."

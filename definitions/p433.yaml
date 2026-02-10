@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Update the IAM password policy to require a minimum password length of at least 14 characters. Navigate to IAM Account Settings and configure the minimum password length along with complexity requirements."

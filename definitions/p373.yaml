@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Modify the AMI launch permissions to remove public access. Share AMIs only with specific AWS account IDs. Verify no sensitive data or credentials are baked into the AMI."

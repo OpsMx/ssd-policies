@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Create encrypted copies of unencrypted EBS snapshots using AWS KMS keys, then delete the unencrypted originals. Enable default EBS encryption in account settings to ensure all future snapshots are automatically encrypted."

@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Convert inline policies to managed policies and attach them to IAM groups rather than individual users. Add users to appropriate groups to inherit permissions. Managed policies attached to groups simplify permission management at scale."

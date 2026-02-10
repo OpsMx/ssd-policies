@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Enable MFA on the root account using a hardware MFA device (preferred) or virtual MFA app. Store the MFA device securely and establish a break-glass procedure for emergency access."

@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Restrict iam:PassRole to specific role ARNs using a condition. Unrestricted PassRole combined with service actions (ec2:RunInstances, lambda:CreateFunction) enables privilege escalation by passing high-privilege roles to services."

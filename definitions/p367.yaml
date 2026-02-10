@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Enable EBS encryption for data-at-rest protection. Note: Existing unencrypted volumes cannot be encrypted directly. Create an encrypted snapshot, then create a new volume from it and replace the original."

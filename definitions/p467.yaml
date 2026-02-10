@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Replace the NotAction statement with explicit Action statements listing only the required permissions. Audit the role's actual permission usage and define a specific allowlist that matches the role's intended function."

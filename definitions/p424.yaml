@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Disable or delete IAM credentials that have not been used in 90 or more days. Generate an IAM credential report to identify unused passwords and access keys, then deactivate them after confirming with the resource owner."

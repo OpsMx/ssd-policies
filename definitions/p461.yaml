@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Replace the NotAction statement with explicit Action statements listing only the required permissions. Audit actual permission usage with IAM Access Analyzer and define a specific allowlist of required actions."

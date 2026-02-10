@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Remove or restrict inbound rules that allow AWS-owned CIDR ranges (such as EC2, Lambda, or CloudFront IP ranges). These ranges include millions of IP addresses from any AWS customer, effectively allowing traffic from unknown third parties."

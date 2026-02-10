@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Replace the NotAction statement with explicit Action statements listing only the required permissions. NotAction allows all actions except those listed, granting access to any new AWS services added in the future."

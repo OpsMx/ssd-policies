@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Remove all inbound and outbound rules from the default security group. The default security group cannot be deleted but should have no rules. Create custom security groups with appropriate rules for each workload."

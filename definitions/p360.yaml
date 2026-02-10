@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Restrict MongoDB (port 27017) access to application server security groups or specific trusted IP ranges. Enable MongoDB authentication, place instances in private subnets, and limit access to authorized application servers."

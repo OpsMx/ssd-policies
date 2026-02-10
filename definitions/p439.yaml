@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Replace the full administrative privileges policy with specific permissions for the required AWS services and actions. Use IAM Access Analyzer to identify actually-used permissions and create scoped policies following least privilege."

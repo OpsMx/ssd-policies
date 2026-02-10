@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Restrict MySQL (port 3306) access to application server security groups or specific trusted IP ranges. Move MySQL databases to private subnets and allow connections only from authorized application servers."

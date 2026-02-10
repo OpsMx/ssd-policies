@@ -9,4 +9,4 @@ metadata:
   scriptId: 345
   variables: ""
   conditionName: ""
-  suggestion: ""
+  suggestion: "Restrict DNS (port 53) access to specific trusted IP ranges or use Amazon Route 53 for DNS services. Publicly accessible DNS servers can be exploited for DNS amplification DDoS attacks and cache poisoning."
