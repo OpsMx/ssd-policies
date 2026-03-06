@@ -25,7 +25,18 @@ request = {
 response = http.send(request)
 results := response.body.Results
 
-licenses = [response.body.Results[i].Licenses[j] | count(response.body.Results[i].Licenses) > 0]
+licenses = [{
+    "Target": results[idx1].Target,
+    "Severity": results[idx1].Licenses[idx2].Severity,
+    "Category": results[idx1].Licenses[idx2].Category,
+    "PkgName": results[idx1].Licenses[idx2].PkgName,
+    "Name": results[idx1].Licenses[idx2].Name,
+    "FilePath": results[idx1].Licenses[idx2].FilePath
+} |
+    some idx1
+    count(results[idx1].Licenses) > 0
+    some idx2
+]
 
 license_count = count(licenses)
 
@@ -46,7 +57,7 @@ high_severity_licenses_without_exception = [high_severity_licenses[idx] | not hi
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 		count(high_severity_licenses_without_exception) > 0
 		some i in high_severity_licenses_without_exception
-		title := sprintf("Artifact License Scan: Package: %v/ License: %v/ Category: %v", [i.PkgName, i.Name, i.Category])
+		title := sprintf("Artifact License Scan: Target: %v / Package: %v/ License: %v/ Category: %v", [i.Target, i.PkgName, i.Name, i.Category])
 		msg := sprintf("Artifact License Scan: High Severity License: %v found to be associated with package %v in artifact %v:%v.",[i.Name, i.PkgName, input.metadata.image, input.metadata.image_tag])
 		sugg := "Please associate appropriate licenses with code repository and its package dependencies."
 		error := ""
@@ -57,7 +68,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
 		count(high_severity_licenses_with_exception) > 0
 		some j in high_severity_licenses_with_exception
-		title := sprintf("Artifact License Scan: Package: %v/ License: %v/ Category: %v", [j.PkgName, j.Name, j.Category])
+		title := sprintf("Artifact License Scan: Target: %v / Package: %v/ License: %v/ Category: %v", [j.Target, j.PkgName, j.Name, j.Category])
 		msg := sprintf("Artifact License Scan: High Severity License: %v found to be associated with package %v in artifact %v:%v.",[j.Name, j.PkgName, input.metadata.image, input.metadata.image_tag])
 		sugg := "Please associate appropriate licenses with code repository and its package dependencies."
 		error := ""
