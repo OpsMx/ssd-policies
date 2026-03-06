@@ -32,7 +32,18 @@ request = {
 response = http.send(request)
 results := response.body.Results
 
-licenses = [results[idx1].Licenses[idx2] | count(results[idx1].Licenses) > 0]
+licenses = [{
+    "Target": results[idx1].Target,
+    "Severity": results[idx1].Licenses[idx2].Severity,
+    "Category": results[idx1].Licenses[idx2].Category,
+    "PkgName": results[idx1].Licenses[idx2].PkgName,
+    "Name": results[idx1].Licenses[idx2].Name,
+    "FilePath": results[idx1].Licenses[idx2].FilePath
+} |
+    some idx1
+    count(results[idx1].Licenses) > 0
+    some idx2
+]
 
 license_count = count(licenses)
 
@@ -52,7 +63,7 @@ low_severity_licenses_without_exception = [low_severity_licenses[idx] | not low_
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 		count(low_severity_licenses_without_exception) > 0
 		some i in low_severity_licenses_without_exception
-		title := sprintf("Code License Scan: Package: %v/ License: %v/ Category: %v", [i.PkgName, i.Name, i.Category])
+		title := sprintf("Code License Scan: Target: %v / Package: %v/ License: %v/ Category: %v", [i.Target, i.PkgName, i.Name, i.Category])
 		msg := sprintf("Code License Scan: Low Severity License: %v found to be associated with repository %v:%v.",[i.Name, input.metadata.owner, input.metadata.repository])
 		sugg := "Please associate appropriate licenses with code repository and its package dependencies."
 		error := ""
@@ -63,7 +74,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
 		count(low_severity_licenses_with_exception) > 0
 		some j in low_severity_licenses_with_exception
-		title := sprintf("Code License Scan: Package: %v/ License: %v/ Category: %v", [j.PkgName, j.Name, j.Category])
+		title := sprintf("Code License Scan: Target: %v / Package: %v/ License: %v/ Category: %v", [j.Target, j.PkgName, j.Name, j.Category])
 		msg := sprintf("Code License Scan: Low Severity License: %v found to be associated with repository %v:%v.",[j.Name, input.metadata.owner, input.metadata.repository])
 		sugg := "Please associate appropriate licenses with code repository and its package dependencies."
 		error := ""
