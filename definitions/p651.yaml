@@ -1,0 +1,12 @@
+id: 651
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:S3:bucket-no-default-encryption"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Bucket without Default Encryption Enabled"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: "Enable default encryption on the bucket using SSE-S3 (AES-256) or SSE-KMS so that all newly written objects are encrypted at rest. This can be configured in the bucket's Default Encryption settings."

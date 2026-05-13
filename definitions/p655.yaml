@@ -1,0 +1,12 @@
+id: 655
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:S3:bucket-world-acl"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Bucket Accessible via World ACL"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: "Remove the AllUsers or AuthenticatedUsers grant from the bucket ACL. Grant access through a least-privilege bucket policy or IAM policy instead, and enable S3 Block Public Access at the account level to prevent recurrence."

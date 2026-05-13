@@ -1,0 +1,12 @@
+id: 656
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:S3:bucket-world-policy"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Bucket Policy Authorizes Action to All Principals"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: "Review the bucket policy and restrict the flagged action(s) to specific AWS principals. Replace Principal '*' with explicit account/role ARNs, or add a Condition block that constrains who can invoke the action. Allowing actions to all principals violates least-privilege."

@@ -1,0 +1,12 @@
+id: 653
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:S3:bucket-no-mfa-delete"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Bucket without MFA Delete"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: "Enable MFA Delete on the bucket to protect against accidental or unauthorized object deletion. Versioning must be enabled first, and only the root account can toggle this setting via the AWS CLI."

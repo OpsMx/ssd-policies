@@ -1,0 +1,12 @@
+id: 657
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:S3:bucket-world-policy-star"
+  category: "CSPM"
+  stage: "deploy"
+  description: "All Actions Authorized to All Principals"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: "Remove any Statement that combines Effect: Allow, Principal '*' (or {\"AWS\":\"*\"}), and Action 's3:*' or '*' from the bucket policy. Replace with explicit Principal and Action lists scoped to specific use cases (CIS AWS Foundations 2.3)."

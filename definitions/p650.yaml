@@ -1,0 +1,12 @@
+id: 650
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:S3:bucket-allowing-cleartext"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Bucket Allowing Clear Text (HTTP) Communication"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: "Enforce HTTPS-only access by attaching a bucket policy that denies requests when aws:SecureTransport is false. This prevents sensitive data from being transmitted unencrypted between clients and the bucket."

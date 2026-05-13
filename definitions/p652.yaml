@@ -1,0 +1,12 @@
+id: 652
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:S3:bucket-no-logging"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Bucket Access Logging Disabled"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: "Enable server access logging on the bucket and direct logs to a dedicated, restricted logging bucket. Server access logs support security audits and forensics (CIS AWS Foundations 2.6). If equivalent CloudTrail S3 data events are already collected, this may be treated as a duplicate."

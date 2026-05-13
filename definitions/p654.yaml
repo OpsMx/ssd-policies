@@ -1,0 +1,12 @@
+id: 654
+type: PolicyDefinition
+metadata:
+  policyName: "AWS:S3:bucket-no-versioning"
+  category: "CSPM"
+  stage: "deploy"
+  description: "Bucket without Versioning"
+  scheduled_policy: false
+  scriptId: 345
+  variables: ""
+  conditionName: ""
+  suggestion: "Enable versioning on the bucket to retain multiple variants of each object. Versioning protects against accidental overwrites and deletions, and is a prerequisite for MFA Delete."
