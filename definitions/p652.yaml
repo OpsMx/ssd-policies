@@ -1,0 +1,12 @@
+id: 652
+type: PolicyDefinition
+metadata:
+  policyName: "PentestGPT Scan Medium Risk Policy"
+  category: "PENTEST"
+  stage: "postdeploy"
+  description: "Reports Medium risk vulnerabilities found during AI-powered PentestGPT Scans."
+  scheduled_policy: false
+  scriptId: 481
+  variables: ""
+  conditionName: ""
+  suggestion: ""
