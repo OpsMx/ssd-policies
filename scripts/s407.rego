@@ -29,24 +29,26 @@ artifact_name := response.body.artifactName
 
 medium_severity_findings := response.body.appsec.Medium
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}] {	
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}] {	
 	some finding in medium_severity_findings
 
 	not finding.title in exception_list
 
 	title := finding.title
+	justification := object.get(finding, "description", "")
 	msg := sprintf("Section: %v \n Description: %v", [finding.section, finding.description])
 	sugg := ""
 	error := ""
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": title, "alertStatus": alertStatus, "accountName": scan_account}] {
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": title, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}] {
 	some finding in medium_severity_findings
 
 	finding.title in exception_list
 	
 	title := finding.title
+	justification := object.get(finding, "description", "")
 	msg := sprintf("Section: %v \n Description: %v", [finding.section, finding.description])
 	sugg := ""
 	error := ""

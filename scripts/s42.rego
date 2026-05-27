@@ -35,25 +35,28 @@ request = {
 response = http.send(request)
 
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	response.body.code == 404
+	justification := ""
 	msg := ""
 	sugg := sprintf("Results for %v check could not be obtained. Suggests incompatibility between the check and repository. Kindly enable related features and integrations.", [policy_name])
 	error := sprintf("Error Received: %v.",[response.body.error])
 	alertStatus := "error"
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	response.status_code == 500
+	justification := ""
 	msg := ""
 	sugg := "Kindly check if toolchain service is available in SSD environment and OpenSSF integration Policies are enabled."
 	error := sprintf("Error Received: %v.",[response.body.error])
 	alertStatus := "error"
 }
 
-deny[{"alertMsg":msg, "suggestions": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg":msg, "suggestions": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	codes = [401, 404, 500, 200, 302]
 	not response.status_code in codes
+	justification := ""
 	msg := ""
 	error := sprintf("Error %v receieved: %v", [response.body.error])
 	sugg := "Kindly check if toolchain service is available in SSD environment and OpenSSF integration Policies are enabled."
@@ -69,20 +72,22 @@ isNumberBetweenTwoNumbers(num, lower, upper) {
 
 in_range = isNumberBetweenTwoNumbers(response.body.score, 0, 10)
 
-deny[{"alertMsg":msg, "suggestions": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg":msg, "suggestions": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	in_range == true
 	response.body.score < threshold
 	not policy_name in exception_list
+	justification := object.get(response.body, "reason", "")
 	msg := sprintf("%v score for repo %v/%v is %v, which is less than 5 out 10.", [policy_name, input.metadata.owner, input.metadata.repository, response.body.score])
 	sugg := "Refer to detailed OpenSSF ScoreCard report and implement required practices to obtain better OpenSSF Score."
 	error := ""
 	alertStatus := "active"
 }
 
-deny[{"alertMsg":msg, "suggestions": sugg, "error": error, "exception": policy_name, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg":msg, "suggestions": sugg, "error": error, "exception": policy_name, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	in_range == true
 	response.body.score < threshold
 	policy_name in exception_list
+	justification := object.get(response.body, "reason", "")
 	msg := sprintf("%v score for repo %v/%v is %v, which is less than 5 out 10.", [policy_name, input.metadata.owner, input.metadata.repository, response.body.score])
 	sugg := "Refer to detailed OpenSSF ScoreCard report and implement required practices to obtain better OpenSSF Score."
 	error := ""

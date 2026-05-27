@@ -30,11 +30,12 @@ medium_severity_manifest_findings = [response.body.manifest_analysis.manifest_fi
 medium_severity_manifest_issue_count = count(medium_severity_manifest_findings)
 artifact_name := response.body.artifactName
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some finding in medium_severity_manifest_findings
 	rule := finding.rule
 	rule_title := finding.title
 	description := finding.description
+	justification := object.get(finding, "description", "")
 	components := concat(",", finding.component)
 
 	not rule in exception_list
@@ -46,11 +47,12 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": rule, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": rule, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some finding in medium_severity_manifest_findings
 	rule := finding.rule
 	rule_title := finding.title
 	description := finding.description
+	justification := object.get(finding, "description", "")
 	components := concat(",", finding.component)
 
 	rule in exception_list

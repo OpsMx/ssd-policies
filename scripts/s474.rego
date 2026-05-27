@@ -32,10 +32,11 @@ has_key(obj, key){
 	obj[key]
 }
 
-deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg}]{
+deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg, "justification": justification}]{
 	total_issues > 0
 	some i in response.body.issues
 	has_key(scan_targets, i.module)
+	justification := object.get(i, "description", "")
 	title := sprintf("Modelscan Scan: %v ", [policy_name])
 	msg := i.description
 	sugg := "Ensure that model files do not contain operators or globals that cannot execute code directly but can still be exploited. These include webbrowser, httplib, request.api, Tensorflow ReadFile, and Tensorflow WriteFile"

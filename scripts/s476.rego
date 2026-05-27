@@ -18,9 +18,20 @@ request := {
 
 response := http.send(request)
 
-deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg}] {
+garak_hit_justification(hit) = output {
+	output := object.get(hit, "output", "")
+	output != ""
+}
+
+garak_hit_justification(hit) = prompt {
+	object.get(hit, "output", "") == ""
+	prompt := object.get(hit, "prompt", "")
+}
+
+deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": alertStatus, "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg, "justification": justification}] {
 	some i in response.body.Hitlog
 	i.probe == policy_name
+	justification := garak_hit_justification(i)
 	title := sprintf("Garak: %v ", [policy_name])
 	msg := sprintf("PROBE: %v \n PROMPT: %v \n OUTPUT: %v", [policy_name, i.prompt, i.output])
 	sugg := ""

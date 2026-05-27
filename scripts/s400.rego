@@ -29,7 +29,7 @@ response = http.send(request)
 artifact_name = response.body.artifactName
 
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some key
 	finding := response.body.macho_analysis[key]
 	key != "name"
@@ -38,6 +38,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	not key in exception_list
 
 	desc := finding.description
+	justification := object.get(finding, "description", "")
 	title := sprintf("Macho Analysis Failure in artifact: %v for rule: %v", [artifact_name, key])
 	msg := sprintf("Macho Analysis Failure in artifact: %v \n Description: %v", [artifact_name, desc])
 	sugg := ""
@@ -45,7 +46,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some key
 	finding := response.body.macho_analysis[key]
 	key != "name"
@@ -54,6 +55,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	key in exception_list
 
 	desc := finding.description
+	justification := object.get(finding, "description", "")
 	title := sprintf("Macho Analysis Failure in artifact: %v for rule: %v", [artifact_name, key])
 	msg := sprintf("Macho Analysis Failure in artifact: %v \n Description: %v", [artifact_name, desc])
 	sugg := ""

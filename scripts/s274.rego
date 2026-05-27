@@ -34,13 +34,14 @@ response = http.send(request)
 
 secret_results := [response.body.Results[i] | count(response.body.Results[i].Secrets) > 0]
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	secret_results > 0
 	some i in secret_results
 	secret_file = i.Target
 
 	some j in i.Secrets
 	secret_title = j.Title
+	justification := object.get(j, "Title", "")
 	not secret_title in exception_list
     secret_severity = j.Severity
 	secret_severity == "HIGH"
@@ -56,13 +57,14 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	secret_results > 0
 	some i in secret_results
 	secret_file = i.Target
 
 	some j in i.Secrets
 	secret_title = j.Title
+	justification := object.get(j, "Title", "")
 	secret_title in exception_list
     secret_severity = j.Severity
 	secret_severity == "HIGH"

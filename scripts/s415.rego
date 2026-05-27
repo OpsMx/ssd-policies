@@ -32,24 +32,26 @@ response = http.send(request)
 
 issues := [response.body.results[idx] |response.body.results[idx].severity == "Low"]
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some issue in issues
 	title = issue.rule_description
 
 	not issue.long_id in exception_list
 
+	justification := object.get(issue, "rule_description", "")
 	msg = sprintf("Rule: %v failed during terraform scan of directory %v in Repository %v and Branch %v. Details are: \n Rule ID: %v \n Long Rule ID: %v \n Rule Provider: %v \n Rule Service: %v \n Rule Description: %v \n Impact: %v \n Location: %v:%v:%v", [issue.rule_id, response.body.tfCodeScanDirectory, response.body.repositoryUrl, response.body.branch, issue.rule_id, issue.long_id, issue.rule_provider, issue.rule_service, issue.rule_description, issue.impact, issue.location.filename, issue.location.start_line, issue.location.end_line])
 	sugg = sprintf("%v \n Useful Links: %v", [issue.resolution, concat("\n", issue.links)])
 	error = ""
 	alertStatus = "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some issue in issues
 	title = issue.rule_description
 
 	issue.long_id in exception_list
 
+	justification := object.get(issue, "rule_description", "")
 	msg = sprintf("Rule: %v failed during terraform scan of directory %v in Repository %v and Branch %v. Details are: \n Rule ID: %v \n Long Rule ID: %v \n Rule Provider: %v \n Rule Service: %v \n Rule Description: %v \n Impact: %v \n Location: %v:%v:%v", [issue.rule_id, response.body.tfCodeScanDirectory, response.body.repositoryUrl, response.body.branch, issue.rule_id, issue.long_id, issue.rule_provider, issue.rule_service, issue.rule_description, issue.impact, issue.location.filename, issue.location.start_line, issue.location.end_line])
 	sugg = sprintf("%v \n Useful Links: %v", [issue.resolution, concat("\n", issue.links)])
 	error = ""

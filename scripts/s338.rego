@@ -48,18 +48,30 @@ response = http.send(request)
 issues = [response.body.zapAlerts[i] | response.body.zapAlerts[i].risk == "Medium"]
 count_issues = count(issues)
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+zap_issue_justification(issue) = name {
+	name := object.get(issue, "name", "")
+	name != ""
+}
+
+zap_issue_justification(issue) = desc {
+	object.get(issue, "name", "") == ""
+	desc := object.get(issue, "description", "")
+}
+
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count_issues == -1
+	justification := ""
 	msg = "List of High Severity Issues for OWASP ZAP Scan could not be accessed."
 	sugg = "Kindly check if the OWASP ZAP is configured properly and SSD has access to the application endpoint."
 	error = "Failed while fetching issues from OWASP ZAP."
 	alertStatus := "error"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count_issues > 0
 	some idx
 	issues[idx].name in exception_list
+	justification := zap_issue_justification(issues[idx])
 	title := sprintf("OWASP ZAP Scan: %v", [issues[idx].name])
 	msg = issues[idx].description
 	sugg = issues[idx].solution
@@ -68,10 +80,11 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "exception"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count_issues > 0
 	some idx
 	not issues[idx].name in exception_list
+	justification := zap_issue_justification(issues[idx])
 	title := sprintf("OWASP ZAP Scan: %v", [issues[idx].name])
 	msg = issues[idx].description
 	sugg = issues[idx].solution

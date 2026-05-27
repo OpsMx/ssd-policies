@@ -42,10 +42,11 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 	alertStatus := "error"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count(blocker_issues) > 0
 	some idx
 	blocker_issues[idx].message in exception_list
+	justification := object.get(blocker_issues[idx], "message", "")
 	title := sprintf("Sonarqube Scan: %v", [blocker_issues[idx].message])
 	msg = blocker_issues[idx].message
 	sugg = "Kindly refer to the suggested resolutions by Sonarqube. For more details about the error, please refer to the detailed scan results."
@@ -54,10 +55,11 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "exception"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count(blocker_issues) > 0
 	some idx
 	not blocker_issues[idx].message in exception_list
+	justification := object.get(blocker_issues[idx], "message", "")
 	title := sprintf("Sonarqube Scan: %v", [blocker_issues[idx].message])
 	msg = blocker_issues[idx].message
 	sugg = "Kindly refer to the suggested resolutions by Sonarqube. For more details about the error, please refer to the detailed scan results."

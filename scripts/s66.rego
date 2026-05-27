@@ -42,20 +42,22 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 	alertStatus := "error"
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	quality_gate_status != ""
 	quality_gate_status != "OK"
 	not policy_name in exception_list
+	justification := quality_gate_status
 	msg = sprintf("Quality Gate Status for Sonarqube Project is %v.", [quality_gate_status])
 	sugg = "Kindly refer to the list of issues reported in SAST scan and their resolutions."
 	error = ""
 	alertStatus := "active"
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": policy_name, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": policy_name, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	quality_gate_status != ""
 	quality_gate_status != "OK"
 	policy_name in exception_list
+	justification := quality_gate_status
 	msg = sprintf("Quality Gate Status for Sonarqube Project is %v.", [quality_gate_status])
 	sugg = "Kindly refer to the list of issues reported in SAST scan and their resolutions."
 	error = ""

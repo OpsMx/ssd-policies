@@ -41,22 +41,24 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 	alertStatus := "error"
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count(issues) > 0
 	some idx
 	issues[idx].level == "Warning"
 	not policy_name in exception_list
+	justification := object.get(issues[idx], "ruleMessage", "")
 	msg = issues[idx].ruleMessage
 	sugg = "Kindly refer to the suggested resolutions by Codacy. For more details about the error, please refer to the detailed scan results."
 	error = ""
 	alertStatus := "active"
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": policy_name, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": policy_name, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count(issues) > 0
 	some idx
 	issues[idx].level == "Warning"
 	policy_name in exception_list
+	justification := object.get(issues[idx], "ruleMessage", "")
 	msg = issues[idx].ruleMessage
 	sugg = "Kindly refer to the suggested resolutions by Codacy. For more details about the error, please refer to the detailed scan results."
 	error = ""

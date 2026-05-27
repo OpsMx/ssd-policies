@@ -43,20 +43,22 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 	alertStatus := "error"
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count(facetvalues) > 0
 	major_count[0] > 0
 	not policy_name in exception_list
+	justification := ""
 	msg = sprintf("Major issues found during SAST scan for repository %v/%v and branch %v. \nMajor Issues: %v", [input.metadata.owner, input.metadata.repository, input.metadata.branch, major_count[0]])
 	sugg = "Kindly refer to the list of issues reported in SAST scan and their resolutions."
 	error = ""
 	alertStatus := "active"
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": policy_name, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": policy_name, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count(facetvalues) > 0
 	major_count[0] > 0
 	policy_name in exception_list
+	justification := ""
 	msg = sprintf("Major issues found during SAST scan for repository %v/%v and branch %v. \nMajor Issues: %v", [input.metadata.owner, input.metadata.repository, input.metadata.branch, major_count[0]])
 	sugg = "Kindly refer to the list of issues reported in SAST scan and their resolutions."
 	error = ""

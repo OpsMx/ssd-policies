@@ -35,7 +35,7 @@ response = http.send(request)
 findings_count = count([response.body.snykAnalysis[idx] | response.body.snykAnalysis[idx].severity in ["Low", "low"]])
 findings = [response.body.snykAnalysis[idx] | response.body.snykAnalysis[idx].severity in ["Low", "low"]]
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	findings_count > 0
 	some i
 	not findings[i].ruleName in exception_list
@@ -45,7 +45,8 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
     locations := [sprintf("%s:%d", [loc.filePath, loc.line]) | loc := findings[i].locations[_]]
     joined_locations := concat(",\n ", locations)
     fixes := concat(",\n ", findings[i].exampleCommitFixes)
-	
+
+	justification := object.get(findings[i], "ruleMessage", "")
 	title := sprintf("Snyk Code Scan: %v for entity: %v",[findings[i].ruleName, findings[i].ruleMessage])
 	msg := sprintf("Snyk Rule Violation found for following rule \n %v: %v \n CWE: %v \n Locations: %v ", [findings[i].ruleName, findings[i].ruleMessage, rule_cwe, joined_locations])
 	sugg := sprintf("Please correlate and try following suggested solutions. \n %v", [fixes])
@@ -53,7 +54,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	findings_count > 0
 	some i
 	findings[i].ruleName in exception_list
@@ -63,7 +64,8 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
     locations := [sprintf("%s:%d", [loc.filePath, loc.line]) | loc := findings[i].locations[_]]
     joined_locations := concat(",\n ", locations)
     fixes := concat(",\n ", findings[i].exampleCommitFixes)
-	
+
+	justification := object.get(findings[i], "ruleMessage", "")
 	title := sprintf("Snyk Code Scan: %v for entity: %v",[findings[i].ruleName, findings[i].ruleMessage])
 	msg := sprintf("Snyk Rule Violation found for following rule \n %v: %v \n CWE: %v \n Locations: %v ", [findings[i].ruleName, findings[i].ruleMessage, rule_cwe, joined_locations])
 	sugg := sprintf("Please correlate and try following suggested solutions. \n %v", [fixes])

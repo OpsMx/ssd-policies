@@ -28,8 +28,9 @@ licenses = [response.body.Results[i].Licenses[j] | count(response.body.Results[i
 
 license_count = count(licenses)
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 		license_count == 0
+		justification := ""
 		not policy_name in exception_list
 		msg := sprintf("Artifact License Scan: No license found to be associated with artifact %v.",[input.metadata.image])
 		sugg := "Please associate appropriate license with artifact to be able to evaluate quality of license."
@@ -37,8 +38,9 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_u
 		alertStatus := "active"
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": policy_name, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": policy_name, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 		license_count == 0
+		justification := ""
 		policy_name in exception_list
 		msg := sprintf("Artifact License Scan: No license found to be associated with artifact %v.",[input.metadata.image])
 		sugg := "Please associate appropriate license with artifact to be able to evaluate quality of license."

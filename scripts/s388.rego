@@ -26,13 +26,14 @@ response = http.send(request)
 
 artifact_name := response.body.artifactName
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some key
 	permission := response.body.permissions[key]
 	permission.status == "Low"
 	not key in exception_list
 	info := permission.info
 	desc := permission.description
+	justification := object.get(permission, "description", "")
 	title := sprintf("Permission: %v assigned to Mobile Application Package: %v", [key, artifact_name])
 	msg := sprintf("Permission: %v assigned to Mobile Application Package: %v. \n Permission: %v \n Info: %v \n Description: %v", [key, artifact_name, key, info, desc])
 	sugg := ""
@@ -40,13 +41,14 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some key
 	permission := response.body.permissions[key]
 	permission.status == "Low"
 	key in exception_list
 	info := permission.info
 	desc := permission.description
+	justification := object.get(permission, "description", "")
 	title := sprintf("Permission: %v assigned to Mobile Application Package: %v", [key, artifact_name])
 	msg := sprintf("Permission: %v assigned to Mobile Application Package: %v. \n Permission: %v \n Info: %v \n Description: %v", [key, artifact_name, key, info, desc])
 	sugg := ""

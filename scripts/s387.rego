@@ -29,25 +29,27 @@ artifact_name := response.body.artifactName
 high_severity_certificate_findings := [response.body.certificate_analysis.certificate_findings[i] | response.body.certificate_analysis.certificate_findings[i][0] == "High"]
 high_severity_certificate_issue_count := count(high_severity_certificate_findings)
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	high_severity_certificate_issue_count > 0
 	some idx in high_severity_certificate_findings
 	not idx[2] in exception_list
 
 	title := sprintf("Mobile Application Package Certificate Issue: %v.", [idx[2]])
 	msg := idx[1]
+	justification := idx[1]
 	sugg := ""
 	error := ""
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	high_severity_certificate_issue_count > 0
 	some idx in high_severity_certificate_findings
 	idx[2] in exception_list
 
 	title := sprintf("Mobile Application Package Certificate Issue: %v.", [idx[2]])
 	msg := idx[1]
+	justification := idx[1]
 	sugg := ""
 	error := ""
 	exception_cause := idx[2]

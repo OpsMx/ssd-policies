@@ -35,12 +35,13 @@ response = http.send(request)
 findings_count = response.body.totalFindings
 findings = response.body.findings
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	findings_count > 0
 	some i
 	title := sprintf("Semgrep Scan: %v ",[findings[i].rule_name])
 	not findings[i].rule_name in exception_list	
 	fix = findings[i].fix
+	justification := object.get(findings[i], "rule_message", "")
 	owasp = concat(", ", findings[i].owasp)
 	cwe = concat(", ", findings[i].cwe)
 	file = findings[i].location.file_path
@@ -51,12 +52,13 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	findings_count > 0
 	some i
 	title := sprintf("Semgrep Scan: %v ",[findings[i].rule_name])
 	findings[i].rule_name in exception_list
 	fix = findings[i].fix
+	justification := object.get(findings[i], "rule_message", "")
 	owasp = concat(", ", findings[i].owasp)
 	cwe = concat(", ", findings[i].cwe)
 	file = findings[i].location.file_path

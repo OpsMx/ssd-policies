@@ -78,7 +78,7 @@ default_value(val, fallback) = out {
     out := fallback
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	not_quantum_safe_count > 0
 	some i
 	comp := not_quantum_safe_components[i]
@@ -86,7 +86,9 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	primitive := primitive_of(comp)
 
 	compliance := comp.complianceMessage
-	
+
+	justification := object.get(comp, "name", "")
+
 	title := sprintf("%v — Non-Quantum-Safe (primitive: %v)", [comp.name, primitive])
 	not is_exception(title)	
 
@@ -110,7 +112,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	not_quantum_safe_count > 0
 	some i
 	comp := not_quantum_safe_components[i]
@@ -119,6 +121,9 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	primitive := primitive_of(comp)
 
 	compliance := comp.complianceMessage
+
+	justification := object.get(comp, "name", "")
+
 	title := sprintf("%v — Non-Quantum-Safe (primitive: %v)", [comp.name, primitive])
 	is_exception(title)
 

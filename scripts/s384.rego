@@ -22,7 +22,7 @@ request = {
 
 response = http.send(request)
 
-deny [{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny [{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some rule in response.body.data.attributes.results
 	rule.category == "suspicious"
 	engine = rule.engine_name
@@ -32,6 +32,7 @@ deny [{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error,
 	exception_str=concat(":", [engine, result])
 	not exception_str in exception_list
 
+	justification := object.get(rule, "result", "")
 	title := sprintf("APK/IPA %v scan for rule engine: %v/%v failed with suspicious finding: %v.", [response.body.artifact, engine, engine_version, result])
 	msg := sprintf("APK/IPA %v scan for rule engine: %v/%v failed with suspicious finding: %v.", [response.body.artifact, engine, engine_version, result])
 	sugg := ""
@@ -39,7 +40,7 @@ deny [{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error,
 	alertStatus := "active"
 }
 
-deny [{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny [{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some rule in response.body.data.attributes.results
 	rule.category == "suspicious"
 	engine = rule.engine_name
@@ -49,6 +50,7 @@ deny [{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error,
 	exception_str=concat(":", [engine, result])
 	exception_str in exception_list
 
+	justification := object.get(rule, "result", "")
 	title := sprintf("APK/IPA %v scan for rule engine: %v/%v failed with suspicious finding: %v.", [response.body.artifact, engine, engine_version, result])
 	msg := sprintf("APK/IPA %v scan for rule engine: %v/%v failed with suspicious finding: %v.", [response.body.artifact, engine, engine_version, result])
 	sugg := ""

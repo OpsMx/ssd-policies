@@ -30,12 +30,13 @@ findings = response.body.helmAnalysis
 
 findings_count = count(findings)
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	findings_count > 0
 	some i
 	rule_id := findings[i].RuleID
 	impacted_components := concat(",\n ", findings[i].TargetResources)
 	not rule_id in exception_list
+	justification := object.get(findings[i], "Title", "")
 	title := sprintf("Rule %v: %v found violated in helm chart %v:%v", [findings[i].Title, findings[i].RuleID, chart_name, chart_version])
 	msg := sprintf("Rule %v: %v found violated in helm chart %v:%v with following impacted resources: %v", [findings[i].Title, findings[i].RuleID, chart_name, chart_version, impacted_components])
 	error := ""
@@ -43,12 +44,13 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	findings_count > 0
 	some i
 	rule_id := findings[i].RuleID
 	impacted_components := concat(",\n ", findings[i].TargetResources)
 	rule_id in exception_list
+	justification := object.get(findings[i], "Title", "")
 	title := sprintf("Rule %v: %v found violated in helm chart %v:%v", [findings[i].Title, findings[i].RuleID, chart_name, chart_version])
 	msg := sprintf("Rule %v: %v found violated in helm chart %v:%v with following impacted resources: %v", [findings[i].Title, findings[i].RuleID, chart_name, chart_version, impacted_components])
 	error := ""

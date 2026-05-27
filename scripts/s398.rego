@@ -27,7 +27,7 @@ response = http.send(request)
 
 artifact_name = response.body.artifactName
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some key
 	finding := response.body.binary_analysis.findings[key]
 	finding.severity == "Medium"
@@ -35,6 +35,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	not key in exception_list
 
 	desc := finding.detailed_desc
+	justification := object.get(finding, "description", "")
 	title := key
 	msg := sprintf("Binary Analysis Failure in artifact: %v \n Description: %v \n CVSS: %v \n CWE: %v \n MASVS: %v", [artifact_name, desc, finding.cvss, finding.cwe, finding.masvs])
 	sugg := ""
@@ -42,7 +43,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some key
 	finding := response.body.binary_analysis.findings[key]
 	finding.severity == "Medium"
@@ -50,6 +51,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	key in exception_list
 
 	desc := finding.detailed_desc
+	justification := object.get(finding, "description", "")
 	title := key
 	msg := sprintf("Binary Analysis Failure in artifact: %v \n Description: %v \n CVSS: %v \n CWE: %v \n MASVS: %v", [artifact_name, desc, finding.cvss, finding.cwe, finding.masvs])
 	sugg := ""

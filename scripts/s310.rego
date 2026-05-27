@@ -36,8 +36,9 @@ licenses = [response.body.Results[i].Licenses[j] | count(response.body.Results[i
 
 license_count = count(licenses)
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	license_count == 0
+	justification := ""
 	not policy_name in exception_list
 	title := "Code License Scan: No license found."
 	msg := sprintf("Code License Scan: No license found to be associated with repository %v:%v.",[input.metadata.owner, input.metadata.repository])
@@ -46,8 +47,9 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": policy_name, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": policy_name, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	license_count == 0
+	justification := ""
 	policy_name in exception_list
 	title := "Code License Scan: No license found."
 	msg := sprintf("Code License Scan: No license found to be associated with repository %v:%v.",[input.metadata.owner, input.metadata.repository])

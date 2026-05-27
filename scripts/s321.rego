@@ -41,10 +41,28 @@ suspicious_urls := [results[idx] | results[idx].suspicious > 0]
 
 suspicious_urls_count = count(suspicious_urls)
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+vt_suspicious_url_justification(entry) = result {
+	result := object.get(entry, "result", "")
+	result != ""
+}
+
+vt_suspicious_url_justification(entry) = category {
+	object.get(entry, "result", "") == ""
+	category := object.get(entry, "category", "")
+	category != ""
+}
+
+vt_suspicious_url_justification(entry) = justification {
+	object.get(entry, "result", "") == ""
+	object.get(entry, "category", "") == ""
+	justification := sprintf("suspicious detections: %v", [entry.suspicious])
+}
+
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	suspicious_urls_count > 0
 	some i
 	not suspicious_urls[i].url in exception_list
+	justification := vt_suspicious_url_justification(suspicious_urls[i])
 	title := sprintf("Suspicious URL %v found in Repository: %v Branch: %v.", [suspicious_urls[i].url, repo_name, branch])
 	msg := sprintf("Suspicious URL %v found in Repository: %v Branch: %v. \nSummary of Scan Results: \nHarmless: %v\nMalicious: %v\nSuspicious: %v\nUndetected: %v\nTimeout: %v",[suspicious_urls[i].url, repo_name, branch, suspicious_urls[i].harmless, suspicious_urls[i].malicious, suspicious_urls[i].suspicious, suspicious_urls[i].undetected, suspicious_urls[i].timeout])
 	sugg := "Suggest securing the webhook endpoints from suspicious activities by enabling security measures and remove any unwanted URL references from source code repository and configurations."
@@ -52,10 +70,11 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	suspicious_urls_count > 0
 	some i
 	suspicious_urls[i].url in exception_list
+	justification := vt_suspicious_url_justification(suspicious_urls[i])
 	title := sprintf("Suspicious URL %v found in Repository: %v Branch: %v.", [suspicious_urls[i].url, repo_name, branch])
 	msg := sprintf("Suspicious URL %v found in Repository: %v Branch: %v. \nSummary of Scan Results: \nHarmless: %v\nMalicious: %v\nSuspicious: %v\nUndetected: %v\nTimeout: %v",[suspicious_urls[i].url, repo_name, branch, suspicious_urls[i].harmless, suspicious_urls[i].malicious, suspicious_urls[i].suspicious, suspicious_urls[i].undetected, suspicious_urls[i].timeout])
 	sugg := "Suggest securing the webhook endpoints from suspicious activities by enabling security measures and remove any unwanted URL references from source code repository and configurations."

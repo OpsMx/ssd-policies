@@ -38,9 +38,10 @@ response = http.send(request)
 high_severity_secrets = [response.body.Results[0].Secrets[i].Title | response.body.Results[0].Secrets[i].Severity == "HIGH"]
 secrets_count = count(high_severity_secrets)
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	secrets_count > 0
 	some i in high_severity_secrets
+	justification := i
 	not i in exception_list
 	title := sprintf("High Severity Secret detected in container: %v", [i])
 	msg := sprintf("Secret found for Container %v:%v.\nSecret identified:\n %v", [image_name, input.metadata.image_tag, i])
@@ -49,9 +50,10 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 	alertStatus := "active"
 }
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	secrets_count > 0
 	some i in high_severity_secrets
+	justification := i
 	i in exception_list
 	title := sprintf("High Severity Secret detected in container: %v", [i])
 	msg := sprintf("Secret found for Container %v:%v.\nSecret identified:\n %v", [image_name, input.metadata.image_tag, i])

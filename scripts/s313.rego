@@ -48,8 +48,9 @@ licenses = [{
 
 license_count = count(licenses)
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 		license_count == 0
+		justification := ""
 		title := "Code License Scan: No license found."
 		msg := sprintf("Code License Scan: No license found to be associated with repository %v:%v.",[input.metadata.owner, input.metadata.repository])
 		sugg := "Please associate appropriate license with code repository to be able to evaluate quality of license."
@@ -61,9 +62,10 @@ high_severity_licenses = [licenses[idx] | licenses[idx].Severity == "HIGH"]
 high_severity_licenses_with_exception = [high_severity_licenses[idx] | high_severity_licenses[idx].Name in exception_list]
 high_severity_licenses_without_exception = [high_severity_licenses[idx] | not high_severity_licenses[idx].Name in exception_list] 
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 		count(high_severity_licenses_without_exception) > 0
 		some i in high_severity_licenses_without_exception
+		justification := sprintf("%v (%v)", [i.Name, i.Category])
 		title := sprintf("Code License Scan: Target: %v / Package: %v/ License: %v/ Category: %v", [i.Target, i.PkgName, i.Name, i.Category])
 		msg := sprintf("Code License Scan: High Severity License: %v found to be associated with repository %v:%v.",[i.Name, input.metadata.owner, input.metadata.repository])
 		sugg := "Please associate appropriate licenses with code repository and its package dependencies."
@@ -72,9 +74,10 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 		exception := ""
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 		count(high_severity_licenses_with_exception) > 0
 		some j in high_severity_licenses_with_exception
+		justification := sprintf("%v (%v)", [j.Name, j.Category])
 		title := sprintf("Code License Scan: Target: %v / Package: %v/ License: %v/ Category: %v", [j.Target, j.PkgName, j.Name, j.Category])
 		msg := sprintf("Code License Scan: High Severity License: %v found to be associated with repository %v:%v.",[j.Name, input.metadata.owner, input.metadata.repository])
 		sugg := "Please associate appropriate licenses with code repository and its package dependencies."

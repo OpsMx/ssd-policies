@@ -29,10 +29,11 @@ high_severity_network_findings = [response.body.network_security.network_finding
 high_severity_network_issue_count = count(high_severity_network_findings)
 artifact_name := response.body.artifactName
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some finding in high_severity_network_findings
 	scope := concat(",", finding.scope)
 	description := finding.description
+	justification := object.get(finding, "description", "")
 	
 	not description in exception_list
 
@@ -43,10 +44,11 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": description, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": description, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	some finding in high_severity_network_findings
 	scope := concat(",", finding.scope)
 	description := finding.description
+	justification := object.get(finding, "description", "")
 	
 	description in exception_list
 

@@ -28,7 +28,7 @@ response = http.send(request)
 
 artifact_name := response.body.artifactName
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}] {
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}] {
 	some key
 	finding := response.body.ios_api[key]
 
@@ -39,13 +39,14 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	files := concat_keys(finding.files)
 	title := sprintf("IOS API Analysis Failure in artifact: %v for rule: %v", [artifact_name, key])
 	desc := finding.metadata.description
+	justification := object.get(finding.metadata, "description", "")
 	msg := sprintf("IOS API Analysis Failure in artifact: %v \n Description: %v \n Impacted Files: %v", [artifact_name, desc, files])
 	sugg := ""
 	error := ""
 	alertStatus := "active"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}] {
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}] {
 	some key
 	finding := response.body.ios_api[key]
 
@@ -56,6 +57,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	files := concat_keys(finding.files)
 	title := sprintf("IOS API Analysis Failure in artifact: %v for rule: %v", [artifact_name, key])
 	desc := finding.metadata.description
+	justification := object.get(finding.metadata, "description", "")
 	msg := sprintf("IOS API Analysis Failure in artifact: %v \n Description: %v \n Impacted Files: %v", [artifact_name, desc, files])
 	sugg := ""
 	error := ""
