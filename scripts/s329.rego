@@ -34,8 +34,9 @@ response = http.send(request)
 blocker_issues = response.body.blockerIssues
 count_blocker_issues = count(blocker_issues)
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count_blocker_issues == -1
+	justification := object.get(object.get(response.body, "blockerIssues", [{}])[0], "message", "")
 	msg = "List of Blocker Issues for Sonarqube Project could not be accessed."
 	sugg = "Kindly check if the Sonarqube token is configured and has permissions to read issues of the project."
 	error = "Failed while fetching blocker issues from Sonarqube."

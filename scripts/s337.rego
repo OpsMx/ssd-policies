@@ -60,7 +60,7 @@ zap_issue_justification(issue) = desc {
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count_issues == -1
-	justification := ""
+	justification := zap_issue_justification(object.get(response.body, "zapAlerts", [{}])[0])
 	msg = "List of High Severity Issues for OWASP ZAP Scan could not be accessed."
 	sugg = "Kindly check if the OWASP ZAP is configured properly and SSD has access to the application endpoint."
 	error = "Failed while fetching issues from OWASP ZAP."

@@ -37,7 +37,7 @@ response = http.send(request)
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	response.body.code == 404
-	justification := ""
+	justification := object.get(response.body, "reason", "")
 	msg := ""
 	sugg := sprintf("Results for %v check could not be obtained. Suggests incompatibility between the check and repository. Kindly enable related features and integrations.", [policy_name])
 	error := sprintf("Error Received: %v.",[response.body.error])
@@ -46,7 +46,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	response.status_code == 500
-	justification := ""
+	justification := object.get(response.body, "reason", "")
 	msg := ""
 	sugg := "Kindly check if toolchain service is available in SSD environment and OpenSSF integration Policies are enabled."
 	error := sprintf("Error Received: %v.",[response.body.error])
@@ -56,7 +56,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 deny[{"alertMsg":msg, "suggestions": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	codes = [401, 404, 500, 200, 302]
 	not response.status_code in codes
-	justification := ""
+	justification := object.get(response.body, "reason", "")
 	msg := ""
 	error := sprintf("Error %v receieved: %v", [response.body.error])
 	sugg := "Kindly check if toolchain service is available in SSD environment and OpenSSF integration Policies are enabled."

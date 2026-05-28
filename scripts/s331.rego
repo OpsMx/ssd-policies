@@ -36,8 +36,9 @@ facetvalues := response.body.facets[_].values
 critical_count := [facetvalues[i].count | facetvalues[i].val == "CRITICAL"]
 blocker_count := [facetvalues[i].count | facetvalues[i].val == "BLOCKER"]
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count(facetvalues) == 0
+	justification := ""
 	msg = "No facet values found for severities."
 	sugg = "Kindly check if the Sonarqube token is configured and has permissions to read issues of the project."
 	error = "Failed while fetching severity count from Sonarqube."

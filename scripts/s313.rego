@@ -50,7 +50,7 @@ license_count = count(licenses)
 
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 		license_count == 0
-		justification := ""
+		justification := sprintf("%v (%v)", [object.get(object.get(object.get(response.body, "Results", [{}])[0], "Licenses", [{}])[0], "Name", ""), object.get(object.get(object.get(response.body, "Results", [{}])[0], "Licenses", [{}])[0], "Category", "")])
 		title := "Code License Scan: No license found."
 		msg := sprintf("Code License Scan: No license found to be associated with repository %v:%v.",[input.metadata.owner, input.metadata.repository])
 		sugg := "Please associate appropriate license with code repository to be able to evaluate quality of license."

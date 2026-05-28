@@ -42,7 +42,7 @@ license_count = count(licenses)
 
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 		license_count == 0
-		justification := ""
+		justification := sprintf("%v (%v)", [object.get(object.get(object.get(response.body, "Results", [{}])[0], "Licenses", [{}])[0], "Name", ""), object.get(object.get(object.get(response.body, "Results", [{}])[0], "Licenses", [{}])[0], "Category", "")])
 		title := "Artifact License Scan: No license found."
 		msg := sprintf("Artifact License Scan: No license found to be associated with artifact %v.",[input.metadata.image])
 		sugg := "Please associate appropriate license with artifact to be able to evaluate quality of license."

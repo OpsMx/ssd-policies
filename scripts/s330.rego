@@ -34,8 +34,9 @@ response = http.send(request)
 critical_issues = response.body.criticalIssues
 count_critical_issues = count(critical_issues)
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count_critical_issues == -1
+	justification := object.get(object.get(response.body, "criticalIssues", [{}])[0], "message", "")
 	msg = "List of Critical Issues for Sonarqube Project could not be accessed."
 	sugg = "Kindly check if the Sonarqube token is configured and has permissions to read issues of the project."
 	error = "Failed while fetching critical issues from Sonarqube."

@@ -35,8 +35,9 @@ facetvalues := response.body.facets[_].values
 
 major_count := [facetvalues[i].count | facetvalues[i].val == "MAJOR"]
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count(facetvalues) == 0
+	justification := ""
 	msg = "No facet values found for severities."
 	sugg = "Kindly check if the Sonarqube token is configured and has permissions to read issues of the project."
 	error = "Failed while fetching severity count from Sonarqube."
