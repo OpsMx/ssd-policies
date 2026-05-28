@@ -7,6 +7,7 @@ default exception_count = 0
 policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
+default_solution = "Solution not available"
 
 scan_account = input.metadata.ssd_secret.zap.name
 
@@ -62,7 +63,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	issues[idx].name in exception_list
 	title := sprintf("OWASP ZAP Scan: %v", [issues[idx].name])
 	msg = issues[idx].description
-	sugg = issues[idx].solution
+	sugg := solution_or_default(issues[idx])
 	error = ""
 	exception_cause := issues[idx].name
 	alertStatus := "exception"
@@ -74,7 +75,20 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	not issues[idx].name in exception_list
 	title := sprintf("OWASP ZAP Scan: %v", [issues[idx].name])
 	msg = issues[idx].description
-	sugg = issues[idx].solution
+	sugg := solution_or_default(issues[idx])
 	error = ""
 	alertStatus := "active"
+}
+
+
+solution_or_default(issue) := sugg if {
+	s := object.get(issue, "solution", "")
+	s != ""
+	sugg := s
+}
+
+solution_or_default(issue) := sugg if {
+	s := object.get(issue, "solution", "")
+	s == ""
+	sugg := default_solution
 }
