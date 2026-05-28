@@ -80,15 +80,14 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "active"
 }
 
-
-solution_or_default(issue) := sugg if {
+solution_or_default(issue) = sugg {
 	s := object.get(issue, "solution", "")
 	s != ""
-	sugg := s
+	sugg = s
 }
 
-solution_or_default(issue) := sugg if {
+solution_or_default(issue) = sugg {
 	s := object.get(issue, "solution", "")
 	s == ""
-	sugg := default_solution
+	sugg = default_solution
 }
