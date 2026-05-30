@@ -1,0 +1,12 @@
+id: 650
+type: PolicyDefinition
+metadata:
+  policyName: "Jira Xray - Failed Test Runs"
+  category: "Jira Xray Scan"
+  stage: "source"
+  description: "Ensures Jira Xray executions do not contain failed test runs in the scan report."
+  scheduled_policy: false
+  scriptId: 479
+  variables: ""
+  conditionName: ""
+  suggestion: ""
