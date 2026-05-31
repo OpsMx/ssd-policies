@@ -30,7 +30,7 @@ request = {
 }
 
 response = http.send(request)
-facetvalues := response.body.facets[_].values
+facetvalues := response.facets[_].values
 
 info_count := [facetvalues[i].count | facetvalues[i].val == "INFO"]
 minor_count := [facetvalues[i].count | facetvalues[i].val == "MINOR"]
