@@ -1,10 +1,10 @@
 id: 339
 type: PolicyDefinition
 metadata:
-  policyName: "OWASP ZAP DAST Scan Low Risk Policy"
+  policyName: "SSD DAST Scan Low Risk Policy"
   category: "DAST"
   stage: "postdeploy"
-  description: "Reports Low risk issues found during DAST Scans in OWASP ZAP."
+  description: "Reports Low risk issues found during SSD DAST Scans (OWASP ZAP)."
   scheduled_policy: false
   scriptId: 339
   variables: ""
