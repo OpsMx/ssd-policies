@@ -62,9 +62,9 @@ zap_issue_justification(issue) = desc {
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "justification": justification}]{
 	count_issues == -1
 	justification := zap_issue_justification(object.get(response.body, "zapAlerts", [{}])[0])
-	msg = "List of High Severity Issues for OWASP ZAP Scan could not be accessed."
-	sugg = "Kindly check if the OWASP ZAP is configured properly and SSD has access to the application endpoint."
-	error = "Failed while fetching issues from OWASP ZAP."
+	msg = "List of High Severity Issues for SSD DAST scan could not be accessed."
+	sugg = "Kindly check if the SSD DAST is configured properly and SSD has access to the application endpoint."
+	error = "Failed while fetching issues from SSD DAST."
 	alertStatus := "error"
 }
 
@@ -73,7 +73,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	some idx
 	issues[idx].name in exception_list
 	justification := zap_issue_justification(issues[idx])
-	title := sprintf("OWASP ZAP Scan: %v", [issues[idx].name])
+	title := sprintf("SSD DAST: %v", [issues[idx].name])
 	msg = issues[idx].description
 	sugg = issues[idx].solution
 	error = ""
@@ -86,7 +86,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	some idx
 	not issues[idx].name in exception_list
 	justification := zap_issue_justification(issues[idx])
-	title := sprintf("OWASP ZAP Scan: %v", [issues[idx].name])
+	title := sprintf("SSD DAST: %v", [issues[idx].name])
 	msg = issues[idx].description
 	sugg = issues[idx].solution
 	error = ""
