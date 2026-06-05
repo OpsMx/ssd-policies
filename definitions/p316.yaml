@@ -5,7 +5,7 @@ metadata:
   category: "License Scan"
   stage: "artifact"
   description: "This policy is designed to restrict association of low severity licenses with artifact and its components."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 316
   variables: ""
   conditionName: ""
