@@ -3,7 +3,7 @@ type: PolicyDefinition
 metadata:
   policyName: "Jira Xray - Report Errors"
   category: "Jira Xray Scan"
-  stage: "source"
+  stage: "build"
   description: "Ensures Jira Xray scan reports are free from execution-level errors."
   scheduled_policy: false
   scriptId: 479

@@ -3,7 +3,7 @@ type: PolicyDefinition
 metadata:
   policyName: "Jira Xray - Failed Test Runs"
   category: "Jira Xray Scan"
-  stage: "source"
+  stage: "build"
   description: "Ensures Jira Xray executions do not contain failed test runs in the scan report."
   scheduled_policy: false
   scriptId: 479
