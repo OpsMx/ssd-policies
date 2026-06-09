@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 44
+  tagName: "policyCategory"
+  tagValue: "Jira Xray Scan"
+  tagDescription: ""
+  createdBy: "system"
