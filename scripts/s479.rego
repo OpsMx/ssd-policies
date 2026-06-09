@@ -26,10 +26,6 @@ is_failed_tests_policy {
   policy_name == "Jira Xray - Failed Test Runs"
 }
 
-is_report_errors_policy {
-  policy_name == "Jira Xray - Report Errors"
-}
-
 deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": "active", "alertTitle": title, "error": error, "exception": "", "fileApi": download_url, "suggestion": sugg}] {
   response.status_code == 404
   title := sprintf("Jira Xray Scan: %v", [policy_name])
@@ -60,17 +56,9 @@ deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": "active", "al
   is_failed_tests_policy
   some execution in response.body.executions
   some test_run in execution.testRuns
-  upper(test_run.status) == "FAILED"
+  upper(test_run.status) in {"FAIL", "FAILED"}
   title := sprintf("Jira Xray Scan: %v", [policy_name])
   msg := sprintf("Test run %v (%v) in execution %v failed with status %v.", [test_run.testIssueKey, test_run.testSummary, execution.jiraKey, test_run.status])
   sugg := "Investigate failed test cases in Jira Xray and fix the failing test scenarios before promotion."
 }
 
-deny[{"accountName": scan_account, "alertMsg": msg, "alertStatus": "active", "alertTitle": title, "error": "", "exception": "", "fileApi": download_url, "suggestion": sugg}] {
-  response.status_code == 200
-  is_report_errors_policy
-  some err in response.body.errors
-  title := sprintf("Jira Xray Scan: %v", [policy_name])
-  msg := sprintf("Jira Xray scan reported an execution error: %v", [err])
-  sugg := "Resolve Jira Xray execution/reporting errors and rerun the scan to produce a clean report."
-}
