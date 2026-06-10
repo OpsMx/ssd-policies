@@ -119,7 +119,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	# use helper to get primitive or "unknown"
 	primitive := primitive_of(comp)
 
-	compliance := comp.complianceMessage
+	compliance := "Algorithm is marked as non-quantum-safe in CBOM"
 	title := sprintf("%v — Non-Quantum-Safe (primitive: %v)", [comp.name, primitive])
 	is_exception(title)
 
