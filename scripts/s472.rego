@@ -38,7 +38,8 @@ get_bom(b) {
 # Array of component objects whose complianceLevel == "Not Quantum Safe"
 not_quantum_safe_components := [c |
     c := response.body.components[_]
-    c.complianceLevel == "Not Quantum Safe"
+	c.cryptoProperties
+    c.cryptoProperties.quantumSafe == false
 ]
 
 # Count of such components
@@ -85,7 +86,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	# use helper to get primitive or "unknown"
 	primitive := primitive_of(comp)
 
-	compliance := comp.complianceMessage
+	compliance := "Algorithm is marked as non-quantum-safe in CBOM"
 	
 	title := sprintf("%v — Non-Quantum-Safe (primitive: %v)", [comp.name, primitive])
 	not is_exception(title)	
@@ -118,7 +119,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	# use helper to get primitive or "unknown"
 	primitive := primitive_of(comp)
 
-	compliance := comp.complianceMessage
+	compliance := "Algorithm is marked as non-quantum-safe in CBOM"
 	title := sprintf("%v — Non-Quantum-Safe (primitive: %v)", [comp.name, primitive])
 	is_exception(title)
 
