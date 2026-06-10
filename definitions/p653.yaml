@@ -1,0 +1,12 @@
+id: 653
+type: PolicyDefinition
+metadata:
+  policyName: "PentestGPT Scan Low Risk Policy"
+  category: "PENTEST"
+  stage: "postdeploy"
+  description: "Reports Low risk vulnerabilities found during AI-powered PentestGPT Scans."
+  scheduled_policy: false
+  scriptId: 482
+  variables: ""
+  conditionName: ""
+  suggestion: ""
