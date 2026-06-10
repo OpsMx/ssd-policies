@@ -1,0 +1,12 @@
+id: 654
+type: PolicyDefinition
+metadata:
+  policyName: "PentestGPT Scan Critical Risk Policy"
+  category: "PENTEST"
+  stage: "postdeploy"
+  description: "Reports Critical risk vulnerabilities found during AI-powered PentestGPT Scans."
+  scheduled_policy: false
+  scriptId: 483
+  variables: ""
+  conditionName: ""
+  suggestion: ""
