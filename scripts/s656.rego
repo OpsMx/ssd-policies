@@ -78,13 +78,27 @@ externally_exploitable_str(vuln) = "No" {
 	vuln.externallyExploitable != true
 }
 
+loc_parts(code_location) = [file, line] {
+	parts := split(code_location, ":")
+	count(parts) > 1
+	file = concat(":", array.slice(parts, 0, count(parts) - 1))
+	line = parts[count(parts) - 1]
+}
+
+loc_parts(code_location) = [code_location, ""] {
+	parts := split(code_location, ":")
+	count(parts) <= 1
+}
+
 build_alert_msg(vuln) = msg {
 	ee := externally_exploitable_str(vuln)
+	lp := loc_parts(vuln.codeLocation)
 	parts := [
 		sprintf("Vulnerability: %v (%v)", [vuln.vulnerabilityType, vuln.id]),
 		sprintf("Category: %v | Confidence: %v | Externally Exploitable: %v", [vuln.category, vuln.confidence, ee]),
 		sprintf("Endpoint: %v", [vuln.endpoint]),
-		sprintf("Code Location: %v", [vuln.codeLocation]),
+		sprintf("Location: %v", [lp[0]]),
+		sprintf("Line Number: %v", [lp[1]]),
 		sprintf("Description: %v", [vuln.description]),
 		sprintf("Exploit Technique: %v", [vuln.exploitTechnique]),
 		sprintf("Evidence: %v", [vuln.evidence]),

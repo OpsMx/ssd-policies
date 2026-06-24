@@ -116,11 +116,12 @@ test_high_risk_alert_msg_contains_exploit_technique if {
 	contains(a.alertMsg, "session_fixation")
 }
 
-test_high_risk_alert_msg_contains_code_location if {
+test_high_risk_alert_msg_contains_location_and_line if {
 	alerts := deny with input as mock_input
 	some a in alerts
 	contains(a.alertTitle, "Token_Management_Issue")
-	contains(a.alertMsg, "app/__init__.py:13")
+	contains(a.alertMsg, "Location: app/__init__.py")
+	contains(a.alertMsg, "Line Number: 13")
 }
 
 test_high_risk_alert_msg_contains_externally_exploitable if {

@@ -76,6 +76,6 @@ test_medium_risk_alert_msg_has_full_context if {
 	alerts := deny with input as mock_input
 	some a in alerts
 	contains(a.alertMsg, "session_hijacking")
-	contains(a.alertMsg, "app/auth.py:45")
+	contains(a.alertMsg, "Location: app/auth.py")
 	contains(a.alertMsg, "Externally Exploitable: Yes")
 }
