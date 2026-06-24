@@ -4,7 +4,7 @@ metadata:
   policyName: "PentestGPT Scan Low Risk Policy"
   category: "PENTEST"
   stage: "postdeploy"
-  description: "Reports Low risk vulnerabilities found during AI-powered PentestGPT Scans."
+  description: "Review Low severity findings periodically. While individually low-impact, multiple Low findings may indicate systemic issues. Address during regular maintenance cycles."
   scheduled_policy: false
   scriptId: 482
   variables: ""

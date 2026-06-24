@@ -4,7 +4,7 @@ metadata:
   policyName: "PentestGPT Scan Medium Risk Policy"
   category: "PENTEST"
   stage: "postdeploy"
-  description: "Reports Medium risk vulnerabilities found during AI-powered PentestGPT Scans."
+  description: "Prioritize remediation of Medium severity vulnerabilities before promoting to production. Apply the recommended fix or raise a tracked exception with justification."
   scheduled_policy: false
   scriptId: 481
   variables: ""

@@ -31,7 +31,7 @@ response = http.send(request)
 issues = [response.body.vulnerabilities[i] | response.body.vulnerabilities[i].risk == "High"]
 count_issues = count(issues)
 
-deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}] {
+deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "alertTitle": ""}] {
     count_issues == -1
     msg = "List of High Severity Issues for PentestGPT Scan could not be accessed."
     sugg = "Kindly check if the PentestGPT is configured properly and SSD has access to the application endpoint."
