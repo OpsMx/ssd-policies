@@ -1,4 +1,4 @@
-id: 653
+id: 657
 type: PolicyDefinition
 metadata:
   policyName: "Shannon AI Pentest Scan Low Risk Policy"
@@ -6,7 +6,7 @@ metadata:
   stage: "postdeploy"
   description: "Reports Low risk vulnerabilities found during Shannon AI pentesting scans."
   scheduled_policy: false
-  scriptId: 653
+  scriptId: 657
   variables: ""
   conditionName: ""
   suggestion: ""

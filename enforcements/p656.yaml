@@ -1,6 +1,6 @@
 type: PolicyEnforcement
 metadata:
-  policyDefinitionId: 652
+  policyDefinitionId: 656
   severity: "Medium"
   action: "Alert"
   conditionValue: ""
