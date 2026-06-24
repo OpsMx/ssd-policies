@@ -1,0 +1,11 @@
+type: PolicyEnforcement
+metadata:
+  policyDefinitionId: 652
+  severity: "Medium"
+  action: "Alert"
+  conditionValue: "4.0"
+  status: true
+  datasourceTool:
+  - "pentestgpt"
+  tags:
+  - 45
