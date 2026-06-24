@@ -1,0 +1,7 @@
+type: Tag
+metadata:
+  id: 45
+  tagName: "policyCategory"
+  tagValue: "Shannon AI Pentest"
+  tagDescription: ""
+  createdBy: "system"
