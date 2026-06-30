@@ -35,6 +35,19 @@ response = http.send(request)
 findings_count = response.body.totalFindings
 findings = response.body.findings
 
+get_cwe_msg(cwe) := sprintf("\n CWE: %v", [cwe]) if {
+    cwe != ""
+}
+get_cwe_msg(_) := ""
+
+get_sugg(fix) := sprintf(
+    "Please correlate and incorporate following suggested solution: \n %v",
+    [fix],
+) if {
+    fix != ""
+}
+get_sugg(_) := ""
+
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 	findings_count > 0
 	some i
@@ -45,18 +58,9 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	owasp := concat(", ", object.get(findings[i], "owasp", []))
 	file = findings[i].location.file_path
 	line = findings[i].location.line
-	cwe_msg := sprintf("\n CWE: %v", [cwe]) {
-		cwe != ""
-	}
-	default cwe_msg := ""
+	cwe_msg := get_cwe_msg(cwe)
 	msg := sprintf("%v: %v \n\n OWASP Rule Violations: %v%v \n Location: %v \n Line Number: %v", [findings[i].rule_name, findings[i].rule_message, owasp, cwe_msg, file, line])
-	sugg := sprintf(
-		"Please correlate and incorporate following suggested solution: \n %v",
-		[fix],
-	) {
-		fix != ""
-	}
-	default sugg := ""
+	sugg := get_sugg(fix)
 	error := ""
 	alertStatus := "active"
 }
@@ -71,18 +75,9 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	owasp := concat(", ", object.get(findings[i], "owasp", []))
 	file = findings[i].location.file_path
 	line = findings[i].location.line
-	cwe_msg := sprintf("\n CWE: %v", [cwe]) {
-		cwe != ""
-	}
-	default cwe_msg := ""
+	cwe_msg := get_cwe_msg(cwe)
 	msg := sprintf("%v: %v \n\n OWASP Rule Violations: %v%v \n Location: %v \n Line Number: %v", [findings[i].rule_name, findings[i].rule_message, owasp, cwe_msg, file, line])
-	sugg := sprintf(
-		"Please correlate and incorporate following suggested solution: \n %v",
-		[fix],
-	) {
-		fix != ""
-	}
-	default sugg := ""
+	sugg := get_sugg(fix)
 	error := ""
 	exception_cause := findings[i].rule_name
 	alertStatus := "exception"
