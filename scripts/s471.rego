@@ -43,18 +43,8 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	owasp := concat(", ", object.get(findings[i], "owasp", []))
 	file = findings[i].location.file_path
 	line = findings[i].location.line
-	cwe_msg := sprintf("\n CWE: %v", [cwe]) {
-		cwe != ""
-	}
-	default cwe_msg := ""
-	msg := sprintf("%v: %v \n\n OWASP Rule Violations: %v%v \n Location: %v \n Line Number: %v", [findings[i].rule_name, findings[i].rule_message, owasp, cwe_msg, file, line])
-	sugg := sprintf(
-		"Please correlate and incorporate following suggested solution: \n %v",
-		[fix],
-	) {
-		fix != ""
-	}
-	default sugg := ""
+	msg := sprintf("%v: %v \n\n OWASP Rule Violations: %v \n CWE: %v \n Location: %v \n Line Number: %v", [findings[i].rule_name, findings[i].rule_message, owasp, cwe, file, line])
+	sugg := sprintf("Please correlate and incorporate following suggested solution: \n %v", [fix])
 	error := ""
 	alertStatus := "active"
 }
@@ -69,18 +59,8 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	owasp := concat(", ", object.get(findings[i], "owasp", []))
 	file = findings[i].location.file_path
 	line = findings[i].location.line
-	cwe_msg := sprintf("\n CWE: %v", [cwe]) {
-		cwe != ""
-	}
-	default cwe_msg := ""
-	msg := sprintf("%v: %v \n\n OWASP Rule Violations: %v%v \n Location: %v \n Line Number: %v", [findings[i].rule_name, findings[i].rule_message, owasp, cwe_msg, file, line])
-	sugg := sprintf(
-		"Please correlate and incorporate following suggested solution: \n %v",
-		[fix],
-	) {
-		fix != ""
-	}
-	default sugg := ""
+	msg := sprintf("%v: %v \n\n OWASP Rule Violations: %v \n CWE: %v \n Location: %v \n Line Number: %v", [findings[i].rule_name, findings[i].rule_message, owasp, cwe, file, line])
+	sugg := sprintf("Please correlate and incorporate following suggested solution: \n %v", [fix])
 	error := ""
 	exception_cause := findings[i].rule_name
 	alertStatus := "exception"
