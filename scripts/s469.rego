@@ -38,9 +38,9 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	some i
 	title := sprintf("Opengrep Scan: %v ",[findings[i].rule_name])
 	not findings[i].rule_name in exception_list	
-	fix = findings[i].fix
-	owasp = concat(", ", findings[i].owasp)
-	cwe = concat(", ", findings[i].cwe)
+	fix := object.get(findings[i], "fix", "")
+	owasp := concat(", ", object.get(findings[i], "owasp", []))
+	cwe := concat(", ", object.get(findings[i], "cwe", []))
 	file = findings[i].location.file_path
 	line = findings[i].location.line
 	msg := sprintf("%v: %v \n\n OWASP Rule Violations: %v \n CWE: %v \n Location: %v \n Line Number: %v", [findings[i].rule_name, findings[i].rule_message, owasp, cwe, file, line])
@@ -54,9 +54,9 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	some i
 	title := sprintf("Opengrep Scan: %v ",[findings[i].rule_name])
 	findings[i].rule_name in exception_list
-	fix = findings[i].fix
-	owasp = concat(", ", findings[i].owasp)
-	cwe = concat(", ", findings[i].cwe)
+	fix := object.get(findings[i], "fix", "")
+	owasp := concat(", ", object.get(findings[i], "owasp", []))
+	cwe := concat(", ", object.get(findings[i], "cwe", []))
 	file = findings[i].location.file_path
 	line = findings[i].location.line
 	msg := sprintf("%v: %v \n\n OWASP Rule Violations: %v \n CWE: %v \n Location: %v \n Line Number: %v", [findings[i].rule_name, findings[i].rule_message, owasp, cwe, file, line])
