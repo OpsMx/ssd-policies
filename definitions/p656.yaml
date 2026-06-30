@@ -1,0 +1,12 @@
+id: 656
+type: PolicyDefinition
+metadata:
+  policyName: "Shannon AI Pentest Scan Medium Risk Policy"
+  category: "DAST"
+  stage: "postdeploy"
+  description: "Reports Medium risk vulnerabilities found during Shannon AI pentesting scans."
+  scheduled_policy: false
+  scriptId: 656
+  variables: ""
+  conditionName: ""
+  suggestion: ""

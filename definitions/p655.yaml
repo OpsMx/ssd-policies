@@ -1,0 +1,12 @@
+id: 655
+type: PolicyDefinition
+metadata:
+  policyName: "Shannon AI Pentest Scan High Risk Policy"
+  category: "DAST"
+  stage: "postdeploy"
+  description: "Reports High risk vulnerabilities found during Shannon AI pentesting scans."
+  scheduled_policy: false
+  scriptId: 655
+  variables: ""
+  conditionName: ""
+  suggestion: ""

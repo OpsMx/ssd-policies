@@ -1,0 +1,12 @@
+id: 657
+type: PolicyDefinition
+metadata:
+  policyName: "Shannon AI Pentest Scan Low Risk Policy"
+  category: "DAST"
+  stage: "postdeploy"
+  description: "Reports Low risk vulnerabilities found during Shannon AI pentesting scans."
+  scheduled_policy: false
+  scriptId: 657
+  variables: ""
+  conditionName: ""
+  suggestion: ""
