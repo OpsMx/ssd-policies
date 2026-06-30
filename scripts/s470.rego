@@ -33,9 +33,14 @@ response = http.send(request)
 findings_count = response.body.totalFindings
 findings = response.body.findings
 
+finding_excluded(finding) {
+    finding.affects == false
+}
+
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 	findings_count > 0
 	some i
+    not finding_excluded(findings[i])
 	title := sprintf("Opengrep Scan: %v ",[findings[i].rule_name])
 	not findings[i].rule_name in exception_list	
 	fix = findings[i].fix
@@ -52,6 +57,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
 	findings_count > 0
 	some i
+    not finding_excluded(findings[i])
 	title := sprintf("Opengrep Scan: %v ",[findings[i].rule_name])
 	findings[i].rule_name in exception_list
 	fix = findings[i].fix

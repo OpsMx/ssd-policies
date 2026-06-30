@@ -1,0 +1,12 @@
+id: 651
+type: PolicyDefinition
+metadata:
+  policyName: "PentestGPT Scan High Risk Policy"
+  category: "PENTEST"
+  stage: "postdeploy"
+  description: "Prioritize remediation of High severity vulnerabilities before promoting to production. Apply the recommended fix or raise a tracked exception with justification."
+  scheduled_policy: false
+  scriptId: 480
+  variables: ""
+  conditionName: ""
+  suggestion: ""

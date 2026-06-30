@@ -1,0 +1,12 @@
+id: 654
+type: PolicyDefinition
+metadata:
+  policyName: "PentestGPT Scan Critical Risk Policy"
+  category: "PENTEST"
+  stage: "postdeploy"
+  description: "Halt deployment and remediate all Critical severity vulnerabilities immediately. Critical issues indicate active exploitability and pose direct risk to production systems."
+  scheduled_policy: false
+  scriptId: 483
+  variables: ""
+  conditionName: ""
+  suggestion: ""
