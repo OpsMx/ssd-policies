@@ -1,0 +1,12 @@
+id: 661
+type: PolicyDefinition
+metadata:
+  policyName: "HBOM Medium Vulnerability Policy"
+  category: "Hardware Compliance"
+  stage: "artifact"
+  description: "Denies HBOM submissions where any component (device, firmware, or subcomponent) carries a Medium severity vulnerability."
+  scheduled_policy: false
+  scriptId: 661
+  variables: ""
+  conditionName: ""
+  suggestion: ""
