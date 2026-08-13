@@ -42,7 +42,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": artifact_account}]{
 	not image_source in approved_artifact_repos
 	not policy_name in exception_list
-	msg := sprintf("The artifact %v:%v has not been sourced from an authorized artifact repo.\nPlease verify the artifacts origin against the following Authorized Artifact Repositories: %v", [input.metadata.image, input.metadata.image_tag, input.metadata.ssd_secret.imageCreds.repo])
+	msg := sprintf("The artifact has not been sourced from an authorized artifact repo.\nPlease verify the artifacts origin against the following Authorized Artifact Repositories: %v", [input.metadata.ssd_secret.imageCreds.repo])
 	sugg := "Ensure the artifact is sourced from an authorized artifact repo."
 	error := ""
 	alertStatus := "active"
@@ -51,7 +51,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": policy_name, "alertStatus": alertStatus, "accountName": artifact_account}]{
 	not image_source in approved_artifact_repos
 	policy_name in exception_list
-	msg := sprintf("The artifact %v:%v has not been sourced from an authorized artifact repo.\nPlease verify the artifacts origin against the following Authorized Artifact Repositories: %v", [input.metadata.image, input.metadata.image_tag, input.metadata.ssd_secret.imageCreds.repo])
+	msg := sprintf("The artifact has not been sourced from an authorized artifact repo.\nPlease verify the artifacts origin against the following Authorized Artifact Repositories: %v", [input.metadata.ssd_secret.imageCreds.repo])
 	sugg := "Ensure the artifact is sourced from an authorized artifact repo."
 	error := ""
 	alertStatus := "exception"

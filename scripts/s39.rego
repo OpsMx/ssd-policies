@@ -29,7 +29,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": build_account}]{
 	input.metadata.image_sha != input.metadata.build_image_sha
 	not policy_name in exception_list
-	msg = sprintf("Non-identical by hash artifacts identified at Build stage and Deployment Environment.\nBuild Image: %v:%v \n Deployed Image: %v:%v", [input.metadata.build_image, input.metadata.build_image_tag, input.metadata.image, input.metadata.image_tag])
+	msg = "Non-identical by hash artifacts identified at Build stage and Deployment Environment"
 	sugg = "Ensure that built image details & deployed Image details match. Check for possible misconfigurations."
 	error = ""
 	alertStatus := "active"
@@ -38,7 +38,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": policy_name, "alertStatus": alertStatus, "accountName": build_account}]{
 	input.metadata.image_sha != input.metadata.build_image_sha
 	policy_name in exception_list
-	msg = sprintf("Non-identical by hash artifacts identified at Build stage and Deployment Environment.\nBuild Image: %v:%v \n Deployed Image: %v:%v", [input.metadata.build_image, input.metadata.build_image_tag, input.metadata.image, input.metadata.image_tag])
+	msg = "Non-identical by hash artifacts identified at Build stage and Deployment Environment"
 	sugg = "Ensure that built image details & deployed Image details match. Check for possible misconfigurations."
 	error = ""
 	alertStatus := "exception"
