@@ -43,9 +43,9 @@ license_count = count(licenses)
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 		license_count == 0
 		title := "Artifact License Scan: No license found."
-		msg := sprintf("Artifact License Scan: No license found to be associated with artifact %v.",[input.metadata.image])
+		msg := "Artifact License Scan: No license found to be associated with artifact."
 		sugg := "Please associate appropriate license with artifact to be able to evaluate quality of license."
-		error := sprintf("No licenses found to be associated with artifact %v.", [input.metadata.image])
+		error := "No licenses found to be associated with artifact."
 		alertStatus := "error"
 }
 
@@ -58,7 +58,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 		count(high_severity_licenses_without_exception) > 0
 		some i in high_severity_licenses_without_exception
 		title := sprintf("Artifact License Scan: Target: %v / Package: %v/ License: %v/ Category: %v", [i.Target, i.PkgName, i.Name, i.Category])
-		msg := sprintf("Artifact License Scan: High Severity License: %v found to be associated with package %v in artifact %v:%v.",[i.Name, i.PkgName, input.metadata.image, input.metadata.image_tag])
+		msg := sprintf("Artifact License Scan: High Severity License: %v found to be associated with package %v in artifact.",[i.Name, i.PkgName])
 		sugg := "Please associate appropriate licenses with code repository and its package dependencies."
 		error := ""
 		alertStatus := "active" 
@@ -69,7 +69,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 		count(high_severity_licenses_with_exception) > 0
 		some j in high_severity_licenses_with_exception
 		title := sprintf("Artifact License Scan: Target: %v / Package: %v/ License: %v/ Category: %v", [j.Target, j.PkgName, j.Name, j.Category])
-		msg := sprintf("Artifact License Scan: High Severity License: %v found to be associated with package %v in artifact %v:%v.",[j.Name, j.PkgName, input.metadata.image, input.metadata.image_tag])
+		msg := sprintf("Artifact License Scan: High Severity License: %v found to be associated with package %v in artifact.",[j.Name, j.PkgName])
 		sugg := "Please associate appropriate licenses with code repository and its package dependencies."
 		error := ""
 		exception_cause := j.Name

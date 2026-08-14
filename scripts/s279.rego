@@ -43,7 +43,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 	some i in critical_severity_secrets
 	not i in exception_list
 	title := sprintf("Critical Severity Secret detected in container: %v", [i])
-	msg := sprintf("Secret found for Container %v:%v.\nSecret identified:\n %v", [image_name, input.metadata.image_tag, i])
+	msg := "Secret found for Container"
 	sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
 	error := ""
 	alertStatus := "active"
@@ -54,7 +54,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": exceptio
 	some i in critical_severity_secrets
 	i in exception_list
 	title := sprintf("Critical Severity Secret detected in container: %v", [i])
-	msg := sprintf("Secret found for Container %v:%v.\nSecret identified:\n %v", [image_name, input.metadata.image_tag, i])
+	msg := "Secret found for Container"
 	sugg := "Eliminate the aforementioned sensitive information to safeguard confidential data."
 	error := ""
 	exception_cause := i

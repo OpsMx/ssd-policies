@@ -34,7 +34,7 @@ response = http.send(request)
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": artifact_account}]{
 	response.body.code == 500
 	not policy_name in exception_list
-	msg = sprintf("Artifact %v:%v is not a signed artifact. Kindly verify authenticity of the artifact and its source.",[input.metadata.image, input.metadata.image_tag])
+	msg = "Artifact is not a signed artifact. Kindly verify authenticity of the artifact and its source"
 	sugg := ""
 	error := "Kindly use only trusted artifacts in critical environments. To validate trust, the signature of deployed artifact must be associated."
 	alertStatus := "active"
@@ -43,7 +43,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": policy_name, "alertStatus": alertStatus, "accountName": artifact_account}]{
 	response.body.code == 500
 	policy_name in exception_list
-	msg = sprintf("Artifact %v:%v is not a signed artifact. Kindly verify authenticity of the artifact and its source.",[input.metadata.image, input.metadata.image_tag])
+	msg = "Artifact is not a signed artifact. Kindly verify authenticity of the artifact and its source"
 	sugg := ""
 	error := "Kindly use only trusted artifacts in critical environments. To validate trust, the signature of deployed artifact must be associated."
 	alertStatus := "exception"
