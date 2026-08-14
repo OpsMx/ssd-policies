@@ -45,7 +45,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 		title := "Artifact License Scan: No license found."
 		msg := "Artifact License Scan: No license found to be associated with artifact."
 		sugg := "Please associate appropriate license with artifact to be able to evaluate quality of license."
-		error := sprintf("No licenses found to be associated with artifact %v.", [input.metadata.image])
+		error := "No licenses found to be associated with artifact."
 		alertStatus := "error"
 }
 
