@@ -31,7 +31,7 @@ request = {
 }
 
 response = http.send(request)
-critical_issues = response.body.criticalIssues
+critical_issues = response.criticalIssues
 count_critical_issues = count(critical_issues)
 
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
