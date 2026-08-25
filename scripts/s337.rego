@@ -57,10 +57,11 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 	alertStatus := "error"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": exception_cause, "alertStatus": alertStatus, "accountName": scan_account, "impacts": impacts}]{
 	count_issues > 0
 	some idx
 	issues[idx].name in exception_list
+	impacts := impact_payloads(issues[idx])
 	title := sprintf("OWASP ZAP Scan: %v", [issues[idx].name])
 	msg = issues[idx].description
 	sugg := solution_or_default(issues[idx])
@@ -69,10 +70,11 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	alertStatus := "exception"
 }
 
-deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
+deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account, "impacts": impacts}]{
 	count_issues > 0
 	some idx
 	not issues[idx].name in exception_list
+	impacts := impact_payloads(issues[idx])
 	title := sprintf("OWASP ZAP Scan: %v", [issues[idx].name])
 	msg = issues[idx].description
 	sugg := solution_or_default(issues[idx])
@@ -90,4 +92,9 @@ solution_or_default(issue) = sugg {
 	s := object.get(issue, "solution", "")
 	s == ""
 	sugg = default_solution
+}
+
+impact_payloads(issue) = impacts {
+	raw_impacts := object.get(issue, "impacts", [])
+	impacts := [{"httpMessage": object.get(raw_impacts[i], "httpMessage", null)} | some i]
 }
