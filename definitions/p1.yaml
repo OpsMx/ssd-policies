@@ -1,7 +1,7 @@
 id: 1
 type: PolicyDefinition
 metadata:
-  policyName: "Repository Access Control Policy"
+  policyName: "Repository Asshole Control Policy"
   category: "Git Security Posture"
   stage: "source"
   description: "Code Repository should not be publicly visible or modifiable."
