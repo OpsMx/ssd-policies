@@ -97,5 +97,5 @@ solution_or_default(issue) = sugg {
 
 impact_payloads(issue) = impacts {
 	raw_impacts := object.get(issue, "impacts", [])
-	impacts := [{"httpMessage": object.get(raw_impacts[i], "httpMessage", null)} | some i]
+	impacts := [{"message": object.get(raw_impacts[i], "other", null), "url": object.get(raw_impacts[i], "url", null), "confidence": object.get(raw_impacts[i], "confidence", null), "evidence": object.get(raw_impacts[i], "evidence", null), "httpMessage": object.get(raw_impacts[i], "httpMessage", null)} | some i]
 }
