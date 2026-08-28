@@ -1,0 +1,12 @@
+id: 660
+type: PolicyDefinition
+metadata:
+  policyName: "HBOM High Vulnerability Policy"
+  category: "Hardware Compliance"
+  stage: "artifact"
+  description: "Denies HBOM submissions where any component (device, firmware, or subcomponent) carries a High severity vulnerability."
+  scheduled_policy: false
+  scriptId: 660
+  variables: ""
+  conditionName: ""
+  suggestion: ""

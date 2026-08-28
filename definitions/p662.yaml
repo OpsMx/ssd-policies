@@ -1,0 +1,12 @@
+id: 662
+type: PolicyDefinition
+metadata:
+  policyName: "HBOM Low Vulnerability Policy"
+  category: "Hardware Compliance"
+  stage: "artifact"
+  description: "Denies HBOM submissions where any component (device, firmware, or subcomponent) carries a Low severity vulnerability."
+  scheduled_policy: false
+  scriptId: 662
+  variables: ""
+  conditionName: ""
+  suggestion: ""

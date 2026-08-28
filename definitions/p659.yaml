@@ -1,0 +1,12 @@
+id: 659
+type: PolicyDefinition
+metadata:
+  policyName: "HBOM Critical Vulnerability Policy"
+  category: "Hardware Compliance"
+  stage: "artifact"
+  description: "Denies HBOM submissions where any component (device, firmware, or subcomponent) carries a Critical severity vulnerability."
+  scheduled_policy: false
+  scriptId: 659
+  variables: ""
+  conditionName: ""
+  suggestion: ""
