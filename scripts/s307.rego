@@ -44,7 +44,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
     rule_cwe := concat(",", findings[i].cwe)
     locations := [sprintf("%s:%d", [loc.filePath, loc.line]) | loc := findings[i].locations[_]]
     joined_locations := concat(",\n ", locations)
-    fixes := concat(",\n ", findings[i].exampleCommitFixes)
+    fixes := concat(",\n ", object.get(findings[i], "exampleCommitFixes", []))
 	
 	title := sprintf("Snyk Code Scan: %v for entity: %v",[findings[i].ruleName, findings[i].ruleMessage])
 	msg := sprintf("Snyk Rule Violation found for following rule \n %v: %v \n CWE: %v \n Locations: %v ", [findings[i].ruleName, findings[i].ruleMessage, rule_cwe, joined_locations])
@@ -62,7 +62,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
     rule_cwe := concat(",", findings[i].cwe)
     locations := [sprintf("%s:%d", [loc.filePath, loc.line]) | loc := findings[i].locations[_]]
     joined_locations := concat(",\n ", locations)
-    fixes := concat(",\n ", findings[i].exampleCommitFixes)
+    fixes := concat(",\n ", object.get(findings[i], "exampleCommitFixes", []))
 	
 	title := sprintf("Snyk Code Scan: %v for entity: %v",[findings[i].ruleName, findings[i].ruleMessage])
 	msg := sprintf("Snyk Rule Violation found for following rule \n %v: %v \n CWE: %v \n Locations: %v ", [findings[i].ruleName, findings[i].ruleMessage, rule_cwe, joined_locations])
