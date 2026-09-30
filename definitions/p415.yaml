@@ -1,10 +1,10 @@
 id: 415
 type: PolicyDefinition
 metadata:
-  policyName: "TfSec: IaC Scan Low Severity Issues Policy"
+  policyName: "Opsmx: IaC Scan Low Severity Issues Policy"
   category: "IaC Security Posture"
   stage: "deploy"
-  description: "TfSec Scan checks for security violations in terraform scripts."
+  description: "Opsmx Scan checks for security violations in terraform scripts."
   scheduled_policy: false
   scriptId: 415
   variables: ""
