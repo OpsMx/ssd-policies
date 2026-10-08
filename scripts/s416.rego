@@ -8,19 +8,19 @@ policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
 
-scan_account = input.metadata.ssd_secret.tfsec.name
+scan_account = input.metadata.ssd_secret.opsmxiac.name
 
-terraform_repo_url_arr = split(input.metadata.ssd_secret.tfsec.url, "/")
+terraform_repo_url_arr = split(input.metadata.ssd_secret.opsmxiac.url, "/")
 terraform_repo_name = split(terraform_repo_url_arr[count(terraform_repo_url_arr)-1], ".")[0]
 
 deployment_id = input.metadata.deploymentId
 
 image_sha = replace(input.metadata.image_sha, ":", "-")
 
-file_name = concat("", [terraform_repo_name, "_", deployment_id, "_", image_sha, "_tfsecscan.json"])
+file_name = concat("", [terraform_repo_name, "_", deployment_id, "_", image_sha, "_opsmxiacscan.json"])
 
-complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=tfsecscan"])
-download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=tfsecscan"])
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=opsmxiacscan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=opsmxiacscan"])
 
 request = {
 		"method": "GET",
