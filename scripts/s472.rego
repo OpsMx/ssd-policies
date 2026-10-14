@@ -7,7 +7,7 @@ policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
 
-scan_account = input.metadata.ssd_secret.cbomkit.name
+scan_account = input.metadata.ssd_secret.cbom.name
 
 default not_quantum_safe_count = 0
 
