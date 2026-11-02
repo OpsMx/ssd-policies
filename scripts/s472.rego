@@ -21,8 +21,8 @@ file_name = concat("", [input.metadata.owner, "_", input.metadata.repository, "_
 	input.metadata.source_code_path != ""
 }
 
-complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", file_name , "&scanOperation=cbomscan"])
-download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", file_name, "&scanOperation=cbomscan"])
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", urlquery.encode(file_name) , "&scanOperation=cbomscan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", urlquery.encode(file_name), "&scanOperation=cbomscan"])
 
 request = {	
 	"method": "GET",

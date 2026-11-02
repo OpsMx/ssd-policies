@@ -23,7 +23,7 @@ file_name = concat("", [input.metadata.owner, "_", input.metadata.repository, "_
 	input.metadata.source_code_path != ""
 }
 	
-complete_url = concat("", [request_url, file_name, "&scanOperation=codeSecretScan"])
+complete_url = concat("", [request_url, urlquery.encode(file_name), "&scanOperation=codeSecretScan"])
 	
 request = {
 		"method": "GET",
