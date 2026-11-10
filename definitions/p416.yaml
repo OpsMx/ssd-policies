@@ -5,7 +5,7 @@ metadata:
   category: "IaC Security Posture"
   stage: "deploy"
   description: "OpsMx Iac Scan checks for security violations in terraform scripts."
-  scheduled_policy: false
+  scheduled_policy: true
   scriptId: 416
   variables: ""
   conditionName: ""
