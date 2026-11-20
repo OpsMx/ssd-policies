@@ -21,8 +21,8 @@ file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.r
 	input.metadata.source_code_path != ""
 }
 
-complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", urlquery.encode(file_name) , "&scanOperation=opsmxcodescanScan"])
-download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", urlquery.encode(file_name), "&scanOperation=opsmxcodescanScan"])
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", urlquery.encode(file_name) , "&scanOperation=opsmxCodeScan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", urlquery.encode(file_name), "&scanOperation=opsmxCodeScan"])
 
 request = {	
 		"method": "GET",
