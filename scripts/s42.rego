@@ -8,7 +8,7 @@ policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
 
-scan_account = input.metadata.ssd_secret.openSSF.name
+scan_account = input.metadata.ssd_secret.opsmxscorecard.name
 
 image_sha = replace(input.metadata.image_sha, ":", "-")
 
@@ -21,11 +21,11 @@ file_name = concat("", [input.metadata.owner, "_", input.metadata.repository, "_
 }
 
 policy_name = input.conditions[0].condition_name 
-check_orig = replace(replace(policy_name, "Open SSF ", ""), " Policy", "")
+check_orig = replace(replace(policy_name, "Scorecard ", ""), " Policy", "")
 
 check_name = replace(lower(check_orig), " ", "-")
 threshold = to_number(input.conditions[0].condition_value)
-request_url = concat("",[input.metadata.toolchain_addr, "api", "/v1", "/openssfScore?scoreCardName=", file_name, "&", "checkName=", check_name, "&", "scanOperation=", "openssfScan"])
+request_url = concat("",[input.metadata.toolchain_addr, "api", "/v1", "/opsmxScorecardScore?scoreCardName=", file_name, "&", "checkName=", check_name, "&", "scanOperation=", "opsmxScorecard"])
 
 request = {
 	"method": "GET",
@@ -46,7 +46,7 @@ deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "ale
 deny[{"alertMsg": msg, "suggestion": sugg, "error": error, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 	response.status_code == 500
 	msg := ""
-	sugg := "Kindly check if toolchain service is available in SSD environment and OpenSSF integration Policies are enabled."
+	sugg := "Kindly check if toolchain service is available in SSD environment and OpsMx Scorecard integration Policies are enabled."
 	error := sprintf("Error Received: %v.",[response.body.error])
 	alertStatus := "error"
 }
@@ -56,7 +56,7 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error, "exception": "", "ale
 	not response.status_code in codes
 	msg := ""
 	error := sprintf("Error %v receieved: %v", [response.body.error])
-	sugg := "Kindly check if toolchain service is available in SSD environment and OpenSSF integration Policies are enabled."
+	sugg := "Kindly check if toolchain service is available in SSD environment and OpsMx Scorecard integration Policies are enabled."
 	alertStatus := "error"
 }
 
@@ -74,7 +74,7 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error, "exception": "", "ale
 	response.body.score < threshold
 	not policy_name in exception_list
 	msg := sprintf("%v score for repo %v/%v is %v, which is less than 5 out 10.", [policy_name, input.metadata.owner, input.metadata.repository, response.body.score])
-	sugg := "Refer to detailed OpenSSF ScoreCard report and implement required practices to obtain better OpenSSF Score."
+	sugg := "Refer to detailed OpsMx Scorecard report and implement required practices to obtain better OpsMx Scorecard Score."
 	error := ""
 	alertStatus := "active"
 }
@@ -84,7 +84,7 @@ deny[{"alertMsg":msg, "suggestions": sugg, "error": error, "exception": policy_n
 	response.body.score < threshold
 	policy_name in exception_list
 	msg := sprintf("%v score for repo %v/%v is %v, which is less than 5 out 10.", [policy_name, input.metadata.owner, input.metadata.repository, response.body.score])
-	sugg := "Refer to detailed OpenSSF ScoreCard report and implement required practices to obtain better OpenSSF Score."
+	sugg := "Refer to detailed OpsMx Scorecard report and implement required practices to obtain better OpsMx Scorecard Score."
 	error := ""
 	alertStatus := "exception"
 }
