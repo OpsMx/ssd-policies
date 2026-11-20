@@ -13,11 +13,11 @@ severity = "low"
 default findings_count = 0
 
 image_sha = replace(input.metadata.image_sha, ":", "-")
-file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", severity, "_", input.metadata.build_id, "_opsmxcodescan.json"]) {
+file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_opsmxcodescan.json"]) {
 	input.metadata.source_code_path == ""
 }
 
-file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", severity, "_", input.metadata.build_id, "_", image_sha, "_opsmxcodescan.json"]) {
+file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_", image_sha, "_opsmxcodescan.json"]) {
 	input.metadata.source_code_path != ""
 }
 
@@ -37,10 +37,17 @@ finding_excluded(finding) {
     finding.affects == false
 }
 
+# findings of any severity other than high or medium are reported as low
+finding_severity(finding) = sev {
+	sev := lower(object.get(finding, "severity", ""))
+	sev in {"high", "medium"}
+} else = "low"
+
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 	findings_count > 0
 	some i
     not finding_excluded(findings[i])
+	finding_severity(findings[i]) == severity
 	title := sprintf("OpsMx Code Scan: %v ",[findings[i].rule_name])
 	not findings[i].rule_name in exception_list	
 	fix := object.get(findings[i], "fix", "")
@@ -58,6 +65,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	findings_count > 0
 	some i
     not finding_excluded(findings[i])
+	finding_severity(findings[i]) == severity
 	title := sprintf("OpsMx Code Scan: %v ",[findings[i].rule_name])
 	findings[i].rule_name in exception_list
 	fix := object.get(findings[i], "fix", "")
