@@ -7,22 +7,22 @@ policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
 
-scan_account = input.metadata.ssd_secret.opengrep.name
+scan_account = input.metadata.ssd_secret.opsmxcodescan.name
 
 severity = "low"
 default findings_count = 0
 
 image_sha = replace(input.metadata.image_sha, ":", "-")
-file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", severity, "_", input.metadata.build_id, "_opengrep.json"]) {
+file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_opsmxcodescan.json"]) {
 	input.metadata.source_code_path == ""
 }
 
-file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", severity, "_", input.metadata.build_id, "_", image_sha, "_opengrep.json"]) {
+file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_", image_sha, "_opsmxcodescan.json"]) {
 	input.metadata.source_code_path != ""
 }
 
-complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", urlquery.encode(file_name) , "&scanOperation=opengrepScan"])
-download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", urlquery.encode(file_name), "&scanOperation=opengrepScan"])
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", urlquery.encode(file_name) , "&scanOperation=opsmxCodeScan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", urlquery.encode(file_name), "&scanOperation=opsmxCodeScan"])
 
 request = {	
 		"method": "GET",
@@ -37,11 +37,18 @@ finding_excluded(finding) {
     finding.affects == false
 }
 
+# findings of any severity other than high or medium are reported as low
+finding_severity(finding) = sev {
+	sev := lower(object.get(finding, "severity", ""))
+	sev in {"high", "medium"}
+} else = "low"
+
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 	findings_count > 0
 	some i
     not finding_excluded(findings[i])
-	title := sprintf("Opengrep Scan: %v ",[findings[i].rule_name])
+	finding_severity(findings[i]) == severity
+	title := sprintf("OpsMx Code Scan: %v ",[findings[i].rule_name])
 	not findings[i].rule_name in exception_list	
 	fix := object.get(findings[i], "fix", "")
 	cwe := concat(", ", object.get(findings[i], "cwe", []))
@@ -58,7 +65,8 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	findings_count > 0
 	some i
     not finding_excluded(findings[i])
-	title := sprintf("Opengrep Scan: %v ",[findings[i].rule_name])
+	finding_severity(findings[i]) == severity
+	title := sprintf("OpsMx Code Scan: %v ",[findings[i].rule_name])
 	findings[i].rule_name in exception_list
 	fix := object.get(findings[i], "fix", "")
 	cwe := concat(", ", object.get(findings[i], "cwe", []))
