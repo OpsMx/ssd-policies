@@ -7,22 +7,22 @@ policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
 
-scan_account = input.metadata.ssd_secret.opsmxcodescan.name
+scan_account = input.metadata.ssd_secret.opsmxsastcodescan.name
 
 severity = "medium"
 default findings_count = 0
 
 image_sha = replace(input.metadata.image_sha, ":", "-")
-file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_opsmxcodescan.json"]) {
+file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_opsmxsastcodescan.json"]) {
 	input.metadata.source_code_path == ""
 }
 
-file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_", image_sha, "_opsmxcodescan.json"]) {
+file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_", image_sha, "_opsmxsastcodescan.json"]) {
 	input.metadata.source_code_path != ""
 }
 
-complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", urlquery.encode(file_name) , "&scanOperation=opsmxCodeScan"])
-download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", urlquery.encode(file_name), "&scanOperation=opsmxCodeScan"])
+complete_url = concat("",[input.metadata.toolchain_addr,"api/v1/scanResult?fileName=", urlquery.encode(file_name) , "&scanOperation=opsmxSastCodeScan"])
+download_url = concat("",["tool-chain/api/v1/scanResult?fileName=", urlquery.encode(file_name), "&scanOperation=opsmxSastCodeScan"])
 
 request = {	
 		"method": "GET",
@@ -48,7 +48,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	some i
     not finding_excluded(findings[i])
 	finding_severity(findings[i]) == severity
-	title := sprintf("OpsMx Code Scan: %v ",[findings[i].rule_name])
+	title := sprintf("OpsMx SAST Code Scan: %v ",[findings[i].rule_name])
 	not findings[i].rule_name in exception_list	
 	fix := object.get(findings[i], "fix", "")
 	cwe := concat(", ", object.get(findings[i], "cwe", []))
@@ -66,7 +66,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	some i
     not finding_excluded(findings[i])
 	finding_severity(findings[i]) == severity
-	title := sprintf("OpsMx Code Scan: %v ",[findings[i].rule_name])
+	title := sprintf("OpsMx SAST Code Scan: %v ",[findings[i].rule_name])
 	findings[i].rule_name in exception_list
 	fix := object.get(findings[i], "fix", "")
 	cwe := concat(", ", object.get(findings[i], "cwe", []))

@@ -4,7 +4,7 @@ metadata:
   policyName: "Code Scan Low Severity Findings Policy"
   category: "SAST"
   stage: "source"
-  description: "This policy is designed to ensure timely identification, assessment, and resolution of low-severity findings in OpsMx Code Scan analysis. It outlines the procedures and responsibilities for addressing issues that could pose significant risks to code quality and security."
+  description: "This policy is designed to ensure timely identification, assessment, and resolution of low-severity findings in OpsMx SAST Code Scan analysis. It outlines the procedures and responsibilities for addressing issues that could pose significant risks to code quality and security."
   scheduled_policy: false
   scriptId: 471
   variables: ""
