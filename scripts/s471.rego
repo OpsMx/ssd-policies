@@ -13,11 +13,11 @@ severity = "low"
 default findings_count = 0
 
 image_sha = replace(input.metadata.image_sha, ":", "-")
-file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", severity, "_", input.metadata.build_id, "_opengrep.json"]) {
+file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_opengrep.json"]) {
 	input.metadata.source_code_path == ""
 }
 
-file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", severity, "_", input.metadata.build_id, "_", image_sha, "_opengrep.json"]) {
+file_name = concat("", ["findings_", input.metadata.owner, "_", input.metadata.repository, "_", input.metadata.build_id, "_", image_sha, "_opengrep.json"]) {
 	input.metadata.source_code_path != ""
 }
 
@@ -37,10 +37,17 @@ finding_excluded(finding) {
     finding.affects == false
 }
 
+# Opengrep writes every severity into one findings file. Like the old low severity file, this
+# policy also takes any severity other than high and medium (e.g. a rule overridden to critical)
+finding_in_scope(finding) {
+	not lower(object.get(finding, "severity", "")) in {"high", "medium"}
+}
+
 deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, "fileApi": download_url, "exception": "", "alertStatus": alertStatus, "accountName": scan_account}]{
 	findings_count > 0
 	some i
     not finding_excluded(findings[i])
+	finding_in_scope(findings[i])
 	title := sprintf("Opengrep Scan: %v ",[findings[i].rule_name])
 	not findings[i].rule_name in exception_list	
 	fix := object.get(findings[i], "fix", "")
@@ -58,6 +65,7 @@ deny[{"alertTitle": title, "alertMsg": msg, "suggestion": sugg, "error": error, 
 	findings_count > 0
 	some i
     not finding_excluded(findings[i])
+	finding_in_scope(findings[i])
 	title := sprintf("Opengrep Scan: %v ",[findings[i].rule_name])
 	findings[i].rule_name in exception_list
 	fix := object.get(findings[i], "fix", "")
