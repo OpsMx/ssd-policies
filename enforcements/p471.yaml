@@ -6,7 +6,7 @@ metadata:
   conditionValue: ""
   status: true
   datasourceTool:
-  - "opengrep"
+  - "opsmxsastcodescan"
   tags:
   - 12
   - 11
