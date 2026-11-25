@@ -6,6 +6,6 @@ metadata:
   conditionValue: ""
   status: false
   datasourceTool:
-  - "trivy"
+  - "opsmxsourcelicensescan"
   tags:
   - 25

@@ -7,7 +7,7 @@ policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
 
-scan_account = input.metadata.ssd_secret.trivy.name
+scan_account = input.metadata.ssd_secret.opsmxsourcelicensescan.name
 
 default license_count = 0
 default critical_severity_licenses = []
