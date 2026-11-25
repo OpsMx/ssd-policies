@@ -6,7 +6,7 @@ metadata:
   conditionValue: "5"
   status: true
   datasourceTool:
-  - "openssf"
+  - "opsmxscorecard"
   tags:
   - 17
   - 4
