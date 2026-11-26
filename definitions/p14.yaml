@@ -1,7 +1,7 @@
 id: 14
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  CI Tests Policy"
+  policyName: "Scorecard CI Tests Policy"
   category: "OpsMx  Scorecard"
   stage: "source"
   description: "This assesses if the project enforces running tests before merging pull requests, currently applicable only to GitHub-hosted repositories, excluding other source hosting platforms."

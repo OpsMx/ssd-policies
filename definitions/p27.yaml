@@ -1,7 +1,7 @@
 id: 27
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  Signed Releases Policy"
+  policyName: "Scorecard Signed Releases Policy"
   category: "OpsMx  Scorecard"
   stage: "source"
   description: "This determines if the project cryptographically signs release artefacts."

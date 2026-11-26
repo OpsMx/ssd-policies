@@ -1,7 +1,7 @@
 id: 30
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  Webhooks Policy"
+  policyName: "Scorecard Webhooks Policy"
   category: "OpsMx  Scorecard"
   stage: "source"
   description: "This check determines whether the webhook defined in the repository has a token configured to authenticate the origins of requests."

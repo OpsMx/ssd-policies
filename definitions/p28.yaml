@@ -1,7 +1,7 @@
 id: 28
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  Token Permissions Policy"
+  policyName: "Scorecard Token Permissions Policy"
   category: "OpsMx  Scorecard"
   stage: "source"
   description: "This Determines Whether the project automated workflow tokens follow the principle of least privilege."

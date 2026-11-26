@@ -1,7 +1,7 @@
 id: 42
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  Aggregate Score Policy"
+  policyName: "Scorecard Aggregate Score Policy"
   category: "OpsMx  Scorecard"
   stage: "source"
   description: "The project might have known security vulnerabilities that have not been adequately  addressed"

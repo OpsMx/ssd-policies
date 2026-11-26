@@ -1,7 +1,7 @@
 id: 20
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  Fuzzing Policy"
+  policyName: "Scorecard Fuzzing Policy"
   category: "OpsMx  Scorecard"
   stage: "source"
   description: "This assesses if the project employs fuzzing, considering various criteria including repository inclusion, fuzzing tool presence, language-specific functions, and integration files."

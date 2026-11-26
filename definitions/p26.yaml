@@ -1,7 +1,7 @@
 id: 26
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  Security Policy"
+  policyName: "Scorecard Security Policy"
   category: "OpsMx  Scorecard"
   stage: "source"
   description: "This check tries to determine if the project has published a security policy. It works by looking for a file named SECURITY.md in a few well-known directories."

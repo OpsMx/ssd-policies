@@ -1,7 +1,7 @@
 id: 24
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  Packaging Policy"
+  policyName: "Scorecard Packaging Policy"
   category: "OpsMx  Scorecard"
   stage: "source"
   description: "This assesses if the project is released as a package."
