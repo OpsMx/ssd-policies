@@ -1,8 +1,8 @@
 id: 19
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  Dependency Update Tool Policy"
-  category: "OpsMx  Scorecard"
+  policyName: "Scorecard Dependency Update Tool Policy"
+  category: "OpsMx Scorecard"
   stage: "source"
   description: "This evaluates if the project utilizes a dependency update tool like Dependabot, Renovate bot, Sonatype Lift, or PyUp to automate updating outdated dependencies and enhance security"
   scheduled_policy: false

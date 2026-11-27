@@ -1,8 +1,8 @@
 id: 30
 type: DepricatedPolicyDefinition #cloud mode policy
 metadata:
-  policyName: "Scorecard  Webhooks Policy"
-  category: "OpsMx  Scorecard"
+  policyName: "Scorecard Webhooks Policy"
+  category: "OpsMx Scorecard"
   stage: "source"
   description: "This check determines whether the webhook defined in the repository has a token configured to authenticate the origins of requests."
   scheduled_policy: false
