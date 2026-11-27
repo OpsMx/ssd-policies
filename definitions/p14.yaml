@@ -1,5 +1,5 @@
 id: 14
-type: PolicyDefinition
+type: DepricatedPolicyDefinition #cloud mode policy
 metadata:
   policyName: "Scorecard CI Tests Policy"
   category: "OpsMx Scorecard"

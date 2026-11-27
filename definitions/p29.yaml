@@ -4,7 +4,7 @@ metadata:
   policyName: "Scorecard Vulnerabilities Policy"
   category: "OpsMx Scorecard"
   stage: "source"
-  description: "The Project Has Open, Unfixed Vulnerabilities in its Own codebase."
+  description: "This determines whether the project has Open, Unfixed Vulnerabilities in its Own codebase."
   scheduled_policy: false
   scriptId: 13
   variables: ""

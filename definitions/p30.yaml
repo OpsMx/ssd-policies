@@ -1,5 +1,5 @@
 id: 30
-type: PolicyDefinition
+type: DepricatedPolicyDefinition #cloud mode policy
 metadata:
   policyName: "Scorecard Webhooks Policy"
   category: "OpsMx Scorecard"

@@ -1,5 +1,5 @@
 id: 27
-type: PolicyDefinition
+type: DepricatedPolicyDefinition #cloud mode policy
 metadata:
   policyName: "Scorecard Signed Releases Policy"
   category: "OpsMx Scorecard"

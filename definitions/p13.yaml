@@ -1,5 +1,5 @@
 id: 13
-type: PolicyDefinition
+type: DepricatedPolicyDefinition #cloud mode policy
 metadata:
   policyName: "Scorecard Branch Protection Policy"
   category: "OpsMx Scorecard"
