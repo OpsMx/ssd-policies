@@ -1,8 +1,8 @@
 id: 15
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  CII-Best Practices Policy"
-  category: "OpsMx  Scorecard"
+  policyName: "Scorecard CII-Best Practices Policy"
+  category: "OpsMx Scorecard"
   stage: "source"
   description: "This 121 evaluates if the project has achieved an OpsMx Best Practices Badge to indicate adherence to security-focused best practices, using the Git repo URL and OpsMx Badge API"
   scheduled_policy: false

@@ -1,8 +1,8 @@
 id: 31
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  Binary Artifacts Policy"
-  category: "OpsMx  Scorecard"
+  policyName: "Scorecard Binary Artifacts Policy"
+  category: "OpsMx Scorecard"
   stage: "source"
   description: "This check determines whether the project has generated executable artifacts in the source repository."
   scheduled_policy: false

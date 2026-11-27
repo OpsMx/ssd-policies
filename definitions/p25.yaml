@@ -1,8 +1,8 @@
 id: 25
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  SAST Policy"
-  category: "OpsMx  Scorecard"
+  policyName: "Scorecard SAST Policy"
+  category: "OpsMx Scorecard"
   stage: "source"
   description: "This check assesses if a GitHub-hosted project employs Static Application Security Testing."
   scheduled_policy: false

@@ -1,8 +1,8 @@
 id: 13
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  Branch Protection Policy"
-  category: "OpsMx  Scorecard"
+  policyName: "Scorecard Branch Protection Policy"
+  category: "OpsMx Scorecard"
   stage: "source"
   description: "This evaluates if the project main and release branches are safeguarded with GitHub branch protection settings, enforcing review and status check requirements before merging and preventing history changes."
   scheduled_policy: false

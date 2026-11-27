@@ -1,8 +1,8 @@
 id: 29
 type: PolicyDefinition
 metadata:
-  policyName: "Scorecard  Vulnerabilities Policy"
-  category: "OpsMx  Scorecard"
+  policyName: "Scorecard Vulnerabilities Policy"
+  category: "OpsMx Scorecard"
   stage: "source"
   description: "The Project Has Open, Unfixed Vulnerabilities in its Own codebase."
   scheduled_policy: false
