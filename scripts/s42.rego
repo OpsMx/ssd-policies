@@ -8,7 +8,7 @@ policy_name = input.metadata.policyName
 policy_category = replace(input.metadata.policyCategory, " ", "_")
 exception_list = input.metadata.exception[policy_category]
 
-scan_account = scan_account = input.metadata.ssd_secret.opsmxscorecard.name
+scan_account = input.metadata.ssd_secret.opsmxscorecard.name
 
 image_sha = replace(input.metadata.image_sha, ":", "-")
 
