@@ -2,7 +2,7 @@ id: 16
 type: PolicyDefinition
 metadata:
   policyName: "Scorecard Code Review Policy"
-  category: "OpsMx  Scorecard"
+  category: "OpsMx Scorecard"
   stage: "source"
   description: "This check determines whether the project requires human code review before pull requests are merged."
   scheduled_policy: false

@@ -2,7 +2,7 @@ id: 18
 type: PolicyDefinition
 metadata:
   policyName: "Scorecard Dangerous Workflow Policy"
-  category: "OpsMx  Scorecard"
+  category: "OpsMx Scorecard"
   stage: "source"
   description: "This identifies risky code patterns in the project GitHub Action workflows, such as untrusted code checkouts, logging sensitive information, or using potentially unsafe inputs in scripts"
   scheduled_policy: false

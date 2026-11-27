@@ -2,7 +2,7 @@ id: 23
 type: PolicyDefinition
 metadata:
   policyName: "Scorecard Pinned Dependencies Policy"
-  category: "OpsMx  Scorecard"
+  category: "OpsMx Scorecard"
   stage: "source"
   description: "This verifies if a project locks its dependencies to specific versions by their hashes, applicable only to GitHub repositories."
   scheduled_policy: false

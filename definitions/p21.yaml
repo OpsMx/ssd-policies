@@ -2,7 +2,7 @@ id: 21
 type: PolicyDefinition
 metadata:
   policyName: "Scorecard License Policy"
-  category: "OpsMx  Scorecard"
+  category: "OpsMx Scorecard"
   stage: "source"
   description: "This examines if the project has a published license by using hosting APIs or searching for a license file using standard naming conventions"
   scheduled_policy: false
