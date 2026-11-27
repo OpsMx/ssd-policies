@@ -1,5 +1,5 @@
 id: 15
-type: PolicyDefinition
+type: DepricatedPolicyDefinition #cloud mode policy
 metadata:
   policyName: "Scorecard  CII-Best Practices Policy"
   category: "OpsMx  Scorecard"

@@ -1,5 +1,5 @@
 id: 16
-type: PolicyDefinition
+type: DepricatedPolicyDefinition #cloud mode policy
 metadata:
   policyName: "Scorecard  Code Review Policy"
   category: "OpsMx  Scorecard"
